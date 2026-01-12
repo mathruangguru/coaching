@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Coaching Guru OSN-K Matematika SD (2023-2025)</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #f4f6f8;
+            --text-color: #333;
+            --border-radius: 8px;
+            --tab-active-bg: #fff;
+            --tab-inactive-bg: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+
+        /* Instruction Box Styling */
+        .instruction-box {
+            background-color: #e8f4fd;
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .instruction-box h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .instruction-box h2::before {
+            content: '🎥';
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .instruction-list {
+            margin: 0;
+            padding-left: 25px;
+        }
+
+        .instruction-list li {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            cursor: pointer;
+            background-color: var(--tab-inactive-bg);
+            border: none;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .tab-button:hover {
+            background-color: #dcdcdc;
+        }
+
+        .tab-button.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: var(--secondary-color);
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .question-meta {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option {
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+
+        .placeholder-image {
+            background-color: #eee;
+            border: 2px dashed #ccc;
+            color: #777;
+            padding: 30px;
+            text-align: center;
+            margin: 15px 0;
+            border-radius: var(--border-radius);
+            font-style: italic;
+        }
+
+        /* Math styling simulation */
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+        
+        .fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .fraction > span {
+            display: block;
+            padding: 0 2px;
+        }
+        .fraction span.numerator {
+            border-bottom: 1px solid #333;
+        }
+        
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background-color: #eee; color: black; border: 1px solid #ccc; }
+            .tabs { display: none; }
+            .tab-content { display: block !important; margin-bottom: 30px; border-bottom: 2px solid #000; }
+            .instruction-box { display: block; border: 1px solid #ccc; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Materi Coaching Guru OSN-K SD</h1>
+        <div class="subtitle">Kumpulan Soal Pilihan (Kurasi Tingkat Lanjut) | Tahun 2023-2025</div>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">Fokus: Konsep, Logika, dan Strategi Heuristik</p>
+    </header>
+
+    <!-- Instruction Section -->
+    <div class="instruction-box">
+        <h2>Panduan Pembuatan Video Pembahasan</h2>
+        <ol class="instruction-list">
+            <li><strong>Video 1:</strong> Berisi pembahasan soal dari <strong>Pertemuan 1 - 3</strong>.</li>
+            <li><strong>Video 2:</strong> Berisi pembahasan soal dari <strong>Pertemuan 4 - 6</strong>.</li>
+            <li><strong>Video 3:</strong> Berisi pembahasan soal dari <strong>Pertemuan 7 - 10</strong>.</li>
+            <li>Pilih <strong>minimal 2-3 soal</strong> dari tiap pertemuan untuk dibahas dalam video tersebut.</li>
+            <li>Durasi maksimal video adalah <strong>30 menit</strong> per video.</li>
+            <li>Video <strong>tidak harus menampilkan wajah/badan</strong>. Boleh berupa coret-coretan di kertas, papan tulis, atau presentasi (PPT/screen recording).</li>
+            <li>Yang terpenting adalah <strong>proses dan alur pengerjaan terlihat jelas</strong> serta disertai penjelasan lisan yang mudah dipahami.</li>
+        </ol>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'video1')">Video 1 (Pertemuan 1-3)</button>
+        <button class="tab-button" onclick="openTab(event, 'video2')">Video 2 (Pertemuan 4-6)</button>
+        <button class="tab-button" onclick="openTab(event, 'video3')">Video 3 (Pertemuan 7-10)</button>
+    </div>
+
+    <!-- TAB 1: VIDEO 1 -->
+    <div id="video1" class="tab-content active">
+        
+        <!-- PERTEMUAN 1 -->
+        <div class="section-title">Pertemuan 1: Bilangan - Konsep, Teori, dan Pola Bilangan</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 1</div>
+            <div class="question-text">
+                1. Misalkan <span class="math">a</span> adalah bilangan asli. Faktor Persekutuan Terbesar dari 3 dan <span class="math">a</span> adalah 3. Jika Kelipatan Persekutuan Terkecil dari 15 dan <span class="math">a</span> adalah 105, maka nilai <span class="math">a</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 7</div>
+                <div class="option">B. 15</div>
+                <div class="option">C. 21</div>
+                <div class="option">D. 45</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 6</div>
+            <div class="question-text">
+                2. Jika <span class="math">m</span> merupakan bilangan asli yang bersisa 3 ketika dibagi 4, bersisa 4 ketika dibagi 9, dan bersisa 1 ketika dibagi 3, maka nilai <span class="math">m - 6</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 25</div>
+                <div class="option">B. 29</div>
+                <div class="option">C. 31</div>
+                <div class="option">D. 34</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 3</div>
+            <div class="question-text">
+                3. Bilangan ratusan <span class="math">x</span> dan <span class="math">y</span> dimana <span class="math">x = apc</span> dan <span class="math">y = aqe</span> memenuhi sifat-sifat <span class="math">x - y = 50</span> dan <span class="math">p + q = 11</span>. Hasil dari <span class="math">p &times; q</span> = ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 24</div>
+                <div class="option">B. 28</div>
+                <div class="option">C. 30</div>
+                <div class="option">D. 50</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 4</div>
+            <div class="question-text">
+                4. Andi mengurutkan bilangan bulat yang bukan prima atau bukan kelipatan 5, dimulai dari besar ke kecil. Jika urutan ke-10 bilangan yang dituliskan oleh Andi adalah 102, maka urutan ke-21 adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 83</div>
+                <div class="option">B. 84</div>
+                <div class="option">C. 86</div>
+                <div class="option">D. 87</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 6</div>
+            <div class="question-text">
+                5. Jika <span class="math">a</span> dan <span class="math">b</span> bilangan bulat positif yang memenuhi <span class="math">a<sup>2</sup> - b<sup>2</sup> = 6<sup>3</sup></span>, maka nilai berikut yang <b>bukan</b> merupakan hasil dari <span class="math">a &times; b</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 45</div>
+                <div class="option">B. 135</div>
+                <div class="option">C. 315</div>
+                <div class="option">D. 2915</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 26</div>
+            <div class="question-text">
+                6. Bilangan penyusun dari tahun 2024 yaitu 2, 0, 2 dan 4 bila dijumlahkan hasilnya adalah 8. Berapa banyak tahun yang memiliki sifat tersebut seabad setelah 2040?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 6</div>
+                <div class="option">B. 7</div>
+                <div class="option">C. 8</div>
+                <div class="option">D. 9</div>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 2 -->
+        <div class="section-title">Pertemuan 2: Aritmatika - Operasi Bilangan</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 4</div>
+            <div class="question-text">
+                1. Diketahui <span class="math">q</span> merupakan bilangan asli. Banyaknya <span class="math">q</span> yang memenuhi pertidaksamaan:
+                <br><br>
+                <div style="text-align: center;">
+                    <span class="fraction"><span class="numerator">21</span><span>135</span></span> &lt; 
+                    <span class="fraction"><span class="numerator">q</span><span>8</span></span> &lt; 
+                    <span class="fraction"><span class="numerator">27</span><span>24</span></span>
+                </div>
+                <br>
+                adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 7</div>
+                <div class="option">B. 8</div>
+                <div class="option">C. 9</div>
+                <div class="option">D. 10</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 5</div>
+            <div class="question-text">
+                2. Jika <span class="math">
+                    <span class="fraction"><span class="numerator">1</span><span>4</span></span> &times; 
+                    <span class="fraction"><span class="numerator">1</span><span>q</span></span> - 
+                    <span class="fraction"><span class="numerator">1</span><span>4</span></span> - 
+                    <span class="fraction"><span class="numerator">1</span><span>q</span></span> = 
+                    <span class="fraction"><span class="numerator">13</span><span>2</span></span>
+                </span>, maka nilai <span class="math">q</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. -9</div>
+                <div class="option">B. -1/9</div>
+                <div class="option">C. 1/9</div>
+                <div class="option">D. 9</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 11</div>
+            <div class="question-text">
+                3. Hasil operasi dari <span class="math">((0,4)<sup>6</sup> &times; 25<sup>3</sup>) + ((0,5)<sup>4</sup> &times; 16<sup>3</sup>)</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 320</div>
+                <div class="option">B. 312</div>
+                <div class="option">C. 296</div>
+                <div class="option">D. 272</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 12</div>
+            <div class="question-text">
+                4. Diketahui <span class="math">
+                    <span class="fraction"><span class="numerator">3</span><span>4</span></span> + 
+                    <span class="fraction"><span class="numerator">7</span><span>253</span></span> = 
+                    <span class="fraction"><span class="numerator">a</span><span>2024</span></span>
+                </span>. Nilai <span class="math">a</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 787</div>
+                <div class="option">B. 1012</div>
+                <div class="option">C. 1574</div>
+                <div class="option">D. 1724</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 24</div>
+            <div class="question-text">
+                5. The result of <span class="math">
+                    <span class="fraction"><span class="numerator">45 + 3<sup>2025</sup>(4<sup>2</sup> - 1)</span><span>3 + 3<sup>2025</sup></span></span>
+                </span> is ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 5</div>
+                <div class="option">B. 10</div>
+                <div class="option">C. 15</div>
+                <div class="option">D. 20</div>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 3 -->
+        <div class="section-title">Pertemuan 3: Geometri - Geometri Datar: Sifat & Sudut</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 17</div>
+            <div class="question-text">
+                1. Perhatikan gambar segitiga sama kaki ABC berikut. Titik D berada pada garis AB. Panjang <span class="math">t</span> adalah ... satuan panjang.
+                <div class="placeholder-image">
+                    [Gambar Segitiga Sama Kaki ABC]<br>
+                    <small>D pada AB, CD garis tinggi tegak lurus</small>
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 15/8</div>
+                <div class="option">B. 24/5</div>
+                <div class="option">C. 40/3</div>
+                <div class="option">D. 120</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 20</div>
+            <div class="question-text">
+                2. Sebuah taman kota terdiri dari tiga taman yang saling berimpitan yaitu Taman 1, Taman 2, dan Taman 3 yang masing-masing berbentuk persegi seperti pada gambar berikut.
+                <div class="placeholder-image">
+                    [Gambar 3 Persegi Berimpit]<br>
+                    <small>Membentuk pola tangga (Besar, Sedang, Kecil)</small>
+                </div>
+                Jika perbandingan sisi Taman 1, Taman 2 dan Taman 3 adalah 5:4:3, dan luas Taman 1 adalah 100 m<sup>2</sup>, maka keliling taman kota tersebut adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 60 m</div>
+                <div class="option">B. 54 m</div>
+                <div class="option">C. 66 m</div>
+                <div class="option">D. 72 m</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2021</div>
+            <div class="question-text">
+                3. Look at the following picture.
+                <div class="placeholder-image">
+                    [Gambar Bangun Geometri Kompleks]<br>
+                    <small>Terdapat 17 sudut yang diberi nomor</small>
+                </div>
+                The total of &angle;1 + &angle;2 + ... + &angle;17 = ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 1080&deg;</div>
+                <div class="option">B. 1440&deg;</div>
+                <div class="option">C. 1530&deg;</div>
+                <div class="option">D. 1620&deg;</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">Soal Tambahan (Konsep)</div>
+            <div class="question-text">
+                4. Diketahui garis <span class="math">m</span> sejajar dengan garis <span class="math">n</span>. Garis <span class="math">k</span> memotong keduanya. Lalu, dibuat garis bagi (bisector) untuk sepasang sudut dalam sepihak seperti gambar berikut.
+                <div class="placeholder-image">
+                    [Gambar Garis Sejajar dipotong Transversal]<br>
+                    <small>Dua garis bagi bertemu di satu titik di tengah</small>
+                </div>
+                Berapakah besar sudut <span class="math">y</span> yang terbentuk dari perpotongan kedua garis bagi tersebut?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 60&deg;</div>
+                <div class="option">B. 75&deg;</div>
+                <div class="option">C. 85&deg;</div>
+                <div class="option">D. 90&deg;</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: VIDEO 2 -->
+    <div id="video2" class="tab-content">
+        
+        <!-- PERTEMUAN 4 -->
+        <div class="section-title">Pertemuan 4: Geometri - Geometri Datar: Pengukuran & Lingkaran</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 13</div>
+            <div class="question-text">
+                1. Gambar di atas terdiri dari satu lingkaran besar dan empat buah setengah lingkaran kecil yang identik. Jika jari-jari lingkaran besar adalah diameter lingkaran kecil, maka perbandingan luas daerah yang diarsir dan yang tidak diarsir pada gambar di atas adalah ....
+                <div class="placeholder-image">
+                    [Gambar Lingkaran Besar]<br>
+                    <small>Di dalamnya ada 4 setengah lingkaran kecil membentuk pola</small>
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 1:1</div>
+                <div class="option">B. 2:3</div>
+                <div class="option">C. 3:4</div>
+                <div class="option">D. 4:5</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 19</div>
+            <div class="question-text">
+                2. ABCD adalah persegi panjang dan BEFG adalah persegi. Jika perbandingan HB:BE = 1:3, maka luas daerah yang diarsir adalah ....
+                <div class="placeholder-image">
+                    [Gambar Gabungan Persegi Panjang & Persegi]<br>
+                    <small>Ada daerah yang diarsir di antara bangun tersebut</small>
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 28</div>
+                <div class="option">B. 33</div>
+                <div class="option">C. 38</div>
+                <div class="option">D. 42</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 3</div>
+            <div class="question-text">
+                3. Look at the picture below. If the area of P is 2 cm<sup>2</sup> then the area of ABCDEFGH is ... cm<sup>2</sup>.
+                <div class="placeholder-image">
+                    [Gambar Poligon ABCDEFGH]<br>
+                    <small>Terdapat daerah P di dalamnya</small>
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 38</div>
+                <div class="option">B. 40</div>
+                <div class="option">C. 42</div>
+                <div class="option">D. 44</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 7</div>
+            <div class="question-text">
+                4. Dua buah bangun yang berbentuk persegi dan segitiga mempunyai keliling yang sama. Sisi-sisi segitiga tersebut mempunyai panjang 10 cm, 16 cm, dan 10 cm. Jumlah luas kedua bangun tersebut adalah ... cm<sup>2</sup>.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 72</div>
+                <div class="option">B. 84</div>
+                <div class="option">C. 129</div>
+                <div class="option">D. 177</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 15</div>
+            <div class="question-text">
+                5. Jika luas persegi ABEI adalah 49 cm<sup>2</sup> dan daerah yang diarsir dalam persegi adalah 35 cm<sup>2</sup>, maka panjang BC + DE + EF + GH = ... cm.
+                <div class="placeholder-image">
+                    [Gambar Persegi ABEI]<br>
+                    <small>Sebagian daerah diarsir, sebagian putih</small>
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 9</div>
+                <div class="option">B. 10</div>
+                <div class="option">C. 12</div>
+                <div class="option">D. 14</div>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 5 -->
+        <div class="section-title">Pertemuan 5: Geometri - Geometri Ruang</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 14</div>
+            <div class="question-text">
+                1. Perbandingan panjang, lebar, dan tinggi suatu balok adalah 1:5:2. Jika luas permukaan balok tersebut 9.826 cm<sup>2</sup>, maka volume balok tersebut adalah ... cm<sup>3</sup>.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 49.013</div>
+                <div class="option">B. 49.130</div>
+                <div class="option">C. 49.301</div>
+                <div class="option">D. 49.310</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 16</div>
+            <div class="question-text">
+                2. Berikut merupakan jaring-jaring suatu kubus.
+                <div class="placeholder-image">
+                    [Gambar Jaring-jaring Kubus]<br>
+                    <small>Sisi-sisi dilabeli huruf U, V, W, X, Y, Z</small>
+                </div>
+                Jika jaring-jaring tersebut dibentuk menjadi kubus, maka sisi Y akan berhadapan dengan sisi ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. U</div>
+                <div class="option">B. V</div>
+                <div class="option">C. X</div>
+                <div class="option">D. Z</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 17</div>
+            <div class="question-text">
+                3. Gambar berikut adalah 2 kerucut. Kerucut besar dengan diameter alas AC dan tinggi OB. Kerucut kecil dengan diameter alas CF dan tinggi DE. ABC dan CEF keduanya segitiga sama sisi dengan AB : CE = 3 : 2. Perbandingan volume kerucut kecil dan kerucut besar adalah ....
+                <div class="placeholder-image">
+                    [Gambar Dua Kerucut]<br>
+                    <small>Kerucut Besar dan Kecil dalam satu bidang</small>
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 1:8</div>
+                <div class="option">B. 8:27</div>
+                <div class="option">C. 27:8</div>
+                <div class="option">D. 27:1</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 14</div>
+            <div class="question-text">
+                4. Andika akan membuat kotak donasi untuk mengumpulkan sumbangan. Jaring-jaring kotak donasi tersebut disajikan pada gambar berikut.
+                <div class="placeholder-image">
+                    [Gambar Jaring-jaring Kotak]<br>
+                    <small>Pola jaring-jaring dengan lubang celengan</small>
+                </div>
+                Kotak donasi yang terbentuk adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. (Gambar A)</div>
+                <div class="option">B. (Gambar B)</div>
+                <div class="option">C. (Gambar C)</div>
+                <div class="option">D. (Gambar D)</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 23</div>
+            <div class="question-text">
+                5. Sepuluh kubus yang masing-masing memiliki panjang rusuk 1 cm akan disusun sehingga sisinya bersisian dan membentuk satu bangun ruang baru. Luas permukaan minimal bangun ruang baru tersebut adalah ... cm<sup>2</sup>.
+                <div class="placeholder-image">
+                    [Ilustrasi Susunan Kubus]<br>
+                    <small>Contoh kubus bersisian</small>
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 24</div>
+                <div class="option">B. 26</div>
+                <div class="option">C. 30</div>
+                <div class="option">D. 42</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 26</div>
+            <div class="question-text">
+                6. Sebuah kubus dengan panjang rusuk 4 cm dicat seluruh permukaannya dengan warna merah. Kubus tersebut kemudian dipotong-potong menjadi kubus-kubus kecil dengan panjang rusuk 1 cm. Banyak kubus kecil yang tepat memiliki dua sisi berwarna merah adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 16</div>
+                <div class="option">B. 24</div>
+                <div class="option">C. 32</div>
+                <div class="option">D. 48</div>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 6 -->
+        <div class="section-title">Pertemuan 6: Statistika Data dan Pengukuran - Pengukuran</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 21</div>
+            <div class="question-text">
+                1. Pada suatu permainan flying fox, seorang pemain harus menaiki tangga AB kemudian meluncur pada kabel baja BC dan menuruni tangga CD. Tinggi AB dan CD masing-masing 3 meter. David menaiki tangga AB dengan kecepatan 2 meter/menit, meluncur pada BC dengan kecepatan 15 km/jam dan menuruni tangga CD dengan kecepatan 3 meter/menit. Jika waktu yang diperlukan David untuk bermain flying fox adalah 5 menit (dari A ke D), maka panjang kabel baja flying fox adalah ... meter.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 550</div>
+                <div class="option">B. 575</div>
+                <div class="option">C. 600</div>
+                <div class="option">D. 625</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 22</div>
+            <div class="question-text">
+                2. Dua tim siswa sekolah dasar, yaitu tim A dan tim B, berlomba lari estafet 4 &times; 100 meter. Selisih waktu tempuh kedua tim adalah ... detik. (Data kecepatan diberikan di soal asli).
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 11</div>
+                <div class="option">B. 10</div>
+                <div class="option">C. 9</div>
+                <div class="option">D. 8</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 2</div>
+            <div class="question-text">
+                3. Pukul 06.15 Amir berangkat ke sekolah naik sepeda dengan kecepatan 10 km/jam. Jika jarak rumah Amir ke sekolah adalah 3 km, maka Amir tiba di sekolah pada pukul ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 06.24</div>
+                <div class="option">B. 06.33</div>
+                <div class="option">C. 06.44</div>
+                <div class="option">D. 06.55</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 9</div>
+            <div class="question-text">
+                4. Pak Marto memanen padi pada lahan 2 hektar dengan hasil 10,6 ton per hektar. Setelah dijemur, berat padi tersebut akan berkurang 20%. Berat padi yang diperoleh Pak Marto setelah dijemur adalah ... kg.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 848</div>
+                <div class="option">B. 1696</div>
+                <div class="option">C. 8480</div>
+                <div class="option">D. 16960</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 30</div>
+            <div class="question-text">
+                5. Suhu udara di Antartika tanggal 16 Mei 2025 pukul 04.00 mencapai -48&deg;C, dua jam kemudian suhu udara mengalami kenaikan sebesar 2 derajat Celsius dan dua jam kemudian suhu mengalami penurunan sebesar 3 derajat Celsius. Suhu udara di Antartika tanggal 16 Mei 2025 ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Pukul 06.00 mencapai -50&deg;C</div>
+                <div class="option">B. Pukul 08.00 mencapai -47&deg;C</div>
+                <div class="option">C. Pukul 06.00 mencapai -46&deg;C</div>
+                <div class="option">D. Pukul 08.00 mencapai -43&deg;C</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: VIDEO 3 -->
+    <div id="video3" class="tab-content">
+        
+        <!-- PERTEMUAN 7 -->
+        <div class="section-title">Pertemuan 7: Statistika Data dan Pengukuran - Data</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 20</div>
+            <div class="question-text">
+                1. Data banyaknya kepala keluarga (KK) dan pemilih kepala Desa Taruma Indah pada 4 RW disajikan sebagai berikut:
+                <table style="width:100%; border-collapse: collapse; margin: 10px 0; font-size: 0.9em;">
+                    <tr style="background:#eee; border-bottom:2px solid #ccc;">
+                        <th style="padding:5px; text-align:left;">RW</th>
+                        <th style="padding:5px; text-align:center;">KK</th>
+                        <th style="padding:5px; text-align:center;">Pemilih</th>
+                    </tr>
+                    <tr><td style="padding:5px;">01</td><td style="text-align:center;">95</td><td style="text-align:center;">210</td></tr>
+                    <tr><td style="padding:5px;">02</td><td style="text-align:center;">153</td><td style="text-align:center;">200</td></tr>
+                    <tr><td style="padding:5px;">03</td><td style="text-align:center;">120</td><td style="text-align:center;">280</td></tr>
+                    <tr><td style="padding:5px;">04</td><td style="text-align:center;">135</td><td style="text-align:center;">165</td></tr>
+                </table>
+                Rata-rata banyak pemilih di setiap RW yang <b>bukan</b> kepala keluarga (KK) adalah ... orang.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 80</div>
+                <div class="option">B. 85</div>
+                <div class="option">C. 88</div>
+                <div class="option">D. 92</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 23</div>
+            <div class="question-text">
+                2. Benny menyalin data dari hasil survey. Karena kurang hati-hati kertas terkena air sehingga data tidak terbaca. Data yang dituliskan: 96, A, 64, 78, 78, 90, 60, 60, 70, 80 dan B. Jika median data tersebut adalah 76 dan rata-rata data tersebut adalah 75, maka data yang tidak terbaca adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 76 dan 75</div>
+                <div class="option">B. 76 dan 73</div>
+                <div class="option">C. 77 dan 75</div>
+                <div class="option">D. 78 dan 74</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 20</div>
+            <div class="question-text">
+                3. Hasil ujian matematika di suatu kelas yang terdiri dari 20 siswa berada pada interval 56-100. Rata-rata seluruh siswa adalah 68. Sebanyak 3 siswa mengikuti remedial dengan nilai maksimum 75. Rata-rata tertinggi setelah remedial yang mungkin untuk kelas tersebut adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 70.65</div>
+                <div class="option">B. 70.75</div>
+                <div class="option">C. 70.85</div>
+                <div class="option">D. 70.95</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 24</div>
+            <div class="question-text">
+                4. Berikut adalah tabel perolehan hasil tes IPA. Berapa minimal banyak jawaban benar sehingga banyak jawaban benar tersebut melebihi 70% siswa yang lain?
+                <br><i>(Tabel frekuensi data disediakan di soal asli)</i>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 7</div>
+                <div class="option">B. 8</div>
+                <div class="option">C. 9</div>
+                <div class="option">D. 10</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 19</div>
+            <div class="question-text">
+                5. Sepuluh anak membentuk kelompok bermain yang masing-masing terdiri dari empat anak dan enam anak. Rata-rata usia kelompok empat anak adalah 6 tahun dan rata-rata usia kelompok enam anak adalah 6,5 tahun. Jika satu anak dari masing-masing kelompok ditukar, maka rata-rata usia kedua kelompok sama. Selisih usia kedua anak yang ditukarkan adalah ... tahun.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 1,2</div>
+                <div class="option">B. 1,0</div>
+                <div class="option">C. 0,5</div>
+                <div class="option">D. 0,25</div>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 8 -->
+        <div class="section-title">Pertemuan 8: Kombinatorik dan Logika - Teknik Mencacah</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 26</div>
+            <div class="question-text">
+                1. Banyak cara menyusun tiga bilangan asli dengan susunan genap-ganjil-genap yang hasil kalinya merupakan kelipatan 8 dan kurang dari 30 adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 9</div>
+                <div class="option">B. 10</div>
+                <div class="option">C. 11</div>
+                <div class="option">D. 12</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 27</div>
+            <div class="question-text">
+                2. Berapa banyak bilangan ganjil sembilan angka abcdefghi berbeda yang tersusun dari angka-angka 1,2,3,4,5,6,7,8 dan 9 sehingga <span class="math">d + e + f = 10</span>?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 2160</div>
+                <div class="option">B. 4320</div>
+                <div class="option">C. 6480</div>
+                <div class="option">D. 8640</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 28</div>
+            <div class="question-text">
+                3. Bilangan ratusan <span class="math">abc</span> disusun dari angka-angka yang berbeda 1, 2, 3, 4, 5, dan 6. Jika <span class="math">b</span> merupakan bilangan genap dan <span class="math">a < c</span>, maka banyak bilangan ratusan yang mungkin adalah ... bilangan.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 16</div>
+                <div class="option">B. 20</div>
+                <div class="option">C. 30</div>
+                <div class="option">D. 32</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 4</div>
+            <div class="question-text">
+                4. Terdapat sepuluh kartu bilangan prima pertama. Banyaknya cara mengambil dua kartu sehingga jumlah bilangan dari kedua kartu tersebut bernilai ganjil adalah ... cara.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 90</div>
+                <div class="option">B. 10</div>
+                <div class="option">C. 9</div>
+                <div class="option">D. 5</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 27</div>
+            <div class="question-text">
+                5. Pak Agung memiliki empat anak dan satu istri. Hari minggu, Pak Agung dan keluarga akan melakukan foto bersama di studio foto. Banyak cara menata pose foto dalam satu baris dari keluarga Pak Agung sehingga Pak Agung dan istri berdiri saling berdampingan adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 120</div>
+                <div class="option">B. 140</div>
+                <div class="option">C. 220</div>
+                <div class="option">D. 240</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 29</div>
+            <div class="question-text">
+                6. Terdapat lima pasang putra putri duta pendidikan dari lima sekolah dan akan dibentuk tim kepanitiaan yang terdiri dari dua putra dan dua putri. Jika tidak boleh ada putra dan putri dari satu sekolah yang sama dalam kepanitiaan, maka banyak cara membentuk tim kepanitiaan adalah ... cara.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 30</div>
+                <div class="option">B. 100</div>
+                <div class="option">C. 200</div>
+                <div class="option">D. 210</div>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 9 -->
+        <div class="section-title">Pertemuan 9: Kombinatorik dan Logika - Pola dengan Kombinasi</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 11</div>
+            <div class="question-text">
+                1. Perhatikan gambar berikut. Segitiga di ruas kanan dan kiri merupakan bilangan yang sama. Lingkaran mewakili operasi hitung: tambah, kurang, kali atau bagi. Banyak bilangan yang mungkin dipasang pada segitiga adalah ....
+                <div class="placeholder-image">
+                    [Gambar Persamaan Simbol]<br>
+                    <small>Segitiga, Persegi, Jajargenjang</small>
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 6</div>
+                <div class="option">B. 7</div>
+                <div class="option">C. 8</div>
+                <div class="option">D. 9</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 27</div>
+            <div class="question-text">
+                2. Andika ditugaskan untuk melengkapi huruf-huruf pada petak 3x4. Dalam satu baris, satu kolom, dan satu diagonal yang sama tidak boleh diletakkan huruf yang sama. Minimum banyaknya huruf yang berbeda yang dapat diletakkan pada petak tersebut adalah ... huruf.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 4</div>
+                <div class="option">B. 5</div>
+                <div class="option">C. 6</div>
+                <div class="option">D. 7</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 13</div>
+            <div class="question-text">
+                3. Azizah akan mengoperasikan suatu bilangan dengan operasi-operasi berikut: ditambah 2, dibagi 6, dibagi 5, dikurang 3 dan dikali 2. Jika Azizah mengoperasikan bilangan 122 dan hasil operasi terakhir yang diinginkan adalah 1, maka banyaknya operasi yang paling sedikit dilakukan oleh Azizah adalah ... operasi.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. enam</div>
+                <div class="option">B. tujuh</div>
+                <div class="option">C. sembilan</div>
+                <div class="option">D. sepuluh</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 29</div>
+            <div class="question-text">
+                4. Perhatikan 3 untai balon yang disusun. Setiap balon akan diledakkan dengan syarat tidak boleh menjatuhkan balon lain, dan untaian harus berbeda. Banyak cara agar balon nomor 6 diledakkan pada urutan ke-lima adalah ....
+                <div class="placeholder-image">
+                    [Gambar Untaian Balon]<br>
+                    <small>3 untai balon dengan nomor berbeda</small>
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 6</div>
+                <div class="option">B. 5</div>
+                <div class="option">C. 4</div>
+                <div class="option">D. 3</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 13</div>
+            <div class="question-text">
+                5. Aris akan mengisi petak 2x2 berikut dengan bilangan prima berbeda yang nilainya masing-masing kurang dari 40. Banyak cara untuk mengisi petak-petak tersebut adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 24</div>
+                <div class="option">B. 64</div>
+                <div class="option">C. 11880</div>
+                <div class="option">D. 20736</div>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 10 -->
+        <div class="section-title">Pertemuan 10: Review - Integrated Problem Solving</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 10</div>
+            <div class="question-text">
+                1. Bagiyo, Gito, dan Rio merupakan tiga bersaudara dan memiliki jumlah tabungan yang sama. Bagiyo memberi Gito sebesar 1/5 dari semua tabungannya, kemudian Gito memberi Rio 50% dari semua tabungan yang dimiliki saat ini. Selanjutnya jika Rio memberikan sebesar 1/10 dari semua tabungannya kepada Bagiyo, maka tabungan Bagiyo akan berkurang Rp500.000,00 dari tabungan awal yang dimiliki. Jumlah tabungan yang dimiliki oleh Gito saat ini adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp2.500.000,00</div>
+                <div class="option">B. Rp7.500.000,00</div>
+                <div class="option">C. Rp12.500.000,00</div>
+                <div class="option">D. Rp18.000.000,00</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 12</div>
+            <div class="question-text">
+                2. Diberikan empat bilangan bulat positif yang berbeda A, B, C dan D sehingga A + B + C + D = 15. Hasil operasi dari <span class="math">A &times; C + B &times; D - A : B</span> sebesar mungkin adalah (pembulatan sampai dua angka di belakang koma) ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 32,83</div>
+                <div class="option">B. 33,88</div>
+                <div class="option">C. 36,86</div>
+                <div class="option">D. 37,17</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 9</div>
+            <div class="question-text">
+                3. Pak Joni membeli 13 kg keripik pisang seharga Rp650.000. Keripik pisang dijual kembali dengan harga Rp15.000 per 250 gram. Keuntungan maksimum yang akan diperoleh Pak Joni adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp100.000</div>
+                <div class="option">B. Rp130.000</div>
+                <div class="option">C. Rp150.000</div>
+                <div class="option">D. Rp180.000</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 25</div>
+            <div class="question-text">
+                4. Pada perlombaan panjat pinang, mula-mula Jimmy memanjat sejauh 2/5 dari tinggi batang pinang, namun kemudian Jimmy merosot ke posisi 1/4 dari posisi sebelumnya. Selanjutnya, Jimmy memanjat kembali tepat 1/5 dari posisi terakhir. Jika Jimmy harus memanjat 6 meter lagi untuk sampai di puncak, maka tinggi batang pinang adalah ... meter.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 9,125</div>
+                <div class="option">B. 9,375</div>
+                <div class="option">C. 9,500</div>
+                <div class="option">D. 9,750</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 16</div>
+            <div class="question-text">
+                5. Diberikan tiga bilangan bulat positif <span class="math">a, b, c</span> dengan <span class="math">a : b = b : c = c : a</span>. Hasil dari <span class="math">
+                    <span class="fraction"><span class="numerator">(200 &times; a) + (100 &times; b) + (250 &times; c)</span><span>(3 &times; b) + (4 &times; c) - 2a</span></span>
+                </span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 100</div>
+                <div class="option">B. 110</div>
+                <div class="option">C. 120</div>
+                <div class="option">D. 130</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tabbuttons;
+        
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        
+        tabbuttons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabbuttons.length; i++) {
+            tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+        }
+        
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
