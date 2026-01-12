@@ -188,18 +188,36 @@
             border-radius: 4px;
             border: 1px solid #eee;
             font-size: 0.95rem;
+            display: flex;
+            align-items: center;
         }
 
         .placeholder-image {
-            background-color: #eee;
-            border: 2px dashed #ccc;
-            color: #777;
-            padding: 30px;
+            background-color: #fff; /* Changed to white to blend with image bg if transparent */
+            border: 1px solid #eee;
+            padding: 15px; /* Reduced padding */
             text-align: center;
             margin: 15px 0;
             border-radius: var(--border-radius);
-            font-style: italic;
         }
+        
+        .placeholder-image img {
+            max-width: 100%; /* Ensure it fits container width */
+            max-height: 250px; /* Limit height to prevent huge images */
+            width: auto; /* Maintain aspect ratio */
+            height: auto;
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto; /* Center image */
+        }
+        
+        .option img {
+            max-width: 100px;
+            max-height: 100px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
 
         /* Math styling simulation */
         .math {
@@ -442,8 +460,7 @@
             <div class="question-text">
                 1. Perhatikan gambar segitiga sama kaki ABC berikut. Titik D berada pada garis AB. Panjang <span class="math">t</span> adalah ... satuan panjang.
                 <div class="placeholder-image">
-                    [Gambar Segitiga Sama Kaki ABC]<br>
-                    <small>D pada AB, CD garis tinggi tegak lurus</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_eyugjy_8555.png" alt="Gambar Segitiga Sama Kaki ABC">
                 </div>
             </div>
             <div class="options-grid">
@@ -459,8 +476,7 @@
             <div class="question-text">
                 2. Sebuah taman kota terdiri dari tiga taman yang saling berimpitan yaitu Taman 1, Taman 2, dan Taman 3 yang masing-masing berbentuk persegi seperti pada gambar berikut.
                 <div class="placeholder-image">
-                    [Gambar 3 Persegi Berimpit]<br>
-                    <small>Membentuk pola tangga (Besar, Sedang, Kecil)</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_0fkj0y_3560.png" alt="Gambar 3 Persegi Berimpit">
                 </div>
                 Jika perbandingan sisi Taman 1, Taman 2 dan Taman 3 adalah 5:4:3, dan luas Taman 1 adalah 100 m<sup>2</sup>, maka keliling taman kota tersebut adalah ....
             </div>
@@ -477,8 +493,7 @@
             <div class="question-text">
                 3. Look at the following picture.
                 <div class="placeholder-image">
-                    [Gambar Bangun Geometri Kompleks]<br>
-                    <small>Terdapat 17 sudut yang diberi nomor</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_acphym_5364.png" alt="Gambar Bangun Geometri dengan 17 Sudut">
                 </div>
                 The total of &angle;1 + &angle;2 + ... + &angle;17 = ....
             </div>
@@ -495,8 +510,7 @@
             <div class="question-text">
                 4. Diketahui garis <span class="math">m</span> sejajar dengan garis <span class="math">n</span>. Garis <span class="math">k</span> memotong keduanya. Lalu, dibuat garis bagi (bisector) untuk sepasang sudut dalam sepihak seperti gambar berikut.
                 <div class="placeholder-image">
-                    [Gambar Garis Sejajar dipotong Transversal]<br>
-                    <small>Dua garis bagi bertemu di satu titik di tengah</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_rrznib_7438.png" alt="Gambar Garis Sejajar dipotong Transversal">
                 </div>
                 Berapakah besar sudut <span class="math">y</span> yang terbentuk dari perpotongan kedua garis bagi tersebut?
             </div>
@@ -520,8 +534,7 @@
             <div class="question-text">
                 1. Gambar di atas terdiri dari satu lingkaran besar dan empat buah setengah lingkaran kecil yang identik. Jika jari-jari lingkaran besar adalah diameter lingkaran kecil, maka perbandingan luas daerah yang diarsir dan yang tidak diarsir pada gambar di atas adalah ....
                 <div class="placeholder-image">
-                    [Gambar Lingkaran Besar]<br>
-                    <small>Di dalamnya ada 4 setengah lingkaran kecil membentuk pola</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_ppw6et_7083.png" alt="Gambar Lingkaran Besar">
                 </div>
             </div>
             <div class="options-grid">
@@ -537,8 +550,7 @@
             <div class="question-text">
                 2. ABCD adalah persegi panjang dan BEFG adalah persegi. Jika perbandingan HB:BE = 1:3, maka luas daerah yang diarsir adalah ....
                 <div class="placeholder-image">
-                    [Gambar Gabungan Persegi Panjang & Persegi]<br>
-                    <small>Ada daerah yang diarsir di antara bangun tersebut</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_hey2yl_6081.png" alt="Gambar Gabungan Persegi Panjang & Persegi">
                 </div>
             </div>
             <div class="options-grid">
@@ -554,8 +566,7 @@
             <div class="question-text">
                 3. Look at the picture below. If the area of P is 2 cm<sup>2</sup> then the area of ABCDEFGH is ... cm<sup>2</sup>.
                 <div class="placeholder-image">
-                    [Gambar Poligon ABCDEFGH]<br>
-                    <small>Terdapat daerah P di dalamnya</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_o3wnrh_9754.png" alt="Gambar Poligon ABCDEFGH">
                 </div>
             </div>
             <div class="options-grid">
@@ -584,8 +595,7 @@
             <div class="question-text">
                 5. Jika luas persegi ABEI adalah 49 cm<sup>2</sup> dan daerah yang diarsir dalam persegi adalah 35 cm<sup>2</sup>, maka panjang BC + DE + EF + GH = ... cm.
                 <div class="placeholder-image">
-                    [Gambar Persegi ABEI]<br>
-                    <small>Sebagian daerah diarsir, sebagian putih</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_0ffhqs_1306.png" alt="Gambar Persegi ABEI">
                 </div>
             </div>
             <div class="options-grid">
@@ -617,8 +627,7 @@
             <div class="question-text">
                 2. Berikut merupakan jaring-jaring suatu kubus.
                 <div class="placeholder-image">
-                    [Gambar Jaring-jaring Kubus]<br>
-                    <small>Sisi-sisi dilabeli huruf U, V, W, X, Y, Z</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_n0ryrx_9814.png" alt="Gambar Jaring-jaring Kubus">
                 </div>
                 Jika jaring-jaring tersebut dibentuk menjadi kubus, maka sisi Y akan berhadapan dengan sisi ....
             </div>
@@ -635,8 +644,7 @@
             <div class="question-text">
                 3. Gambar berikut adalah 2 kerucut. Kerucut besar dengan diameter alas AC dan tinggi OB. Kerucut kecil dengan diameter alas CF dan tinggi DE. ABC dan CEF keduanya segitiga sama sisi dengan AB : CE = 3 : 2. Perbandingan volume kerucut kecil dan kerucut besar adalah ....
                 <div class="placeholder-image">
-                    [Gambar Dua Kerucut]<br>
-                    <small>Kerucut Besar dan Kecil dalam satu bidang</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_kxilt8_8165.png" alt="Gambar Dua Kerucut">
                 </div>
             </div>
             <div class="options-grid">
@@ -652,16 +660,15 @@
             <div class="question-text">
                 4. Andika akan membuat kotak donasi untuk mengumpulkan sumbangan. Jaring-jaring kotak donasi tersebut disajikan pada gambar berikut.
                 <div class="placeholder-image">
-                    [Gambar Jaring-jaring Kotak]<br>
-                    <small>Pola jaring-jaring dengan lubang celengan</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_bjf6e2_9190.png" alt="Gambar Jaring-jaring Kotak">
                 </div>
                 Kotak donasi yang terbentuk adalah ....
             </div>
             <div class="options-grid">
-                <div class="option">A. (Gambar A)</div>
-                <div class="option">B. (Gambar B)</div>
-                <div class="option">C. (Gambar C)</div>
-                <div class="option">D. (Gambar D)</div>
+                <div class="option">A. <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_xhf827_579.png" alt="Opsi A"></div>
+                <div class="option">B. <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_koxoyk_5542.png" alt="Opsi B"></div>
+                <div class="option">C. <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_s4lyac_3202.png" alt="Opsi C"></div>
+                <div class="option">D. <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_v47iml_7674.png" alt="Opsi D"></div>
             </div>
         </div>
 
@@ -670,8 +677,7 @@
             <div class="question-text">
                 5. Sepuluh kubus yang masing-masing memiliki panjang rusuk 1 cm akan disusun sehingga sisinya bersisian dan membentuk satu bangun ruang baru. Luas permukaan minimal bangun ruang baru tersebut adalah ... cm<sup>2</sup>.
                 <div class="placeholder-image">
-                    [Ilustrasi Susunan Kubus]<br>
-                    <small>Contoh kubus bersisian</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_7v2ndc_2547.png" alt="Ilustrasi Susunan Kubus">
                 </div>
             </div>
             <div class="options-grid">
@@ -937,8 +943,7 @@
             <div class="question-text">
                 1. Perhatikan gambar berikut. Segitiga di ruas kanan dan kiri merupakan bilangan yang sama. Lingkaran mewakili operasi hitung: tambah, kurang, kali atau bagi. Banyak bilangan yang mungkin dipasang pada segitiga adalah ....
                 <div class="placeholder-image">
-                    [Gambar Persamaan Simbol]<br>
-                    <small>Segitiga, Persegi, Jajargenjang</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_34ph2t_1764.png" alt="Gambar Persamaan Simbol">
                 </div>
             </div>
             <div class="options-grid">
@@ -980,8 +985,7 @@
             <div class="question-text">
                 4. Perhatikan 3 untai balon yang disusun. Setiap balon akan diledakkan dengan syarat tidak boleh menjatuhkan balon lain, dan untaian harus berbeda. Banyak cara agar balon nomor 6 diledakkan pada urutan ke-lima adalah ....
                 <div class="placeholder-image">
-                    [Gambar Untaian Balon]<br>
-                    <small>3 untai balon dengan nomor berbeda</small>
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_m4er1t_1188.png" alt="Gambar Untaian Balon">
                 </div>
             </div>
             <div class="options-grid">
