@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Coaching Guru OSN-K Matematika SMP</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #f4f6f8;
+            --text-color: #333;
+            --border-radius: 8px;
+            --tab-active-bg: #fff;
+            --tab-inactive-bg: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+
+        /* Instruction Box Styling */
+        .instruction-box {
+            background-color: #e8f4fd;
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .instruction-box h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .instruction-box h2::before {
+            content: '🎥';
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .instruction-list {
+            margin: 0;
+            padding-left: 25px;
+        }
+
+        .instruction-list li {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            cursor: pointer;
+            background-color: var(--tab-inactive-bg);
+            border: none;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .tab-button:hover {
+            background-color: #dcdcdc;
+        }
+
+        .tab-button.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: var(--secondary-color);
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .question-meta {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .option {
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Math styling simulation */
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+        
+        .fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 0.9em;
+            margin: 0 4px;
+        }
+        
+        .fraction > span {
+            display: block;
+            padding: 0 2px;
+        }
+        
+        .fraction span.numerator {
+            border-bottom: 1px solid #333;
+        }
+
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background-color: #eee; color: black; border: 1px solid #ccc; }
+            .tabs { display: none; }
+            .tab-content { display: block !important; margin-bottom: 30px; border-bottom: 2px solid #000; }
+            .instruction-box { display: block; border: 1px solid #ccc; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Materi Coaching Guru OSN-K Matematika SMP</h1>
+        <div class="subtitle">Kumpulan Soal Pilihan (OSK 2024) | Pendekatan CPA & Bar Model</div>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">Fokus: Konsep, Logika, dan Visualisasi Heuristik</p>
+    </header>
+
+    <!-- Instruction Section -->
+    <div class="instruction-box">
+        <h2>Panduan Pembuatan Video Pembahasan & Diskusi</h2>
+        <ol class="instruction-list">
+            <li><strong>Video 1:</strong> Berisi pembahasan soal <strong>Bilangan & Aljabar</strong> (Sesuai Pertemuan 1 - 4).</li>
+            <li><strong>Video 2:</strong> Berisi pembahasan soal <strong>Geometri</strong> (Sesuai Pertemuan 5 - 6).</li>
+            <li><strong>Video 3:</strong> Berisi pembahasan soal <strong>Statistika & Peluang</strong> (Sesuai Pertemuan 7 - 10).</li>
+            <li>Durasi maksimal video adalah <strong>30 menit</strong> per video.</li>
+            <li>Video <strong>tidak harus menampilkan wajah/badan</strong>. Boleh berupa coret-coretan di kertas, papan tulis, atau presentasi (PPT/screen recording).</li>
+            <li>Yang terpenting adalah <strong>proses dan alur pengerjaan terlihat jelas</strong> serta disertai penjelasan lisan yang mudah dipahami.</li>
+        </ol>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'video1')">Video 1 (Bilangan & Aljabar)</button>
+        <button class="tab-button" onclick="openTab(event, 'video2')">Video 2 (Geometri)</button>
+        <button class="tab-button" onclick="openTab(event, 'video3')">Video 3 (Statistika & Peluang)</button>
+    </div>
+
+    <!-- TAB 1: VIDEO 1 -->
+    <div id="video1" class="tab-content active">
+        <div class="section-title">Pertemuan 1 - 4: Bilangan dan Aljabar</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Rumus Gauss & Pola Bilangan)</div>
+            <div class="question-text">
+                1. Suatu bilangan bulat positif <span class="math">n</span> disebut bilangan JUMPAT jika jumlah <span class="math">n</span> bilangan bulat positif pertama dapat dinyatakan sebagai penjumlahan empat bilangan bulat positif berurutan. Banyaknya bilangan JUMPAT yang kurang dari 2024 adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 252</div>
+                <div class="option">B. 253</div>
+                <div class="option">C. 504</div>
+                <div class="option">D. 505</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Identitas Aljabar Dasar)</div>
+            <div class="question-text">
+                2. Jika <span class="math">x<sup>3</sup> + <span class="fraction"><span class="numerator">1</span><span>x<sup>3</sup></span></span> = 18</span> dan <span class="math">x &ne; 0</span> maka nilai dari <span class="math">x<sup>7</sup> + <span class="fraction"><span class="numerator">1</span><span>x<sup>7</sup></span></span> + 7</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 845</div>
+                <div class="option">B. 850</div>
+                <div class="option">C. 855</div>
+                <div class="option">D. 860</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Polinomial & Rumus Vieta)</div>
+            <div class="question-text">
+                3. Diketahui persamaan <span class="math">x<sup>4</sup> + ax<sup>3</sup> + 54x<sup>2</sup> - 108x + 81 = 0</span> dengan <span class="math">a</span> bilangan real, memiliki 4 akar real berbeda, yaitu <span class="math">r<sub>1</sub>, r<sub>2</sub>, r<sub>3</sub>, r<sub>4</sub></span>. Jika <span class="math">r<sub>1</sub> &times; r<sub>2</sub> &times; r<sub>3</sub> &times; r<sub>4</sub> = (<span class="fraction"><span class="numerator">r<sub>1</sub> + r<sub>2</sub> + r<sub>3</sub> + r<sub>4</sub></span><span>4</span></span>)<sup>4</sup></span> maka nilai dari <span class="math">a</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. -12</div>
+                <div class="option">B. -8</div>
+                <div class="option">C. 3</div>
+                <div class="option">D. 12</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: VIDEO 2 -->
+    <div id="video2" class="tab-content">
+        <div class="section-title">Pertemuan 5 - 6: Geometri Ruang dan Datar</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Manipulasi Bangun Datar)</div>
+            <div class="question-text">
+                4. Suatu segi delapan ABCDEFGH dibentuk dari suatu persegi ABCD dan persegi panjang EFGH yang panjang sisi-sisinya merupakan bilangan bulat positif. Jika luas persegi adalah <span class="math">x</span> cm<sup>2</sup>, luas persegi panjang adalah <span class="math">y</span> cm<sup>2</sup>, <span class="math">x &gt; y</span> dan <span class="math">x &times; y = 98</span>, maka keliling segi delapan ABCDEFGH yang mungkin adalah ... cm.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 30</div>
+                <div class="option">B. 33</div>
+                <div class="option">C. 34</div>
+                <div class="option">D. 51</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Kesebangunan & Proporsi Luas)</div>
+            <div class="question-text">
+                5. Segi enam beraturan ABCDEF memiliki panjang sisi 2024 mm. Titik G adalah titik tengah AB dan titik H adalah titik tengah EG. Perbandingan luas daerah segitiga CDH dan segi enam ABCDEF adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 4:24</div>
+                <div class="option">B. 5:24</div>
+                <div class="option">C. 6:24</div>
+                <div class="option">D. 7:24</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Kerucut & Garis Berat Segitiga)</div>
+            <div class="question-text">
+                6. Diketahui suatu kerucut dengan titik puncak T, pusat sisi alas O, dan diameter alas AB. Titik C berada pada ruas garis AT dengan <span class="math">AC = OC = 11</span> cm. Titik D merupakan titik potong antara garis OT dan BC dengan <span class="math">DC = 7</span> cm. Volume kerucut tersebut adalah ... cm<sup>3</sup>.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 196&pi;</div>
+                <div class="option">B. 960&pi;</div>
+                <div class="option">C. 1960&pi;</div>
+                <div class="option">D. 9600&pi;</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: VIDEO 3 -->
+    <div id="video3" class="tab-content">
+        <div class="section-title">Pertemuan 7 - 10: Statistika dan Peluang</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Statistika Deskriptif & Kuartil)</div>
+            <div class="question-text">
+                7. Sekelompok bilangan berbeda terdiri dari 6 bilangan genap dan 4 bilangan ganjil. Dari kelompok bilangan tersebut diperoleh informasi sebagai berikut:<br>
+                - Jangkauan data = 24.<br>
+                - Jangkauan antar kuartil = 14.<br>
+                - Bilangan ke-3, 5, 6 dan 8 adalah bilangan ganjil (setelah diurutkan).<br>
+                - Median = 2024.<br>
+                - Rata-rata bilangan ganjil adalah 2022.<br>
+                Rata-rata terbesar yang mungkin dimiliki oleh kelompok bilangan tersebut adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 2022</div>
+                <div class="option">B. 2022,4</div>
+                <div class="option">C. 2024</div>
+                <div class="option">D. 2024,4</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Analisis Mean, Median, Modus)</div>
+            <div class="question-text">
+                8. Empat bilangan asli kurang dari sepuluh memiliki rata-rata, median dan modus tunggal yang membentuk tiga bilangan asli berurutan. Jika <span class="math">A</span> adalah jumlah terkecil yang mungkin dari empat bilangan tersebut dan <span class="math">B</span> adalah jumlah terbesar yang mungkin dari empat bilangan tersebut, maka nilai dari <span class="math">A + B</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 36</div>
+                <div class="option">B. 40</div>
+                <div class="option">C. 42</div>
+                <div class="option">D. 44</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Kombinatorik Pencacahan)</div>
+            <div class="question-text">
+                9. Jumlah semua bilangan ratusan yang ketiga digitnya berbeda dan tidak memuat angka 0 adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 359.640</div>
+                <div class="option">B. 279.720</div>
+                <div class="option">C. 277.200</div>
+                <div class="option">D. 252.000</div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Peluang Bersyarat & Majemuk)</div>
+            <div class="question-text">
+                10. Atlet bulu tangkis Anthony Ginting menjalani pertandingan persahabatan dengan Jonathan Christie, rekan sesama timnya. Pertandingan berakhir jika salah satu pemain menang dua set langsung atau menang dua set dari tiga set permainan (rubber set). Tim pelatih Ginting menyatakan bahwa peluang Ginting dapat memenangkan suatu set adalah 1,6 kali lipat peluang Ginting memenangkan pertandingan. Misalkan tidak ada pertandingan yang berakhir imbang/seri. Berdasarkan pernyataan tim pelatih Ginting, peluang Jonathan memenangkan pertandingan adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. <span class="fraction"><span class="numerator">2</span><span>4</span></span></div>
+                <div class="option">B. <span class="fraction"><span class="numerator">3</span><span>4</span></span></div>
+                <div class="option">C. <span class="fraction"><span class="numerator">5</span><span>32</span></span></div>
+                <div class="option">D. <span class="fraction"><span class="numerator">27</span><span>32</span></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tabbuttons;
+        
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        
+        tabbuttons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabbuttons.length; i++) {
+            tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+        }
+        
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
