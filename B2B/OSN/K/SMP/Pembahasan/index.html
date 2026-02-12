@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Coaching Guru OSN-K Matematika SMP</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #f4f6f8;
+            --text-color: #333;
+            --border-radius: 8px;
+            --tab-active-bg: #fff;
+            --tab-inactive-bg: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+
+        /* Instruction Box Styling */
+        .instruction-box {
+            background-color: #e8f4fd;
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .instruction-box h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .instruction-box h2::before {
+            content: '🎥';
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .instruction-list {
+            margin: 0;
+            padding-left: 25px;
+        }
+
+        .instruction-list li {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            cursor: pointer;
+            background-color: var(--tab-inactive-bg);
+            border: none;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .tab-button:hover {
+            background-color: #dcdcdc;
+        }
+
+        .tab-button.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: var(--secondary-color);
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .question-meta {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .option {
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Math styling simulation */
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+        
+        .fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 0.9em;
+            margin: 0 4px;
+        }
+        
+        .fraction > span {
+            display: block;
+            padding: 0 2px;
+        }
+        
+        .fraction span.numerator {
+            border-bottom: 1px solid #333;
+        }
+
+        /* Pembahasan (Details/Summary) Styling */
+        details {
+            background-color: #f9fbfd;
+            border: 1px solid #d4e6f1;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 4px;
+            padding: 10px 15px;
+            margin-top: 15px;
+        }
+
+        summary {
+            font-weight: 600;
+            color: var(--secondary-color);
+            cursor: pointer;
+            outline: none;
+            padding: 5px 0;
+        }
+
+        summary:hover {
+            color: var(--primary-color);
+        }
+
+        .pembahasan-content {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            border-top: 1px dashed #d4e6f1;
+            padding-top: 15px;
+        }
+
+        .bar-model-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin: 15px 0;
+            width: 300px;
+        }
+
+        .bar-row {
+            display: flex;
+            height: 30px;
+            align-items: center;
+        }
+
+        .bar-a {
+            background-color: #74b9ff;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #0984e3;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .bar-n {
+            background-color: #ff7675;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #d63031;
+            font-weight: bold;
+            color: #fff;
+            margin-left: 5px;
+        }
+
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background-color: #eee; color: black; border: 1px solid #ccc; }
+            .tabs { display: none; }
+            .tab-content { display: block !important; margin-bottom: 30px; border-bottom: 2px solid #000; }
+            .instruction-box { display: block; border: 1px solid #ccc; background: #fff; }
+            details[open] { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Materi Coaching Guru OSN-K Matematika SMP</h1>
+        <div class="subtitle">Kumpulan Soal Pilihan (OSK 2024) | Pendekatan CPA & Bar Model</div>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">Fokus: Konsep, Logika, dan Visualisasi Heuristik</p>
+    </header>
+
+    <!-- Instruction Section -->
+    <div class="instruction-box">
+        <h2>Panduan Pembuatan Video Pembahasan & Diskusi</h2>
+        <ol class="instruction-list">
+            <li><strong>Video 1:</strong> Berisi pembahasan soal <strong>Bilangan & Aljabar</strong> (Sesuai Pertemuan 1 - 4).</li>
+            <li><strong>Video 2:</strong> Berisi pembahasan soal <strong>Geometri</strong> (Sesuai Pertemuan 5 - 6).</li>
+            <li><strong>Video 3:</strong> Berisi pembahasan soal <strong>Statistika & Peluang</strong> (Sesuai Pertemuan 7 - 10).</li>
+            <li>Setiap soal dilengkapi dengan tombol <strong>"Lihat Pembahasan"</strong>. Buka fitur tersebut saat melakukan <i>screen recording</i> untuk menjelaskan logika pemecahan masalah dengan visual (seperti <i>Bar Model</i>).</li>
+            <li>Sampaikan penjelasan lisan yang fokus pada alur pemahaman konsep (bukan sekadar rumus cepat).</li>
+        </ol>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'video1')">Video 1 (Bilangan & Aljabar)</button>
+        <button class="tab-button" onclick="openTab(event, 'video2')">Video 2 (Geometri)</button>
+        <button class="tab-button" onclick="openTab(event, 'video3')">Video 3 (Statistika & Peluang)</button>
+    </div>
+
+    <!-- TAB 1: VIDEO 1 -->
+    <div id="video1" class="tab-content active">
+        <div class="section-title">Pertemuan 1 - 4: Bilangan dan Aljabar</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Rumus Gauss & Pola Bilangan)</div>
+            <div class="question-text">
+                1. Suatu bilangan bulat positif <span class="math">n</span> disebut bilangan JUMPAT jika jumlah <span class="math">n</span> bilangan bulat positif pertama dapat dinyatakan sebagai penjumlahan empat bilangan bulat positif berurutan. Banyaknya bilangan JUMPAT yang kurang dari 2024 adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 252</div>
+                <div class="option">B. 253</div>
+                <div class="option">C. 504</div>
+                <div class="option">D. 505</div>
+            </div>
+            <details>
+                <summary>Lihat Pembahasan (Pendekatan Bar Model)</summary>
+                <div class="pembahasan-content">
+                    <strong>Kunci Jawaban: D. 505</strong><br><br>
+                    <strong>1. Visualisasi (Bar Model):</strong><br>
+                    Penjumlahan 4 bilangan berurutan bisa dibayangkan sebagai 4 kotak (bar) dasar yang sama (<span class="math">a</span>) ditambah selisihnya (1, 2, dan 3):
+                    <div class="bar-model-container">
+                        <div class="bar-row"><div class="bar-a">a</div></div>
+                        <div class="bar-row"><div class="bar-a">a</div><div class="bar-n" style="width:20px">+1</div></div>
+                        <div class="bar-row"><div class="bar-a">a</div><div class="bar-n" style="width:40px">+2</div></div>
+                        <div class="bar-row"><div class="bar-a">a</div><div class="bar-n" style="width:60px">+3</div></div>
+                    </div>
+                    Totalnya pasti berbentuk <strong><span class="math">4a + 6</span></strong> (dengan <span class="math">a &ge; 1</span>).
+                    <br><br>
+                    <strong>2. Abstraksi Aljabar:</strong><br>
+                    Jumlah <span class="math">n</span> bilangan pertama adalah <span class="math">S<sub>n</sub> = <span class="fraction"><span class="numerator">n(n+1)</span><span>2</span></span></span>.<br>
+                    Maka: <span class="math"><span class="fraction"><span class="numerator">n(n+1)</span><span>2</span></span> = 4a + 6 &rarr; n(n+1) = 8a + 12 = 4(2a + 3)</span>.<br><br>
+                    <strong>3. Analisis Keterbagian:</strong><br>
+                    Ruas kanan adalah kelipatan 4, tapi bukan kelipatan 8 (karena 2a+3 pasti ganjil). Karena <span class="math">n(n+1)</span> adalah perkalian genap dan ganjil, maka seluruh faktor 4 harus ada di angka genapnya. Ada dua kasus:
+                    <ul>
+                        <li><span class="math">n</span> genap (<span class="math">n=4k</span>): Agar hasil bagi 4 ganjil, <span class="math">k</span> harus ganjil (<span class="math">k=2m+1</span>). Sehingga <span class="math">n = 8m+4</span>.</li>
+                        <li><span class="math">n+1</span> genap (<span class="math">n+1=4k</span>): Dengan cara sama, <span class="math">n+1 = 8m+4 &rarr; n = 8m+3</span>.</li>
+                    </ul>
+                    Karena <span class="math">a &ge; 1</span>, <span class="math">n &ge; 4</span>. Rentang <span class="math">n &lt; 2024</span>:<br>
+                    - Untuk <span class="math">n = 8m+3</span>: <span class="math">8m &le; 2020 &rarr; m \in [1, 252]</span> (Ada 252 bilangan)<br>
+                    - Untuk <span class="math">n = 8m+4</span>: <span class="math">8m &le; 2019 &rarr; m \in [0, 252]</span> (Ada 253 bilangan)<br>
+                    Total = 252 + 253 = <strong>505 bilangan</strong>.
+                </div>
+            </details>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Identitas Aljabar Dasar)</div>
+            <div class="question-text">
+                2. Jika <span class="math">x<sup>3</sup> + <span class="fraction"><span class="numerator">1</span><span>x<sup>3</sup></span></span> = 18</span> dan <span class="math">x &ne; 0</span> maka nilai dari <span class="math">x<sup>7</sup> + <span class="fraction"><span class="numerator">1</span><span>x<sup>7</sup></span></span> + 7</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 845</div>
+                <div class="option">B. 850</div>
+                <div class="option">C. 855</div>
+                <div class="option">D. 860</div>
+            </div>
+            <details>
+                <summary>Lihat Pembahasan (Pendekatan Aljabar & Pemfaktoran)</summary>
+                <div class="pembahasan-content">
+                    <strong>Kunci Jawaban: B. 850</strong><br><br>
+                    Misalkan <span class="math">p = x + <span class="fraction"><span class="numerator">1</span><span>x</span></span></span>.<br>
+                    <span class="math">x<sup>3</sup> + <span class="fraction"><span class="numerator">1</span><span>x<sup>3</sup></span></span> = p<sup>3</sup> - 3p = 18</span>. Dengan substitusi tebakan, <span class="math">p = 3</span> memenuhi (karena 27 - 9 = 18).<br><br>
+                    Untuk pangkat 7, kita butuh pangkat 4 dan pangkat 3:<br>
+                    <span class="math">x<sup>2</sup> + <span class="fraction"><span class="numerator">1</span><span>x<sup>2</sup></span></span> = p<sup>2</sup> - 2 = 9 - 2 = 7</span><br>
+                    <span class="math">x<sup>4</sup> + <span class="fraction"><span class="numerator">1</span><span>x<sup>4</sup></span></span> = 7<sup>2</sup> - 2 = 47</span><br><br>
+                    Kalikan pangkat 4 dan pangkat 3:<br>
+                    <span class="math">(x<sup>4</sup> + x<sup>-4</sup>)(x<sup>3</sup> + x<sup>-3</sup>) = (x<sup>7</sup> + x<sup>-7</sup>) + (x + x<sup>-1</sup>)</span><br>
+                    <span class="math">47 &times; 18 = (x<sup>7</sup> + x<sup>-7</sup>) + 3</span><br>
+                    <span class="math">846 = (x<sup>7</sup> + x<sup>-7</sup>) + 3 &rarr; x<sup>7</sup> + x<sup>-7</sup> = 843</span>.<br><br>
+                    Hasil akhir yang diminta: <span class="math">843 + 7 = 850</span>.
+                </div>
+            </details>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Polinomial & Rumus Vieta)</div>
+            <div class="question-text">
+                3. Diketahui persamaan <span class="math">x<sup>4</sup> + ax<sup>3</sup> + 54x<sup>2</sup> - 108x + 81 = 0</span> dengan <span class="math">a</span> bilangan real, memiliki 4 akar real berbeda, yaitu <span class="math">r<sub>1</sub>, r<sub>2</sub>, r<sub>3</sub>, r<sub>4</sub></span>. Jika <span class="math">r<sub>1</sub> &times; r<sub>2</sub> &times; r<sub>3</sub> &times; r<sub>4</sub> = (<span class="fraction"><span class="numerator">r<sub>1</sub> + r<sub>2</sub> + r<sub>3</sub> + r<sub>4</sub></span><span>4</span></span>)<sup>4</sup></span> maka nilai dari <span class="math">a</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. -12</div>
+                <div class="option">B. -8</div>
+                <div class="option">C. 3</div>
+                <div class="option">D. 12</div>
+            </div>
+            <details>
+                <summary>Lihat Pembahasan (Ketaksamaan AM-GM)</summary>
+                <div class="pembahasan-content">
+                    <strong>Kunci Jawaban: A. -12</strong><br><br>
+                    1. Catatan: Meskipun soal menuliskan 4 akar "berbeda", secara matematis akar tersebut harus sama agar memenuhi ketaksamaan rata-rata (AM-GM).<br>
+                    2. Berdasarkan Teorema Vieta:<br>
+                    - Jumlah akar (&sum;<span class="math">r<sub>i</sub></span>) = <span class="math">-a</span><br>
+                    - Hasil kali akar (&Pi;<span class="math">r<sub>i</sub></span>) = <span class="math">81</span><br><br>
+                    3. Masukkan ke syarat di soal:<br>
+                    <span class="math">81 = (<span class="fraction"><span class="numerator">-a</span><span>4</span></span>)<sup>4</sup> &rarr; <span class="fraction"><span class="numerator">a<sup>4</sup></span><span>256</span></span> = 81 &rarr; a<sup>4</sup> = 20736</span>.<br>
+                    Maka <span class="math">a = 12</span> atau <span class="math">a = -12</span>.<br><br>
+                    4. Karena rata-rata hitung sama dengan rata-rata ukur (AM=GM), seluruh akarnya harus identik. Misal akarnya adalah <span class="math">r</span>. <span class="math">r<sup>4</sup> = 81 &rarr; r = 3</span>.<br>
+                    Bentuk polinomialnya adalah <span class="math">(x - 3)<sup>4</sup> = x<sup>4</sup> - 12x<sup>3</sup> + 54x<sup>2</sup> - 108x + 81 = 0</span>.<br>
+                    Bandingkan koefisien <span class="math">x<sup>3</sup></span>, maka <span class="math">a = -12</span>.
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <!-- TAB 2: VIDEO 2 -->
+    <div id="video2" class="tab-content">
+        <div class="section-title">Pertemuan 5 - 6: Geometri Ruang dan Datar</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Manipulasi Bangun Datar)</div>
+            <div class="question-text">
+                4. Suatu segi delapan ABCDEFGH dibentuk dari suatu persegi ABCD dan persegi panjang EFGH yang panjang sisi-sisinya merupakan bilangan bulat positif. Jika luas persegi adalah <span class="math">x</span> cm<sup>2</sup>, luas persegi panjang adalah <span class="math">y</span> cm<sup>2</sup>, <span class="math">x &gt; y</span> dan <span class="math">x &times; y = 98</span>, maka keliling segi delapan ABCDEFGH yang mungkin adalah ... cm.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 30</div>
+                <div class="option">B. 33</div>
+                <div class="option">C. 34</div>
+                <div class="option">D. 51</div>
+            </div>
+            <details>
+                <summary>Lihat Pembahasan (Analisis Luas Persegi)</summary>
+                <div class="pembahasan-content">
+                    <strong>Kunci Jawaban: A. 30</strong><br><br>
+                    1. Luas persegi <span class="math">x = s<sup>2</sup></span>. Karena panjang sisinya bulat, <span class="math">x</span> harus bilangan kuadrat sempurna.<br>
+                    2. Diketahui <span class="math">xy = 98</span>. Faktor 98: (1,98), (2,49), (7,14).<br>
+                    Karena <span class="math">x</span> kuadrat dan <span class="math">x &gt; y</span>, haruslah <span class="math">x = 49</span> dan <span class="math">y = 2</span>.<br>
+                    3. Persegi ABCD bersisi 7 cm. Persegi panjang EFGH bersisi 1&times;2 cm.<br>
+                    4. Persegi panjang menempel pada sisi persegi untuk membentuk segi delapan. Sisi yang saling berhimpit memotong keliling.<br>
+                    Keliling Total = K. Persegi + K. Persegi Panjang - 2(Sisi yang menempel).<br>
+                    - Jika yang menempel sisi 1 cm: <span class="math">K = 28 + 6 - 2(1) = 32</span> cm.<br>
+                    - Jika yang menempel sisi 2 cm: <span class="math">K = 28 + 6 - 2(2) = 30</span> cm.<br>
+                    Karena 30 ada di opsi, jawabannya adalah 30 cm.
+                </div>
+            </details>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Kesebangunan & Proporsi Luas)</div>
+            <div class="question-text">
+                5. Segi enam beraturan ABCDEF memiliki panjang sisi 2024 mm. Titik G adalah titik tengah AB dan titik H adalah titik tengah EG. Perbandingan luas daerah segitiga CDH dan segi enam ABCDEF adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 4:24</div>
+                <div class="option">B. 5:24</div>
+                <div class="option">C. 6:24</div>
+                <div class="option">D. 7:24</div>
+            </div>
+            <details>
+                <summary>Lihat Pembahasan (Pendekatan Proporsi Bidang Koordinat)</summary>
+                <div class="pembahasan-content">
+                    <strong>Kunci Jawaban: B. 5:24</strong><br><br>
+                    Untuk mempermudah rasio, asumsikan sisi segi enam <span class="math">s = 1</span>. Luas segi enam = <span class="math"><span class="fraction"><span class="numerator">24&radic;3</span><span>16</span></span></span>.<br>
+                    Dengan pusat segi enam di titik (0,0), posisikan alasnya mendatar.<br>
+                    Koordinat titik: <span class="math">C(1, 0)</span>, <span class="math">D(1/2, -&#x221a;3/2)</span>, <span class="math">E(-1/2, -&#x221a;3/2)</span>, dan <span class="math">G(0, &#x221a;3/2)</span>.<br>
+                    Titik H (tengah EG) = <span class="math">(-1/4, 0)</span>.<br>
+                    Perhatikan Segitiga CDH. Titik C dan H sama-sama berada di sumbu-x (mendatar).<br>
+                    - Panjang alas CH = <span class="math">1 - (-1/4) = 5/4</span>.<br>
+                    - Tinggi segitiga adalah jarak D ke sumbu-x = <span class="math">&#x221a;3/2</span>.<br>
+                    Luas &Delta;CDH = <span class="math">1/2 &times; 5/4 &times; &#x221a;3/2 = <span class="fraction"><span class="numerator">5&radic;3</span><span>16</span></span></span>.<br>
+                    Perbandingan = <span class="math">5&radic;3/16 : 24&radic;3/16 = 5 : 24</span>.
+                </div>
+            </details>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Kerucut & Garis Berat Segitiga)</div>
+            <div class="question-text">
+                6. Diketahui suatu kerucut dengan titik puncak T, pusat sisi alas O, dan diameter alas AB. Titik C berada pada ruas garis AT dengan <span class="math">AC = OC = 11</span> cm. Titik D merupakan titik potong antara garis OT dan BC dengan <span class="math">DC = 7</span> cm. Volume kerucut tersebut adalah ... cm<sup>3</sup>.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 196&pi;</div>
+                <div class="option">B. 960&pi;</div>
+                <div class="option">C. 1960&pi;</div>
+                <div class="option">D. 9600&pi;</div>
+            </div>
+            <details>
+                <summary>Lihat Pembahasan (Dalil Garis Berat)</summary>
+                <div class="pembahasan-content">
+                    <strong>Kunci Jawaban: B. 960&pi;</strong><br><br>
+                    1. Irisan melintang kerucut membentuk segitiga sama kaki &Delta;TAB. Garis OT adalah tinggi kerucut (tegak lurus AB) dan membagi alas dua.<br>
+                    2. Pada segitiga siku-siku &Delta;AOT, titik C ada di sisi miring AT. Jika jarak dari pusat alas (O) ke titik C sama dengan garis dari alas ke C (<span class="math">AC=OC</span>), maka C pasti adalah <strong>titik tengah</strong> AT. Sehingga panjang sisi miring (pelukis) <span class="math">AT = 22</span>.<br>
+                    3. Karena O tengah AB dan C tengah AT, titik D (perpotongan OT dan BC) adalah <strong>titik berat</strong> &Delta;TAB.<br>
+                    4. Titik berat membagi garis dengan rasio 2:1. Maka <span class="math">BD = 2DC = 14</span>. Panjang garis berat <span class="math">BC = 21</span>.<br>
+                    5. Menggunakan dalil garis berat pada &Delta;TAB:<br>
+                    <span class="math">BC<sup>2</sup> = <span class="fraction"><span class="numerator">2(AB<sup>2</sup> + BT<sup>2</sup>) - AT<sup>2</sup></span><span>4</span></span></span><br>
+                    <span class="math">441 = <span class="fraction"><span class="numerator">2(4r<sup>2</sup> + 22<sup>2</sup>) - 22<sup>2</sup></span><span>4</span></span> &rarr; r<sup>2</sup> = 160</span>.<br>
+                    6. Tinggi kerucut <span class="math">h<sup>2</sup> = AT<sup>2</sup> - r<sup>2</sup> = 484 - 160 = 324 &rarr; h = 18</span>.<br>
+                    7. Volume = <span class="math"><span class="fraction"><span class="numerator">1</span><span>3</span></span>&pi; &times; 160 &times; 18 = 960&pi;</span>.
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <!-- TAB 3: VIDEO 3 -->
+    <div id="video3" class="tab-content">
+        <div class="section-title">Pertemuan 7 - 10: Statistika dan Peluang</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Statistika Deskriptif & Kuartil)</div>
+            <div class="question-text">
+                7. Sekelompok bilangan berbeda terdiri dari 6 bilangan genap dan 4 bilangan ganjil. Dari kelompok bilangan tersebut diperoleh informasi sebagai berikut:<br>
+                - Jangkauan data = 24.<br>
+                - Jangkauan antar kuartil = 14.<br>
+                - Bilangan ke-3, 5, 6 dan 8 adalah bilangan ganjil (setelah diurutkan).<br>
+                - Median = 2024.<br>
+                - Rata-rata bilangan ganjil adalah 2022.<br>
+                Rata-rata terbesar yang mungkin dimiliki oleh kelompok bilangan tersebut adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 2022</div>
+                <div class="option">B. 2022,4</div>
+                <div class="option">C. 2024</div>
+                <div class="option">D. 2024,4</div>
+            </div>
+            <details>
+                <summary>Lihat Pembahasan (Pendekatan Slot Data Bar Model)</summary>
+                <div class="pembahasan-content">
+                    <strong>Kunci Jawaban: B. 2022,4</strong><br><br>
+                    Visualisasikan 10 urutan data seperti slot (kotak) kosong dari terkecil ke terbesar: <span class="math">x<sub>1</sub> &lt; x<sub>2</sub> &lt; ... &lt; x<sub>10</sub></span>.<br>
+                    - Slot ganjil (merah): <span class="math">x<sub>3</sub>, x<sub>5</sub>, x<sub>6</sub>, x<sub>8</sub></span>.<br>
+                    - Median = 2024 &rarr; <span class="math">(x<sub>5</sub> + x<sub>6</sub>)/2 = 2024 &rarr; x<sub>5</sub> + x<sub>6</sub> = 4048</span>.<br>
+                    - Rata-rata ganjil = 2022 &rarr; <span class="math">x<sub>3</sub> + x<sub>5</sub> + x<sub>6</sub> + x<sub>8</sub> = 8088 &rarr; x<sub>3</sub> + x<sub>8</sub> = 4040</span>.<br>
+                    - Kuartil Q1 adalah <span class="math">x<sub>3</sub></span>, Q3 adalah <span class="math">x<sub>8</sub></span>. <span class="math">IQR = x<sub>8</sub> - x<sub>3</sub> = 14</span>.<br>
+                    Substitusi menghasilkan: <span class="math">x<sub>8</sub> = 2027</span>, <span class="math">x<sub>3</sub> = 2013</span>. <br>
+                    Ganjil <span class="math">x<sub>5</sub>, x<sub>6</sub></span> di antara 2013 dan 2027 berjumlah 4048 pastilah 2023 dan 2025.<br><br>
+                    Untuk mencari <strong>rata-rata maksimum</strong>, besarkan angka genap semaksimal mungkin tanpa melanggar urutan:<br>
+                    - Jangkauan: <span class="math">x<sub>10</sub> - x<sub>1</sub> = 24</span>. Agar <span class="math">x<sub>10</sub></span> maksimal, <span class="math">x<sub>1</sub></span> harus maksimal (harus genap &lt; 2012). Maka <span class="math">x<sub>1</sub> = 2010</span> dan <span class="math">x<sub>2</sub> = 2012</span>. Otomatis <span class="math">x<sub>10</sub> = 2034</span>.<br>
+                    - Isi slot genap sisa secara maksimal: <span class="math">x<sub>4</sub> = 2022</span>, <span class="math">x<sub>7</sub> = 2026</span>, <span class="math">x<sub>9</sub> = 2032</span>.<br>
+                    Jumlah total = <span class="math">2010 + 2012 + 2013 + 2022 + 2023 + 2025 + 2026 + 2027 + 2032 + 2034 = 20224</span>.<br>
+                    Rata-rata maksimum = <span class="math">20224 / 10 = 2022,4</span>.
+                </div>
+            </details>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Analisis Mean, Median, Modus)</div>
+            <div class="question-text">
+                8. Empat bilangan asli kurang dari sepuluh memiliki rata-rata, median dan modus tunggal yang membentuk tiga bilangan asli berurutan. Jika <span class="math">A</span> adalah jumlah terkecil yang mungkin dari empat bilangan tersebut dan <span class="math">B</span> adalah jumlah terbesar yang mungkin dari empat bilangan tersebut, maka nilai dari <span class="math">A + B</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 36</div>
+                <div class="option">B. 40</div>
+                <div class="option">C. 42</div>
+                <div class="option">D. 44</div>
+            </div>
+            <details>
+                <summary>Lihat Pembahasan (Logika Deduktif)</summary>
+                <div class="pembahasan-content">
+                    <strong>Kunci Jawaban: B. 40</strong><br><br>
+                    Misal 4 data terurut: <span class="math">a &le; b &le; c &le; d &le; 9</span>.<br>
+                    Karena modus "tunggal", harus ada angka kembar di tepi: <span class="math">a=b</span> atau <span class="math">c=d</span>.<br><br>
+                    <strong>Kasus 1 (<span class="math">a=b</span>):</strong> Modus &lt; Median. Urutan (Modus, Median, Mean).<br>
+                    Untuk jumlah minimal, kita coba (Modus=1, Median=2, Mean=3).<br>
+                    Data: <span class="math">1, 1, c, d</span>. Median = <span class="math">(1+c)/2 = 2 &rarr; c=3</span>. Mean = 3 &rarr; Total 12 &rarr; <span class="math">d=7</span>.<br>
+                    Data (1,1,3,7) adalah valid. Jumlah minimal <span class="math">A = 12</span>.<br><br>
+                    <strong>Kasus 2 (<span class="math">c=d</span>):</strong> Modus &gt; Median. Urutan (Mean, Median, Modus).<br>
+                    Untuk jumlah maksimal, kita coba batas maksimal (Mean=7, Median=8, Modus=9).<br>
+                    Data: <span class="math">a, b, 9, 9</span>. Median = <span class="math">(b+9)/2 = 8 &rarr; b=7</span>. Mean = 7 &rarr; Total 28 &rarr; <span class="math">a=3</span>.<br>
+                    Data (3,7,9,9) adalah valid. Jumlah maksimal <span class="math">B = 28</span>.<br><br>
+                    Nilai <span class="math">A + B = 12 + 28 = 40</span>.
+                </div>
+            </details>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Kombinatorik Pencacahan)</div>
+            <div class="question-text">
+                9. Jumlah semua bilangan ratusan yang ketiga digitnya berbeda dan tidak memuat angka 0 adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 359.640</div>
+                <div class="option">B. 279.720</div>
+                <div class="option">C. 277.200</div>
+                <div class="option">D. 252.000</div>
+            </div>
+            <details>
+                <summary>Lihat Pembahasan (Distribusi Nilai Tempat)</summary>
+                <div class="pembahasan-content">
+                    <strong>Kunci Jawaban: B. 279.720</strong><br><br>
+                    Total bilangan yang terbentuk (Pilih 3 dari 9 angka) = <span class="math">P(9,3) = 9 &times; 8 &times; 7 = 504</span> bilangan.<br><br>
+                    Untuk menjumlahkan semuanya dengan cepat, kita tinjau berdasarkan "nilai tempat":<br>
+                    Jika posisi satuan diisi angka '1', dua tempat sisa (ratusan & puluhan) dipilih dari 8 angka tersisa. Banyaknya kombinasi = <span class="math">P(8,2) = 56</span> bilangan.<br>
+                    Artinya, setiap angka (1-9) akan muncul tepat 56 kali di setiap nilai tempat.<br><br>
+                    Jumlah nilai pada posisi satuan = <span class="math">56 &times; (1+2+...+9) = 56 &times; 45 = 2.520</span>.<br>
+                    Karena simetri:<br>
+                    Jumlah posisi puluhan = <span class="math">2.520 &times; 10 = 25.200</span>.<br>
+                    Jumlah posisi ratusan = <span class="math">2.520 &times; 100 = 252.000</span>.<br><br>
+                    Total keseluruhan = 252.000 + 25.200 + 2.520 = <strong>279.720</strong>.
+                </div>
+            </details>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024 (Relevan: Peluang Bersyarat & Majemuk)</div>
+            <div class="question-text">
+                10. Atlet bulu tangkis Anthony Ginting menjalani pertandingan persahabatan dengan Jonathan Christie, rekan sesama timnya. Pertandingan berakhir jika salah satu pemain menang dua set langsung atau menang dua set dari tiga set permainan (rubber set). Tim pelatih Ginting menyatakan bahwa peluang Ginting dapat memenangkan suatu set adalah 1,6 kali lipat peluang Ginting memenangkan pertandingan. Misalkan tidak ada pertandingan yang berakhir imbang/seri. Berdasarkan pernyataan tim pelatih Ginting, peluang Jonathan memenangkan pertandingan adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. <span class="fraction"><span class="numerator">2</span><span>4</span></span></div>
+                <div class="option">B. <span class="fraction"><span class="numerator">3</span><span>4</span></span></div>
+                <div class="option">C. <span class="fraction"><span class="numerator">5</span><span>32</span></span></div>
+                <div class="option">D. <span class="fraction"><span class="numerator">27</span><span>32</span></span></div>
+            </div>
+            <details>
+                <summary>Lihat Pembahasan (Peluang Majemuk & Pohon Faktor)</summary>
+                <div class="pembahasan-content">
+                    <strong>Kunci Jawaban: D. 27/32</strong><br><br>
+                    1. Misal peluang Ginting menang set = <span class="math">p</span>. Peluang Ginting kalah set = <span class="math">1-p</span>.<br>
+                    2. Peluang Ginting menang pertandingan (<span class="math">P<sub>G</sub></span>) memiliki 3 rute kemenangan:<br>
+                    - Menang-Menang: <span class="math">p<sup>2</sup></span><br>
+                    - Menang-Kalah-Menang: <span class="math">p(1-p)p</span><br>
+                    - Kalah-Menang-Menang: <span class="math">(1-p)p<sup>2</sup></span><br>
+                    Total <span class="math">P<sub>G</sub> = p<sup>2</sup> + 2p<sup>2</sup>(1-p) = 3p<sup>2</sup> - 2p<sup>3</sup></span>.<br><br>
+                    3. Berdasarkan petunjuk pelatih: <span class="math">p = 1,6 &times; (3p<sup>2</sup> - 2p<sup>3</sup>)</span>.<br>
+                    Bagi kedua ruas dengan <span class="math">p</span> (karena <span class="math">p &ne; 0</span>):<br>
+                    <span class="math">1 = 1,6(3p - 2p<sup>2</sup>) &rarr; 1 = 4,8p - 3,2p<sup>2</sup></span>.<br>
+                    Kalikan 5 agar genap: <span class="math">16p<sup>2</sup> - 24p + 5 = 0</span>.<br>
+                    Faktorkan: <span class="math">(4p - 1)(4p - 5) = 0</span>. Karena peluang &le; 1, maka <span class="math">p = <span class="fraction"><span class="numerator">1</span><span>4</span></span></span>.<br><br>
+                    4. Peluang Ginting memenangkan pertandingan <span class="math">P<sub>G</sub> = <span class="fraction"><span class="numerator">p</span><span>1,6</span></span> = <span class="fraction"><span class="numerator">1/4</span><span>16/10</span></span> = <span class="fraction"><span class="numerator">5</span><span>32</span></span></span>.<br>
+                    5. Peluang Jonathan memenangkan pertandingan adalah komplemennya: <span class="math">1 - <span class="fraction"><span class="numerator">5</span><span>32</span></span> = <span class="fraction"><span class="numerator">27</span><span>32</span></span></span>.
+                </div>
+            </details>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tabbuttons;
+        
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        
+        tabbuttons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabbuttons.length; i++) {
+            tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+        }
+        
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
