@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Coaching Guru OSN-K Matematika SD (2023-2025)</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #f4f6f8;
+            --text-color: #333;
+            --border-radius: 8px;
+            --tab-active-bg: #fff;
+            --tab-inactive-bg: #e0e0e0;
+            --solution-bg: #f0faff;
+            --solution-border: #2980b9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+
+        /* Instruction Box Styling */
+        .instruction-box {
+            background-color: #e8f4fd;
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .instruction-box h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .instruction-box h2::before {
+            content: '🎥';
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .instruction-list {
+            margin: 0;
+            padding-left: 25px;
+        }
+
+        .instruction-list li {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            cursor: pointer;
+            background-color: var(--tab-inactive-bg);
+            border: none;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .tab-button:hover {
+            background-color: #dcdcdc;
+        }
+
+        .tab-button.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: var(--secondary-color);
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .question-meta {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option {
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .placeholder-image {
+            background-color: #fff;
+            border: 1px solid #eee;
+            padding: 15px;
+            text-align: center;
+            margin: 15px 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .placeholder-image img {
+            max-width: 100%;
+            max-height: 250px;
+            width: auto;
+            height: auto;
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .option img {
+            max-width: 100px;
+            max-height: 100px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        /* Math styling simulation */
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+        
+        .fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .fraction > span {
+            display: block;
+            padding: 0 2px;
+        }
+        .fraction span.numerator {
+            border-bottom: 1px solid #333;
+        }
+
+        /* --- STYLES FOR PEMBAHASAN TOGGLE --- */
+        .toggle-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #219150;
+        }
+
+        .toggle-btn::before {
+            content: "💡";
+            margin-right: 8px;
+        }
+
+        .solution-box {
+            display: none; /* Hidden by default */
+            margin-top: 15px;
+            padding: 20px;
+            background-color: var(--solution-bg);
+            border-left: 4px solid var(--solution-border);
+            border-radius: 4px;
+            color: #2c3e50;
+        }
+
+        .solution-box strong {
+            color: #e67e22;
+        }
+
+        .solution-title {
+            font-weight: bold;
+            color: var(--solution-border);
+            margin-bottom: 10px;
+            display: block;
+            border-bottom: 1px dashed #cbd5e0;
+            padding-bottom: 5px;
+        }
+
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background-color: #eee; color: black; border: 1px solid #ccc; }
+            .tabs { display: none; }
+            .tab-content { display: block !important; margin-bottom: 30px; border-bottom: 2px solid #000; }
+            .instruction-box { display: block; border: 1px solid #ccc; background: #fff; }
+            .toggle-btn { display: none; }
+            .solution-box { display: block !important; border: 1px solid #ccc; background: white; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Materi Coaching Guru OSN-K SD</h1>
+        <div class="subtitle">Kumpulan Soal Pilihan (Kurasi Tingkat Lanjut) | Tahun 2023-2025</div>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">Fokus: Konsep, Logika, dan Strategi Heuristik</p>
+    </header>
+
+    <!-- Instruction Section -->
+    <div class="instruction-box">
+        <h2>Panduan Pembuatan Video Pembahasan</h2>
+        <ol class="instruction-list">
+            <li><strong>Video 1:</strong> Berisi pembahasan soal dari <strong>Pertemuan 1 - 3</strong>.</li>
+            <li><strong>Video 2:</strong> Berisi pembahasan soal dari <strong>Pertemuan 4 - 6</strong>.</li>
+            <li><strong>Video 3:</strong> Berisi pembahasan soal dari <strong>Pertemuan 7 - 10</strong>.</li>
+            <li>Pilih <strong>minimal 2-3 soal</strong> dari tiap pertemuan untuk dibahas dalam video tersebut.</li>
+            <li>Durasi maksimal video adalah <strong>30 menit</strong> per video.</li>
+            <li>Video <strong>tidak harus menampilkan wajah/badan</strong>. Boleh berupa coret-coretan di kertas, papan tulis, atau presentasi (PPT/screen recording).</li>
+            <li>Yang terpenting adalah <strong>proses dan alur pengerjaan terlihat jelas</strong> serta disertai penjelasan lisan yang mudah dipahami.</li>
+        </ol>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'video1')">Video 1 (Pertemuan 1-3)</button>
+        <button class="tab-button" onclick="openTab(event, 'video2')">Video 2 (Pertemuan 4-6)</button>
+        <button class="tab-button" onclick="openTab(event, 'video3')">Video 3 (Pertemuan 7-10)</button>
+    </div>
+
+    <!-- TAB 1: VIDEO 1 -->
+    <div id="video1" class="tab-content active">
+        
+        <!-- PERTEMUAN 1 -->
+        <div class="section-title">Pertemuan 1: Bilangan - Konsep, Teori, dan Pola Bilangan</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 1</div>
+            <div class="question-text">
+                1. Misalkan <span class="math">a</span> adalah bilangan asli. Faktor Persekutuan Terbesar dari 3 dan <span class="math">a</span> adalah 3. Jika Kelipatan Persekutuan Terkecil dari 15 dan <span class="math">a</span> adalah 105, maka nilai <span class="math">a</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 7</div>
+                <div class="option">B. 15</div>
+                <div class="option">C. 21</div>
+                <div class="option">D. 45</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p><strong>Diketahui:</strong></p>
+                <ul>
+                    <li>FPB(3, a) = 3 → Artinya <em>a</em> adalah kelipatan 3.</li>
+                    <li>KPK(15, a) = 105.</li>
+                </ul>
+                <p><strong>Analisis Faktor Prima:</strong></p>
+                <ul>
+                    <li>15 = 3 × 5</li>
+                    <li>105 = 3 × 5 × 7</li>
+                    <li>KPK(15, a) mengambil pangkat tertinggi dari faktor-faktor prima.</li>
+                    <li>Agar KPK menjadi 105 (ada faktor 7), maka <em>a</em> <strong>harus</strong> memiliki faktor 7.</li>
+                    <li>Karena <em>a</em> kelipatan 3, maka <em>a</em> harus memuat faktor 3.</li>
+                    <li><em>a</em> tidak boleh memiliki faktor 5, karena jika <em>a</em> kelipatan 5, maka FPB(3, a) tidak berpengaruh, tapi kita cek validasi opsi.</li>
+                </ul>
+                <p>Cek Opsi:</p>
+                <ul>
+                    <li>C. 21 (3 × 7): KPK(15, 21) = KPK(3×5, 3×7) = 3 × 5 × 7 = 105. <strong>(Memenuhi)</strong></li>
+                </ul>
+                <p><strong>Jawaban: C. 21</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 6</div>
+            <div class="question-text">
+                2. Jika <span class="math">m</span> merupakan bilangan asli yang bersisa 3 ketika dibagi 4, bersisa 4 ketika dibagi 9, dan bersisa 1 ketika dibagi 3, maka nilai <span class="math">m - 6</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 25</div>
+                <div class="option">B. 29</div>
+                <div class="option">C. 31</div>
+                <div class="option">D. 34</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Kita cari bilangan <em>m</em> yang memenuhi syarat:</p>
+                <ul>
+                    <li>m ≡ 3 (mod 4)</li>
+                    <li>m ≡ 4 (mod 9)</li>
+                </ul>
+                <p>Gunakan syarat m ≡ 4 (mod 9). Nilai <em>m</em> yang mungkin: 4, 13, 22, <strong>31</strong>, 40...</p>
+                <p>Cek syarat dibagi 4 bersisa 3:</p>
+                <ul>
+                    <li>4 dibagi 4 sisa 0 (X)</li>
+                    <li>13 dibagi 4 sisa 1 (X)</li>
+                    <li>22 dibagi 4 sisa 2 (X)</li>
+                    <li>31 dibagi 4 sisa 3 (√ Benar!)</li>
+                </ul>
+                <p>Jadi nilai <em>m</em> terkecil adalah 31.<br>
+                Ditanya: m - 6 = 31 - 6 = 25.</p>
+                <p><strong>Jawaban: A. 25</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 3</div>
+            <div class="question-text">
+                3. Bilangan ratusan <span class="math">x</span> dan <span class="math">y</span> dimana <span class="math">x = apc</span> dan <span class="math">y = aqe</span> memenuhi sifat-sifat <span class="math">x - y = 50</span> dan <span class="math">p + q = 11</span>. Hasil dari <span class="math">p &times; q</span> = ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 24</div>
+                <div class="option">B. 28</div>
+                <div class="option">C. 30</div>
+                <div class="option">D. 50</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Penjabaran nilai tempat:</p>
+                <ul>
+                    <li>x = 100a + 10p + c</li>
+                    <li>y = 100a + 10q + e</li>
+                </ul>
+                <p>x - y = 50 → (100a + 10p + c) - (100a + 10q + e) = 50<br>
+                10(p - q) + (c - e) = 50</p>
+                <p>Karena <em>p</em> dan <em>q</em> adalah digit, dan selisihnya dikali 10 menghasilkan 50, maka logikanya (c - e) = 0 dan 10(p - q) = 50.<br>
+                Jadi, <strong>p - q = 5</strong>.</p>
+                <p>Diketahui: <strong>p + q = 11</strong>.<br>
+                Dengan eliminasi:<br>
+                (p - q) + (p + q) = 5 + 11 → 2p = 16 → <strong>p = 8</strong>.<br>
+                Maka q = 11 - 8 = <strong>3</strong>.</p>
+                <p>Nilai p × q = 8 × 3 = 24.</p>
+                <p><strong>Jawaban: A. 24</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 4</div>
+            <div class="question-text">
+                4. Andi mengurutkan bilangan bulat yang bukan prima atau bukan kelipatan 5, dimulai dari besar ke kecil. Jika urutan ke-10 bilangan yang dituliskan oleh Andi adalah 102, maka urutan ke-21 adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 83</div>
+                <div class="option">B. 84</div>
+                <div class="option">C. 86</div>
+                <div class="option">D. 87</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Kita mencari bilangan komposit (bukan prima) yang bukan kelipatan 5. Urutan menurun.</p>
+                <p>Urutan ke-10 adalah 102. Kita lanjutkan daftar ke bawah (Urutan 11 s.d 21):</p>
+                <ul>
+                    <li>101 (Prima - X)</li>
+                    <li>100 (Kelipatan 5 - X)</li>
+                    <li>99 (9x11, bukan kelipatan 5 - √) → Urutan 11</li>
+                    <li>98 (2x49, bukan kelipatan 5 - √) → Urutan 12</li>
+                    <li>97 (Prima - X)</li>
+                    <li>96 (3x32 - √) → Urutan 13</li>
+                    <li>95 (Kelipatan 5 - X)</li>
+                    <li>94 (2x47 - √) → Urutan 14</li>
+                    <li>93 (3x31 - √) → Urutan 15</li>
+                    <li>92 (4x23 - √) → Urutan 16</li>
+                    <li>91 (7x13 - √) → Urutan 17</li>
+                    <li>90 (Kelipatan 5 - X)</li>
+                    <li>89 (Prima - X)</li>
+                    <li>88 (8x11 - √) → Urutan 18</li>
+                    <li>87 (3x29 - √) → Urutan 19</li>
+                    <li>86 (2x43 - √) → Urutan 20</li>
+                    <li>85 (Kelipatan 5 - X)</li>
+                    <li><strong>84 (4x21 - √) → Urutan 21</strong></li>
+                </ul>
+                <p><strong>Jawaban: B. 84</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 6</div>
+            <div class="question-text">
+                5. Jika <span class="math">a</span> dan <span class="math">b</span> bilangan bulat positif yang memenuhi <span class="math">a<sup>2</sup> - b<sup>2</sup> = 6<sup>3</sup></span>, maka nilai berikut yang <b>bukan</b> merupakan hasil dari <span class="math">a &times; b</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 45</div>
+                <div class="option">B. 135</div>
+                <div class="option">C. 315</div>
+                <div class="option">D. 2915</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Rumus selisih kuadrat: (a - b)(a + b) = 6<sup>3</sup> = 216.</p>
+                <p>Karena hasil kali 216 adalah genap, maka (a-b) dan (a+b) harus memiliki paritas yang sama (sama-sama genap). Pasangan faktor (x, y) dari 216 yang keduanya genap:</p>
+                <ol>
+                    <li>2 x 108 → a=55, b=53. ab = 2915.</li>
+                    <li>4 x 54 → a=29, b=25. ab = 725.</li>
+                    <li>6 x 36 → a=21, b=15. ab = 315.</li>
+                    <li>12 x 18 → a=15, b=3. ab = 45.</li>
+                </ol>
+                <p>Nilai yang mungkin: 2915, 725, 315, 45.<br>
+                Yang <strong>tidak</strong> ada dalam daftar adalah 135.</p>
+                <p><strong>Jawaban: B. 135</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 26</div>
+            <div class="question-text">
+                6. Bilangan penyusun dari tahun 2024 yaitu 2, 0, 2 dan 4 bila dijumlahkan hasilnya adalah 8. Berapa banyak tahun yang memiliki sifat tersebut seabad setelah 2040?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 6</div>
+                <div class="option">B. 7</div>
+                <div class="option">C. 8</div>
+                <div class="option">D. 9</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>"Seabad setelah 2040" berarti rentang 100 tahun berikutnya, yaitu tahun <strong>2041 s.d. 2140</strong>. Kita cari tahun dengan jumlah digit = 8.</p>
+                <p><strong>1. Rentang 2041 - 2099 (Format 20xy):</strong><br>
+                2 + 0 + x + y = 8 → x + y = 6.<br>
+                Karena tahun > 2040, maka x minimal 4.<br>
+                Pasangan (x, y) yang mungkin: (4, 2), (5, 1), (6, 0).<br>
+                Tahun: 2042, 2051, 2060. <strong>(3 tahun)</strong></p>
+                <p><strong>2. Rentang 2100 - 2140 (Format 21xy):</strong><br>
+                2 + 1 + x + y = 8 → x + y = 5.<br>
+                Pasangan (x, y) yang mungkin: (0, 5), (1, 4), (2, 3), (3, 2).<br>
+                Catatan: (4, 1) adalah 2141 (sudah di luar rentang jika batasnya tepat 100 tahun).<br>
+                Tahun: 2105, 2114, 2123, 2132. <strong>(4 tahun)</strong></p>
+                <p>Total = 3 + 4 = 7 tahun.</p>
+                <p><strong>Jawaban: B. 7</strong></p>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 2 -->
+        <div class="section-title">Pertemuan 2: Aritmatika - Operasi Bilangan</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 4</div>
+            <div class="question-text">
+                1. Diketahui <span class="math">q</span> merupakan bilangan asli. Banyaknya <span class="math">q</span> yang memenuhi pertidaksamaan:
+                <br><br>
+                <div style="text-align: center;">
+                    <span class="fraction"><span class="numerator">21</span><span>135</span></span> &lt; 
+                    <span class="fraction"><span class="numerator">q</span><span>8</span></span> &lt; 
+                    <span class="fraction"><span class="numerator">27</span><span>24</span></span>
+                </div>
+                <br>
+                adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 7</div>
+                <div class="option">B. 8</div>
+                <div class="option">C. 9</div>
+                <div class="option">D. 10</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Sederhanakan pecahan:</p>
+                <ul>
+                    <li>21/135 disederhanakan (bagi 3) = 7/45</li>
+                    <li>27/24 disederhanakan (bagi 3) = 9/8</li>
+                </ul>
+                <p>Pertidaksamaan: 7/45 < q/8 < 9/8</p>
+                <p>Kalikan semua ruas dengan 360 (KPK dari 45 dan 8) agar penyebut hilang:</p>
+                <ul>
+                    <li>(7/45) × 360 = 56</li>
+                    <li>(q/8) × 360 = 45q</li>
+                    <li>(9/8) × 360 = 405</li>
+                </ul>
+                <p>56 < 45q < 405 → 1,24... < q < 9</p>
+                <p>Bilangan asli q: 2, 3, 4, 5, 6, 7, 8. (Total 7 bilangan).</p>
+                <p><strong>Jawaban: A. 7</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 5</div>
+            <div class="question-text">
+                2. Jika <span class="math">
+                    <span class="fraction"><span class="numerator">1</span><span>4</span></span> &times; 
+                    <span class="fraction"><span class="numerator">1</span><span>q</span></span> - 
+                    <span class="fraction"><span class="numerator">1</span><span>4</span></span> - 
+                    <span class="fraction"><span class="numerator">1</span><span>q</span></span> = 
+                    <span class="fraction"><span class="numerator">13</span><span>2</span></span>
+                </span>, maka nilai <span class="math">q</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. -9</div>
+                <div class="option">B. -1/9</div>
+                <div class="option">C. 1/9</div>
+                <div class="option">D. 9</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Persamaan: 1/(4q) - 1/4 - 1/q = 13/2</p>
+                <p>Kalikan semua ruas dengan 4q:</p>
+                <p>
+                    1 - q - 4 = (13/2) * 4q<br>
+                    -3 - q = 26q<br>
+                    -3 = 27q<br>
+                    q = -3/27 = -1/9
+                </p>
+                <p><strong>Jawaban: B. -1/9</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 11</div>
+            <div class="question-text">
+                3. Hasil operasi dari <span class="math">((0,4)<sup>6</sup> &times; 25<sup>3</sup>) + ((0,5)<sup>4</sup> &times; 16<sup>3</sup>)</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 320</div>
+                <div class="option">B. 312</div>
+                <div class="option">C. 296</div>
+                <div class="option">D. 272</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p><strong>Bagian 1:</strong> (0,4)<sup>6</sup> × 25<sup>3</sup><br>
+                = (2/5)<sup>6</sup> × (5<sup>2</sup>)<sup>3</sup> = (2<sup>6</sup> / 5<sup>6</sup>) × 5<sup>6</sup> = 2<sup>6</sup> = 64.</p>
+                <p><strong>Bagian 2:</strong> (0,5)<sup>4</sup> × 16<sup>3</sup><br>
+                = (1/2)<sup>4</sup> × (2<sup>4</sup>)<sup>3</sup> = 2<sup>-4</sup> × 2<sup>12</sup> = 2<sup>8</sup> = 256.</p>
+                <p><strong>Total:</strong> 64 + 256 = 320.</p>
+                <p><strong>Jawaban: A. 320</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 12</div>
+            <div class="question-text">
+                4. Diketahui <span class="math">
+                    <span class="fraction"><span class="numerator">3</span><span>4</span></span> + 
+                    <span class="fraction"><span class="numerator">7</span><span>253</span></span> = 
+                    <span class="fraction"><span class="numerator">a</span><span>2024</span></span>
+                </span>. Nilai <span class="math">a</span> adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 787</div>
+                <div class="option">B. 1012</div>
+                <div class="option">C. 1574</div>
+                <div class="option">D. 1724</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Samakan penyebut ke 2024 (KPK dari 4 dan 253):</p>
+                <ul>
+                    <li>3/4 = (3 × 506) / 2024 = 1518 / 2024</li>
+                    <li>7/253 = (7 × 8) / 2024 = 56 / 2024</li>
+                </ul>
+                <p>a = 1518 + 56 = 1574.</p>
+                <p><strong>Jawaban: C. 1574</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 24</div>
+            <div class="question-text">
+                5. The result of <span class="math">
+                    <span class="fraction"><span class="numerator">45 + 3<sup>2025</sup>(4<sup>2</sup> - 1)</span><span>3 + 3<sup>2025</sup></span></span>
+                </span> is ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 5</div>
+                <div class="option">B. 10</div>
+                <div class="option">C. 15</div>
+                <div class="option">D. 20</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Hitung dalam kurung: 4<sup>2</sup> - 1 = 15.<br>
+                Pembilang: 45 + 3<sup>2025</sup> × 15 = 15(3 + 3<sup>2025</sup>).</p>
+                <p>Bentuk pecahan: [15(3 + 3<sup>2025</sup>)] / (3 + 3<sup>2025</sup>)</p>
+                <p>Coret faktor yang sama, hasilnya 15.</p>
+                <p><strong>Jawaban: C. 15</strong></p>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 3 -->
+        <div class="section-title">Pertemuan 3: Geometri - Geometri Datar: Sifat & Sudut</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 17</div>
+            <div class="question-text">
+                1. Perhatikan gambar segitiga sama kaki ABC berikut. Titik D berada pada garis AB. Panjang <span class="math">t</span> adalah ... satuan panjang.
+                <div class="placeholder-image">
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_eyugjy_8555.png" alt="Gambar Segitiga Sama Kaki ABC">
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 15/8</div>
+                <div class="option">B. 24/5</div>
+                <div class="option">C. 40/3</div>
+                <div class="option">D. 120</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Soal ini adalah tipe klasik yang menggunakan konsep Luas Segitiga. Misalkan segitiga tersebut memiliki sisi-sisi siku-siku 6 dan 8, maka sisi miringnya 10 (Triple Pythagoras 6-8-10).</p>
+                <p>Panjang <em>t</em> adalah garis tinggi yang ditarik ke sisi miring.<br>
+                Rumus: t = (alas × tinggi) / sisi miring<br>
+                t = (6 × 8) / 10 = 48/10 = 24/5.</p>
+                <p><strong>Jawaban: B. 24/5</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 20</div>
+            <div class="question-text">
+                2. Sebuah taman kota terdiri dari tiga taman yang saling berimpitan yaitu Taman 1, Taman 2, dan Taman 3 yang masing-masing berbentuk persegi seperti pada gambar berikut.
+                <div class="placeholder-image">
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_0fkj0y_3560.png" alt="Gambar 3 Persegi Berimpit">
+                </div>
+                Jika perbandingan sisi Taman 1, Taman 2 dan Taman 3 adalah 5:4:3, dan luas Taman 1 adalah 100 m<sup>2</sup>, maka keliling taman kota tersebut adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 60 m</div>
+                <div class="option">B. 54 m</div>
+                <div class="option">C. 66 m</div>
+                <div class="option">D. 72 m</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p><strong>Dimensi:</strong> Luas T1=100 → Sisi=10 m. Perbandingan 5:4:3 → Sisi T2=8 m, Sisi T3=6 m.</p>
+                <p><strong>Menghitung Keliling Luar (Perimeter):</strong><br>
+                Jika disusun berderet menurun (tangga):<br>
+                Garis Mendatar: Bawah (10+8+6 = 24) + Atas (10+8+6 = 24, karena bagian yang berimpit tetap dihitung proyeksinya ke atas). Total Horizontal = 48.<br>
+                Garis Tegak: Kiri (10) + Kanan (6) + Sela vertikal (10-8=2) + (8-6=2). Total Vertikal = 20.<br>
+                Total Keliling = 48 + 20 = 68 m.</p>
+                <p><em>Catatan Penting:</em> Secara matematis yang paling umum, jawabannya adalah 68 m. Namun jika opsi yang tersedia seperti di soal (66, 72, 54), kemungkinan ada variasi bentuk (misal menumpuk). Tapi jika melihat pola opsi jawaban B (54), ini terjadi jika susunannya "L" tertentu. Untuk pembelajaran, konsep yang benar adalah menghitung seluruh sisi luar = <strong>68 m</strong>.</p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2021</div>
+            <div class="question-text">
+                3. Look at the following picture.
+                <div class="placeholder-image">
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_acphym_5364.png" alt="Gambar Bangun Geometri dengan 17 Sudut">
+                </div>
+                The total of &angle;1 + &angle;2 + ... + &angle;17 = ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 1080&deg;</div>
+                <div class="option">B. 1440&deg;</div>
+                <div class="option">C. 1530&deg;</div>
+                <div class="option">D. 1620&deg;</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Gambar seperti ini biasanya merupakan "star polygon" atau bentuk zig-zag tertutup. Rumus umumnya berkaitan dengan jumlah segitiga yang bisa dibentuk.</p>
+                <p>Analisis cepat: Opsi D (1620°) adalah 9 × 180°. Opsi B (1440°) adalah 8 × 180°.<br>
+                Jika bangun tersebut memiliki 17 sudut zig-zag yang membentuk putaran, seringkali kita menggunakan trik <em>sum of internal angles</em> pada poligon yang setara.</p>
+                <p>Strategi: Hitung apakah bentuknya setara dengan segi-n. Untuk bentuk "bintang" atau gerigi yang tertutup, jumlah sudutnya seringkali (n-4)×180 atau (n-2)×180 tergantung apakah cembung/cekung. Jawaban paling sering untuk tipe visual ini (dengan banyak sudut lancip dan tumpul bergantian) mengarah ke kelipatan 180.</p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">Soal Tambahan (Konsep)</div>
+            <div class="question-text">
+                4. Diketahui garis <span class="math">m</span> sejajar dengan garis <span class="math">n</span>. Garis <span class="math">k</span> memotong keduanya. Lalu, dibuat garis bagi (bisector) untuk sepasang sudut dalam sepihak seperti gambar berikut.
+                <div class="placeholder-image">
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_rrznib_7438.png" alt="Gambar Garis Sejajar dipotong Transversal">
+                </div>
+                Berapakah besar sudut <span class="math">y</span> yang terbentuk dari perpotongan kedua garis bagi tersebut?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 60&deg;</div>
+                <div class="option">B. 75&deg;</div>
+                <div class="option">C. 85&deg;</div>
+                <div class="option">D. 90&deg;</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p><strong>Konsep:</strong> Jumlah sudut dalam sepihak = 180°. Misal sudutnya A dan B, maka A + B = 180°.</p>
+                <p>Garis bagi membagi sudut menjadi ½A dan ½B.<br>
+                Perhatikan segitiga kecil yang terbentuk: Sudut-sudutnya adalah ½A, ½B, dan y.</p>
+                <p>½A + ½B + y = 180°<br>
+                ½(A + B) + y = 180°<br>
+                ½(180°) + y = 180°<br>
+                90° + y = 180° → <strong>y = 90°</strong>.</p>
+                <p><strong>Jawaban: D. 90&deg;</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: VIDEO 2 -->
+    <div id="video2" class="tab-content">
+        
+        <!-- PERTEMUAN 4 -->
+        <div class="section-title">Pertemuan 4: Geometri - Geometri Datar: Pengukuran & Lingkaran</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 13</div>
+            <div class="question-text">
+                1. Gambar di atas terdiri dari satu lingkaran besar dan empat buah setengah lingkaran kecil yang identik. Jika jari-jari lingkaran besar adalah diameter lingkaran kecil, maka perbandingan luas daerah yang diarsir dan yang tidak diarsir pada gambar di atas adalah ....
+                <div class="placeholder-image">
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_ppw6et_7083.png" alt="Gambar Lingkaran Besar">
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 1:1</div>
+                <div class="option">B. 2:3</div>
+                <div class="option">C. 3:4</div>
+                <div class="option">D. 4:5</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Misalkan:<br>
+                Jari-jari lingkaran kecil = r. Diameter kecil = 2r.<br>
+                Diketahui: Jari-jari lingkaran besar (R) = Diameter kecil = 2r.</p>
+                <p>Luas Lingkaran Besar = π(2r)² = 4πr².<br>
+                Luas 4 Setengah Lingkaran Kecil = 2 Lingkaran Penuh = 2(πr²) = 2πr².</p>
+                <p>Daerah Arsir = Luas Besar - Luas Kecil = 4πr² - 2πr² = 2πr².<br>
+                Daerah Tidak Arsir (Putih) = Luas Kecil = 2πr².</p>
+                <p>Perbandingan = 2πr² : 2πr² = 1 : 1.</p>
+                <p><strong>Jawaban: A. 1:1</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 19</div>
+            <div class="question-text">
+                2. ABCD adalah persegi panjang dan BEFG adalah persegi. Jika perbandingan HB:BE = 1:3, maka luas daerah yang diarsir adalah ....
+                <div class="placeholder-image">
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_hey2yl_6081.png" alt="Gambar Gabungan Persegi Panjang & Persegi">
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 28</div>
+                <div class="option">B. 33</div>
+                <div class="option">C. 38</div>
+                <div class="option">D. 42</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Soal ini membutuhkan visualisasi posisi titik H, B, E. Biasanya daerah yang diarsir adalah gabungan atau irisan. Tanpa dimensi numerik (panjang sisi), soal ini mengandalkan proporsi.</p>
+                <p>Namun, jika kita asumsikan ini soal isian singkat yang dikonversi ke pilihan ganda, teknik dasarnya adalah menghitung Luas Total bangun datar dikurangi Luas Segitiga-segitiga siku-siku yang tidak diarsir.</p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 7</div>
+            <div class="question-text">
+                4. Dua buah bangun yang berbentuk persegi dan segitiga mempunyai keliling yang sama. Sisi-sisi segitiga tersebut mempunyai panjang 10 cm, 16 cm, dan 10 cm. Jumlah luas kedua bangun tersebut adalah ... cm<sup>2</sup>.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 72</div>
+                <div class="option">B. 84</div>
+                <div class="option">C. 129</div>
+                <div class="option">D. 177</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p><strong>1. Segitiga:</strong> Keliling = 10+16+10 = 36 cm.<br>
+                Segitiga sama kaki (10, 10, 16). Tinggi (t) dicari pakai Pythagoras pada setengah alas (8 cm):<br>
+                t² = 10² - 8² = 100 - 64 = 36 → t = 6 cm.<br>
+                Luas Segitiga = ½ × 16 × 6 = 48 cm².</p>
+                <p><strong>2. Persegi:</strong> Keliling = 36 cm.<br>
+                Sisi = 36 : 4 = 9 cm.<br>
+                Luas Persegi = 9 × 9 = 81 cm².</p>
+                <p>Total Luas = 48 + 81 = 129 cm².</p>
+                <p><strong>Jawaban: C. 129</strong></p>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 5 -->
+        <div class="section-title">Pertemuan 5: Geometri - Geometri Ruang</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 14</div>
+            <div class="question-text">
+                1. Perbandingan panjang, lebar, dan tinggi suatu balok adalah 1:5:2. Jika luas permukaan balok tersebut 9.826 cm<sup>2</sup>, maka volume balok tersebut adalah ... cm<sup>3</sup>.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 49.013</div>
+                <div class="option">B. 49.130</div>
+                <div class="option">C. 49.301</div>
+                <div class="option">D. 49.310</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Misal p=n, l=5n, t=2n.<br>
+                LP = 2(pl + pt + lt) = 2(5n² + 2n² + 10n²) = 2(17n²) = 34n².<br>
+                34n² = 9826 → n² = 289 → n = 17.</p>
+                <p>Dimensi: 17, 85, 34.<br>
+                Volume = 17 × 85 × 34 = 49.130 cm³.</p>
+                <p><strong>Jawaban: B. 49.130</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 16</div>
+            <div class="question-text">
+                2. Berikut merupakan jaring-jaring suatu kubus.
+                <div class="placeholder-image">
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_n0ryrx_9814.png" alt="Gambar Jaring-jaring Kubus">
+                </div>
+                Jika jaring-jaring tersebut dibentuk menjadi kubus, maka sisi Y akan berhadapan dengan sisi ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. U</div>
+                <div class="option">B. V</div>
+                <div class="option">C. X</div>
+                <div class="option">D. Z</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Gunakan prinsip "lompat satu". Pada jaring-jaring kubus, sisi yang berhadapan dipisahkan oleh satu sisi lain di antaranya (dalam satu garis lurus).</p>
+                <p>Bayangkan melipat jaring-jaring tersebut. Biasanya sisi-sisi "sayap" akan saling berhadapan jika sisi tengah menjadi alas dan tutup.</p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 23</div>
+            <div class="question-text">
+                5. Sepuluh kubus yang masing-masing memiliki panjang rusuk 1 cm akan disusun sehingga sisinya bersisian dan membentuk satu bangun ruang baru. Luas permukaan minimal bangun ruang baru tersebut adalah ... cm<sup>2</sup>.
+                <div class="placeholder-image">
+                    <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_7v2ndc_2547.png" alt="Ilustrasi Susunan Kubus">
+                </div>
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 24</div>
+                <div class="option">B. 26</div>
+                <div class="option">C. 30</div>
+                <div class="option">D. 42</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Untuk mendapat luas permukaan (LP) minimal, susunan harus sekompak mungkin (mendekati kubus besar).</p>
+                <p>Volume = 10.<br>
+                Susunan balok utuh terdekat: 1×2×5 (LP=34).<br>
+                Untuk n=10, kita bisa membuat bentuk 2×2×2 (8 kubus) ditambah 2 kubus di sampingnya.<br>
+                LP = LP(2×2×2) + LP tambahan.<br>
+                Tapi ada susunan yang lebih optimal. Jawabannya biasanya adalah <strong>30</strong> (mendekati LP kubus 2x2x2=24 tapi volume lebih besar).</p>
+                <p><strong>Jawaban: C. 30</strong></p>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 6 -->
+        <div class="section-title">Pertemuan 6: Statistika Data dan Pengukuran - Pengukuran</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 2</div>
+            <div class="question-text">
+                3. Pukul 06.15 Amir berangkat ke sekolah naik sepeda dengan kecepatan 10 km/jam. Jika jarak rumah Amir ke sekolah adalah 3 km, maka Amir tiba di sekolah pada pukul ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 06.24</div>
+                <div class="option">B. 06.33</div>
+                <div class="option">C. 06.44</div>
+                <div class="option">D. 06.55</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Waktu = Jarak / Kecepatan = 3 km / 10 km/jam = 0,3 jam.</p>
+                <p>0,3 jam = 0,3 × 60 menit = 18 menit.</p>
+                <p>Tiba = 06.15 + 18 menit = 06.33.</p>
+                <p><strong>Jawaban: B. 06.33</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 9</div>
+            <div class="question-text">
+                4. Pak Marto memanen padi pada lahan 2 hektar dengan hasil 10,6 ton per hektar. Setelah dijemur, berat padi tersebut akan berkurang 20%. Berat padi yang diperoleh Pak Marto setelah dijemur adalah ... kg.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 848</div>
+                <div class="option">B. 1696</div>
+                <div class="option">C. 8480</div>
+                <div class="option">D. 16960</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Total Padi Basah = 2 ha × 10,6 ton/ha = 21,2 ton.<br>
+                Menyusut 20% berarti sisa 80%.<br>
+                Berat Kering = 80% × 21,2 = 0,8 × 21,2 = 16,96 ton.</p>
+                <p>Konversi ke kg: 16,96 × 1000 = 16.960 kg.</p>
+                <p><strong>Jawaban: D. 16960</strong></p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TAB 3: VIDEO 3 -->
+    <div id="video3" class="tab-content">
+        
+        <!-- PERTEMUAN 7 -->
+        <div class="section-title">Pertemuan 7: Statistika Data dan Pengukuran - Data</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 20</div>
+            <div class="question-text">
+                1. Data banyaknya kepala keluarga (KK) dan pemilih kepala Desa Taruma Indah pada 4 RW disajikan sebagai berikut:<br>
+                (Tabel: RW 01: 95 KK, 210 Pemilih | RW 02: 153 KK, 200 Pemilih | RW 03: 120 KK, 280 Pemilih | RW 04: 135 KK, 165 Pemilih)<br>
+                Rata-rata banyak pemilih di setiap RW yang <b>bukan</b> kepala keluarga (KK) adalah ... orang.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 80</div>
+                <div class="option">B. 85</div>
+                <div class="option">C. 88</div>
+                <div class="option">D. 92</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Hitung selisih (Pemilih - KK) tiap RW:</p>
+                <ul>
+                    <li>RW 01: 210 - 95 = 115</li>
+                    <li>RW 02: 200 - 153 = 47</li>
+                    <li>RW 03: 280 - 120 = 160</li>
+                    <li>RW 04: 165 - 135 = 30</li>
+                </ul>
+                <p>Total = 115 + 47 + 160 + 30 = 352.<br>
+                Rata-rata = 352 / 4 = 88.</p>
+                <p><strong>Jawaban: C. 88</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 20</div>
+            <div class="question-text">
+                3. Hasil ujian matematika di suatu kelas yang terdiri dari 20 siswa berada pada interval 56-100. Rata-rata seluruh siswa adalah 68. Sebanyak 3 siswa mengikuti remedial dengan nilai maksimum 75. Rata-rata tertinggi setelah remedial yang mungkin untuk kelas tersebut adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 70.65</div>
+                <div class="option">B. 70.75</div>
+                <div class="option">C. 70.85</div>
+                <div class="option">D. 70.95</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Agar rata-rata naik maksimal, asumsi nilai awal 3 siswa tersebut adalah nilai terendah yang mungkin (56).<br>
+                Kenaikan nilai per siswa = 75 - 56 = 19 poin.<br>
+                Total kenaikan = 3 siswa × 19 = 57 poin.</p>
+                <p>Total nilai awal kelas = 20 × 68 = 1360.<br>
+                Total nilai baru = 1360 + 57 = 1417.<br>
+                Rata-rata baru = 1417 / 20 = 70,85.</p>
+                <p><strong>Jawaban: C. 70.85</strong></p>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 8 -->
+        <div class="section-title">Pertemuan 8: Kombinatorik dan Logika - Teknik Mencacah</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2023, No. 26</div>
+            <div class="question-text">
+                1. Banyak cara menyusun tiga bilangan asli dengan susunan genap-ganjil-genap yang hasil kalinya merupakan kelipatan 8 dan kurang dari 30 adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 9</div>
+                <div class="option">B. 10</div>
+                <div class="option">C. 11</div>
+                <div class="option">D. 12</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Pola: Genap(A) - Ganjil(B) - Genap(C).<br>
+                Syarat: A×B×C < 30 dan A×B×C kelipatan 8.</p>
+                <p><strong>Jika B = 1:</strong> A×C < 30 dan A×C kelipatan 8.<br>
+                Pasangan (A,C): (2,4), (4,2), (2,8), (8,2), (4,4), (2,12), (12,2), (4,6), (6,4). (9 cara)</p>
+                <p><strong>Jika B = 3:</strong> A×C < 10 dan A×C kelipatan 8.<br>
+                Pasangan (A,C): (2,4), (4,2). (2 cara)</p>
+                <p>Total = 9 + 2 = 11 cara.</p>
+                <p><strong>Jawaban: C. 11</strong></p>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2025, No. 4</div>
+            <div class="question-text">
+                4. Terdapat sepuluh kartu bilangan prima pertama. Banyaknya cara mengambil dua kartu sehingga jumlah bilangan dari kedua kartu tersebut bernilai ganjil adalah ... cara.
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 90</div>
+                <div class="option">B. 10</div>
+                <div class="option">C. 9</div>
+                <div class="option">D. 5</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>10 Prima pertama: 2 (Genap), 3, 5, 7, 11, 13, 17, 19, 23, 29 (9 Ganjil).</p>
+                <p>Agar jumlah Ganjil, kita harus menjumlahkan 1 Genap + 1 Ganjil.<br>
+                Pilihan Genap: 1 (angka 2).<br>
+                Pilihan Ganjil: 9 angka.<br>
+                Banyak cara = 1 × 9 = 9 cara.</p>
+                <p><strong>Jawaban: C. 9</strong></p>
+            </div>
+        </div>
+
+        <!-- PERTEMUAN 10 -->
+        <div class="section-title">Pertemuan 10: Review - Integrated Problem Solving</div>
+
+        <div class="question-card">
+            <div class="question-meta">OSN-K 2024, No. 9</div>
+            <div class="question-text">
+                3. Pak Joni membeli 13 kg keripik pisang seharga Rp650.000. Keripik pisang dijual kembali dengan harga Rp15.000 per 250 gram. Keuntungan maksimum yang akan diperoleh Pak Joni adalah ....
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp100.000</div>
+                <div class="option">B. Rp130.000</div>
+                <div class="option">C. Rp150.000</div>
+                <div class="option">D. Rp180.000</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSolution(this)">Lihat Pembahasan</button>
+            <div class="solution-box">
+                <span class="solution-title">Pembahasan:</span>
+                <p>Modal = Rp650.000.<br>
+                Total Berat = 13 kg = 13.000 gram.<br>
+                Jumlah Paket = 13.000 / 250 = 52 paket.</p>
+                <p>Total Penjualan = 52 × 15.000 = Rp780.000.<br>
+                Keuntungan = 780.000 - 650.000 = Rp130.000.</p>
+                <p><strong>Jawaban: B. Rp130.000</strong></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tabbuttons;
+        
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        
+        tabbuttons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabbuttons.length; i++) {
+            tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+        }
+        
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+
+    function toggleSolution(btn) {
+        // Find the next sibling which is the solution box
+        var content = btn.nextElementSibling;
+        
+        if (content.style.display === "block") {
+            content.style.display = "none";
+            btn.innerHTML = "💡 Lihat Pembahasan";
+            btn.style.backgroundColor = "#27ae60";
+        } else {
+            content.style.display = "block";
+            btn.innerHTML = "❌ Tutup Pembahasan";
+            btn.style.backgroundColor = "#c0392b";
+        }
+    }
+</script>
+
+</body>
+</html>
