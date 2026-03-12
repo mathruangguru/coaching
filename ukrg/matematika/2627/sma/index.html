@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coaching UKRG Matematika</title>
+    
+    <!-- MathJax Integration -->
+    <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -146,10 +161,9 @@
         .question-text {
             font-size: 1.05rem;
             margin-bottom: 15px;
-            color: #999;
-            font-style: italic;
-            text-align: center;
-            padding: 30px 0;
+            color: #333;
+            text-align: left;
+            padding: 10px 0;
         }
 
         .question-meta {
@@ -162,6 +176,23 @@
             padding: 5px 12px;
             border-radius: 4px;
             border-left: 3px solid var(--secondary-color);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option {
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
         }
 
         @media print {
@@ -195,18 +226,338 @@
     <!-- TAB 1: ALJABAR & FUNGSI -->
     <div id="tab-aljabar" class="tab-content active">
         
-        <div class="section-title">Soal 1: Eksponen dan Logaritma</div>
-        <div class="question-card">
-            <div class="question-meta">Konteks: Pertumbuhan Bakteri dan Peluruhan Obat</div>
+        <div class="section-title">Modul Pembelajaran: Eksponen dan Logaritma</div>
+        
+        <!-- Rangkuman Materi -->
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Rangkuman Materi</div>
             <div class="question-text">
-                [ Tempat input soal eksponensial & rasio antibiotik akan diletakkan di sini ]
+                <h4 style="color: var(--primary-color); margin-bottom: 5px;">A. Eksponen (Bilangan Berpangkat)</h4>
+                <p>Eksponen adalah bentuk perkalian berulang dari suatu bilangan. Bentuk umumnya adalah \(a^n = a \times a \times \dots \times a\) (sebanyak \(n\) kali), di mana \(a\) adalah basis dan \(n\) adalah pangkat (eksponen).</p>
+                <strong>Sifat-sifat Operasi Eksponen:</strong>
+                <ol style="margin-top: 5px; margin-bottom: 20px;">
+                    <li>\(a^m \cdot a^n = a^{m+n}\)</li>
+                    <li>\(\frac{a^m}{a^n} = a^{m-n}\) (untuk \(a \neq 0\))</li>
+                    <li>\((a^m)^n = a^{m \cdot n}\)</li>
+                    <li>\((a \cdot b)^n = a^n \cdot b^n\)</li>
+                    <li>\(\left(\frac{a}{b}\right)^n = \frac{a^n}{b^n}\) (untuk \(b \neq 0\))</li>
+                    <li>\(a^0 = 1\) (untuk \(a \neq 0\))</li>
+                    <li>\(a^{-n} = \frac{1}{a^n}\) (untuk \(a \neq 0\))</li>
+                    <li>\(a^{\frac{m}{n}} = \sqrt[n]{a^m}\)</li>
+                </ol>
+
+                <h4 style="color: var(--primary-color); margin-bottom: 5px;">B. Logaritma</h4>
+                <p>Logaritma adalah invers (kebalikan) dari operasi eksponen. Jika \(a^c = b\), maka bentuk logaritmanya ditulis sebagai:</p>
+                \[ {}^a\log b = c \]
+                <p>Dengan syarat: \(a > 0\), \(a \neq 1\) (basis), dan \(b > 0\) (numerus).</p>
+                <strong>Sifat-sifat Operasi Logaritma:</strong>
+                <ol style="margin-top: 5px; margin-bottom: 20px;">
+                    <li>\({}^a\log 1 = 0\) dan \({}^a\log a = 1\)</li>
+                    <li>\({}^a\log (b \cdot c) = {}^a\log b + {}^a\log c\)</li>
+                    <li>\({}^a\log \left(\frac{b}{c}\right) = {}^a\log b - {}^a\log c\)</li>
+                    <li>\({}^a\log (b^n) = n \cdot {}^a\log b\)</li>
+                    <li>\({}^a\log b \cdot {}^b\log c = {}^a\log c\) \quad (Sifat Rantai)</li>
+                    <li>\({}^a\log b = \frac{{}^c\log b}{{}^c\log a}\) \quad (Ubah Basis)</li>
+                    <li>\(a^{{}^a\log b} = b\)</li>
+                    <li>\({}^{a^m}\log (b^n) = \frac{n}{m} \cdot {}^a\log b\)</li>
+                </ol>
+                <p><em>Catatan:</em> Grafik fungsi \(y = 2^x\) dan \(y = {}^2\log x\) merupakan cerminan satu sama lain terhadap garis \(y = x\).</p>
+                
+                <!-- Grafik Canvas -->
+                <canvas id="mathGraph" width="400" height="400" style="background: white; border: 1px solid #ccc; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></canvas>
+            </div>
+        </div>
+
+        <!-- Bagian 2: Latihan Soal -->
+        <h3 style="color: var(--primary-color); margin-top: 40px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Bagian 2: Latihan Soal</h3>
+
+        <!-- Level 1 -->
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 1: Konsep Dasar | Soal 1</div>
+            <div class="question-text">
+                Bentuk sederhana dari \(\frac{a^4 \cdot b^{-3} \cdot c^2}{a^{-2} \cdot b^2 \cdot c^5}\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(\frac{a^2}{b^5 c^3}\)</div>
+                <div class="option">B. \(\frac{a^6}{b^5 c^3}\)</div>
+                <div class="option">C. \(a^6 b^5 c^3\)</div>
+                <div class="option">D. \(\frac{a^6 b^5}{c^3}\)</div>
+                <div class="option">E. \(\frac{a^2 b^1}{c^3}\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 1: Konsep Dasar | Soal 2</div>
+            <div class="question-text">
+                Hasil dari \(81^{\frac{3}{4}} - 27^{\frac{1}{3}}\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 24</div>
+                <div class="option">B. 18</div>
+                <div class="option">C. 30</div>
+                <div class="option">D. 12</div>
+                <div class="option">E. 9</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 1: Konsep Dasar | Soal 3</div>
+            <div class="question-text">
+                Bentuk eksponen \(3^4 = 81\) jika diubah ke dalam bentuk logaritma menjadi...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \({}^4\log 3 = 81\)</div>
+                <div class="option">B. \({}^3\log 81 = 4\)</div>
+                <div class="option">C. \({}^{81}\log 3 = 4\)</div>
+                <div class="option">D. \({}^4\log 81 = 3\)</div>
+                <div class="option">E. \({}^3\log 4 = 81\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 1: Konsep Dasar | Soal 4</div>
+            <div class="question-text">
+                Nilai dari \({}^2\log 48 + {}^2\log 6 - {}^2\log 9\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 2</div>
+                <div class="option">B. 3</div>
+                <div class="option">C. 4</div>
+                <div class="option">D. 5</div>
+                <div class="option">E. 6</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 1: Konsep Dasar | Soal 5</div>
+            <div class="question-text">
+                Nilai \(x\) yang memenuhi persamaan \(2^{x-3} = 32\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 5</div>
+                <div class="option">B. 6</div>
+                <div class="option">C. 7</div>
+                <div class="option">D. 8</div>
+                <div class="option">E. 9</div>
+            </div>
+        </div>
+
+        <!-- Level 2 -->
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 2: Medium | Soal 6</div>
+            <div class="question-text">
+                Himpunan penyelesaian dari persamaan eksponen \(3^{x^2 - 4x + 3} = 1\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(\{1, 3\}\)</div>
+                <div class="option">B. \(\{-1, -3\}\)</div>
+                <div class="option">C. \(\{0, 3\}\)</div>
+                <div class="option">D. \(\{1, 4\}\)</div>
+                <div class="option">E. \(\{-1, 3\}\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 2: Medium | Soal 7</div>
+            <div class="question-text">
+                Jika diketahui \({}^2\log 3 = p\) dan \({}^2\log 5 = q\), maka nilai dari \({}^2\log 45\) dinyatakan dalam \(p\) dan \(q\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(p^2 + q\)</div>
+                <div class="option">B. \(2p + q\)</div>
+                <div class="option">C. \(p + 2q\)</div>
+                <div class="option">D. \(p + q^2\)</div>
+                <div class="option">E. \(2p + 2q\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 2: Medium | Soal 8</div>
+            <div class="question-text">
+                Nilai \(x\) yang memenuhi persamaan \({}^3\log(2x - 1) = 2\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 3</div>
+                <div class="option">B. 4</div>
+                <div class="option">C. 5</div>
+                <div class="option">D. 6</div>
+                <div class="option">E. 7</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 2: Medium | Soal 9</div>
+            <div class="question-text">
+                Penyelesaian dari \(25^{x+2} = 125^{x-1}\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 4</div>
+                <div class="option">B. 5</div>
+                <div class="option">C. 6</div>
+                <div class="option">D. 7</div>
+                <div class="option">E. 8</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 2: Medium | Soal 10</div>
+            <div class="question-text">
+                Nilai dari \(\frac{{}^3\log 5 \cdot {}^5\log 7 \cdot {}^7\log 81}{{}^2\log 16}\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 1</div>
+                <div class="option">B. 2</div>
+                <div class="option">C. 3</div>
+                <div class="option">D. 4</div>
+                <div class="option">E. 5</div>
+            </div>
+        </div>
+
+        <!-- Level 3 -->
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 3: HOTS | Soal 11</div>
+            <div class="question-text">
+                Himpunan penyelesaian dari persamaan \(2^{2x} - 6 \cdot 2^x + 8 = 0\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(\{1, 2\}\)</div>
+                <div class="option">B. \(\{2, 4\}\)</div>
+                <div class="option">C. \(\{1, 4\}\)</div>
+                <div class="option">D. \(\{0, 2\}\)</div>
+                <div class="option">E. \(\{-1, -2\}\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 3: HOTS | Soal 12</div>
+            <div class="question-text">
+                <strong>[Kultur Bakteri]</strong> Di sebuah laboratorium, bakteri galur A berkembang biak mengikuti fungsi \(N_A(t) = 1.000 \times 3^{0,5t}\), sedangkan bakteri galur B jumlahnya menyusut akibat antibiotik dengan fungsi \(N_B(t) = 9.000 \times 3^{-0,5t}\), dengan \(t\) dalam jam. Pada jam ke berapakah rasio populasi bakteri A terhadap bakteri B tepat mencapai angka 3?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 1 jam</div>
+                <div class="option">B. 2 jam</div>
+                <div class="option">C. 3 jam</div>
+                <div class="option">D. 4 jam</div>
+                <div class="option">E. 5 jam</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 3: HOTS | Soal 13</div>
+            <div class="question-text">
+                Jika \(x\) dan \(y\) memenuhi sistem persamaan \(3^{x+y} = 243\) dan \(2^{x-y} = 8\), maka nilai dari \(x \cdot y\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 3</div>
+                <div class="option">B. 4</div>
+                <div class="option">C. 5</div>
+                <div class="option">D. 6</div>
+                <div class="option">E. 8</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 3: HOTS | Soal 14</div>
+            <div class="question-text">
+                Tingkat kebisingan (dalam desibel) dirumuskan dengan \(TI = 10 \cdot \log\left(\frac{I}{I_0}\right)\). Jika intensitas bunyi klakson mobil A adalah 1.000 kali lebih besar dari intensitas bunyi mesin motor B, maka selisih tingkat kebisingan (TI) antara mobil A dan motor B adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 10 dB</div>
+                <div class="option">B. 20 dB</div>
+                <div class="option">C. 30 dB</div>
+                <div class="option">D. 100 dB</div>
+                <div class="option">E. 1000 dB</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 3: HOTS | Soal 15</div>
+            <div class="question-text">
+                <strong>[Peluruhan Zat]</strong> Sebuah reaktor menguji dua jenis zat radioaktif. Massa zat X menyusut perlahan dengan fungsi \(M_X(t) = 200 \times 4^{-0,2t}\) gram, sementara massa tumpukan produk sampingan Y bertambah dengan fungsi \(M_Y(t) = 50 \times 4^{0,3t}\) gram, dengan \(t\) dalam hari. Waktu yang dibutuhkan agar rasio massa zat Y terhadap zat X mencapai angka 16 adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 2 hari</div>
+                <div class="option">B. 4 hari</div>
+                <div class="option">C. 6 hari</div>
+                <div class="option">D. 8 hari</div>
+                <div class="option">E. 10 hari</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 3: HOTS | Soal 16</div>
+            <div class="question-text">
+                Batas-batas nilai \(x\) yang memenuhi pertidaksamaan \({}^{\frac{1}{2}}\log(x - 2) > -2\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(x < 6\)</div>
+                <div class="option">B. \(x > 2\)</div>
+                <div class="option">C. \(2 < x < 6\)</div>
+                <div class="option">D. \(x > 6\)</div>
+                <div class="option">E. \(0 < x < 6\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 3: HOTS | Soal 17</div>
+            <div class="question-text">
+                Waktu paruh dari isotop radioaktif Carbon-14 adalah sekitar 5.730 tahun. Suatu fosil kayu ditemukan hanya memiliki 12,5% dari jumlah Carbon-14 aslinya. Umur perkiraan fosil kayu tersebut adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 11.460 tahun</div>
+                <div class="option">B. 17.190 tahun</div>
+                <div class="option">C. 22.920 tahun</div>
+                <div class="option">D. 28.650 tahun</div>
+                <div class="option">E. 34.380 tahun</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 3: HOTS | Soal 18</div>
+            <div class="question-text">
+                <strong>[Urbanisasi Kota]</strong> Berdasarkan sensus terbaru, penduduk di Kota P bertambah secara eksponensial mengikuti fungsi \(P(t) = 120.000 \times 2^{0,05t}\). Sebaliknya, sebuah kota industri baru Q tumbuh pesat dengan fungsi \(Q(t) = 15.000 \times 2^{0,15t}\), dengan \(t\) dalam tahun. Setelah berapa tahunkah populasi di kota Q akan menjadi persis 2 kali lipat dari populasi di kota P?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 10 tahun</div>
+                <div class="option">B. 20 tahun</div>
+                <div class="option">C. 30 tahun</div>
+                <div class="option">D. 40 tahun</div>
+                <div class="option">E. 50 tahun</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 3: HOTS | Soal 19</div>
+            <div class="question-text">
+                Penyelesaian dari sistem persamaan logaritma \({}^x\log y = 2\) dan \(x \cdot y = 27\) adalah \((x, y)\). Nilai dari \(x + y\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 9</div>
+                <div class="option">B. 10</div>
+                <div class="option">C. 11</div>
+                <div class="option">D. 12</div>
+                <div class="option">E. 13</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level 3: HOTS | Soal 20</div>
+            <div class="question-text">
+                Jika diketahui \(\log 2 = a\) dan \(\log 3 = b\), maka nilai dari \(\log 120\) setara dengan...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(2a + b + 1\)</div>
+                <div class="option">B. \(2a + b + 10\)</div>
+                <div class="option">C. \(a + 2b + 1\)</div>
+                <div class="option">D. \(a + b + 2\)</div>
+                <div class="option">E. \(2a + 2b + 1\)</div>
             </div>
         </div>
 
         <div class="section-title">Soal 2: Matematika Keuangan</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Perencanaan Dana Pensiun (Anuitas, Bunga Majemuk, Inflasi)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal logaritma & bunga majemuk akan diletakkan di sini ]
             </div>
         </div>
@@ -214,7 +565,7 @@
         <div class="section-title">Soal 5: Aljabar / Sistem Persamaan</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Campuran Larutan (Persentase & Perbandingan)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal sistem perbandingan larutan HCL akan diletakkan di sini ]
             </div>
         </div>
@@ -222,7 +573,7 @@
         <div class="section-title">Soal 6: Fungsi Komposisi</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Rantai Pasokan (Harga Gabah hingga Harga Ritel)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal fungsi komposisi g(f(x)) akan diletakkan di sini ]
             </div>
         </div>
@@ -235,7 +586,7 @@
         <div class="section-title">Soal 3: Vektor & Aturan Cosinus</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Perpindahan Resultan Drone di Lapangan Terbuka</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal vektor dan perhitungan jarak tempuh akan diletakkan di sini ]
             </div>
         </div>
@@ -243,7 +594,7 @@
         <div class="section-title">Soal 4: Trigonometri</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Pengukuran Topografi (Sudut Elevasi Menara)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal tinggi menara & sudut elevasi akan diletakkan di sini ]
             </div>
         </div>
@@ -251,7 +602,7 @@
         <div class="section-title">Soal 7: Geometri Analitik</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Posisi Pusat Gempa (Titik Potong Persamaan Lingkaran)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal irisan dua lingkaran akan diletakkan di sini ]
             </div>
         </div>
@@ -259,7 +610,7 @@
         <div class="section-title">Soal 10: Geometri Dimensi Tiga</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Jarak Titik ke Bidang dalam Kubus</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal jarak titik A ke bidang BDP pada kubus akan diletakkan di sini ]
             </div>
         </div>
@@ -267,7 +618,7 @@
         <div class="section-title">Soal 11: Transformasi Geometri</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Desain Grafis (Komposisi Rotasi dan Pencerminan)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal matriks transformasi ekuivalen akan diletakkan di sini ]
             </div>
         </div>
@@ -280,7 +631,7 @@
         <div class="section-title">Soal 12: Limit & Kekontinuan Fungsi</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Fungsi Biaya Pengiriman (Fungsi Sepotong/Piecewise)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal analisis limit kiri dan kanan akan diletakkan di sini ]
             </div>
         </div>
@@ -288,7 +639,7 @@
         <div class="section-title">Soal 13: Aplikasi Turunan (Optimasi)</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Efisiensi Kemasan (Luas Permukaan Minimum Tabung)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal nilai minimum turunan pertama akan diletakkan di sini ]
             </div>
         </div>
@@ -296,7 +647,7 @@
         <div class="section-title">Soal 14: Luas Daerah (Integral / Geometri)</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Desain Taman (Daerah Dibatasi Dua Kurva Lingkaran)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal perhitungan luas di antara dua kurva akan diletakkan di sini ]
             </div>
         </div>
@@ -309,7 +660,7 @@
         <div class="section-title">Soal 8: Statistika (Data Bivariat)</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Interpretasi Persamaan Regresi dan Koefisien Determinasi</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal interpretasi R-square akan diletakkan di sini ]
             </div>
         </div>
@@ -317,7 +668,7 @@
         <div class="section-title">Soal 9: Logika Matematika</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Nilai Kebenaran dan Ingkaran (Implikasi)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal p -> q dan negasinya akan diletakkan di sini ]
             </div>
         </div>
@@ -325,7 +676,7 @@
         <div class="section-title">Soal 15: Peluang & Teorema Bayes</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Validitas Tes Kesehatan (Peluang Bersyarat)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal peluang kejadian saling bebas bersyarat akan diletakkan di sini ]
             </div>
         </div>
@@ -338,7 +689,7 @@
         <div class="section-title">Soal 16: Integrasi Teknologi (TPACK)</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Penggunaan GeoGebra sebagai Cognitive Tool</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal pedagogik penggunaan software dinamis akan diletakkan di sini ]
             </div>
         </div>
@@ -346,7 +697,7 @@
         <div class="section-title">Soal 17: Penanganan Miskonsepsi Siswa</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Mengatasi Gambler's Fallacy pada Materi Peluang</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal strategi guru mengatasi miskonsepsi empiris akan diletakkan di sini ]
             </div>
         </div>
@@ -354,7 +705,7 @@
         <div class="section-title">Soal 18: Analisis Logika Siswa</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Evaluasi Argumen pada Limit Pecahan Bersusun</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal evaluasi cara berfikir siswa (infinite continued fraction) akan diletakkan di sini ]
             </div>
         </div>
@@ -362,7 +713,7 @@
         <div class="section-title">Soal 19: Strategi Instruksional Efisien</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Pembekalan Cara Cepat & Konseptual pada Fungsi Invers</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal strategi mengajar efektif di bawah 1 menit akan diletakkan di sini ]
             </div>
         </div>
@@ -370,7 +721,7 @@
         <div class="section-title">Soal 20: Analisis Kesalahan Aljabar</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Tindak Lanjut Guru atas Pelanggaran Syarat Penyebut (Nol)</div>
-            <div class="question-text">
+            <div class="question-text" style="text-align: center;">
                 [ Tempat input soal evaluasi pencoretan aljabar yang invalid akan diletakkan di sini ]
             </div>
         </div>
@@ -399,6 +750,104 @@
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.className += " active";
     }
+
+    // Fungsi untuk menggambar grafik Eksponen dan Logaritma
+    function drawGraph() {
+        const canvas = document.getElementById('mathGraph');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+        
+        // Pengaturan Skala
+        const scale = 50; // 50 pixel per 1 unit matematika
+        const originX = 100; // Posisi (0,0) sumbu X di kanvas
+        const originY = 300; // Posisi (0,0) sumbu Y di kanvas
+        
+        ctx.clearRect(0, 0, width, height);
+        
+        // 1. Gambar Grid (Garis bantu)
+        ctx.strokeStyle = '#f0f0f0';
+        ctx.lineWidth = 1;
+        for(let i = 0; i < width; i += scale) {
+            ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, height); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(width, i); ctx.stroke();
+        }
+        
+        // 2. Gambar Sumbu X dan Y
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(0, originY); ctx.lineTo(width, originY); // Sumbu X
+        ctx.moveTo(originX, 0); ctx.lineTo(originX, height); // Sumbu Y
+        ctx.stroke();
+
+        // Label titik origin (0,0)
+        ctx.fillStyle = '#333';
+        ctx.font = '14px Arial';
+        ctx.fillText('0', originX - 15, originY + 15);
+        ctx.fillText('x', width - 15, originY - 10);
+        ctx.fillText('y', originX + 10, 15);
+
+        // 3. Simpan dan Ubah Koordinat Kanvas agar sesuai matematika (Y ke atas)
+        ctx.save();
+        ctx.translate(originX, originY);
+        ctx.scale(scale, -scale); 
+        
+        // 4. Gambar Garis Refleksi y = x (Abu-abu putus-putus)
+        ctx.strokeStyle = '#999';
+        ctx.lineWidth = 1.5 / scale;
+        ctx.setLineDash([5 / scale, 5 / scale]);
+        ctx.beginPath();
+        ctx.moveTo(-2, -2);
+        ctx.lineTo(5, 5);
+        ctx.stroke();
+        ctx.setLineDash([]); // Reset
+        
+        // 5. Gambar Fungsi Eksponen y = 2^x (Biru)
+        ctx.strokeStyle = '#3498db';
+        ctx.lineWidth = 2.5 / scale;
+        ctx.beginPath();
+        for (let x = -2; x <= 2.5; x += 0.05) {
+            let y = Math.pow(2, x);
+            if (x === -2) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // 6. Gambar Fungsi Logaritma y = ^2log(x) (Merah)
+        ctx.strokeStyle = '#e74c3c';
+        ctx.lineWidth = 2.5 / scale;
+        ctx.beginPath();
+        let started = false;
+        for (let x = 0.05; x <= 6; x += 0.05) {
+            let y = Math.log(x) / Math.log(2);
+            if (!started) { ctx.moveTo(x, y); started = true; }
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        
+        // Kembalikan koordinat normal
+        ctx.restore();
+
+        // 7. Berikan Teks Keterangan Fungsi
+        ctx.fillStyle = '#3498db';
+        ctx.font = 'bold 14px Arial';
+        ctx.fillText('y = 2ˣ', originX - 60, originY - 120);
+        
+        ctx.fillStyle = '#e74c3c';
+        ctx.font = 'bold 14px Arial';
+        ctx.fillText('y = ²log x', originX + 180, originY + 80);
+
+        ctx.fillStyle = '#999';
+        ctx.font = 'italic 14px Arial';
+        ctx.fillText('y = x', width - 40, 40);
+    }
+
+    // Jalankan render grafik saat halaman di-load
+    window.onload = function() {
+        drawGraph();
+    };
 </script>
 
 </body>
