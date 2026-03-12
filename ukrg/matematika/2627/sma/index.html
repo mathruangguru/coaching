@@ -53,7 +53,34 @@
             text-align: center;
             margin-bottom: 30px;
             border-bottom: 3px solid var(--secondary-color);
+            padding-top: 10px;
             padding-bottom: 20px;
+            position: relative;
+        }
+
+        .logo-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        .logo-right {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .logo-left, .logo-right {
+                position: static;
+                display: inline-block;
+                margin: 0 15px 15px;
+                height: 50px;
+            }
         }
 
         h1 {
@@ -209,6 +236,8 @@
 
 <div class="container">
     <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo-right">
         <h1>Coaching UKRG Matematika</h1>
         <div class="subtitle">Paket 1 | Tahun Ajaran 2025/2026</div>
         <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">Latihan menuju UKRG Matematika SMA</p>
