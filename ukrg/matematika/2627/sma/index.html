@@ -170,7 +170,7 @@
 
         .question-card {
             background: #fff;
-            border: 1px dashed #ccc; /* Diganti dashed agar terlihat seperti kerangka/kosongan */
+            border: 1px dashed #ccc; 
             border-radius: var(--border-radius);
             padding: 20px;
             margin-bottom: 20px;
@@ -255,9 +255,9 @@
     <!-- TAB 1: ALJABAR & FUNGSI -->
     <div id="tab-aljabar" class="tab-content active">
         
+        <!-- MODUL EKSPONEN & LOGARITMA -->
         <div class="section-title">Modul Pembelajaran: Eksponen dan Logaritma</div>
         
-        <!-- Rangkuman Materi -->
         <div class="question-card" style="border-style: solid;">
             <div class="question-meta">Bagian 1: Rangkuman Materi</div>
             <div class="question-text">
@@ -293,11 +293,10 @@
                 <p><em>Catatan:</em> Grafik fungsi \(y = 2^x\) dan \(y = {}^2\log x\) merupakan cerminan satu sama lain terhadap garis \(y = x\).</p>
                 
                 <!-- Grafik Canvas -->
-                <canvas id="mathGraph" width="400" height="400" style="background: white; border: 1px solid #ccc; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></canvas>
+                <canvas id="mathGraph" width="400" height="400" style="max-width: 100%; height: auto; background: white; border: 1px solid #ccc; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></canvas>
             </div>
         </div>
 
-        <!-- Bagian 2: Latihan Soal -->
         <h3 style="color: var(--primary-color); margin-top: 40px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Bagian 2: Latihan Soal</h3>
 
         <!-- Level 1 -->
@@ -583,13 +582,338 @@
             </div>
         </div>
 
-        <div class="section-title">Soal 2: Matematika Keuangan</div>
-        <div class="question-card">
-            <div class="question-meta">Konteks: Perencanaan Dana Pensiun (Anuitas, Bunga Majemuk, Inflasi)</div>
-            <div class="question-text" style="text-align: center;">
-                [ Tempat input soal logaritma & bunga majemuk akan diletakkan di sini ]
+
+        <!-- MODUL BARISAN, DERET, & MATEMATIKA KEUANGAN -->
+        <div class="section-title">Modul Pembelajaran: Barisan, Deret, dan Matematika Keuangan</div>
+        
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Rangkuman Materi</div>
+            <div class="question-text">
+                <h4 style="color: var(--primary-color); margin-bottom: 5px;">1. Barisan dan Deret Aritmetika</h4>
+                <p>Barisan aritmetika adalah barisan bilangan yang memiliki selisih (beda) yang tetap antara dua suku yang berurutan.</p>
+                <ul style="margin-top: 5px; margin-bottom: 10px;">
+                    <li><strong>Suku ke-\(n\) (\(U_n\)):</strong> \(U_n = a + (n - 1)b\)</li>
+                    <li><strong>Jumlah \(n\) suku pertama (\(S_n\)):</strong> \(S_n = \frac{n}{2}(2a + (n - 1)b) = \frac{n}{2}(a + U_n)\)</li>
+                </ul>
+                <p style="font-size: 0.9em; color: #666;"><em>Keterangan:</em> \(a =\) suku pertama, \(b =\) beda (\(U_n - U_{n-1}\)).</p>
+
+                <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 5px;">2. Barisan dan Deret Geometri</h4>
+                <p>Barisan geometri adalah barisan bilangan yang memiliki rasio (perbandingan) yang tetap antara dua suku yang berurutan.</p>
+                <ul style="margin-top: 5px; margin-bottom: 10px;">
+                    <li><strong>Suku ke-\(n\) (\(U_n\)):</strong> \(U_n = a \cdot r^{n-1}\)</li>
+                    <li><strong>Jumlah \(n\) suku pertama (\(S_n\)):</strong> \(S_n = \frac{a(r^n - 1)}{r - 1}\) untuk \(r > 1\), atau \(S_n = \frac{a(1 - r^n)}{1 - r}\) untuk \(r < 1\)</li>
+                    <li><strong>Deret Geometri Tak Hingga:</strong> \(S_{\infty} = \frac{a}{1 - r}\) (syarat: \(-1 < r < 1\))</li>
+                </ul>
+                <p style="font-size: 0.9em; color: #666;"><em>Keterangan:</em> \(a =\) suku pertama, \(r =\) rasio (\(U_n / U_{n-1}\)).</p>
+
+                <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 5px;">3. Matematika Keuangan</h4>
+                <p>Matematika keuangan mengaplikasikan konsep barisan dan deret pada instrumen keuangan seperti bunga, pertumbuhan, dan anuitas.</p>
+                
+                <p><strong>a. Bunga Tunggal</strong> (Bunga hanya dihitung dari modal awal)</p>
+                \[ M_n = M_0(1 + n \cdot i) \]
+
+                <p><strong>b. Bunga Majemuk</strong> (Bunga berbunga; bunga dihitung dari modal terakhir)<br>
+                Berikut adalah ilustrasi nilai uang terhadap waktu pada sistem bunga majemuk:</p>
+
+                <!-- Grafik Canvas Bunga Majemuk -->
+                <canvas id="financeGraph" style="width: 100%; height: auto; background: white; border: 1px solid #ccc; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></canvas>
+
+                <p>Rumus Modal Akhir:</p>
+                \[ M_n = M_0(1 + i)^n \]
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 20px;"><em>Keterangan:</em> \(M_0 =\) Modal awal, \(M_n =\) Modal akhir, \(i =\) suku bunga per periode, \(n =\) banyak periode.</p>
+
+                <p><strong>c. Anuitas</strong> (Pembayaran berkala dengan jumlah yang sama yang terdiri dari angsuran pokok dan bunga)</p>
+                \[ A = M \cdot \frac{i(1+i)^n}{(1+i)^n - 1} \]
+                \[ A = a_n + b_n \]
+                <p style="font-size: 0.9em; color: #666;"><em>Keterangan:</em> \(A =\) Anuitas, \(M =\) Pinjaman awal, \(a_n =\) angsuran ke-\(n\), \(b_n =\) bunga ke-\(n\).</p>
             </div>
         </div>
+
+        <h3 style="color: var(--primary-color); margin-top: 40px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Bagian 2: Latihan Soal</h3>
+
+        <!-- Level Basic -->
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 1</div>
+            <div class="question-text">
+                Diketahui barisan aritmetika: \(2, 5, 8, 11, \dots\) Suku ke-\(15\) dari barisan tersebut adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 41</div>
+                <div class="option">B. 42</div>
+                <div class="option">C. 44</div>
+                <div class="option">D. 45</div>
+                <div class="option">E. 47</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 2</div>
+            <div class="question-text">
+                Diketahui barisan geometri: \(3, 6, 12, 24, \dots\) Suku ke-\(6\) dari barisan tersebut adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 48</div>
+                <div class="option">B. 96</div>
+                <div class="option">C. 192</div>
+                <div class="option">D. 384</div>
+                <div class="option">E. 768</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 3</div>
+            <div class="question-text">
+                Pak Budi menabung uang sebesar Rp1.000.000,00 di bank dengan sistem bunga tunggal sebesar \(10\%\) per tahun. Besar bunga yang didapatkan Pak Budi setelah menabung selama 3 tahun adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp100.000,00</div>
+                <div class="option">B. Rp200.000,00</div>
+                <div class="option">C. Rp300.000,00</div>
+                <div class="option">D. Rp331.000,00</div>
+                <div class="option">E. Rp1.300.000,00</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 4</div>
+            <div class="question-text">
+                Ibu Ani menginvestasikan modal sebesar Rp2.000.000,00 dengan suku bunga majemuk \(5\%\) per tahun. Total modal Ibu Ani pada akhir tahun ke-2 adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp2.100.000,00</div>
+                <div class="option">B. Rp2.200.000,00</div>
+                <div class="option">C. Rp2.205.000,00</div>
+                <div class="option">D. Rp2.315.250,00</div>
+                <div class="option">E. Rp2.400.000,00</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 5</div>
+            <div class="question-text">
+                Jumlah deret geometri tak hingga \(16 + 8 + 4 + 2 + \dots\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 24</div>
+                <div class="option">B. 30</div>
+                <div class="option">C. 32</div>
+                <div class="option">D. 64</div>
+                <div class="option">E. \(\infty\)</div>
+            </div>
+        </div>
+
+        <!-- Level Medium -->
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Menengah (Medium) | Soal 6</div>
+            <div class="question-text">
+                Diketahui suku ke-\(3\) dan suku ke-\(7\) dari sebuah barisan aritmetika berturut-turut adalah \(10\) dan \(26\). Jumlah \(10\) suku pertama dari barisan tersebut adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 180</div>
+                <div class="option">B. 200</div>
+                <div class="option">C. 210</div>
+                <div class="option">D. 220</div>
+                <div class="option">E. 240</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Menengah (Medium) | Soal 7</div>
+            <div class="question-text">
+                Seutas tali dipotong menjadi 5 bagian yang panjangnya membentuk barisan geometri. Jika tali terpendek adalah \(10\text{ cm}\) dan tali terpanjang adalah \(160\text{ cm}\), panjang tali mula-mula adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(310\text{ cm}\)</div>
+                <div class="option">B. \(320\text{ cm}\)</div>
+                <div class="option">C. \(330\text{ cm}\)</div>
+                <div class="option">D. \(340\text{ cm}\)</div>
+                <div class="option">E. \(350\text{ cm}\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Menengah (Medium) | Soal 8</div>
+            <div class="question-text">
+                Seseorang meminjam uang sebesar Rp10.000.000,00 di sebuah koperasi yang menerapkan suku bunga majemuk \(2\%\) per bulan. Jika tidak ada cicilan yang dibayarkan, besar hutang orang tersebut pada akhir bulan ke-5 adalah... (Gunakan petunjuk \((1,02)^5 \approx 1,1041\))
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp11.000.000,00</div>
+                <div class="option">B. Rp11.041.000,00</div>
+                <div class="option">C. Rp11.200.000,00</div>
+                <div class="option">D. Rp12.041.000,00</div>
+                <div class="option">E. Rp12.200.000,00</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Menengah (Medium) | Soal 9</div>
+            <div class="question-text">
+                Suatu jenis bakteri dapat membelah diri menjadi dua setiap 20 menit. Jika pada awalnya terdapat 50 bakteri, banyak bakteri setelah dibiarkan selama 2 jam adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 800</div>
+                <div class="option">B. 1.600</div>
+                <div class="option">C. 3.200</div>
+                <div class="option">D. 6.400</div>
+                <div class="option">E. 12.800</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Menengah (Medium) | Soal 10</div>
+            <div class="question-text">
+                Harga sebuah mesin cetak menyusut sebesar \(10\%\) setiap tahunnya dari nilai buku awal tahun. Jika mesin tersebut dibeli dengan harga Rp100.000.000,00, nilai buku mesin tersebut setelah dipakai selama 3 tahun adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp70.000.000,00</div>
+                <div class="option">B. Rp72.900.000,00</div>
+                <div class="option">C. Rp81.000.000,00</div>
+                <div class="option">D. Rp90.000.000,00</div>
+                <div class="option">E. Rp133.100.000,00</div>
+            </div>
+        </div>
+
+        <!-- Level HOTS -->
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 11</div>
+            <div class="question-text">
+                Tiga buah bilangan membentuk barisan aritmetika dengan beda positif. Jika suku kedua dikurangi \(1\), maka ketiga bilangan tersebut akan membentuk barisan geometri yang jumlahnya \(14\). Nilai dari bilangan yang paling besar (suku ketiga) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 5</div>
+                <div class="option">B. 6</div>
+                <div class="option">C. 8</div>
+                <div class="option">D. 10</div>
+                <div class="option">E. 12</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 12</div>
+            <div class="question-text">
+                <strong>[Kasus 1]</strong> Pak Andi menempatkan dana untuk pendidikan anaknya pada instrumen investasi dengan suku bunga majemuk \(0,5\%\) per bulan. Mengingat laju inflasi biaya pendidikan, Pak Andi menghitung bahwa investasi akhirnya harus mencapai \(1,5\) kali lipat dari nilai awal sebelum ia mulai mencairkannya. Dengan mengasumsikan tidak ada setoran tambahan, berapa bulan waktu yang dibutuhkan hingga target tersebut tercapai? (Gunakan aproksimasi: \(\ln(1,5) \approx 0,405\) dan \(\ln(1,005) \approx 0,005\)).
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 79 bulan</div>
+                <div class="option">B. 80 bulan</div>
+                <div class="option">C. 81 bulan</div>
+                <div class="option">D. 82 bulan</div>
+                <div class="option">E. 85 bulan</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 13</div>
+            <div class="question-text">
+                Sebuah pinjaman sebesar Rp50.000.000,00 akan dilunasi dengan sistem anuitas bulanan sebesar Rp2.000.000,00. Jika suku bunga yang ditetapkan adalah \(1\%\) per bulan, sisa utang pinjaman tersebut setelah pembayaran anuitas kedua adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp48.500.000,00</div>
+                <div class="option">B. Rp47.000.000,00</div>
+                <div class="option">C. Rp46.985.000,00</div>
+                <div class="option">D. Rp46.000.000,00</div>
+                <div class="option">E. Rp45.515.000,00</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 14</div>
+            <div class="question-text">
+                Dalam sebuah gedung pertunjukan, pengaturan kursi penonton diatur sedemikian rupa sehingga baris paling depan memiliki 20 kursi, baris di belakangnya 24 kursi, baris berikutnya 28 kursi, dan seterusnya bertambah 4 kursi setiap barisnya. Terdapat total 15 baris kursi di gedung tersebut. Jika harga tiket adalah Rp50.000,00 per kursi dan pada suatu malam pertunjukan kursi terisi sebanyak \(80\%\), total pendapatan dari penjualan tiket pada malam tersebut adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp28.800.000,00</div>
+                <div class="option">B. Rp36.000.000,00</div>
+                <div class="option">C. Rp45.000.000,00</div>
+                <div class="option">D. Rp54.400.000,00</div>
+                <div class="option">E. Rp72.000.000,00</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 15</div>
+            <div class="question-text">
+                Sebuah bola karet dijatuhkan dari ketinggian \(10\text{ meter}\). Setiap kali bola menyentuh lantai, bola tersebut memantul kembali dengan ketinggian \(\frac{3}{4}\) dari ketinggian sebelumnya. Panjang lintasan bola seluruhnya sampai bola benar-benar berhenti berayun adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(40\text{ meter}\)</div>
+                <div class="option">B. \(60\text{ meter}\)</div>
+                <div class="option">C. \(70\text{ meter}\)</div>
+                <div class="option">D. \(80\text{ meter}\)</div>
+                <div class="option">E. \(90\text{ meter}\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 16</div>
+            <div class="question-text">
+                <strong>[Kasus 2]</strong> Kak Lisa membuka rekening tabungan khusus modal usaha dengan sistem suku bunga majemuk \(0,6\%\) per bulan. Lisa menargetkan saldo akhirnya harus bertumbuh menjadi \(1,8\) kali lipat dari modal setoran awalnya agar cukup untuk membuka toko. Jika ia mendiamkan saja tabungan tersebut tanpa menyetor lagi maupun menarik dana, berapakah perkiraan waktu yang diperlukan hingga target modal tersebut tercapai? (Gunakan aproksimasi: \(\ln(1,8) \approx 0,588\) dan \(\ln(1,006) \approx 0,006\)).
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 90 bulan</div>
+                <div class="option">B. 96 bulan</div>
+                <div class="option">C. 98 bulan</div>
+                <div class="option">D. 100 bulan</div>
+                <div class="option">E. 102 bulan</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 17</div>
+            <div class="question-text">
+                Sebuah perusahaan rintisan mencatat pendapatan kotor pada tahun pertamanya beroperasi sebesar Rp1.000.000.000,00. Karena strategi pemasaran yang agresif, pendapatan kotor ini diestimasikan selalu naik sebesar \(20\%\) dari pendapatan tahun sebelumnya. Total estimasi pendapatan kotor perusahaan tersebut selama 5 tahun pertama beroperasi adalah... (Gunakan petunjuk \((1,2)^5 \approx 2,48832\))
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp5.000.000.000,00</div>
+                <div class="option">B. Rp6.441.600.000,00</div>
+                <div class="option">C. Rp7.441.600.000,00</div>
+                <div class="option">D. Rp8.929.920.000,00</div>
+                <div class="option">E. Rp12.441.600.000,00</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 18</div>
+            <div class="question-text">
+                Keuntungan bulanan sebuah toko serba ada diasumsikan terus bertambah secara konstan (membentuk barisan aritmetika) setiap bulannya. Diketahui keuntungan pada bulan pertama adalah Rp500.000,00. Jika total seluruh keuntungan selama 6 bulan pertama beroperasi mencapai Rp4.500.000,00, maka besar keuntungan toko tersebut khusus pada bulan ke-12 saja adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp1.400.000,00</div>
+                <div class="option">B. Rp1.500.000,00</div>
+                <div class="option">C. Rp1.600.000,00</div>
+                <div class="option">D. Rp1.700.000,00</div>
+                <div class="option">E. Rp2.000.000,00</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 19</div>
+            <div class="question-text">
+                <strong>[Kasus 3]</strong> Pak Haji Umar menempatkan dana untuk melunasi ongkos haji pada tabungan syariah dengan bagi hasil yang setara dengan suku bunga majemuk \(0,2\%\) per bulan. Akibat pelemahan kurs dan inflasi asrama haji, Umar memproyeksikan bahwa dananya harus mencapai \(1,3\) kali lipat dari nilai awal supaya cukup melunasi biaya keberangkatan nanti. Berapa bulan masa tunggu finansial yang harus dilewati hingga dana tabungan tersebut mencapai target proyeksi, dengan asumsi tidak ada setoran rutin bulanan tambahan? (Gunakan aproksimasi: \(\ln(1,3) \approx 0,262\) dan \(\ln(1,002) \approx 0,002\)).
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 125 bulan</div>
+                <div class="option">B. 131 bulan</div>
+                <div class="option">C. 135 bulan</div>
+                <div class="option">D. 140 bulan</div>
+                <div class="option">E. 150 bulan</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 20</div>
+            <div class="question-text">
+                Seseorang berencana menabung sebesar Rp1.000.000,00 secara rutin setiap awal bulan di sebuah lembaga keuangan yang memberikan suku bunga majemuk \(1\%\) per bulan. Total uang yang akan terkumpul tepat pada akhir bulan ke-12 adalah... (Ini merupakan konsep nilai masa depan dari anuitas awal. Gunakan petunjuk \((1,01)^{12} \approx 1,1268\))
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Rp12.000.000,00</div>
+                <div class="option">B. Rp12.120.000,00</div>
+                <div class="option">C. Rp12.680.000,00</div>
+                <div class="option">D. Rp12.806.800,00</div>
+                <div class="option">E. Rp13.000.000,00</div>
+            </div>
+        </div>
+
 
         <div class="section-title">Soal 5: Aljabar / Sistem Persamaan</div>
         <div class="question-card">
@@ -873,10 +1197,138 @@
         ctx.fillText('y = x', width - 40, 40);
     }
 
+    // Fungsi untuk menggambar grafik Ilustrasi Bunga Majemuk (Responsif)
+    function drawFinanceGraph() {
+        const canvas = document.getElementById('financeGraph');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        // Set dimensi internal kanvas agar sesuai dengan ukuran tampilan
+        // Tinggi dibuat tetap 250px agar cukup ruang vertikal
+        const displayWidth = canvas.clientWidth;
+        const displayHeight = 250; 
+
+        // Hanya ubah ukuran jika berbeda untuk menghindari kedipan
+        if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
+            canvas.width = displayWidth;
+            canvas.height = displayHeight;
+        }
+
+        const width = canvas.width;
+        const height = canvas.height;
+        
+        ctx.clearRect(0, 0, width, height);
+
+        // Margin dinamis: lebih kecil di layar sempit
+        const marginX = width < 500 ? 20 : 50;
+        const startX = marginX;
+        const endX = width - marginX;
+        
+        const yAxis = height / 2 + 20;
+        
+        // Hitung posisi node secara proporsional
+        const totalSpan = endX - startX;
+        const step = totalSpan / 4.5; // Pembagi disesuaikan agar 'n' ada di ujung
+
+        // Gambar garis timeline horizontal
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(startX, yAxis);
+        ctx.lineTo(endX + 15, yAxis); // arrow tip length
+        // arrow head
+        ctx.lineTo(endX + 5, yAxis - 5);
+        ctx.moveTo(endX + 15, yAxis);
+        ctx.lineTo(endX + 5, yAxis + 5);
+        ctx.stroke();
+
+        ctx.fillStyle = '#333';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'right';
+        // Posisikan label sumbu di bawah ujung panah
+        ctx.fillText('Waktu (Periode)', endX + 15, yAxis + 45);
+
+        const nodes = [
+            { x: startX, label: '0', val: 'M₀' },
+            { x: startX + step, label: '1', val: 'M₀(1+i)' },
+            { x: startX + 2*step, label: '2', val: 'M₀(1+i)²' },
+            { x: endX - 10, label: 'n', val: 'M₀(1+i)ⁿ' } // Posisi 'n' di dekat ujung
+        ];
+
+        // Gambar titik-titik (ticks) dan label
+        ctx.textAlign = 'center';
+        nodes.forEach((node, index) => {
+            ctx.beginPath();
+            ctx.moveTo(node.x, yAxis - 5);
+            ctx.lineTo(node.x, yAxis + 5);
+            ctx.stroke();
+
+            ctx.fillText(node.label, node.x, yAxis + 25);
+            
+            // Sesuaikan ukuran font untuk nilai jika layar sempit
+            if (width < 450) {
+                 ctx.font = '11px Arial';
+            } else {
+                 ctx.font = '14px Arial';
+            }
+            ctx.fillText(node.val, node.x, yAxis - 15);
+            ctx.font = '14px Arial'; // reset font
+        });
+
+        // Gambar dots (...) di antara node 2 dan n
+        const dotX = (nodes[2].x + nodes[3].x) / 2;
+        ctx.fillText('...', dotX, yAxis + 25);
+
+        // Gambar lengkungan panah (Arcs)
+        ctx.strokeStyle = '#3498db';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([5, 5]);
+
+        function drawArc(x1, x2) {
+            ctx.beginPath();
+            const midX = (x1 + x2) / 2;
+            // Control point Y position adjusted for new height
+            const controlY = yAxis - 70; 
+            ctx.moveTo(x1, yAxis - 30);
+            ctx.quadraticCurveTo(midX, controlY, x2 - 5, yAxis - 30);
+            ctx.stroke();
+            
+            // arrow head for arc
+            ctx.beginPath();
+            ctx.moveTo(x2 - 5, yAxis - 30);
+            ctx.lineTo(x2 - 12, yAxis - 38);
+            ctx.moveTo(x2 - 5, yAxis - 30);
+            ctx.lineTo(x2 - 14, yAxis - 28);
+            ctx.stroke();
+
+            ctx.fillStyle = '#3498db';
+            // Sesuaikan font arc
+            if (width < 450) {
+                 ctx.font = '10px Arial';
+            } else {
+                 ctx.font = '12px Arial';
+            }
+            // Posisi teks arc
+            ctx.fillText('× (1+i)', midX, yAxis - 55);
+            ctx.font = '14px Arial'; // reset
+        }
+
+        drawArc(nodes[0].x, nodes[1].x);
+        drawArc(nodes[1].x, nodes[2].x);
+
+        ctx.setLineDash([]); // Reset
+    }
+
     // Jalankan render grafik saat halaman di-load
     window.onload = function() {
         drawGraph();
+        drawFinanceGraph();
     };
+
+    // Gambar ulang grafik saat ukuran jendela berubah (responsif)
+    window.addEventListener('resize', function() {
+        drawFinanceGraph();
+    });
 </script>
 
 </body>
