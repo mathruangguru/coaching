@@ -936,13 +936,312 @@
     <!-- TAB 2: GEOMETRI & TRIGONOMETRI -->
     <div id="tab-geometri" class="tab-content">
         
-        <div class="section-title">Soal 3: Vektor & Aturan Cosinus</div>
-        <div class="question-card">
-            <div class="question-meta">Konteks: Perpindahan Resultan Drone di Lapangan Terbuka</div>
-            <div class="question-text" style="text-align: center;">
-                [ Tempat input soal vektor dan perhitungan jarak tempuh akan diletakkan di sini ]
+        <!-- MODUL SKALAR DAN VEKTOR -->
+        <div class="section-title">Modul Pembelajaran: Skalar dan Vektor</div>
+        
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Rangkuman Materi Vektor</div>
+            <div class="question-text">
+                <h4 style="color: var(--primary-color); margin-bottom: 5px;">1. Definisi Skalar dan Vektor</h4>
+                <ul style="margin-top: 5px; margin-bottom: 10px;">
+                    <li><strong>Skalar:</strong> Besaran yang hanya memiliki nilai (besar) saja. Contoh: massa, waktu, suhu, jarak, kelajuan.</li>
+                    <li><strong>Vektor:</strong> Besaran yang memiliki nilai (besar) dan juga arah. Contoh: perpindahan, kecepatan, percepatan, gaya, momentum.</li>
+                </ul>
+
+                <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 5px;">2. Notasi dan Komponen Vektor</h4>
+                <p>Sebuah vektor biasanya disimbolkan dengan huruf yang diberi tanda panah di atasnya (\(\vec{v}\)) atau dicetak tebal (\(\mathbf{v}\)).<br>
+                Dalam bidang 2 Dimensi, vektor dapat dituliskan dalam komponen sumbu \(x\) dan \(y\):</p>
+                \[ \vec{v} = v_x \hat{i} + v_y \hat{j} \quad \text{atau} \quad \vec{v} = \begin{pmatrix} v_x \\ v_y \end{pmatrix} \]
+                <p>Besar (panjang) dari vektor \(\vec{v}\) dirumuskan dengan:</p>
+                \[ |\vec{v}| = \sqrt{v_x^2 + v_y^2} \]
+
+                <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 5px;">3. Operasi Penjumlahan Vektor</h4>
+                <p>Secara grafis, penjumlahan dua vektor \(\vec{a}\) dan \(\vec{b}\) dapat dilakukan dengan dua metode utama:</p>
+
+                <!-- Grafik Canvas Penjumlahan Vektor -->
+                <canvas id="vectorGraph" style="width: 100%; max-width: 600px; height: auto; background: white; border: 1px solid #ccc; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></canvas>
+
+                <p><strong>Menghitung Besar Resultan (Analitis):</strong><br>
+                Jika dua vektor memiliki titik pangkal yang sama dan diapit oleh sudut \(\theta\) (Aturan Jajar Genjang), besar resultannya adalah:</p>
+                \[ |\vec{R}| = \sqrt{|\vec{a}|^2 + |\vec{b}|^2 + 2|\vec{a}||\vec{b}|\cos\theta} \]
+                <p>Jika menggunakan Aturan Segitiga (ujung vektor pertama bertemu pangkal vektor kedua) dengan <strong>sudut dalam</strong> sebesar \(\alpha\):</p>
+                \[ |\vec{R}|^2 = |\vec{a}|^2 + |\vec{b}|^2 - 2|\vec{a}||\vec{b}|\cos\alpha \]
+                <p style="font-size: 0.9em; color: #666;"><em>(Catatan: Rumus aturan cosinus segitiga menggunakan tanda negatif karena \(\alpha = 180^\circ - \theta\))</em></p>
+
+                <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 5px;">4. Perkalian Vektor</h4>
+                <p><strong>Perkalian Titik (Dot Product):</strong> Menghasilkan nilai skalar.</p>
+                \[ \vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|\cos\theta \quad \text{atau} \quad \vec{a} \cdot \vec{b} = a_x b_x + a_y b_y + a_z b_z \]
             </div>
         </div>
+
+        <h3 style="color: var(--primary-color); margin-top: 40px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Bagian 2: Latihan Soal</h3>
+
+        <!-- Soal Vektor Basic -->
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 1</div>
+            <div class="question-text">
+                Di antara besaran-besaran berikut: Kecepatan, Jarak, Waktu, Gaya, dan Massa. Manakah yang merupakan kelompok besaran vektor?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Kecepatan dan Jarak</div>
+                <div class="option">B. Kecepatan dan Gaya</div>
+                <div class="option">C. Gaya dan Massa</div>
+                <div class="option">D. Jarak dan Waktu</div>
+                <div class="option">E. Waktu dan Massa</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 2</div>
+            <div class="question-text">
+                Diketahui vektor \(\vec{u} = 5\hat{i} - 12\hat{j}\). Tentukan panjang (besar) dari vektor \(\vec{u}\)!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 7</div>
+                <div class="option">B. 13</div>
+                <div class="option">C. 17</div>
+                <div class="option">D. 119</div>
+                <div class="option">E. 169</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 3</div>
+            <div class="question-text">
+                Diberikan vektor \(\vec{p} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}\) dan \(\vec{q} = \begin{pmatrix} -1 \\ 4 \end{pmatrix}\). Tentukan hasil dari \(2\vec{p} + \vec{q}\)!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(1\hat{i} + 7\hat{j}\)</div>
+                <div class="option">B. \(3\hat{i} + 10\hat{j}\)</div>
+                <div class="option">C. \(5\hat{i} + 2\hat{j}\)</div>
+                <div class="option">D. \(3\hat{i} + 7\hat{j}\)</div>
+                <div class="option">E. \(4\hat{i} + 10\hat{j}\)</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 4</div>
+            <div class="question-text">
+                Tentukan vektor satuan yang searah dengan vektor \(\vec{v} = 3\hat{i} + 4\hat{j}\)!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(\frac{3}{5}\hat{i} + \frac{4}{5}\hat{j}\)</div>
+                <div class="option">B. \(\frac{4}{5}\hat{i} + \frac{3}{5}\hat{j}\)</div>
+                <div class="option">C. \(\frac{3}{7}\hat{i} + \frac{4}{7}\hat{j}\)</div>
+                <div class="option">D. \(3\hat{i} + 4\hat{j}\)</div>
+                <div class="option">E. \(\frac{1}{5}\hat{i} + \frac{1}{5}\hat{j}\)</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 5</div>
+            <div class="question-text">
+                Hitunglah perkalian titik (dot product) antara vektor \(\vec{A} = 2\hat{i} + 3\hat{j}\) dan \(\vec{B} = 4\hat{i} - \hat{j}\)!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 5</div>
+                <div class="option">B. 8</div>
+                <div class="option">C. 11</div>
+                <div class="option">D. -5</div>
+                <div class="option">E. 10</div>
+            </div>
+        </div>
+
+        <!-- Soal Vektor Medium -->
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 6</div>
+            <div class="question-text">
+                Dua buah vektor gaya masing-masing besarnya 10 N dan 15 N mengapit sudut \(60^\circ\). Hitunglah besar resultan kedua gaya tersebut!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(5\sqrt{7} \text{ N}\)</div>
+                <div class="option">B. \(5\sqrt{13} \text{ N}\)</div>
+                <div class="option">C. \(5\sqrt{19} \text{ N}\)</div>
+                <div class="option">D. \(25 \text{ N}\)</div>
+                <div class="option">E. \(35 \text{ N}\)</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 7</div>
+            <div class="question-text">
+                Diketahui \(\vec{u} = 3\hat{i} + \hat{j}\) dan \(\vec{v} = 2\hat{i} - 4\hat{j}\). Tentukan nilai cosinus sudut yang dibentuk oleh kedua vektor tersebut!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(\frac{\sqrt{2}}{5}\)</div>
+                <div class="option">B. \(\frac{\sqrt{2}}{10}\)</div>
+                <div class="option">C. \(\frac{1}{10}\)</div>
+                <div class="option">D. \(-\frac{\sqrt{2}}{10}\)</div>
+                <div class="option">E. \(\frac{1}{5}\)</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 8</div>
+            <div class="question-text">
+                Diberikan tiga titik dalam ruang 3 dimensi: \(A(1, 2, 3)\), \(B(4, -1, 5)\), dan \(C(x, y, z)\). Jika vektor \(\vec{AB}\) sama dengan vektor \(\vec{BC}\), tentukan koordinat titik \(C\)!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \((5, 1, 8)\)</div>
+                <div class="option">B. \((7, -4, 7)\)</div>
+                <div class="option">C. \((3, -3, 2)\)</div>
+                <div class="option">D. \((8, -2, 6)\)</div>
+                <div class="option">E. \((7, 4, 7)\)</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 9</div>
+            <div class="question-text">
+                Sebuah perahu menyeberangi sungai dengan kecepatan \(4 \text{ m/s}\) tegak lurus terhadap arus sungai. Jika kecepatan arus sungai adalah \(3 \text{ m/s}\), berapakah kecepatan resultan perahu relatif terhadap pengamat di tepi sungai?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 1 m/s</div>
+                <div class="option">B. 5 m/s</div>
+                <div class="option">C. 7 m/s</div>
+                <div class="option">D. 12 m/s</div>
+                <div class="option">E. 25 m/s</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 10</div>
+            <div class="question-text">
+                Tentukan panjang proyeksi ortogonal vektor \(\vec{a} = 4\hat{i} - 2\hat{j} + 2\hat{k}\) pada vektor \(\vec{b} = 2\hat{i} - \hat{j} + 2\hat{k}\)!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(14/9\)</div>
+                <div class="option">B. \(14/3\)</div>
+                <div class="option">C. \(8/3\)</div>
+                <div class="option">D. \(7/3\)</div>
+                <div class="option">E. \(2\)</div>
+            </div>
+        </div>
+
+        <!-- Soal Vektor HOTS -->
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 11</div>
+            <div class="question-text">
+                Sebuah drone kargo terbang dari titik peluncuran. Drone tersebut terbang sejauh 12 km ke arah Timur, kemudian berbelok 5 km ke arah Utara. Setelah itu, drone naik secara vertikal lurus ke atas sejauh 84 km. Berapakah jarak lurus drone tersebut saat ini dari titik peluncuran?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 85 km</div>
+                <div class="option">B. 90 km</div>
+                <div class="option">C. 97 km</div>
+                <div class="option">D. 101 km</div>
+                <div class="option">E. 105 km</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 12</div>
+            <div class="question-text">
+                <strong>(Navigasi)</strong> Sebuah pesawat terbang lurus ke arah Timur sejauh 150 km. Karena menghindari awan badai, pilot memutar haluan pesawat sehingga menyimpang sebesar \(60^\circ\) ke arah Utara dari lintasan awal. Pesawat terbang di jalur yang baru ini sejauh 100 km. Berapa kilometer perpindahan lurus pesawat tersebut dari titik awal keberangkatannya?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(50\sqrt{7}\) km</div>
+                <div class="option">B. \(50\sqrt{13}\) km</div>
+                <div class="option">C. \(50\sqrt{19}\) km</div>
+                <div class="option">D. \(250\) km</div>
+                <div class="option">E. \(100\sqrt{3}\) km</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 13</div>
+            <div class="question-text">
+                Usaha (\(W\)) didefinisikan sebagai perkalian titik antara vektor gaya (\(\vec{F}\)) dan vektor perpindahan (\(\vec{s}\)). Sebuah objek ditarik dengan gaya \(\vec{F} = 3p\hat{i} + 2\hat{j} - \hat{k}\) (dalam Newton) dan mengalami perpindahan \(\vec{s} = 2\hat{i} - p\hat{j} + 5\hat{k}\) (dalam meter). Jika usaha total yang dilakukan adalah 13 Joule, tentukanlah nilai \(p\) yang mungkin!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 2.5</div>
+                <div class="option">B. 3.0</div>
+                <div class="option">C. 4.0</div>
+                <div class="option">D. 4.5</div>
+                <div class="option">E. 5.0</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 14</div>
+            <div class="question-text">
+                Tiga buah gaya \(\vec{F_1}\), \(\vec{F_2}\), dan \(\vec{F_3}\) bekerja pada sebuah titik materi dalam keadaan setimbang (\(\Sigma \vec{F} = 0\)). Jika \(\vec{F_1} = 10 \text{ N}\) searah sumbu \(x\) positif, dan \(\vec{F_2} = 20 \text{ N}\) membentuk sudut \(120^\circ\) terhadap \(\vec{F_1}\), tentukan besar dan arah vektor gaya \(\vec{F_3}\)!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(10\sqrt{3} \text{ N}\) ke atas</div>
+                <div class="option">B. \(10\sqrt{3} \text{ N}\) ke bawah</div>
+                <div class="option">C. \(10 \text{ N}\) ke bawah</div>
+                <div class="option">D. \(20 \text{ N}\) mendatar</div>
+                <div class="option">E. \(10\sqrt{2} \text{ N}\) serong</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 15</div>
+            <div class="question-text">
+                <strong>(Navigasi)</strong> Tim penjelajah hutan berjalan lurus ke arah Selatan sejauh 8 km. Tiba-tiba mereka menemukan tebing dan terpaksa membelok dari lintasan awalnya. Mereka membelok sebesar \(45^\circ\) ke arah Barat (dihitung dari arah lintasan Selatan semula) dan berjalan sejauh \(6\sqrt{2}\) km. Jarak lurus tim penjelajah saat ini dari titik awal keberangkatan adalah?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(2\sqrt{34}\) km</div>
+                <div class="option">B. \(2\sqrt{58}\) km</div>
+                <div class="option">C. \(10\) km</div>
+                <div class="option">D. \(14\) km</div>
+                <div class="option">E. \(4\sqrt{10}\) km</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 16</div>
+            <div class="question-text">
+                Sebuah benda bermassa \(M\) digantung dalam keadaan setimbang oleh dua utas tali. Tali pertama menarik serong ke atas dengan sudut kemiringan \(\alpha\) terhadap garis horizontal, sedangkan tali kedua menarik secara mendatar (horizontal). Rumuskan besar tegangan tali pertama (\(T_1\)) dalam variabel \(M\), percepatan gravitasi \(g\), dan \(\alpha\)!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(Mg \cos\alpha\)</div>
+                <div class="option">B. \(Mg \sin\alpha\)</div>
+                <div class="option">C. \(\frac{Mg}{\cos\alpha}\)</div>
+                <div class="option">D. \(\frac{Mg}{\sin\alpha}\)</div>
+                <div class="option">E. \(Mg \tan\alpha\)</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 17</div>
+            <div class="question-text">
+                Diketahui vektor \(\vec{p}\) dan \(\vec{q}\) membentuk sudut \(30^\circ\). Jika \(|\vec{p}| = 4\) dan \(|\vec{p} + \vec{q}| = \sqrt{21}\), maka tentukan panjang vektor \(\vec{q}\) yang mungkin!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(\sqrt{17} - 2\sqrt{3}\)</div>
+                <div class="option">B. \(\sqrt{17} + 2\sqrt{3}\)</div>
+                <div class="option">C. \(3\)</div>
+                <div class="option">D. \(5\)</div>
+                <div class="option">E. \(2\sqrt{3}\)</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 18</div>
+            <div class="question-text">
+                <strong>(Navigasi)</strong> Sebuah kapal patroli penjaga pantai bergerak ke arah Barat sejauh 30 mil laut. Kapal kemudian mengubah haluan untuk mengejar target, berbelok menyimpang sebesar \(120^\circ\) ke arah Utara dari lintasan awal perjalanannya. Setelah menempuh 20 mil laut di haluan baru, kapal berhenti. Berapakah jarak lurus kapal patroli tersebut dari titik keberangkatannya?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(10\sqrt{3}\) mil laut</div>
+                <div class="option">B. \(10\sqrt{7}\) mil laut</div>
+                <div class="option">C. \(10\sqrt{19}\) mil laut</div>
+                <div class="option">D. \(50\) mil laut</div>
+                <div class="option">E. \(40\) mil laut</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 19</div>
+            <div class="question-text">
+                Luas sebuah bangun jajar genjang yang dibentuk oleh dua vektor \(\vec{a}\) dan \(\vec{b}\) dapat dicari menggunakan panjang produk silang (cross product) \(|\vec{a} \times \vec{b}|\). Tentukan luas jajar genjang yang dibentuk oleh titik-titik \(P(1,0,0)\), \(Q(3,3,0)\), dan \(S(0,4,0)\) dengan titik pangkal di \(P\)!
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 5 satuan luas</div>
+                <div class="option">B. 7 satuan luas</div>
+                <div class="option">C. 10 satuan luas</div>
+                <div class="option">D. 11 satuan luas</div>
+                <div class="option">E. 14 satuan luas</div>
+            </div>
+        </div>
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 20</div>
+            <div class="question-text">
+                Vektor posisi sebuah kapal \(A\) pada waktu \(t\) jam adalah \(\vec{r_A} = (4t)\hat{i} + (3t)\hat{j}\) km. Kapal \(B\) mulai bergerak dari titik \((10, 0)\) km dengan kecepatan konstan sedemikian rupa sehingga pergerakannya direpresentasikan oleh vektor posisi \(\vec{r_B} = (10 - t)\hat{i} + (vt)\hat{j}\). Berapakah kecepatan \(v\) kapal \(B\) pada sumbu y agar kapal \(A\) dan kapal \(B\) dapat berpapasan (berada di koordinat yang sama)?
+            </div>
+            <div class="options-grid">
+                <div class="option">A. 2 km/jam</div>
+                <div class="option">B. 3 km/jam</div>
+                <div class="option">C. 4 km/jam</div>
+                <div class="option">D. 5 km/jam</div>
+                <div class="option">E. 6 km/jam</div>
+            </div>
+        </div>
+
 
         <div class="section-title">Soal 4: Trigonometri</div>
         <div class="question-card">
@@ -1203,12 +1502,9 @@
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
 
-        // Set dimensi internal kanvas agar sesuai dengan ukuran tampilan
-        // Tinggi dibuat tetap 250px agar cukup ruang vertikal
         const displayWidth = canvas.clientWidth;
         const displayHeight = 250; 
 
-        // Hanya ubah ukuran jika berbeda untuk menghindari kedipan
         if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
             canvas.width = displayWidth;
             canvas.height = displayHeight;
@@ -1219,24 +1515,21 @@
         
         ctx.clearRect(0, 0, width, height);
 
-        // Margin dinamis: lebih kecil di layar sempit
         const marginX = width < 500 ? 20 : 50;
         const startX = marginX;
         const endX = width - marginX;
         
         const yAxis = height / 2 + 20;
         
-        // Hitung posisi node secara proporsional
         const totalSpan = endX - startX;
-        const step = totalSpan / 4.5; // Pembagi disesuaikan agar 'n' ada di ujung
+        const step = totalSpan / 4.5; 
 
         // Gambar garis timeline horizontal
         ctx.strokeStyle = '#333';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(startX, yAxis);
-        ctx.lineTo(endX + 15, yAxis); // arrow tip length
-        // arrow head
+        ctx.lineTo(endX + 15, yAxis);
         ctx.lineTo(endX + 5, yAxis - 5);
         ctx.moveTo(endX + 15, yAxis);
         ctx.lineTo(endX + 5, yAxis + 5);
@@ -1245,14 +1538,13 @@
         ctx.fillStyle = '#333';
         ctx.font = '14px Arial';
         ctx.textAlign = 'right';
-        // Posisikan label sumbu di bawah ujung panah
         ctx.fillText('Waktu (Periode)', endX + 15, yAxis + 45);
 
         const nodes = [
             { x: startX, label: '0', val: 'M₀' },
             { x: startX + step, label: '1', val: 'M₀(1+i)' },
             { x: startX + 2*step, label: '2', val: 'M₀(1+i)²' },
-            { x: endX - 10, label: 'n', val: 'M₀(1+i)ⁿ' } // Posisi 'n' di dekat ujung
+            { x: endX - 10, label: 'n', val: 'M₀(1+i)ⁿ' }
         ];
 
         // Gambar titik-titik (ticks) dan label
@@ -1265,14 +1557,13 @@
 
             ctx.fillText(node.label, node.x, yAxis + 25);
             
-            // Sesuaikan ukuran font untuk nilai jika layar sempit
             if (width < 450) {
                  ctx.font = '11px Arial';
             } else {
                  ctx.font = '14px Arial';
             }
             ctx.fillText(node.val, node.x, yAxis - 15);
-            ctx.font = '14px Arial'; // reset font
+            ctx.font = '14px Arial'; 
         });
 
         // Gambar dots (...) di antara node 2 dan n
@@ -1287,13 +1578,11 @@
         function drawArc(x1, x2) {
             ctx.beginPath();
             const midX = (x1 + x2) / 2;
-            // Control point Y position adjusted for new height
             const controlY = yAxis - 70; 
             ctx.moveTo(x1, yAxis - 30);
             ctx.quadraticCurveTo(midX, controlY, x2 - 5, yAxis - 30);
             ctx.stroke();
             
-            // arrow head for arc
             ctx.beginPath();
             ctx.moveTo(x2 - 5, yAxis - 30);
             ctx.lineTo(x2 - 12, yAxis - 38);
@@ -1302,32 +1591,133 @@
             ctx.stroke();
 
             ctx.fillStyle = '#3498db';
-            // Sesuaikan font arc
             if (width < 450) {
                  ctx.font = '10px Arial';
             } else {
                  ctx.font = '12px Arial';
             }
-            // Posisi teks arc
             ctx.fillText('× (1+i)', midX, yAxis - 55);
-            ctx.font = '14px Arial'; // reset
+            ctx.font = '14px Arial';
         }
 
         drawArc(nodes[0].x, nodes[1].x);
         drawArc(nodes[1].x, nodes[2].x);
 
-        ctx.setLineDash([]); // Reset
+        ctx.setLineDash([]); 
+    }
+
+    // Fungsi untuk menggambar Panah Bantuan (Vektor)
+    function drawArrow(ctx, fromx, fromy, tox, toy, color) {
+        var headlen = 10; 
+        var dx = tox - fromx;
+        var dy = toy - fromy;
+        var angle = Math.atan2(dy, dx);
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(fromx, fromy);
+        ctx.lineTo(tox, toy);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(tox, toy);
+        ctx.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+        ctx.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+        ctx.lineTo(tox, toy);
+        ctx.fill();
+    }
+
+    // Fungsi untuk menggambar grafik Penjumlahan Vektor
+    function drawVectorGraph() {
+        const canvas = document.getElementById('vectorGraph');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        
+        // Set ukuran internal tetap
+        const width = 600;
+        const height = 250;
+        canvas.width = width;
+        canvas.height = height;
+
+        ctx.clearRect(0, 0, width, height);
+
+        const s = 40; // Faktor Skala (1 unit = 40px)
+        ctx.font = '14px Arial';
+
+        // --- Metode Segitiga ---
+        const ox1 = 50; 
+        const oy1 = 200;
+
+        // a = (3, 0)
+        drawArrow(ctx, ox1, oy1, ox1 + 3*s, oy1, '#333');
+        ctx.fillText('a', ox1 + 1.5*s, oy1 + 15);
+
+        // b = (1, 2) ke atas berarti -y di canvas
+        drawArrow(ctx, ox1 + 3*s, oy1, ox1 + 4*s, oy1 - 2*s, '#333');
+        ctx.fillText('b', ox1 + 3.5*s + 10, oy1 - s);
+
+        // R = a + b
+        drawArrow(ctx, ox1, oy1, ox1 + 4*s, oy1 - 2*s, '#e74c3c');
+        ctx.fillStyle = '#e74c3c';
+        ctx.fillText('R = a + b', ox1 + 1.5*s - 10, oy1 - s - 10);
+        
+        ctx.fillStyle = '#333';
+        ctx.font = 'bold 15px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Metode Segitiga', ox1 + 2*s, oy1 - 2.5*s - 15);
+
+        // --- Metode Jajar Genjang ---
+        const ox2 = 350;
+        const oy2 = 200;
+
+        // a = (3, 0)
+        drawArrow(ctx, ox2, oy2, ox2 + 3*s, oy2, '#333');
+        ctx.textAlign = 'left';
+        ctx.fillText('a', ox2 + 1.5*s, oy2 + 15);
+
+        // b = (1, 2)
+        drawArrow(ctx, ox2, oy2, ox2 + s, oy2 - 2*s, '#333');
+        ctx.fillText('b', ox2 + 0.5*s - 15, oy2 - s);
+
+        // Garis putus-putus
+        ctx.setLineDash([5, 5]);
+        ctx.strokeStyle = '#999';
+        ctx.beginPath();
+        ctx.moveTo(ox2 + 3*s, oy2);
+        ctx.lineTo(ox2 + 4*s, oy2 - 2*s);
+        ctx.lineTo(ox2 + s, oy2 - 2*s);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // R = a + b
+        drawArrow(ctx, ox2, oy2, ox2 + 4*s, oy2 - 2*s, '#3498db');
+        ctx.fillStyle = '#3498db';
+        ctx.fillText('R = a + b', ox2 + 2*s + 10, oy2 - s - 10);
+
+        // Sudut theta
+        ctx.strokeStyle = '#333';
+        ctx.beginPath();
+        ctx.arc(ox2, oy2, 25, 0, -Math.atan2(2, 1), true);
+        ctx.stroke();
+        ctx.fillStyle = '#333';
+        ctx.fillText('θ', ox2 + 30, oy2 - 10);
+
+        ctx.font = 'bold 15px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Metode Jajar Genjang', ox2 + 2*s, oy2 - 2.5*s - 15);
     }
 
     // Jalankan render grafik saat halaman di-load
     window.onload = function() {
         drawGraph();
         drawFinanceGraph();
+        drawVectorGraph();
     };
 
-    // Gambar ulang grafik saat ukuran jendela berubah (responsif)
+    // Gambar ulang grafik responsif saat ukuran jendela berubah
     window.addEventListener('resize', function() {
         drawFinanceGraph();
+        // (Graph eksponen & vektor dibiarkan width 100% dari CSS agar otomatis scaling tanpa redraw)
     });
 </script>
 
