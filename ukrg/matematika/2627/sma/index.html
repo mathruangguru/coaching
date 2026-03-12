@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaching UKRG Matematika</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #f4f6f8;
+            --text-color: #333;
+            --border-radius: 8px;
+            --tab-active-bg: #fff;
+            --tab-inactive-bg: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+
+        /* Tabs Styling - Disesuaikan agar bisa scroll ke kanan (overflow-x) */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            overflow-x: auto; /* Mengizinkan scroll ke kanan */
+            white-space: nowrap;
+            padding-bottom: 5px; /* Memberi ruang untuk scrollbar */
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary-color) #f0f0f0;
+        }
+
+        .tabs::-webkit-scrollbar {
+            height: 6px;
+        }
+        .tabs::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+        .tabs::-webkit-scrollbar-thumb {
+            background-color: var(--secondary-color);
+            border-radius: 4px;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            cursor: pointer;
+            background-color: var(--tab-inactive-bg);
+            border: none;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            margin-right: 5px;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s ease;
+            flex: 0 0 auto; /* Mencegah tab menyusut */
+            text-align: center;
+        }
+
+        .tab-button:hover {
+            background-color: #dcdcdc;
+        }
+
+        .tab-button.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-card {
+            background: #fff;
+            border: 1px dashed #ccc; /* Diganti dashed agar terlihat seperti kerangka/kosongan */
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background-color: #fafafa;
+        }
+
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: var(--secondary-color);
+            background-color: #fff;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #999;
+            font-style: italic;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .question-meta {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: inline-block;
+            background-color: #e8f4fd;
+            padding: 5px 12px;
+            border-radius: 4px;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background-color: #eee; color: black; border: 1px solid #ccc; }
+            .tabs { display: none; }
+            .tab-content { display: block !important; margin-bottom: 30px; border-bottom: 2px solid #000; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Paket 1 | Tahun Ajaran 2025/2026</div>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">Latihan menuju UKRG Matematika SMA</p>
+    </header>
+
+    <!-- Tab Navigation (Bisa di-scroll ke kanan) -->
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab-aljabar')">Aljabar & Fungsi</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-geometri')">Geometri & Trigonometri</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-kalkulus')">Kalkulus</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-statistika')">Statistika, Peluang & Logika</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-pedagogik')">Kompetensi Pedagogik</button>
+    </div>
+
+    <!-- TAB 1: ALJABAR & FUNGSI -->
+    <div id="tab-aljabar" class="tab-content active">
+        
+        <div class="section-title">Soal 1: Eksponen dan Logaritma</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Pertumbuhan Bakteri dan Peluruhan Obat</div>
+            <div class="question-text">
+                [ Tempat input soal eksponensial & rasio antibiotik akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 2: Matematika Keuangan</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Perencanaan Dana Pensiun (Anuitas, Bunga Majemuk, Inflasi)</div>
+            <div class="question-text">
+                [ Tempat input soal logaritma & bunga majemuk akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 5: Aljabar / Sistem Persamaan</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Campuran Larutan (Persentase & Perbandingan)</div>
+            <div class="question-text">
+                [ Tempat input soal sistem perbandingan larutan HCL akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 6: Fungsi Komposisi</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Rantai Pasokan (Harga Gabah hingga Harga Ritel)</div>
+            <div class="question-text">
+                [ Tempat input soal fungsi komposisi g(f(x)) akan diletakkan di sini ]
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TAB 2: GEOMETRI & TRIGONOMETRI -->
+    <div id="tab-geometri" class="tab-content">
+        
+        <div class="section-title">Soal 3: Vektor & Aturan Cosinus</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Perpindahan Resultan Drone di Lapangan Terbuka</div>
+            <div class="question-text">
+                [ Tempat input soal vektor dan perhitungan jarak tempuh akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 4: Trigonometri</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Pengukuran Topografi (Sudut Elevasi Menara)</div>
+            <div class="question-text">
+                [ Tempat input soal tinggi menara & sudut elevasi akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 7: Geometri Analitik</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Posisi Pusat Gempa (Titik Potong Persamaan Lingkaran)</div>
+            <div class="question-text">
+                [ Tempat input soal irisan dua lingkaran akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 10: Geometri Dimensi Tiga</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Jarak Titik ke Bidang dalam Kubus</div>
+            <div class="question-text">
+                [ Tempat input soal jarak titik A ke bidang BDP pada kubus akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 11: Transformasi Geometri</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Desain Grafis (Komposisi Rotasi dan Pencerminan)</div>
+            <div class="question-text">
+                [ Tempat input soal matriks transformasi ekuivalen akan diletakkan di sini ]
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TAB 3: KALKULUS -->
+    <div id="tab-kalkulus" class="tab-content">
+        
+        <div class="section-title">Soal 12: Limit & Kekontinuan Fungsi</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Fungsi Biaya Pengiriman (Fungsi Sepotong/Piecewise)</div>
+            <div class="question-text">
+                [ Tempat input soal analisis limit kiri dan kanan akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 13: Aplikasi Turunan (Optimasi)</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Efisiensi Kemasan (Luas Permukaan Minimum Tabung)</div>
+            <div class="question-text">
+                [ Tempat input soal nilai minimum turunan pertama akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 14: Luas Daerah (Integral / Geometri)</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Desain Taman (Daerah Dibatasi Dua Kurva Lingkaran)</div>
+            <div class="question-text">
+                [ Tempat input soal perhitungan luas di antara dua kurva akan diletakkan di sini ]
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TAB 4: STATISTIKA, PELUANG & LOGIKA -->
+    <div id="tab-statistika" class="tab-content">
+        
+        <div class="section-title">Soal 8: Statistika (Data Bivariat)</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Interpretasi Persamaan Regresi dan Koefisien Determinasi</div>
+            <div class="question-text">
+                [ Tempat input soal interpretasi R-square akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 9: Logika Matematika</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Nilai Kebenaran dan Ingkaran (Implikasi)</div>
+            <div class="question-text">
+                [ Tempat input soal p -> q dan negasinya akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 15: Peluang & Teorema Bayes</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Validitas Tes Kesehatan (Peluang Bersyarat)</div>
+            <div class="question-text">
+                [ Tempat input soal peluang kejadian saling bebas bersyarat akan diletakkan di sini ]
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TAB 5: KOMPETENSI PEDAGOGIK -->
+    <div id="tab-pedagogik" class="tab-content">
+        
+        <div class="section-title">Soal 16: Integrasi Teknologi (TPACK)</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Penggunaan GeoGebra sebagai Cognitive Tool</div>
+            <div class="question-text">
+                [ Tempat input soal pedagogik penggunaan software dinamis akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 17: Penanganan Miskonsepsi Siswa</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Mengatasi Gambler's Fallacy pada Materi Peluang</div>
+            <div class="question-text">
+                [ Tempat input soal strategi guru mengatasi miskonsepsi empiris akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 18: Analisis Logika Siswa</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Evaluasi Argumen pada Limit Pecahan Bersusun</div>
+            <div class="question-text">
+                [ Tempat input soal evaluasi cara berfikir siswa (infinite continued fraction) akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 19: Strategi Instruksional Efisien</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Pembekalan Cara Cepat & Konseptual pada Fungsi Invers</div>
+            <div class="question-text">
+                [ Tempat input soal strategi mengajar efektif di bawah 1 menit akan diletakkan di sini ]
+            </div>
+        </div>
+
+        <div class="section-title">Soal 20: Analisis Kesalahan Aljabar</div>
+        <div class="question-card">
+            <div class="question-meta">Konteks: Tindak Lanjut Guru atas Pelanggaran Syarat Penyebut (Nol)</div>
+            <div class="question-text">
+                [ Tempat input soal evaluasi pencoretan aljabar yang invalid akan diletakkan di sini ]
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tabbuttons;
+        
+        // Sembunyikan semua konten tab
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        
+        // Hapus kelas 'active' dari semua tombol tab
+        tabbuttons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabbuttons.length; i++) {
+            tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+        }
+        
+        // Tampilkan konten tab saat ini, dan tambahkan kelas "active" pada tombol
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
