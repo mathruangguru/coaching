@@ -3169,11 +3169,344 @@
 </div>
 </div>
 
-        <div class="section-title">Soal 13: Aplikasi Turunan (Optimasi)</div>
-        <div class="question-card">
-            <div class="question-meta">Konteks: Efisiensi Kemasan (Luas Permukaan Minimum Tabung)</div>
-            <div class="question-text text-center">[ Tempat input soal nilai minimum turunan pertama akan diletakkan di sini ]</div>
-        </div>
+<div class="section-title">MODUL & LATIHAN SOAL: APLIKASI TURUNAN<br><em>Materi: Nilai Maksimum, Minimum, dan Optimasi (HOTS)</em></div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Rangkuman Materi</div>
+<div class="question-text">
+    <h4>1. Turunan Pertama dan Titik Stasioner</h4>
+    <p>Untuk suatu fungsi \(f(x)\), fungsi akan mencapai titik stasioner (puncak, lembah, atau belok) jika turunan pertamanya bernilai nol:</p>
+    \[ f'(x) = 0 \]
+
+    <h4>2. Uji Turunan untuk Maksimum dan Minimum</h4>
+    <p>Setelah menemukan nilai \(x\) pembuat stasioner, kita gunakan uji turunan kedua \(f''(x)\) untuk menentukan jenis titik stasionernya:</p>
+    <ul>
+        <li>Jika \(f''(x) > 0\), maka kurva terbuka ke atas \(\rightarrow\) <strong>Titik Minimum Lokal</strong>.</li>
+        <li>Jika \(f''(x) < 0\), maka kurva terbuka ke bawah \(\rightarrow\) <strong>Titik Maksimum Lokal</strong>.</li>
+        <li>Jika \(f''(x) = 0\), maka pengujian gagal atau bisa jadi merupakan <strong>Titik Belok</strong>.</li>
+    </ul>
+
+    <h4>3. Langkah Menyelesaikan Soal Cerita (Optimasi HOTS)</h4>
+    <p>Soal seperti meminimalkan biaya plat logam atau memaksimalkan volume dapat diselesaikan dengan langkah:</p>
+    <ol>
+        <li><strong>Tentukan variabel utama</strong>. Buat sketsa jika perlu (misal: jari-jari \(r\), tinggi \(t\)).</li>
+        <li><strong>Buat Fungsi Objektif</strong>. Ini adalah persamaan yang ingin dimaksimumkan atau diminimumkan (misal: Luas Permukaan \(L\)).</li>
+        <li><strong>Gunakan Fungsi Kendala</strong>. Jika ada dua variabel (seperti \(r\) dan \(t\)), gunakan informasi yang dikunci (misal: Volume \(V\)) untuk mengubah Fungsi Objektif menjadi fungsi satu variabel saja.</li>
+        <li><strong>Turunkan dan samakan dengan nol</strong>. Cari \(L' = 0\) dan selesaikan rasionya.</li>
+    </ol>
+
+    <div style="text-align: center; margin: 25px 0;">
+        <svg width="350" height="230" viewBox="0 0 350 230" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <marker id="arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 9 1 L 1 5 L 9 9 z" fill="black" />
+                </marker>
+                <marker id="arrow-end" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M 1 1 L 9 5 L 1 9 z" fill="black" />
+                </marker>
+            </defs>
+
+            <text x="150" y="25" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Ilustrasi Variabel Silinder</text>
+
+            <ellipse cx="150" cy="180" rx="80" ry="20" fill="none" stroke="black" stroke-width="2"/>
+            
+            <line x1="70" y1="180" x2="70" y2="70" stroke="black" stroke-width="2"/>
+            <line x1="230" y1="180" x2="230" y2="70" stroke="black" stroke-width="2"/>
+            
+            <path d="M 70 70 A 80 20 0 0 0 230 70" fill="none" stroke="black" stroke-width="2"/>
+            <path d="M 230 70 A 80 20 0 0 0 70 70" fill="none" stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+            
+            <circle cx="150" cy="180" r="3" fill="black"/>
+            
+            <line x1="150" y1="180" x2="230" y2="180" stroke="black" stroke-width="1.5" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="185" y="170" font-family="sans-serif" font-size="16" font-style="italic">r</text>
+            
+            <line x1="260" y1="180" x2="260" y2="70" stroke="black" stroke-width="1.5" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="270" y="130" font-family="sans-serif" font-size="16" font-style="italic">t</text>
+        </svg>
+    </div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level I: Konsep Dasar | Soal 1</div>
+<div class="question-text">
+    Grafik fungsi \(f(x) = x^3 - 3x^2 + 5\) akan naik pada interval...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(0 < x < 2\)</div>
+    <div class="option">B. \(x < 0\) atau \(x > 2\)</div>
+    <div class="option">C. \(x < -2\) atau \(x > 0\)</div>
+    <div class="option">D. \(-2 < x < 0\)</div>
+    <div class="option">E. \(x < 1\) atau \(x > 2\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level I: Konsep Dasar | Soal 2</div>
+<div class="question-text">
+    Titik stasioner dari fungsi \(f(x) = x^3 - 3x + 2\) berada pada koordinat...
+</div>
+<div class="options-grid">
+    <div class="option">A. \((1, 0)\) dan \((-1, 4)\)</div>
+    <div class="option">B. \((1, 4)\) dan \((-1, 0)\)</div>
+    <div class="option">C. \((0, 2)\) dan \((1, 0)\)</div>
+    <div class="option">D. \((3, 20)\) dan \((-3, -16)\)</div>
+    <div class="option">E. \((1, 0)\) dan \((0, -1)\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level I: Konsep Dasar | Soal 3</div>
+<div class="question-text">
+    Nilai maksimum dari fungsi kuadrat \(f(x) = -x^2 + 6x - 5\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(3\)</div>
+    <div class="option">B. \(5\)</div>
+    <div class="option">C. \(4\)</div>
+    <div class="option">D. \(-5\)</div>
+    <div class="option">E. \(0\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level I: Konsep Dasar | Soal 4</div>
+<div class="question-text">
+    Syarat sebuah fungsi \(f(x)\) mencapai titik minimum lokal pada \(x=a\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(f'(a) = 0\) dan \(f''(a) < 0\)</div>
+    <div class="option">B. \(f'(a) = 0\) dan \(f''(a) = 0\)</div>
+    <div class="option">C. \(f'(a) > 0\) dan \(f''(a) < 0\)</div>
+    <div class="option">D. \(f'(a) = 0\) dan \(f''(a) > 0\)</div>
+    <div class="option">E. \(f'(a) < 0\) dan \(f''(a) > 0\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level I: Konsep Dasar | Soal 5</div>
+<div class="question-text">
+    Turunan pertama dari \(y = (2x^2 - 1)^3\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(3(2x^2 - 1)^2\)</div>
+    <div class="option">B. \(6x(2x^2 - 1)^2\)</div>
+    <div class="option">C. \(12x(2x^2 - 1)^2\)</div>
+    <div class="option">D. \(4x(2x^2 - 1)^2\)</div>
+    <div class="option">E. \(12(2x^2 - 1)^2\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level II: Aplikasi Menengah | Soal 6</div>
+<div class="question-text">
+    Nilai maksimum mutlak dari fungsi \(y = x^3 - 3x^2\) pada interval tertutup \([-1, 4]\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(0\)</div>
+    <div class="option">B. \(16\)</div>
+    <div class="option">C. \(-4\)</div>
+    <div class="option">D. \(4\)</div>
+    <div class="option">E. \(12\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level II: Aplikasi Menengah | Soal 7</div>
+<div class="question-text">
+    Jumlah dua bilangan cacah adalah 30. Hasil kali maksimum dari kuadrat bilangan pertama dengan bilangan kedua adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 1000</div>
+    <div class="option">B. 2000</div>
+    <div class="option">C. 3000</div>
+    <div class="option">D. 4000</div>
+    <div class="option">E. 5000</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level II: Aplikasi Menengah | Soal 8</div>
+<div class="question-text">
+    Suatu partikel bergerak lurus dengan persamaan gerak \(s(t) = \frac{1}{3}t^3 - 2t^2 + 3t\) (dalam meter dan sekon). Kecepatan partikel akan menjadi nol pada saat \(t\) sama dengan...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(1\) detik dan \(2\) detik</div>
+    <div class="option">B. \(2\) detik dan \(3\) detik</div>
+    <div class="option">C. \(1\) detik dan \(3\) detik</div>
+    <div class="option">D. \(2\) detik dan \(4\) detik</div>
+    <div class="option">E. \(0\) detik dan \(3\) detik</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level II: Aplikasi Menengah | Soal 9</div>
+<div class="question-text">
+    Seutas kawat panjangnya 40 meter akan dibentuk menjadi sebuah persegi panjang. Luas maksimum daerah yang dapat dibatasi oleh kawat tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(80 \text{ m}^2\)</div>
+    <div class="option">B. \(100 \text{ m}^2\)</div>
+    <div class="option">C. \(120 \text{ m}^2\)</div>
+    <div class="option">D. \(160 \text{ m}^2\)</div>
+    <div class="option">E. \(200 \text{ m}^2\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level II: Aplikasi Menengah | Soal 10</div>
+<div class="question-text">
+    Biaya memproduksi \(x\) unit barang dirumuskan dengan \(C(x) = x^2 - 10x + 50\) (dalam ribuan rupiah). Biaya minimum untuk memproduksi barang tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. Rp 5.000,00</div>
+    <div class="option">B. Rp 10.000,00</div>
+    <div class="option">C. Rp 25.000,00</div>
+    <div class="option">D. Rp 50.000,00</div>
+    <div class="option">E. Rp 12.500,00</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level III: HOTS & Pemodelan Optimasi | Soal 11</div>
+<div class="question-text">
+    Sebuah pabrik memproduksi \(x\) unit barang dengan biaya <em>per unit</em> sebesar \(\left(2x - 20 + \frac{200}{x}\right)\) dalam jutaan rupiah. Total biaya produksi paling minimum yang harus dikeluarkan pabrik tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 50 Juta</div>
+    <div class="option">B. 100 Juta</div>
+    <div class="option">C. 150 Juta</div>
+    <div class="option">D. 200 Juta</div>
+    <div class="option">E. 250 Juta</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level III: HOTS & Pemodelan Optimasi | Soal 12</div>
+<div class="question-text">
+    Sebuah peluru ditembakkan ke atas. Jika tinggi \(h\) meter setelah \(t\) detik dirumuskan dengan \(h(t) = 120t - 5t^2\), maka tinggi maksimum yang dicapai peluru tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 1440 meter</div>
+    <div class="option">B. 600 meter</div>
+    <div class="option">C. 720 meter</div>
+    <div class="option">D. 800 meter</div>
+    <div class="option">E. 1200 meter</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level III: HOTS & Pemodelan Optimasi | Soal 13</div>
+<div class="question-text">
+    <strong>[Analisis Bangun Ruang]</strong> Sebuah bak penampungan air limbah berbentuk balok <strong>tanpa tutup</strong> dirancang dengan alas berbentuk persegi. Volume bak telah ditentukan sebesar \(V\) meter kubik. Untuk meminimalkan biaya pengecoran (luas permukaan minimum), berapakah rasio ideal antara panjang sisi alas (\(s\)) dan tinggi bak (\(t\))?
+</div>
+<div class="options-grid">
+    <div class="option">A. \(1 : 1\)</div>
+    <div class="option">B. \(1 : 2\)</div>
+    <div class="option">C. \(2 : 1\)</div>
+    <div class="option">D. \(1 : 4\)</div>
+    <div class="option">E. \(4 : 1\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level III: HOTS & Pemodelan Optimasi | Soal 14</div>
+<div class="question-text">
+    Sebuah persegi panjang diletakkan di dalam sebuah lingkaran yang berjari-jari \(R\). Luas maksimum dari persegi panjang yang dapat dibuat di dalam lingkaran tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(\frac{1}{2} R^2\)</div>
+    <div class="option">B. \(R^2\)</div>
+    <div class="option">C. \(\pi R^2\)</div>
+    <div class="option">D. \(2R^2\)</div>
+    <div class="option">E. \(4R^2\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level III: HOTS & Pemodelan Optimasi | Soal 15</div>
+<div class="question-text">
+    Titik pada parabola \(y = x^2\) yang memiliki jarak paling dekat dengan titik koordinat \((0, 2)\) adalah pada saat kuadrat jaraknya bernilai minimum. Jarak terpendek titik tersebut ke \((0,2)\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(\frac{1}{2}\sqrt{7}\)</div>
+    <div class="option">B. \(\sqrt{2}\)</div>
+    <div class="option">C. \(\frac{1}{2}\sqrt{5}\)</div>
+    <div class="option">D. \(2\)</div>
+    <div class="option">E. \(\sqrt{3}\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level III: HOTS & Pemodelan Optimasi | Soal 16</div>
+<div class="question-text">
+    <strong>[Desain Kemasan]</strong> Sebuah perusahaan susu kaleng ditugaskan merancang wadah silinder <strong>tanpa tutup atas</strong> (hanya alas dan selimut). Volume wadah dikunci tepat sebesar \(1000 \text{ cm}^3\). Untuk memastikan bahan aluminium yang digunakan sangat minimal, berapakah perbandingan paling ideal antara jari-jari alas (\(r\)) dan tinggi wadah (\(t\))?
+</div>
+<div class="options-grid">
+    <div class="option">A. \(1 : 2\)</div>
+    <div class="option">B. \(2 : 1\)</div>
+    <div class="option">C. \(1 : \pi\)</div>
+    <div class="option">D. \(2 : \pi\)</div>
+    <div class="option">E. \(1 : 1\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level III: HOTS & Pemodelan Optimasi | Soal 17</div>
+<div class="question-text">
+    Kawat sepanjang 100 cm dipotong menjadi dua bagian. Bagian pertama dibentuk menjadi persegi panjang dengan sisi yang sama (persegi), dan bagian kedua dibentuk menjadi lingkaran. Agar jumlah luas kedua bangun tersebut mencapai titik minimum, perbandingan antara panjang sisi persegi (\(s\)) dan jari-jari lingkaran (\(r\)) haruslah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(s = r\)</div>
+    <div class="option">B. \(s = 2r\)</div>
+    <div class="option">C. \(2s = r\)</div>
+    <div class="option">D. \(s = \pi r\)</div>
+    <div class="option">E. \(s = \frac{1}{2}\pi r\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level III: HOTS & Pemodelan Optimasi | Soal 18</div>
+<div class="question-text">
+    Selembar karton berbentuk persegi dengan ukuran sisi \(12 \text{ cm} \times 12 \text{ cm}\) akan dibuat menjadi kotak tanpa tutup dengan cara memotong keempat pojoknya berupa bujursangkar identik dan melipat sisi-sisinya ke atas. Volume kotak terbesar yang bisa dibentuk adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(64 \text{ cm}^3\)</div>
+    <div class="option">B. \(128 \text{ cm}^3\)</div>
+    <div class="option">C. \(144 \text{ cm}^3\)</div>
+    <div class="option">D. \(200 \text{ cm}^3\)</div>
+    <div class="option">E. \(256 \text{ cm}^3\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level III: HOTS & Pemodelan Optimasi | Soal 19</div>
+<div class="question-text">
+    <strong>[Optimalisasi Silinder]</strong> Sebuah kaleng sarden berbentuk tabung <strong>tertutup</strong> (memiliki alas dan tutup) akan dibuat untuk menampung volume sebesar \(V\). Berapakah perbandingan antara jari-jari (\(r\)) dan tinggi (\(t\)) kaleng tersebut agar biaya bahan pelat logam pembuatan kaleng paling murah?
+</div>
+<div class="options-grid">
+    <div class="option">A. \(1 : 1\)</div>
+    <div class="option">B. \(1 : 2\)</div>
+    <div class="option">C. \(2 : 1\)</div>
+    <div class="option">D. \(1 : \pi\)</div>
+    <div class="option">E. \(2 : \pi\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level III: HOTS & Pemodelan Optimasi | Soal 20</div>
+<div class="question-text">
+    Sebuah produk dijual dengan harga \(p(x) = 200 - x\) ribu rupiah per unit, di mana \(x\) adalah jumlah unit yang terjual. Biaya total memproduksi \(x\) unit dirumuskan dengan \(C(x) = 50x + 1000\) (dalam ribuan). Keuntungan maksimum yang bisa diraih perusahaan tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. Rp 1.000.000,00</div>
+    <div class="option">B. Rp 4.625.000,00</div>
+    <div class="option">C. Rp 5.000.000,00</div>
+    <div class="option">D. Rp 5.625.000,00</div>
+    <div class="option">E. Rp 7.500.000,00</div>
+</div>
+</div>
 
         <div class="section-title">Soal 14: Luas Daerah (Integral / Geometri)</div>
         <div class="question-card">
