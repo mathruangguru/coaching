@@ -1073,10 +1073,271 @@
             </div>
         </div>
 
-        <div class="section-title">Soal 6: Fungsi Komposisi</div>
-        <div class="question-card">
-            <div class="question-meta">Konteks: Rantai Pasokan (Harga Gabah hingga Harga Ritel)</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal fungsi komposisi g(f(x)) akan diletakkan di sini ]</div>
+        <div class="section-title">Modul Komposisi Fungsi dan Fungsi Invers</div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Rangkuman Materi</div>
+            <div class="question-text">
+                <h4>Komposisi Fungsi</h4>
+                <p>Komposisi fungsi adalah penggabungan dua fungsi atau lebih menjadi satu fungsi baru. Jika terdapat fungsi \(f\) dan \(g\), maka:</p>
+                <ul>
+                    <li>\((f \circ g)(x) = f(g(x))\) : Fungsi \(g\) dikerjakan lebih dulu, hasilnya menjadi input bagi \(f\).</li>
+                    <li>\((g \circ f)(x) = g(f(x))\) : Fungsi \(f\) dikerjakan lebih dulu, hasilnya menjadi input bagi \(g\).</li>
+                </ul>
+                
+                <p><strong>Sifat-Sifat Penting:</strong></p>
+                <ol>
+                    <li><strong>Tidak Komutatif:</strong> Secara umum \((f \circ g)(x) \neq (g \circ f)(x)\).</li>
+                    <li><strong>Identitas:</strong> Ada fungsi \(I(x) = x\) sehingga \((f \circ I)(x) = (I \circ f)(x) = f(x)\).</li>
+                </ol>
+
+                <h4>Fungsi Invers</h4>
+                <p>Fungsi invers (\(f^{-1}\)) adalah fungsi kebalikan yang memetakan kembali hasil ke input asalnya.</p>
+                <ul>
+                    <li>Jika \(f(x) = y\), maka \(f^{-1}(y) = x\).</li>
+                    <li><strong>Invers Komposisi:</strong> \((f \circ g)^{-1}(x) = (g^{-1} \circ f^{-1})(x)\). (Urutan dibalik).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 1</div>
+            <div class="question-text">Diketahui \(f(x) = 3x - 5\) dan \(g(x) = 2x + 1\). Nilai dari \((f \circ g)(2)\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. 3</div>
+                <div class="option">B. 5</div>
+                <div class="option">C. 10</div>
+                <div class="option">D. 11</div>
+                <div class="option">E. 13</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 2</div>
+            <div class="question-text">Jika \(f(x) = x^2 + 2x - 1\) dan \(g(x) = x - 3\), maka \((g \circ f)(x)\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. \(x^2 + 2x - 4\)</div>
+                <div class="option">B. \(x^2 + 2x + 2\)</div>
+                <div class="option">C. \(x^2 - 4x + 2\)</div>
+                <div class="option">D. \(x^2 - 4x + 4\)</div>
+                <div class="option">E. \(x^2 + 2x - 3\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 3</div>
+            <div class="question-text">Invers dari fungsi \(f(x) = \frac{2x + 3}{x - 4}, x \neq 4\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. \(f^{-1}(x) = \frac{4x + 3}{x - 2}\)</div>
+                <div class="option">B. \(f^{-1}(x) = \frac{4x - 3}{x - 2}\)</div>
+                <div class="option">C. \(f^{-1}(x) = \frac{2x + 4}{x - 3}\)</div>
+                <div class="option">D. \(f^{-1}(x) = \frac{x - 4}{2x + 3}\)</div>
+                <div class="option">E. \(f^{-1}(x) = \frac{4x + 3}{x + 2}\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 4</div>
+            <div class="question-text">Diketahui \(f(x) = 5x + 2\). Jika \(f^{-1}(a) = 2\), maka nilai \(a\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. 0</div>
+                <div class="option">B. 4</div>
+                <div class="option">C. 8</div>
+                <div class="option">D. 10</div>
+                <div class="option">E. 12</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 5</div>
+            <div class="question-text">Diberikan fungsi \(f(x) = 2x\). Hasil dari \((I \circ f)(x)\) di mana \(I\) adalah fungsi identitas adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. \(x\)</div>
+                <div class="option">B. 2</div>
+                <div class="option">C. \(2x\)</div>
+                <div class="option">D. \(x/2\)</div>
+                <div class="option">E. \(x^2\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 6</div>
+            <div class="question-text">Diketahui \((f \circ g)(x) = 4x^2 + 8x - 3\) dan \(g(x) = 2x + 1\). Maka rumus fungsi \(f(x)\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. \(x^2 + 2x - 4\)</div>
+                <div class="option">B. \(x^2 + 2x - 6\)</div>
+                <div class="option">C. \(x^2 + 4x - 3\)</div>
+                <div class="option">D. \(x^2 - 4\)</div>
+                <div class="option">E. \(x^2 - 2x + 6\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 7</div>
+            <div class="question-text">Jika \(f(x) = 2x + 1\) dan \((g \circ f)(x) = 6x - 5\), maka \(g(x)\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. \(3x - 2\)</div>
+                <div class="option">B. \(3x - 5\)</div>
+                <div class="option">C. \(3x - 8\)</div>
+                <div class="option">D. \(3x + 8\)</div>
+                <div class="option">E. \(2x - 6\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 8</div>
+            <div class="question-text">Invers dari fungsi komposisi \((f \circ g)(x)\) jika \(f(x) = x + 3\) dan \(g(x) = 2x - 1\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. \(\frac{x-2}{2}\)</div>
+                <div class="option">B. \(\frac{x+2}{2}\)</div>
+                <div class="option">C. \(2x + 2\)</div>
+                <div class="option">D. \(2x - 4\)</div>
+                <div class="option">E. \(\frac{x-4}{2}\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 9</div>
+            <div class="question-text">Diketahui \(f(x) = \frac{x+1}{x-2}\) dan \(g(x) = 2x + 1\). Nilai \(x\) yang memenuhi \((f \circ g)(x) = 2\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. 1,0</div>
+                <div class="option">B. 2,0</div>
+                <div class="option">C. 2,5</div>
+                <div class="option">D. 3,0</div>
+                <div class="option">E. 4,0</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 10</div>
+            <div class="question-text">Jika \(f(x) = 3x - 1\), maka nilai dari \((f^{-1} \circ f^{-1})(11)\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. \(5/3\)</div>
+                <div class="option">B. \(4/3\)</div>
+                <div class="option">C. 4</div>
+                <div class="option">D. 1</div>
+                <div class="option">E. 0</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 11</div>
+            <div class="question-text"><strong>[Variasi Produksi - Backwards]</strong> Pabrik kertas memproses kayu mentah \(x\) menjadi bahan setengah jadi \(m\) melalui fungsi \(m = 2x - 1\). Bahan setengah jadi diproses menjadi kertas \(y\) melalui \(y = 0,8m + 0,2\). Jika dihasilkan 16,2 ton kertas, berapa ton kayu mentah yang masuk?</div>
+            <div class="options-grid">
+                <div class="option">A. 8,5 ton</div>
+                <div class="option">B. 10,0 ton</div>
+                <div class="option">C. 10,5 ton</div>
+                <div class="option">D. 11,2 ton</div>
+                <div class="option">E. 12,0 ton</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 12</div>
+            <div class="question-text">Tumpahan minyak membentuk lingkaran dengan jari-jari \(r(t) = 2t + 1\) (meter) setelah \(t\) jam. Luas tumpahan dinyatakan dengan \(L(r) = \pi r^2\). Luas tumpahan tsb setelah 3 jam adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. \(25\pi \text{ m}^2\)</div>
+                <div class="option">B. \(36\pi \text{ m}^2\)</div>
+                <div class="option">C. \(40\pi \text{ m}^2\)</div>
+                <div class="option">D. \(49\pi \text{ m}^2\)</div>
+                <div class="option">E. \(64\pi \text{ m}^2\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 13</div>
+            <div class="question-text">Diketahui \(f(x) = \frac{ax + 1}{2x - 4}\). Jika fungsi ini memenuhi \((f \circ f)(x) = x\), maka nilai \(a\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. -4</div>
+                <div class="option">B. -2</div>
+                <div class="option">C. 0</div>
+                <div class="option">D. 2</div>
+                <div class="option">E. 4</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 14</div>
+            <div class="question-text"><strong>[Variasi Harga - Backwards]</strong> Biaya produksi gadget \(x\) menentukan harga grosir \(y = 1,2x + 2\). Harga konsumen \(z\) ditentukan dari harga grosir yaitu \(z = 1,1y + 0,5\) (dalam jutaan). Jika konsumen membeli gadget seharga Rp17,00 juta, berapakah biaya produksi aslinya?</div>
+            <div class="options-grid">
+                <div class="option">A. Rp10,50 juta</div>
+                <div class="option">B. Rp10,83 juta</div>
+                <div class="option">C. Rp12,50 juta</div>
+                <div class="option">D. Rp13,00 juta</div>
+                <div class="option">E. Rp15,00 juta</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 15</div>
+            <div class="question-text">Komisi agen asuransi \(K(P) = 0,1P + 500.000\) dan Bonus akhir tahun \(B(K) = 0,5K + 1.000.000\). Jika agen menerima total bonus Rp3.000.000,00, berapa total premi \(P\) yang ia kumpulkan?</div>
+            <div class="options-grid">
+                <div class="option">A. Rp35.000.000,00</div>
+                <div class="option">B. Rp40.000.000,00</div>
+                <div class="option">C. Rp25.000.000,00</div>
+                <div class="option">D. Rp50.000.000,00</div>
+                <div class="option">E. Rp15.000.000,00</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 16</div>
+            <div class="question-text">Diketahui \(f(x) = x^2\) untuk \(x \geq 0\) dan \(g(x) = \sqrt{x + 1}\). Domain dari fungsi \((f \circ g)^{-1}(x)\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. \(x \geq -1\)</div>
+                <div class="option">B. \(x \geq 0\)</div>
+                <div class="option">C. \(x \geq 1\)</div>
+                <div class="option">D. \(x \in \mathbb{R}\)</div>
+                <div class="option">E. \(x < 0\)</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 17</div>
+            <div class="question-text"><strong>[Variasi Konversi - Backwards]</strong> Turis menukar USD (\(x\)) ke IDR (\(z\)) lewat mata uang SGD (\(y\)). Kurs USD-SGD: \(y = 1,35x\). Kurs SGD-IDR: \(z = 11.000y - 5.000\). Jika turis menerima uang Rp14.845.000,00, berapakah jumlah USD awal yang ditukarkan?</div>
+            <div class="options-grid">
+                <div class="option">A. 900 USD</div>
+                <div class="option">B. 1.000 USD</div>
+                <div class="option">C. 1.100 USD</div>
+                <div class="option">D. 1.250 USD</div>
+                <div class="option">E. 1.350 USD</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 18</div>
+            <div class="question-text">Jika diketahui \(f(x-1) = 2x+1\) dan \(g(x) = 3x+2\), maka nilai dari fungsi komposisi invers \((f^{-1} \circ g)(3)\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. 2</div>
+                <div class="option">B. 3</div>
+                <div class="option">C. 4</div>
+                <div class="option">D. 5</div>
+                <div class="option">E. 6</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 19</div>
+            <div class="question-text">Fungsi \(f\) memenuhi \(f(x+y) = f(x) + f(y) + xy\) untuk semua bilangan riil, dan \(f(1) = 2\). Nilai dari \(f(4)\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. 10</div>
+                <div class="option">B. 12</div>
+                <div class="option">C. 13</div>
+                <div class="option">D. 14</div>
+                <div class="option">E. 15</div>
+            </div>
+        </div>
+
+        <div class="question-card" style="border-style: solid;">
+            <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 20</div>
+            <div class="question-text">Diketahui \(f(x) = 2x + 10\) dan \(g(x) = x - 20\). Nilai \(x\) yang memenuhi persamaan \((f \circ g)(x) = g^{-1}(x)\) adalah ...</div>
+            <div class="options-grid">
+                <div class="option">A. 50</div>
+                <div class="option">B. 60</div>
+                <div class="option">C. 100</div>
+                <div class="option">D. 120</div>
+                <div class="option">E. 150</div>
+            </div>
         </div>
     </div>
 
