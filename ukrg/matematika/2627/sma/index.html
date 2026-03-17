@@ -2195,11 +2195,327 @@
 
     <!-- TAB 4: STATISTIKA, PELUANG & LOGIKA -->
     <div id="tab-statistika" class="tab-content">
-        <div class="section-title">Soal 8: Statistika (Data Bivariat)</div>
-        <div class="question-card">
-            <div class="question-meta">Konteks: Interpretasi Persamaan Regresi dan Koefisien Determinasi</div>
-            <div class="question-text text-center">[ Tempat input soal interpretasi R-square akan diletakkan di sini ]</div>
-        </div>
+ <div class="section-title">Modul Pembelajaran Statistik: Regresi Linear Sederhana</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian 1: Rangkuman Materi</div>
+<div class="question-text">
+    <p>Regresi linear sederhana adalah metode statistik yang digunakan untuk memodelkan hubungan antara satu variabel independen / bebas (\(x\)) dengan satu variabel dependen / terikat (\(y\)). Tujuan utamanya adalah untuk memprediksi nilai \(y\) berdasarkan nilai \(x\).</p>
+
+    <h4>1. Persamaan Regresi Linear</h4>
+    <p>Persamaan matematis untuk model regresi linear sederhana pada sampel adalah:</p>
+    \[\hat{y} = a + bx\]
+    <p><strong>Keterangan:</strong></p>
+    <ul>
+        <li>\(\hat{y}\) (y-topi) : Nilai estimasi atau prediksi dari variabel terikat.</li>
+        <li>\(a\) (Intersep) : Titik potong pada sumbu-\(y\). Ini adalah nilai prediksi \(\hat{y}\) ketika nilai \(x = 0\).</li>
+        <li>\(b\) (Slope / Kemiringan) : Perubahan rata-rata pada \(\hat{y}\) untuk setiap kenaikan 1 unit pada \(x\).</li>
+    </ul>
+
+    <h4>2. Residu (Error)</h4>
+    <p>Residu (\(e\)) adalah selisih antara nilai aktual / observasi (\(y\)) dengan nilai yang diprediksi oleh garis regresi (\(\hat{y}\)).</p>
+    \[e = y - \hat{y}\]
+    <p>Garis regresi linear yang baik (Metode Kuadrat Terkecil / <em>Ordinary Least Squares</em>) adalah garis yang meminimalkan total kuadrat dari residu-residu ini (\(\sum e^2\)).</p>
+
+    <h4>3. Korelasi dan Determinasi</h4>
+    <p>Sangat penting untuk tidak membedakan dua konsep metrik evaluasi ini:</p>
+    <ul>
+        <li><strong>Koefisien Korelasi (\(r\))</strong>: Mengukur kekuatan dan arah hubungan linear antara \(x\) dan \(y\). Nilainya berkisar antara \(-1 \le r \le 1\). Nilai positif berarti hubungan searah, negatif berlawanan arah.</li>
+        <li><strong>Koefisien Determinasi (\(R^2\))</strong>: Mengukur proporsi variasi (keragaman) pada variabel \(y\) yang dapat dijelaskan oleh model (variabel \(x\)). Nilainya berkisar antara \(0 \le R^2 \le 1\).</li>
+        <li><strong>Hubungan Keduanya</strong>: \(R^2 = (r)^2\). Jika \(R^2 = 0,81\) dan slope negatif, maka \(r = -\sqrt{0,81} = -0,9\).</li>
+    </ul>
+
+    <h4>4. Hal Penting & Sering Disalahartikan (Miskonsepsi)</h4>
+    <ul>
+        <li><strong>Korelasi Bukan Kausalitas (<em>Correlation does not imply causation</em>)</strong>: \(R^2\) yang tinggi tidak membuktikan bahwa \(x\) secara langsung "menyebabkan" perubahan pada \(y\).</li>
+        <li><strong>Regresi Bukan Kepastian</strong>: Kata "pasti", "selalu", atau "tanpa meleset" sangat haram dalam interpretasi regresi. Regresi adalah model <strong>prediksi rata-rata</strong>, bukan hukum alam yang mutlak.</li>
+        <li><strong>Bahaya Ekstrapolasi</strong>: Jangan menggunakan model untuk memprediksi nilai \(y\) menggunakan nilai \(x\) yang berada jauh di luar rentang data sampel yang diamati.</li>
+    </ul>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Konsep Dasar | Soal 1</div>
+<div class="question-text">
+    Dalam persamaan regresi linear sederhana \(\hat{y} = a + bx\), nilai \(b\) disebut sebagai koefisien regresi (slope). Interpretasi paling tepat untuk nilai \(b\) adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Nilai pasti dari variabel dependen ketika variabel independen bernilai nol.</div>
+    <div class="option">B. Kekuatan hubungan sebab-akibat antara variabel \(x\) dan variabel \(y\).</div>
+    <div class="option">C. Rata-rata perubahan nilai \(\hat{y}\) untuk setiap penambahan satu satuan pada nilai \(x\).</div>
+    <div class="option">D. Persentase peningkatan variabel \(y\) akibat pengaruh mutlak dari variabel \(x\).</div>
+    <div class="option">E. Besarnya kesalahan prediksi (error) dari model yang terbentuk.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Konsep Dasar | Soal 2</div>
+<div class="question-text">
+    Diketahui nilai Koefisien Determinasi (\(R^2\)) dari sebuah model adalah \(0,64\). Pernyataan yang secara teoritis <strong>salah</strong> mengenai angka tersebut adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Koefisien korelasi (\(r\)) model tersebut pasti bernilai positif \(0,80\).</div>
+    <div class="option">B. \(64\%\) variasi variabel dependen dapat dijelaskan oleh variasi variabel independen.</div>
+    <div class="option">C. Masih ada \(36\%\) variasi yang dijelaskan oleh faktor lain di luar model.</div>
+    <div class="option">D. Nilai korelasi (\(r\)) bisa saja bernilai \(-0,80\) tergantung arah kemiringan garis.</div>
+    <div class="option">E. Angka \(0,64\) didapat dari kuadrat koefisien korelasi Pearson.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Konsep Dasar | Soal 3</div>
+<div class="question-text">
+    Residu (residual) dalam analisis regresi didefinisikan sebagai...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Kesalahan peneliti dalam memasukkan data ke dalam perangkat lunak statistik.</div>
+    <div class="option">B. Selisih antara nilai aktual observasi (\(y\)) dengan nilai rata-rata sampel (\(\bar{y}\)).</div>
+    <div class="option">C. Variabel perancu yang menyebabkan hubungan korelasi menjadi bias.</div>
+    <div class="option">D. Selisih antara nilai observasi yang sebenarnya (\(y\)) dengan nilai yang diprediksi oleh model (\(\hat{y}\)).</div>
+    <div class="option">E. Proporsi data yang dibuang (outlier) agar garis regresi menjadi lurus sempurna.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Konsep Dasar | Soal 4</div>
+<div class="question-text">
+    Seorang mahasiswa menemukan bahwa koefisien korelasi (\(r\)) antara variabel \(A\) dan \(B\) adalah \(0,02\). Kesimpulan yang ditarik adalah "Tidak ada hubungan sama sekali antara A dan B." Mengapa kesimpulan ini berpotensi cacat?
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Karena nilai \(0,02\) membuktikan bahwa A pasti menyebabkan B sebesar \(2\%\).</div>
+    <div class="option">B. Korelasi Pearson hanya mengukur hubungan linear; bisa saja ada hubungan non-linear yang kuat (misal: kuadratik).</div>
+    <div class="option">C. Nilai korelasi yang mendekati nol menunjukkan hubungan regresi berbanding lurus dan pasti.</div>
+    <div class="option">D. Karena varians dari variabel A belum dikuadratkan secara sempurna menjadi determinasi.</div>
+    <div class="option">E. Kesimpulan tersebut tidak cacat, korelasi nol adalah bukti absolut tidak adanya interaksi antar variabel.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Konsep Dasar | Soal 5</div>
+<div class="question-text">
+    Apa bahaya utama dari melakukan ekstrapolasi pada model regresi linear?
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Garis regresi akan langsung berubah arah kemiringannya (dari positif ke negatif).</div>
+    <div class="option">B. Memprediksi menggunakan nilai \(x\) jauh di luar rentang data historis mengasumsikan pola linear akan terus berlanjut tanpa batas, yang seringkali tidak valid di dunia nyata.</div>
+    <div class="option">C. Koefisien determinasi akan otomatis turun menjadi \(0\%\) jika kita memprediksi masa depan.</div>
+    <div class="option">D. Residu pada rentang data observasi akan ikut membesar secara eksponensial.</div>
+    <div class="option">E. Ekstrapolasi akan membuktikan bahwa korelasi selama ini merupakan hubungan sebab-akibat palsu.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Medium | Soal 6</div>
+<div class="question-text">
+    Sebuah penelitian menghasilkan model regresi untuk memprediksi harga rumah dalam ratusan juta rupiah (\(y\)) berdasarkan luas bangunan dalam meter persegi (\(x\)) dengan persamaan \(\hat{y} = 2,5 + 0,15x\). Jika luas bangunan adalah \(100\text{ m}^2\), maka taksiran harga rumah tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. Rp 15.000.000</div>
+    <div class="option">B. Rp 17.500.000</div>
+    <div class="option">C. Rp 1.500.000.000</div>
+    <div class="option">D. Rp 1.750.000.000</div>
+    <div class="option">E. Rp 2.500.000.000</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Medium | Soal 7</div>
+<div class="question-text">
+    Diberikan model regresi \(\hat{y} = 10 - 2x\). Pada data aktual, untuk observasi dengan nilai \(x = 3\), nilai \(y\) yang tercatat adalah \(6\). Berapakah nilai residu untuk observasi tersebut?
+</div>
+<div class="options-grid">
+    <div class="option">A. \(-2\)</div>
+    <div class="option">B. \(2\)</div>
+    <div class="option">C. \(4\)</div>
+    <div class="option">D. \(-4\)</div>
+    <div class="option">E. \(0\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Medium | Soal 8</div>
+<div class="question-text">
+    Model regresi hubungan suhu ruangan dalam Celcius (\(x\)) dan detak jantung tikus per menit (\(y\)) adalah \(\hat{y} = 150 - 1,2x\), dengan \(R^2 = 0,81\). Berapakah nilai koefisien korelasi (\(r\)) antara suhu dan detak jantung?
+</div>
+<div class="options-grid">
+    <div class="option">A. \(0,90\)</div>
+    <div class="option">B. \(0,81\)</div>
+    <div class="option">C. \(-0,81\)</div>
+    <div class="option">D. \(-0,90\)</div>
+    <div class="option">E. \(0,65\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Medium | Soal 9</div>
+<div class="question-text">
+    Berdasarkan soal no. 8, interpretasi dari konstanta (intersep) \(150\) adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Detak jantung tikus pasti di angka \(150\) tanpa meleset apabila suhu dinaikkan \(1^\circ\text{C}\).</div>
+    <div class="option">B. Suhu ruangan menyebabkan \(150\%\) kenaikan detak jantung.</div>
+    <div class="option">C. Prediksi rata-rata detak jantung tikus adalah \(150\) detak/menit saat suhu ruangan adalah \(0^\circ\text{C}\).</div>
+    <div class="option">D. Korelasi awal sebelum tikus dimasukkan ke ruangan bersuhu ekstrem adalah \(150\).</div>
+    <div class="option">E. Secara langsung, suhu \(0^\circ\text{C}\) menggaransi detak jantung tidak akan bisa lebih dari \(150\).</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Medium | Soal 10</div>
+<div class="question-text">
+    Jika dalam suatu model regresi nilai variabel independen (\(x\)) selalu dikalikan \(10\) (misal dari satuan cm diubah menjadi mm), hal matematis yang akan terjadi pada model regresi adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Nilai koefisien korelasi (\(r\)) akan ikut terkali 10.</div>
+    <div class="option">B. Nilai intersep (\(a\)) akan bergeser sejauh 10 unit ke atas.</div>
+    <div class="option">C. Nilai slope (\(b\)) akan dibagi dengan 10 agar hasil prediksi (\(\hat{y}\)) tetap konsisten.</div>
+    <div class="option">D. Nilai koefisien determinasi (\(R^2\)) akan menjadi akar kuadratnya.</div>
+    <div class="option">E. Pola sebaran data akan berubah dari linear menjadi non-linear eksponensial.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 11</div>
+<div class="question-text">
+    Sebuah perusahaan startup transportasi menganalisis biaya operasional (\(y\)) terhadap jarak tempuh armada (\(x\)) dan menemukan hubungan linear sangat kuat dengan \(r = 0,95\). Manajer berencana menambah jarak tempuh sejauh 500% dari maksimal data historis karena yakin efisiensi akan berlanjut konstan sesuai garis. Kesalahan fatal apa yang dilakukan manajer tersebut dari kacamata statistik?
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Menganggap korelasi \(0,95\) berarti jarak menyebabkan \(95\%\) penghematan biaya total.</div>
+    <div class="option">B. Tidak mengubah jarak dari persentase menjadi angka riil sebelum dikalikan slope.</div>
+    <div class="option">C. Melakukan ekstrapolasi buta; asumsi pola linear konstan di luar rentang data historis seringkali gagal (misal komponen mesin lebih cepat rusak pada jarak ekstrem).</div>
+    <div class="option">D. Berpikir residu dari data historis akan saling meniadakan menjadi nol pada masa depan.</div>
+    <div class="option">E. Lupa mengkuadratkan \(0,95\) menjadi \(R^2\) yang sebetulnya menunjukkan jaminan pasti dari model.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 12</div>
+<div class="question-text">
+    <strong>Evaluasi Program Pelatihan</strong><br>
+    Tim HRD mengevaluasi hubungan antara durasi pelatihan dalam jam (\(x\)) dan skor kinerja karyawan (\(y\)). Diperoleh persamaan regresi \(\hat{y} = 60 + 3,5x\) dan diketahui koefisien determinasi (\(R^2\)) adalah \(0,64\). Kesimpulan statistik yang paling tepat di bawah ini adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Setiap tambahan pelatihan sebesar 1 jam dijamin pasti akan menaikkan skor kinerja sebesar 3,5 poin tanpa meleset bagi semua karyawan.</div>
+    <div class="option">B. Durasi pelatihan secara langsung mengakibatkan peningkatan mutlak \(64\%\) pada performa bersih perusahaan.</div>
+    <div class="option">C. Variabel durasi pelatihan mampu menjelaskan \(64\%\) variasi (keragaman) pada data skor kinerja karyawan.</div>
+    <div class="option">D. Korelasi antara jam pelatihan dan skor kinerja bernilai \(0,64\), yang tergolong dalam kategori moderat ke bawah.</div>
+    <div class="option">E. Jika karyawan tidak mengikuti pelatihan sama sekali, peluang mereka mencapai target kinerja adalah tepat \(64\%\).</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 13</div>
+<div class="question-text">
+    Saat mengevaluasi model regresi linear dari kepuasan pelanggan (\(y\)) berdasarkan kecepatan respons (\(x\)), peneliti melihat plot residunya (residual plot) membentuk pola melengkung berbentuk huruf "U" yang sangat jelas. Hal ini mengindikasikan bahwa...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Model linear sangat sempurna dan minim kesalahan ukur.</div>
+    <div class="option">B. Variabel independen harus dihapus karena menjadi penyebab kerugian (Lurking variable).</div>
+    <div class="option">C. Terdapat korelasi kausalitas absolut antara \(x\) dan \(y\).</div>
+    <div class="option">D. Asumsi linearitas dilanggar; hubungan antara \(x\) dan \(y\) sebenarnya bersifat non-linear (misal fungsi kuadratik).</div>
+    <div class="option">E. Intersep berada di titik ekstrem negatif sehingga residu memantul.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 14</div>
+<div class="question-text">
+    Terdapat dataset 100 mahasiswa mengenai waktu tidur (\(x\)) dan nilai ujian (\(y\)). Terdapat satu data "Pencilan (Outlier) Berpengaruh" di mana seorang mahasiswa tidur 15 jam dan nilainya 0 (karena tidak ikut ujian). Jika data observasi ini dibuang, apa dampak paling logis terhadap model?
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Slope garis regresi tidak akan berubah sama sekali, namun intersep akan turun ke nol.</div>
+    <div class="option">B. Koefisien korelasi (\(r\)) akan terbalik tandanya secara otomatis.</div>
+    <div class="option">C. Nilai \(R^2\) dan arah kemiringan garis regresi (slope) kemungkinan besar akan berubah signifikan karena garis regresi sangat sensitif terhadap pencilan yang memiliki <em>leverage</em> tinggi.</div>
+    <div class="option">D. Residu untuk ke-99 data yang tersisa akan membesar secara eksponensial tak terhingga.</div>
+    <div class="option">E. Korelasi antara variabel akan berubah menjadi hubungan sebab-akibat.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 15</div>
+<div class="question-text">
+    <strong>Evaluasi Kualitas Pupuk</strong><br>
+    Peneliti agronomi mencatat hubungan antara dosis pupuk dalam kg/hektar (\(x\)) dengan hasil panen gabah dalam ton/hektar (\(y\)). Persamaan regresi yang terbentuk adalah \(\hat{y} = 2,1 + 0,08x\). Jika diketahui nilai koefisien determinasi (\(R^2\)) adalah \(0,81\), simpulan manakah yang terhindar dari bias interpretasi?
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Dosis pupuk adalah faktor tunggal yang menyebabkan \(81\%\) dari total keseluruhan hasil panen gabah petani.</div>
+    <div class="option">B. Variabel dosis pupuk dapat menjelaskan \(81\%\) dari variasi pada data hasil panen gabah.</div>
+    <div class="option">C. Korelasi antara dosis pupuk dan panen bernilai positif \(0,81\).</div>
+    <div class="option">D. Tanpa penggunaan pupuk sama sekali (\(x=0\)), hasil panen selalu tepat \(2,1\) ton tanpa ada variasi di lapangan.</div>
+    <div class="option">E. Setiap kenaikan \(1\text{ kg}\) pupuk dijamin memberikan peluang \(81\%\) agar panen naik \(0,08\) ton.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 16</div>
+<div class="question-text">
+    Pada sebuah kota pesisir, data menunjukkan ada korelasi yang sangat tinggi (\(r = 0,92\)) antara jumlah penjualan es krim per bulan dengan angka serangan hiu di pantai. Pemerintah setempat mengusulkan penutupan toko es krim untuk menghentikan serangan hiu. Konsep statistik apa yang gagal dipahami pemerintah setempat?
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. \(R^2\) dari model tersebut bukan \(0,92\), melainkan \(0,846\), sehingga aturannya tidak valid.</div>
+    <div class="option">B. Variabel dependen (serangan hiu) seharusnya dijadikan variabel independen, sehingga hiu yang menyebabkan orang makan es krim.</div>
+    <div class="option">C. Garis regresi pasti memiliki intersep bernilai nol jika diuji di musim dingin.</div>
+    <div class="option">D. Korelasi yang tinggi diakibatkan oleh variabel perancu/lurking variable (yaitu musim/suhu panas), bukan berarti es krim menyebabkan serangan hiu.</div>
+    <div class="option">E. Koefisien korelasi \(0,92\) bermakna \(92\%\) penjualan es krim digunakan untuk umpan hiu.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 17</div>
+<div class="question-text">
+    Seorang analis regresi dihadapkan pada situasi di mana asumsi <em>Homoskedastisitas</em> (varians residu konstan) dilanggar. Pada scatter plot residu, sebaran titik-titiknya membentuk corong (melebar seiring membesarnya nilai \(x\)). Konsekuensi utama dari masalah ini adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Garis regresi akan langsung melengkung membentuk parabola.</div>
+    <div class="option">B. Prediksi rata-rata (koefisien \(a\) dan \(b\)) tetap tidak bias, tetapi rentang ketidakpastian (standar error) tidak dapat diandalkan terutama pada nilai \(x\) yang besar.</div>
+    <div class="option">C. Koefisien korelasi Pearson otomatis menjadi \(1\) karena corong menandakan hubungan kausalitas absolut.</div>
+    <div class="option">D. \(R^2\) akan berubah nilai menjadi negatif.</div>
+    <div class="option">E. Variabel independen seketika kehilangan kemampuannya menjelaskan variabel dependen sebesar \(100\%\).</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 18</div>
+<div class="question-text">
+    <strong>Evaluasi Kinerja Aplikasi Smartphone</strong><br>
+    Sebuah pabrikan ponsel meneliti dampak waktu aktif penggunaan aplikasi media sosial (\(x\), dalam jam) terhadap penurunan persentase kapasitas baterai (\(y\)). Regresi yang dihasilkan adalah \(\hat{y} = 1,5 + 8,4x\). Diketahui nilai \(R^2\) model tersebut mencapai \(0,90\). Pernyataan berikut yang secara statistik paling akurat adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Korelasi statistik bernilai \(0,90\), membuktikan hubungan sebab-akibat yang tidak bisa dibantah.</div>
+    <div class="option">B. Sebanyak \(90\%\) variasi atau keragaman pada penurunan kapasitas baterai mampu dijelaskan oleh durasi aktifnya aplikasi media sosial.</div>
+    <div class="option">C. Menghapus aplikasi dari HP pasti menjamin kapasitas baterai akan awet di atas \(90\%\) sepanjang hari.</div>
+    <div class="option">D. Penggunaan aplikasi menyebabkan \(90\%\) kerusakan permanen pada baterai dihitung dari baseline \(1,5\%\).</div>
+    <div class="option">E. Setiap tambahan 1 jam durasi main HP secara konstan dan mutlak mengurangi daya tepat sebesar \(8,4\%\) untuk semua unit mesin ponsel.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 19</div>
+<div class="question-text">
+    Di tahun 2010-2020, sebuah riset acak membandingkan "Jumlah impor buah apel dari Tiongkok" (\(x\)) dan "Jumlah angka pernikahan di Swedia" (\(y\)). Nilai \(R^2\) didapat setinggi \(0,89\). Meski angkanya tinggi, regresi ini dikategorikan sebagai <em>Spurious Regression</em> (Regresi Palsu). Mengapa hal ini bisa terjadi?
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Karena nilai korelasi (\(r\)) sebenarnya adalah kebalikan dari \(R^2\).</div>
+    <div class="option">B. Adanya intersep yang berada di kuadran negatif kartesius.</div>
+    <div class="option">C. Kedua variabel waktu (<em>time series</em>) tersebut secara kebetulan memiliki tren yang sama (misalnya sama-sama meningkat seiring bertambahnya tahun) tanpa adanya hubungan mekanisme yang riil.</div>
+    <div class="option">D. Model regresi gagal menghitung besaran peluang \(89\%\) yang disebabkan oleh korelasi.</div>
+    <div class="option">E. Karena \(0,89\) berada di ambang batas minimum untuk uji kausalitas absolut.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 20</div>
+<div class="question-text">
+    Dua model regresi (Model I dan Model II) dibuat untuk memprediksi harga saham yang sama dari dua indikator makroekonomi berbeda. Model I memiliki \(R^2 = 0,65\) dengan bentuk sebaran residu yang acak. Model II memiliki \(R^2 = 0,85\) tetapi pola residunya jelas menunjukkan pola gelombang periodik. Model manakah yang lebih valid untuk memprediksi harga, dan mengapa?
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Model II, karena yang terpenting dalam regresi linear mutlak hanyalah nilai \(R^2\) yang lebih tinggi (lebih mendekati 1).</div>
+    <div class="option">B. Model II, karena pola gelombang periodik menandakan korelasi tersebut bertransformasi menjadi kausalitas.</div>
+    <div class="option">C. Model I, karena meskipun \(R^2\)-nya lebih rendah, pola residu yang acak membuktikan bahwa syarat regresi linear terpenuhi (tidak ada informasi pola linear yang tersisa pada error).</div>
+    <div class="option">D. Model I, karena persentase fluktuasi laba \(65\%\) adalah angka rata-rata aman standar perbankan.</div>
+    <div class="option">E. Kedua model sama baiknya karena \(R^2\) keduanya di atas \(50\%\) yang menjamin prediksi tanpa meleset.</div>
+</div>
+</div>
 
         <div class="section-title">Soal 9: Logika Matematika</div>
         <div class="question-card">
