@@ -2818,11 +2818,356 @@
 
     <!-- TAB 3: KALKULUS -->
     <div id="tab-kalkulus" class="tab-content">
-        <div class="section-title">Soal 12: Limit & Kekontinuan Fungsi</div>
-        <div class="question-card">
-            <div class="question-meta">Konteks: Fungsi Biaya Pengiriman (Fungsi Sepotong/Piecewise)</div>
-            <div class="question-text text-center">[ Tempat input soal analisis limit kiri dan kanan akan diletakkan di sini ]</div>
-        </div>
+<div class="section-title">Rangkuman Materi Limit dan Kekontinuan Fungsi beserta 20 Soal Latihan</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Rangkuman Materi Limit dan Kekontinuan</div>
+<div class="question-text">
+    <h4>1. Konsep Dasar Limit</h4>
+    <p>Limit fungsi \(f(x)\) untuk \(x\) mendekati suatu nilai \(c\) dinyatakan sebagai:</p>
+    \[\lim_{x \to c} f(x) = L\]
+    <p>Artinya, ketika nilai \(x\) semakin mendekati \(c\) (baik dari kiri maupun kanan), maka nilai \(f(x)\) akan semakin mendekati \(L\). Limit dikatakan <strong>ada</strong> jika dan hanya jika limit kiri sama dengan limit kanan:</p>
+    \[\lim_{x \to c^-} f(x) = \lim_{x \to c^+} f(x) = L\]
+
+    <h4>2. Kekontinuan Fungsi</h4>
+    <p>Suatu fungsi \(f(x)\) dikatakan <strong>kontinu</strong> di titik \(x = c\) jika memenuhi ketiga syarat berikut:</p>
+    <ol>
+        <li>\(f(c)\) terdefinisi (memiliki nilai).</li>
+        <li>\(\lim_{x \to c} f(x)\) ada (limit kiri = limit kanan).</li>
+        <li>\(\lim_{x \to c} f(x) = f(c)\) (nilai limit sama dengan nilai fungsi di titik tersebut).</li>
+    </ol>
+    <p>Jika salah satu syarat tidak terpenuhi, maka fungsi tersebut <strong>diskontinu</strong> di \(x = c\).</p>
+
+    <h4>3. Hubungan Kekontinuan dan Diferensiabilitas (Turunan)</h4>
+    <p>Kekontinuan merupakan syarat perlu untuk diferensiabilitas, namun bukan syarat cukup.</p>
+    <ul>
+        <li>Jika fungsi \(f(x)\) <strong>diferensiabel</strong> (dapat diturunkan) di \(x=c\), maka \(f(x)\) <strong>pasti kontinu</strong> di \(x=c\).</li>
+        <li>Jika fungsi \(f(x)\) <strong>kontinu</strong> di \(x=c\), maka \(f(x)\) <strong>belum tentu diferensiabel</strong> di \(x=c\). Hal ini terjadi pada titik di mana grafik membentuk "sudut tajam" atau patahan (contoh: fungsi nilai mutlak atau fungsi piecewise yang gradiennya berubah tiba-tiba).</li>
+    </ul>
+
+    <div style="text-align: center; margin: 25px 0;">
+        <svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                </marker>
+            </defs>
+            <line x1="20" y1="250" x2="350" y2="250" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="360" y="255" font-family="sans-serif" font-size="14" font-style="italic">x</text>
+
+            <line x1="50" y1="280" x2="50" y2="20" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="35" y="30" font-family="sans-serif" font-size="14" font-style="italic">f(x)</text>
+
+            <path d="M 50 210 C 90 210, 100 130, 130 130" fill="none" stroke="blue" stroke-width="2.5" />
+            
+            <line x1="130" y1="130" x2="230" y2="230" stroke="red" stroke-width="2.5" />
+
+            <line x1="130" y1="250" x2="130" y2="130" stroke="black" stroke-width="1.5" stroke-dasharray="5,5" />
+            <text x="125" y="270" font-family="sans-serif" font-size="16" font-style="italic">c</text>
+            <circle cx="130" cy="130" r="4" fill="black" />
+
+            <line x1="190" y1="80" x2="137" y2="123" stroke="black" stroke-width="1" marker-end="url(#arrow)" />
+            <text x="195" y="70" font-family="sans-serif" font-size="14" font-weight="bold">Titik Sudut / Patahan</text>
+            <text x="195" y="90" font-family="sans-serif" font-size="12">Kontinu, Tapi Tidak Diferensiabel</text>
+        </svg>
+    </div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Konsep Dasar | Soal 1</div>
+<div class="question-text">
+    Nilai dari \(\lim_{x \to 2} (3x^2 - 4x + 5)\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(5\)</div>
+    <div class="option">B. \(9\)</div>
+    <div class="option">C. \(13\)</div>
+    <div class="option">D. \(17\)</div>
+    <div class="option">E. \(\infty\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Konsep Dasar | Soal 2</div>
+<div class="question-text">
+    Hasil dari \(\lim_{x \to 3} \frac{x^2 - 9}{x - 3}\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(0\)</div>
+    <div class="option">B. \(3\)</div>
+    <div class="option">C. \(6\)</div>
+    <div class="option">D. \(9\)</div>
+    <div class="option">E. Tidak terdefinisi (\(\infty\))</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Konsep Dasar | Soal 3</div>
+<div class="question-text">
+    Syarat <strong>cukup dan perlu</strong> agar suatu fungsi \(f(x)\) dikatakan kontinu di titik \(x = a\) adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. \(\lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x)\)</div>
+    <div class="option">B. \(f(a) = 0\)</div>
+    <div class="option">C. Fungsi tersebut memiliki turunan pertama \(f'(a)\)</div>
+    <div class="option">D. \(\lim_{x \to a} f(x) = f(a)\)</div>
+    <div class="option">E. Nilai \(f(a)\) terdefinisi pada bilangan real</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Konsep Dasar | Soal 4</div>
+<div class="question-text">
+    Nilai dari \(\lim_{x \to \infty} \frac{4x^3 - 2x + 1}{2x^3 + 5x^2}\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(0\)</div>
+    <div class="option">B. \(\frac{1}{5}\)</div>
+    <div class="option">C. \(2\)</div>
+    <div class="option">D. \(4\)</div>
+    <div class="option">E. \(\infty\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Konsep Dasar | Soal 5</div>
+<div class="question-text">
+    Jika diketahui \(\lim_{x \to 1^-} f(x) = 4\) dan \(\lim_{x \to 1^+} f(x) = 2\), maka pernyataan yang benar mengenai \(\lim_{x \to 1} f(x)\) adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Limitnya adalah \(4\), karena mengambil nilai maksimum.</div>
+    <div class="option">B. Limitnya adalah \(3\), sebagai rata-rata dari limit kiri dan kanan.</div>
+    <div class="option">C. Limitnya adalah \(2\), karena mendekati dari arah positif.</div>
+    <div class="option">D. Limitnya adalah \(6\), sebagai jumlah dari kedua arah.</div>
+    <div class="option">E. Limit fungsi tersebut tidak ada di \(x = 1\).</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian II: Menengah | Soal 6</div>
+<div class="question-text">
+    Nilai dari \(\lim_{x \to 4} \frac{\sqrt{x} - 2}{x - 4}\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(0\)</div>
+    <div class="option">B. \(\frac{1}{4}\)</div>
+    <div class="option">C. \(\frac{1}{2}\)</div>
+    <div class="option">D. \(2\)</div>
+    <div class="option">E. \(\infty\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian II: Menengah | Soal 7</div>
+<div class="question-text">
+    Nilai dari \(\lim_{x \to 0} \frac{\sin 4x}{\tan 2x}\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(0\)</div>
+    <div class="option">B. \(\frac{1}{2}\)</div>
+    <div class="option">C. \(2\)</div>
+    <div class="option">D. \(4\)</div>
+    <div class="option">E. \(8\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian II: Menengah | Soal 8</div>
+<div class="question-text">
+    Diberikan fungsi sepotong:
+    \[ f(x) = \begin{cases} kx + 3, & x \le 2 \\ x^2 - 1, & x > 2 \end{cases} \]
+    Agar fungsi \(f(x)\) kontinu di seluruh domain bilangan real, maka nilai \(k\) haruslah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(-1\)</div>
+    <div class="option">B. \(0\)</div>
+    <div class="option">C. \(1\)</div>
+    <div class="option">D. \(2\)</div>
+    <div class="option">E. \(3\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian II: Menengah | Soal 9</div>
+<div class="question-text">
+    Fungsi rasional \(f(x) = \frac{x + 2}{x^2 - 3x - 10}\) akan mengalami diskontinuitas di titik...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Hanya pada \(x = 5\)</div>
+    <div class="option">B. Hanya pada \(x = -2\)</div>
+    <div class="option">C. Pada \(x = 5\) dan \(x = -2\)</div>
+    <div class="option">D. Pada \(x = -5\) dan \(x = 2\)</div>
+    <div class="option">E. Fungsi ini kontinu di seluruh bilangan real</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian II: Menengah | Soal 10</div>
+<div class="question-text">
+    Pernyataan yang paling tepat mengenai fungsi nilai mutlak \(f(x) = |x - 5|\) pada saat \(x = 5\) adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Diskontinu dan tidak diferensiabel.</div>
+    <div class="option">B. Kontinu dan diferensiabel dengan nilai turunan \(0\).</div>
+    <div class="option">C. Kontinu dan diferensiabel dengan nilai turunan \(1\).</div>
+    <div class="option">D. Kontinu, namun <strong>tidak</strong> diferensiabel (tidak memiliki turunan).</div>
+    <div class="option">E. Tidak kontinu, namun diferensiabel.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: Soal HOTS / Penalaran Tingkat Tinggi | Soal 11</div>
+<div class="question-text">
+    Hasil penyelesaian dari \(\lim_{x \to 0} \frac{1 - \cos 2x}{x^2 \cos x}\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(0\)</div>
+    <div class="option">B. \(\frac{1}{2}\)</div>
+    <div class="option">C. \(1\)</div>
+    <div class="option">D. \(2\)</div>
+    <div class="option">E. \(\infty\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: Soal HOTS / Penalaran Tingkat Tinggi | Soal 12</div>
+<div class="question-text">
+    <strong>Algoritma Tarif Sewa Skuter Listrik</strong><br>
+    Sebuah aplikasi penyewaan menetapkan biaya \(S(t)\) dalam Rupiah untuk durasi \(t\) (menit) dengan fungsi:
+    \[ S(t) = \begin{cases} 10.000, & 0 \le t \le 15 \\ 10.000 + 1.000(t - 15), & t > 15 \end{cases} \]
+    Jika dianalisis secara kalkulus di titik \(t = 15\), kesimpulan yang tepat adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Diskontinu, karena tarif langsung melompat menjadi lebih mahal.</div>
+    <div class="option">B. Diskontinu, karena limit kiri dan limit kanannya berbeda.</div>
+    <div class="option">C. Kontinu, dan fungsi tersebut memiliki turunan (diferensiabel) di \(t = 15\).</div>
+    <div class="option">D. Kontinu, namun tidak dapat diturunkan (tidak diferensiabel) di \(t = 15\).</div>
+    <div class="option">E. Fungsi tidak terdefinisi tepat pada \(t = 15\).</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: Soal HOTS / Penalaran Tingkat Tinggi | Soal 13</div>
+<div class="question-text">
+    Agar fungsi berikut kontinu di setiap bilangan real:
+    \[ f(x) = \begin{cases} x^2 + a, & x < -1 \\ x + b, & -1 \le x \le 2 \\ 2x - 3, & x > 2 \end{cases} \]
+    Maka nilai konstanta \(a\) dan \(b\) berturut-turut adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. \(a = 3, b = 1\)</div>
+    <div class="option">B. \(a = 1, b = 3\)</div>
+    <div class="option">C. \(a = 0, b = -1\)</div>
+    <div class="option">D. \(a = -1, b = -3\)</div>
+    <div class="option">E. \(a = -3, b = -1\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: Soal HOTS / Penalaran Tingkat Tinggi | Soal 14</div>
+<div class="question-text">
+    Evaluasi limit berikut berdasarkan prinsip Teorema Apit (Squeeze Theorem): \(\lim_{x \to 0} x^2 \sin\left(\frac{1}{x}\right)\). Pernyataan yang benar adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Limitnya adalah \(1\) karena sifat \(\lim_{x \to 0} \frac{\sin x}{x} = 1\).</div>
+    <div class="option">B. Limitnya adalah \(\infty\) karena \(\frac{1}{x}\) menuju tak hingga.</div>
+    <div class="option">C. Limitnya adalah \(0\) karena nilai fungsi terjepit di antara \(-x^2\) dan \(x^2\).</div>
+    <div class="option">D. Limitnya berosilasi dari \(-1\) hingga \(1\) sehingga limit tidak ada.</div>
+    <div class="option">E. Limitnya tidak terdefinisi karena terjadi pembagian dengan nol pada \(\sin(1/0)\).</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: Soal HOTS / Penalaran Tingkat Tinggi | Soal 15</div>
+<div class="question-text">
+    <strong>Tarif Denda Keterlambatan Buku</strong><br>
+    Sistem denda otomatis \(D(h)\) dalam Rupiah untuk keterlambatan \(h\) hari dirumuskan:
+    \[ D(h) = \begin{cases} 2.000, & 0 \le h \le 3 \\ 2.000 + 1.500(h - 3), & h > 3 \end{cases} \]
+    Karakteristik grafik fungsi denda tersebut tepat pada hari ke-3 (\(h = 3\)) adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Diskontinu lompat (jump discontinuity).</div>
+    <div class="option">B. Diskontinu asimtotik (infinite discontinuity).</div>
+    <div class="option">C. Kontinu dan diferensiabel.</div>
+    <div class="option">D. Kontinu, tetapi grafik memiliki "sudut tajam" sehingga tidak diferensiabel.</div>
+    <div class="option">E. Tidak kontinu karena denda di hari ke-3 belum dihitung.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: Soal HOTS / Penalaran Tingkat Tinggi | Soal 16</div>
+<div class="question-text">
+    Volume balon bertambah seiring membesarnya jari-jari \(r\) mengikuti \(V(r) = \frac{4}{3}\pi r^3\). Dengan definisi limit turunan \(V'(r) = \lim_{h \to 0} \frac{V(r+h) - V(r)}{h}\), laju perubahan sesaat volume balon saat jari-jarinya \(5\text{ cm}\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(20\pi\)</div>
+    <div class="option">B. \(25\pi\)</div>
+    <div class="option">C. \(\frac{100}{3}\pi\)</div>
+    <div class="option">D. \(100\pi\)</div>
+    <div class="option">E. \(\frac{500}{3}\pi\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: Soal HOTS / Penalaran Tingkat Tinggi | Soal 17</div>
+<div class="question-text">
+    Kecepatan sebuah partikel diberikan oleh \(v(t) = \frac{\sqrt{t+9} - 3}{t}\). Menggunakan konsep limit, kelajuan partikel tepat saat \(t\) mendekati \(0\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(0\)</div>
+    <div class="option">B. \(\frac{1}{6}\)</div>
+    <div class="option">C. \(\frac{1}{3}\)</div>
+    <div class="option">D. \(3\)</div>
+    <div class="option">E. \(\infty\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: Soal HOTS / Penalaran Tingkat Tinggi | Soal 18</div>
+<div class="question-text">
+    <strong>Sistem Tagihan Paket Kuota</strong><br>
+    Tagihan data ekstra \(B(g)\) untuk pemakaian \(g\) GB dirumuskan:
+    \[ B(g) = \begin{cases} 50.000, & 0 \le g \le 10 \\ 50.000 + 8.000(g - 10), & g > 10 \end{cases} \]
+    Kesimpulan kalkulus yang paling tepat pada ambang batas kuota \(g = 10\) adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Diskontinu melompat karena perbedaan tarif.</div>
+    <div class="option">B. Diskontinu tak terhingga (asimtot vertikal).</div>
+    <div class="option">C. Kontinu dan garis grafiknya membulat mulus (diferensiabel).</div>
+    <div class="option">D. Kontinu, namun sudut tajam membuatnya tidak diferensiabel.</div>
+    <div class="option">E. Bukan sebuah fungsi matematika karena memuat dua persamaan.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: Soal HOTS / Penalaran Tingkat Tinggi | Soal 19</div>
+<div class="question-text">
+    Hasil analisis limit pada fungsi \(f(x) = \frac{x^3 - 8}{x^2 - 4}\) di titik \(x = 2\) dan \(x = -2\) menyimpulkan bahwa kurva fungsi tersebut memiliki...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Asimtot vertikal di \(x = 2\) dan \(x = -2\).</div>
+    <div class="option">B. Lubang (removable discontinuity) di \(x = 2\) dengan nilai limit \(0\), dan asimtot vertikal di \(x = -2\).</div>
+    <div class="option">C. Lubang (removable discontinuity) di \(x = 2\) dengan nilai limit \(3\), dan asimtot vertikal di \(x = -2\).</div>
+    <div class="option">D. Asimtot miring (oblique asymptote) di kedua titik.</div>
+    <div class="option">E. Kekontinuan sempurna (kontinu penuh) di seluruh bilangan real.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: Soal HOTS / Penalaran Tingkat Tinggi | Soal 20</div>
+<div class="question-text">
+    Sebuah objek direm tiba-tiba sehingga jaraknya terhadap waktu mematuhi:
+    \[ s(t) = \begin{cases} 20t, & 0 \le t < 4 \\ -5t^2 + 60t - 80, & t \ge 4 \end{cases} \]
+    Jika dianalisis posisi (kekontinuan) dan kecepatannya (turunan/diferensiabilitas) tepat pada \(t = 4\), maka pergerakan objek tersebut bersifat...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Diskontinu (objek seolah berpindah tempat seketika) dan kecepatannya tidak dapat diukur.</div>
+    <div class="option">B. Kontinu, tetapi kecepatan objek berubah mendadak (tidak diferensiabel).</div>
+    <div class="option">C. Kontinu, dan kecepatannya menurun secara mulus tanpa sentakan tajam (diferensiabel).</div>
+    <div class="option">D. Diskontinu, namun kecepatannya tetap stabil \(20\text{ m/s}\).</div>
+    <div class="option">E. Turunan keduanya (percepatan) bernilai nol pada saat itu.</div>
+</div>
+</div>
 
         <div class="section-title">Soal 13: Aplikasi Turunan (Optimasi)</div>
         <div class="question-card">
