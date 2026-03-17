@@ -21,212 +21,93 @@
 
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --background-color: #f4f6f8;
-            --text-color: #333;
-            --border-radius: 8px;
-            --tab-active-bg: #fff;
-            --tab-inactive-bg: #e0e0e0;
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            margin: 0;
-            padding: 20px;
-        }
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 3px solid var(--secondary-color);
-            padding-top: 10px;
-            padding-bottom: 20px;
-            position: relative;
-        }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .max-w-600 { max-width: 600px; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
 
-        .logo-left {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            height: 65px;
-            object-fit: contain;
-        }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+        .collapse-border { border-collapse: collapse; }
 
-        .logo-right {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            height: 65px;
-            object-fit: contain;
-        }
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1, h3, h4 { color: var(--primary); margin-top: 0; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        table th, table td { padding: 8px; }
+
+        /* --- Shared Component Properties --- */
+        .container, .question-card, .canvas-graph { background: #fff; }
+        .container, .section-title, .question-card, .canvas-graph, .tab-button { border-radius: var(--radius); }
+        .question-meta, .option, .tabs::-webkit-scrollbar-track, .tabs::-webkit-scrollbar-thumb { border-radius: 4px; }
+        .section-title, .tabs { display: flex; }
+        .section-title { align-items: center; }
+        .tabs, .section-title, .question-card { margin-bottom: 20px; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
 
         @media (max-width: 768px) {
-            .logo-left, .logo-right {
-                position: static;
-                display: inline-block;
-                margin: 0 15px 15px;
-                height: 50px;
-            }
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
         }
 
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
+        .subtitle { color: #666; font-size: 1.1rem; }
 
-        .subtitle {
-            color: #666;
-            font-size: 1.1rem;
-            font-weight: normal;
-        }
+        .tabs { border-bottom: 2px solid #ddd; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; scrollbar-width: thin; scrollbar-color: var(--secondary) #f0f0f0; }
+        .tabs::-webkit-scrollbar { height: 6px; }
+        .tabs::-webkit-scrollbar-track { background: #f0f0f0; }
+        .tabs::-webkit-scrollbar-thumb { background: var(--secondary); }
 
-        /* Tabs Styling - Disesuaikan agar bisa scroll ke kanan (overflow-x) */
-        .tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ddd;
-            overflow-x: auto; /* Mengizinkan scroll ke kanan */
-            white-space: nowrap;
-            padding-bottom: 5px; /* Memberi ruang untuk scrollbar */
-            scrollbar-width: thin;
-            scrollbar-color: var(--secondary-color) #f0f0f0;
-        }
+        .tab-button { padding: 12px 25px; cursor: pointer; background: #e0e0e0; border: none; border-bottom-left-radius: 0; border-bottom-right-radius: 0; margin-right: 5px; font-weight: 600; color: #555; transition: 0.3s; flex: 0 0 auto; text-align: center; }
+        .tab-button:hover { background: #dcdcdc; }
+        .tab-button.active { background: var(--secondary); color: #fff; }
 
-        .tabs::-webkit-scrollbar {
-            height: 6px;
-        }
-        .tabs::-webkit-scrollbar-track {
-            background: #f0f0f0;
-            border-radius: 4px;
-        }
-        .tabs::-webkit-scrollbar-thumb {
-            background-color: var(--secondary-color);
-            border-radius: 4px;
-        }
+        .tab-content { display: none; animation: fadeIn 0.5s; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .tab-button {
-            padding: 12px 25px;
-            cursor: pointer;
-            background-color: var(--tab-inactive-bg);
-            border: none;
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-            margin-right: 5px;
-            font-weight: 600;
-            color: #555;
-            transition: all 0.3s ease;
-            flex: 0 0 auto; /* Mencegah tab menyusut */
-            text-align: center;
-        }
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; }
 
-        .tab-button:hover {
-            background-color: #dcdcdc;
-        }
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
 
-        .tab-button.active {
-            background-color: var(--secondary-color);
-            color: white;
-        }
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-left: 3px solid var(--secondary); }
 
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
+        .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 15px; }
+        .option { background: #f8f9fa; padding: 12px 15px; border: 1px solid #eee; font-size: 0.95rem; min-width: 0; overflow-x: auto; overflow-wrap: break-word; }
 
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-title {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 20px;
-            border-radius: var(--border-radius);
-            margin-top: 30px;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .question-card {
-            background: #fff;
-            border: 1px dashed #ccc;
-            border-radius: var(--border-radius);
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            background-color: #fafafa;
-        }
-
-        .question-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border-color: var(--secondary-color);
-            background-color: #fff;
-        }
-
-        .question-text {
-            font-size: 1.05rem;
-            margin-bottom: 15px;
-            color: #333;
-            text-align: left;
-            padding: 10px 0;
-        }
-
-        .question-meta {
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: inline-block;
-            background-color: #e8f4fd;
-            padding: 5px 12px;
-            border-radius: 4px;
-            border-left: 3px solid var(--secondary-color);
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .option {
-            background-color: #f8f9fa;
-            padding: 10px 15px;
-            border-radius: 4px;
-            border: 1px solid #eee;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-        }
+        .canvas-graph { height: auto; border: 1px solid #ccc; margin: 20px auto; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 
         @media print {
-            body { background: white; }
+            body { background: #fff; }
             .container { box-shadow: none; padding: 0; }
             .question-card { break-inside: avoid; border: 1px solid #ccc; }
-            .section-title { background-color: #eee; color: black; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
             .tabs { display: none; }
             .tab-content { display: block !important; margin-bottom: 30px; border-bottom: 2px solid #000; }
         }
@@ -236,11 +117,11 @@
 
 <div class="container">
     <header>
-        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo-left">
-        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo-right">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
         <h1>Coaching UKRG Matematika</h1>
         <div class="subtitle">Paket 1 | Tahun Ajaran 2025/2026</div>
-        <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">Latihan menuju UKRG Matematika SMA</p>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMA</p>
     </header>
 
     <!-- Tab Navigation -->
@@ -256,13 +137,13 @@
     <div id="tab-aljabar" class="tab-content active">
         <!-- MODUL EKSPONEN & LOGARITMA -->
         <div class="section-title">Modul Pembelajaran: Eksponen dan Logaritma</div>
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Rangkuman Materi</div>
             <div class="question-text">
-                <h4 style="color: var(--primary-color); margin-bottom: 5px;">A. Eksponen (Bilangan Berpangkat)</h4>
+                <h4 class="text-primary mb-1">A. Eksponen (Bilangan Berpangkat)</h4>
                 <p>Eksponen adalah bentuk perkalian berulang dari suatu bilangan. Bentuk umumnya adalah \(a^n = a \times a \times \dots \times a\) (sebanyak \(n\) kali), di mana \(a\) adalah basis dan \(n\) adalah pangkat (eksponen).</p>
                 <strong>Sifat-sifat Operasi Eksponen:</strong>
-                <ol style="margin-top: 5px; margin-bottom: 20px;">
+                <ol class="mt-1 mb-4">
                     <li>\(a^m \cdot a^n = a^{m+n}\)</li>
                     <li>\(\frac{a^m}{a^n} = a^{m-n}\) (untuk \(a \neq 0\))</li>
                     <li>\((a^m)^n = a^{m \cdot n}\)</li>
@@ -273,32 +154,32 @@
                     <li>\(a^{\frac{m}{n}} = \sqrt[n]{a^m}\)</li>
                 </ol>
 
-                <h4 style="color: var(--primary-color); margin-bottom: 5px;">B. Logaritma</h4>
+                <h4 class="text-primary mb-1">B. Logaritma</h4>
                 <p>Logaritma adalah invers (kebalikan) dari operasi eksponen. Jika \(a^c = b\), maka bentuk logaritmanya ditulis sebagai:</p>
                 \[ {}^a\log b = c \]
                 <p>Dengan syarat: \(a > 0\), \(a \neq 1\) (basis), dan \(b > 0\) (numerus).</p>
                 <strong>Sifat-sifat Operasi Logaritma:</strong>
-                <ol style="margin-top: 5px; margin-bottom: 20px;">
+                <ol class="mt-1 mb-4">
                     <li>\({}^a\log 1 = 0\) dan \({}^a\log a = 1\)</li>
                     <li>\({}^a\log (b \cdot c) = {}^a\log b + {}^a\log c\)</li>
                     <li>\({}^a\log \left(\frac{b}{c}\right) = {}^a\log b - {}^a\log c\)</li>
                     <li>\({}^a\log (b^n) = n \cdot {}^a\log b\)</li>
-                    <li>\({}^a\log b \cdot {}^b\log c = {}^a\log c\) \quad (Sifat Rantai)</li>
-                    <li>\({}^a\log b = \frac{{}^c\log b}{{}^c\log a}\) \quad (Ubah Basis)</li>
+                    <li>\({}^a\log b \cdot {}^b\log c = {}^a\log c\) &emsp; (Sifat Rantai)</li>
+                    <li>\({}^a\log b = \frac{{}^c\log b}{{}^c\log a}\) &emsp; (Ubah Basis)</li>
                     <li>\(a^{{}^a\log b} = b\)</li>
                     <li>\({}^{a^m}\log (b^n) = \frac{n}{m} \cdot {}^a\log b\)</li>
                 </ol>
                 <p><em>Catatan:</em> Grafik fungsi \(y = 2^x\) dan \(y = {}^2\log x\) merupakan cerminan satu sama lain terhadap garis \(y = x\).</p>
 
                 <!-- Grafik Canvas -->
-                <canvas id="mathGraph" width="400" height="400" style="max-width: 100%; height: auto; background: white; border: 1px solid #ccc; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></canvas>
+                <canvas id="mathGraph" width="400" height="400" class="canvas-graph max-w-full block mx-auto"></canvas>
             </div>
         </div>
 
-        <h3 style="color: var(--primary-color); margin-top: 40px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Bagian 2: Latihan Soal</h3>
+        <h3 class="text-primary mt-5 border-b pb-2">Bagian 2: Latihan Soal</h3>
 
         <!-- Level 1 -->
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 1: Konsep Dasar | Soal 1</div>
             <div class="question-text">Bentuk sederhana dari \(\frac{a^4 \cdot b^{-3} \cdot c^2}{a^{-2} \cdot b^2 \cdot c^5}\) adalah...</div>
             <div class="options-grid">
@@ -310,7 +191,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 1: Konsep Dasar | Soal 2</div>
             <div class="question-text">Hasil dari \(81^{\frac{3}{4}} - 27^{\frac{1}{3}}\) adalah...</div>
             <div class="options-grid">
@@ -322,7 +203,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 1: Konsep Dasar | Soal 3</div>
             <div class="question-text">Bentuk eksponen \(3^4 = 81\) jika diubah ke dalam bentuk logaritma menjadi...</div>
             <div class="options-grid">
@@ -334,7 +215,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 1: Konsep Dasar | Soal 4</div>
             <div class="question-text">Nilai dari \({}^2\log 48 + {}^2\log 6 - {}^2\log 9\) adalah...</div>
             <div class="options-grid">
@@ -346,7 +227,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 1: Konsep Dasar | Soal 5</div>
             <div class="question-text">Nilai \(x\) yang memenuhi persamaan \(2^{x-3} = 32\) adalah...</div>
             <div class="options-grid">
@@ -359,7 +240,7 @@
         </div>
 
         <!-- Level 2 -->
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 2: Medium | Soal 6</div>
             <div class="question-text">Himpunan penyelesaian dari persamaan eksponen \(3^{x^2 - 4x + 3} = 1\) adalah...</div>
             <div class="options-grid">
@@ -371,7 +252,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 2: Medium | Soal 7</div>
             <div class="question-text">Jika diketahui \({}^2\log 3 = p\) dan \({}^2\log 5 = q\), maka nilai dari \({}^2\log 45\) dinyatakan dalam \(p\) dan \(q\) adalah...</div>
             <div class="options-grid">
@@ -383,7 +264,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 2: Medium | Soal 8</div>
             <div class="question-text">Nilai \(x\) yang memenuhi persamaan \({}^3\log(2x - 1) = 2\) adalah...</div>
             <div class="options-grid">
@@ -395,7 +276,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 2: Medium | Soal 9</div>
             <div class="question-text">Penyelesaian dari \(25^{x+2} = 125^{x-1}\) adalah...</div>
             <div class="options-grid">
@@ -407,7 +288,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 2: Medium | Soal 10</div>
             <div class="question-text">Nilai dari \(\frac{{}^3\log 5 \cdot {}^5\log 7 \cdot {}^7\log 81}{{}^2\log 16}\) adalah...</div>
             <div class="options-grid">
@@ -420,7 +301,7 @@
         </div>
 
         <!-- Level 3 -->
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 3: HOTS | Soal 11</div>
             <div class="question-text">Himpunan penyelesaian dari persamaan \(2^{2x} - 6 \cdot 2^x + 8 = 0\) adalah...</div>
             <div class="options-grid">
@@ -432,7 +313,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 3: HOTS | Soal 12</div>
             <div class="question-text"><strong>[Kultur Bakteri]</strong> Di sebuah laboratorium, bakteri galur A berkembang biak mengikuti fungsi \(N_A(t) = 1.000 \times 3^{0,5t}\), sedangkan bakteri galur B jumlahnya menyusut akibat antibiotik dengan fungsi \(N_B(t) = 9.000 \times 3^{-0,5t}\), dengan \(t\) dalam jam. Pada jam ke berapakah rasio populasi bakteri A terhadap bakteri B tepat mencapai angka 3?</div>
             <div class="options-grid">
@@ -444,7 +325,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 3: HOTS | Soal 13</div>
             <div class="question-text">Jika \(x\) dan \(y\) memenuhi sistem persamaan \(3^{x+y} = 243\) dan \(2^{x-y} = 8\), maka nilai dari \(x \cdot y\) adalah...</div>
             <div class="options-grid">
@@ -456,7 +337,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 3: HOTS | Soal 14</div>
             <div class="question-text">Tingkat kebisingan (dalam desibel) dirumuskan dengan \(TI = 10 \cdot \log\left(\frac{I}{I_0}\right)\). Jika intensitas bunyi klakson mobil A adalah 1.000 kali lebih besar dari intensitas bunyi mesin motor B, maka selisih tingkat kebisingan (TI) antara mobil A dan motor B adalah...</div>
             <div class="options-grid">
@@ -468,7 +349,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 3: HOTS | Soal 15</div>
             <div class="question-text"><strong>[Peluruhan Zat]</strong> Sebuah reaktor menguji dua jenis zat radioaktif. Massa zat X menyusut perlahan dengan fungsi \(M_X(t) = 200 \times 4^{-0,2t}\) gram, sementara massa tumpukan produk sampingan Y bertambah dengan fungsi \(M_Y(t) = 50 \times 4^{0,3t}\) gram, dengan \(t\) dalam hari. Waktu yang dibutuhkan agar rasio massa zat Y terhadap zat X mencapai angka 16 adalah...</div>
             <div class="options-grid">
@@ -480,7 +361,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 3: HOTS | Soal 16</div>
             <div class="question-text">Batas-batas nilai \(x\) yang memenuhi pertidaksamaan \({}^{\frac{1}{2}}\log(x - 2) > -2\) adalah...</div>
             <div class="options-grid">
@@ -492,7 +373,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 3: HOTS | Soal 17</div>
             <div class="question-text">Waktu paruh dari isotop radioaktif Carbon-14 adalah sekitar 5.730 tahun. Suatu fosil kayu ditemukan hanya memiliki 12,5% dari jumlah Carbon-14 aslinya. Umur perkiraan fosil kayu tersebut adalah...</div>
             <div class="options-grid">
@@ -504,7 +385,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 3: HOTS | Soal 18</div>
             <div class="question-text"><strong>[Urbanisasi Kota]</strong> Berdasarkan sensus terbaru, penduduk di Kota P bertambah secara eksponensial mengikuti fungsi \(P(t) = 120.000 \times 2^{0,05t}\). Sebaliknya, sebuah kota industri baru Q tumbuh pesat dengan fungsi \(Q(t) = 15.000 \times 2^{0,15t}\), dengan \(t\) dalam tahun. Setelah berapa tahunkah populasi di kota Q akan menjadi persis 2 kali lipat dari populasi di kota P?</div>
             <div class="options-grid">
@@ -516,7 +397,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 3: HOTS | Soal 19</div>
             <div class="question-text">Penyelesaian dari sistem persamaan logaritma \({}^x\log y = 2\) dan \(x \cdot y = 27\) adalah \((x, y)\). Nilai dari \(x + y\) adalah...</div>
             <div class="options-grid">
@@ -528,7 +409,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level 3: HOTS | Soal 20</div>
             <div class="question-text">Jika diketahui \(\log 2 = a\) dan \(\log 3 = b\), maka nilai dari \(\log 120\) setara dengan...</div>
             <div class="options-grid">
@@ -543,27 +424,27 @@
         <!-- MODUL BARISAN, DERET, & MATEMATIKA KEUANGAN -->
         <div class="section-title">Modul Pembelajaran: Barisan, Deret, dan Matematika Keuangan</div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Rangkuman Materi</div>
             <div class="question-text">
-                <h4 style="color: var(--primary-color); margin-bottom: 5px;">1. Barisan dan Deret Aritmetika</h4>
+                <h4 class="text-primary mb-1">1. Barisan dan Deret Aritmetika</h4>
                 <p>Barisan aritmetika adalah barisan bilangan yang memiliki selisih (beda) yang tetap antara dua suku yang berurutan.</p>
-                <ul style="margin-top: 5px; margin-bottom: 10px;">
+                <ul class="mt-1 mb-4">
                     <li><strong>Suku ke-\(n\) (\(U_n\)):</strong> \(U_n = a + (n - 1)b\)</li>
                     <li><strong>Jumlah \(n\) suku pertama (\(S_n\)):</strong> \(S_n = \frac{n}{2}(2a + (n - 1)b) = \frac{n}{2}(a + U_n)\)</li>
                 </ul>
-                <p style="font-size: 0.9em; color: #666;"><em>Keterangan:</em> \(a =\) suku pertama, \(b =\) beda (\(U_n - U_{n-1}\)).</p>
+                <p class="text-sm text-muted"><em>Keterangan:</em> \(a =\) suku pertama, \(b =\) beda (\(U_n - U_{n-1}\)).</p>
 
-                <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 5px;">2. Barisan dan Deret Geometri</h4>
+                <h4 class="text-primary mt-4 mb-1">2. Barisan dan Deret Geometri</h4>
                 <p>Barisan geometri adalah barisan bilangan yang memiliki rasio (perbandingan) yang tetap antara dua suku yang berurutan.</p>
-                <ul style="margin-top: 5px; margin-bottom: 10px;">
+                <ul class="mt-1 mb-4">
                     <li><strong>Suku ke-\(n\) (\(U_n\)):</strong> \(U_n = a \cdot r^{n-1}\)</li>
                     <li><strong>Jumlah \(n\) suku pertama (\(S_n\)):</strong> \(S_n = \frac{a(r^n - 1)}{r - 1}\) untuk \(r > 1\), atau \(S_n = \frac{a(1 - r^n)}{1 - r}\) untuk \(r < 1\)</li>
                     <li><strong>Deret Geometri Tak Hingga:</strong> \(S_{\infty} = \frac{a}{1 - r}\) (syarat: \(-1 < r < 1\))</li>
                 </ul>
-                <p style="font-size: 0.9em; color: #666;"><em>Keterangan:</em> \(a =\) suku pertama, \(r =\) rasio (\(U_n / U_{n-1}\)).</p>
+                <p class="text-sm text-muted"><em>Keterangan:</em> \(a =\) suku pertama, \(r =\) rasio (\(U_n / U_{n-1}\)).</p>
 
-                <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 5px;">3. Matematika Keuangan</h4>
+                <h4 class="text-primary mt-4 mb-1">3. Matematika Keuangan</h4>
                 <p>Matematika keuangan mengaplikasikan konsep barisan dan deret pada instrumen keuangan seperti bunga, pertumbuhan, dan anuitas.</p>
 
                 <p><strong>a. Bunga Tunggal</strong> (Bunga hanya dihitung dari modal awal)</p>
@@ -572,23 +453,23 @@
                 <p><strong>b. Bunga Majemuk</strong> (Bunga berbunga; bunga dihitung dari modal terakhir)<br>Berikut adalah ilustrasi nilai uang terhadap waktu pada sistem bunga majemuk:</p>
 
                 <!-- Grafik Canvas Bunga Majemuk -->
-                <canvas id="financeGraph" style="width: 100%; height: auto; background: white; border: 1px solid #ccc; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></canvas>
+                <canvas id="financeGraph" class="canvas-graph w-full block mx-auto"></canvas>
 
                 <p>Rumus Modal Akhir:</p>
                 \[ M_n = M_0(1 + i)^n \]
-                <p style="font-size: 0.9em; color: #666; margin-bottom: 20px;"><em>Keterangan:</em> \(M_0 =\) Modal awal, \(M_n =\) Modal akhir, \(i =\) suku bunga per periode, \(n =\) banyak periode.</p>
+                <p class="text-sm text-muted mb-4"><em>Keterangan:</em> \(M_0 =\) Modal awal, \(M_n =\) Modal akhir, \(i =\) suku bunga per periode, \(n =\) banyak periode.</p>
 
                 <p><strong>c. Anuitas</strong> (Pembayaran berkala dengan jumlah yang sama yang terdiri dari angsuran pokok dan bunga)</p>
                 \[ A = M \cdot \frac{i(1+i)^n}{(1+i)^n - 1} \]
                 \[ A = a_n + b_n \]
-                <p style="font-size: 0.9em; color: #666;"><em>Keterangan:</em> \(A =\) Anuitas, \(M =\) Pinjaman awal, \(a_n =\) angsuran ke-\(n\), \(b_n =\) bunga ke-\(n\).</p>
+                <p class="text-sm text-muted"><em>Keterangan:</em> \(A =\) Anuitas, \(M =\) Pinjaman awal, \(a_n =\) angsuran ke-\(n\), \(b_n =\) bunga ke-\(n\).</p>
             </div>
         </div>
 
-        <h3 style="color: var(--primary-color); margin-top: 40px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Bagian 2: Latihan Soal</h3>
+        <h3 class="text-primary mt-5 border-b pb-2">Bagian 2: Latihan Soal</h3>
 
         <!-- Level Basic -->
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 1</div>
             <div class="question-text">Diketahui barisan aritmetika: \(2, 5, 8, 11, \dots\) Suku ke-\(15\) dari barisan tersebut adalah...</div>
             <div class="options-grid">
@@ -600,7 +481,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 2</div>
             <div class="question-text">Diketahui barisan geometri: \(3, 6, 12, 24, \dots\) Suku ke-\(6\) dari barisan tersebut adalah...</div>
             <div class="options-grid">
@@ -612,7 +493,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 3</div>
             <div class="question-text">Pak Budi menabung uang sebesar Rp1.000.000,00 di bank dengan sistem bunga tunggal sebesar \(10\%\) per tahun. Besar bunga yang didapatkan Pak Budi setelah menabung selama 3 tahun adalah...</div>
             <div class="options-grid">
@@ -624,7 +505,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 4</div>
             <div class="question-text">Ibu Ani menginvestasikan modal sebesar Rp2.000.000,00 dengan suku bunga majemuk \(5\%\) per tahun. Total modal Ibu Ani pada akhir tahun ke-2 adalah...</div>
             <div class="options-grid">
@@ -636,7 +517,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 5</div>
             <div class="question-text">Jumlah deret geometri tak hingga \(16 + 8 + 4 + 2 + \dots\) adalah...</div>
             <div class="options-grid">
@@ -649,7 +530,7 @@
         </div>
 
         <!-- Level Medium -->
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Menengah (Medium) | Soal 6</div>
             <div class="question-text">Diketahui suku ke-\(3\) dan suku ke-\(7\) dari sebuah barisan aritmetika berturut-turut adalah \(10\) dan \(26\). Jumlah \(10\) suku pertama dari barisan tersebut adalah...</div>
             <div class="options-grid">
@@ -661,7 +542,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Menengah (Medium) | Soal 7</div>
             <div class="question-text">Seutas tali dipotong menjadi 5 bagian yang panjangnya membentuk barisan geometri. Jika tali terpendek adalah \(10\text{ cm}\) dan tali terpanjang adalah \(160\text{ cm}\), panjang tali mula-mula adalah...</div>
             <div class="options-grid">
@@ -673,7 +554,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Menengah (Medium) | Soal 8</div>
             <div class="question-text">Seseorang meminjam uang sebesar Rp10.000.000,00 di sebuah koperasi yang menerapkan suku bunga majemuk \(2\%\) per bulan. Jika tidak ada cicilan yang dibayarkan, besar hutang orang tersebut pada akhir bulan ke-5 adalah... (Gunakan petunjuk \((1,02)^5 \approx 1,1041\))</div>
             <div class="options-grid">
@@ -685,7 +566,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Menengah (Medium) | Soal 9</div>
             <div class="question-text">Suatu jenis bakteri dapat membelah diri menjadi dua setiap 20 menit. Jika pada awalnya terdapat 50 bakteri, banyak bakteri setelah dibiarkan selama 2 jam adalah...</div>
             <div class="options-grid">
@@ -697,7 +578,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Menengah (Medium) | Soal 10</div>
             <div class="question-text">Harga sebuah mesin cetak menyusut sebesar \(10\%\) setiap tahunnya dari nilai buku awal tahun. Jika mesin tersebut dibeli dengan harga Rp100.000.000,00, nilai buku mesin tersebut setelah dipakai selama 3 tahun adalah...</div>
             <div class="options-grid">
@@ -710,7 +591,7 @@
         </div>
 
         <!-- Level HOTS -->
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 11</div>
             <div class="question-text">Tiga buah bilangan membentuk barisan aritmetika dengan beda positif. Jika suku kedua dikurangi \(1\), maka ketiga bilangan tersebut akan membentuk barisan geometri yang jumlahnya \(14\). Nilai dari bilangan yang paling besar (suku ketiga) adalah...</div>
             <div class="options-grid">
@@ -722,7 +603,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 12</div>
             <div class="question-text"><strong>[Kasus 1]</strong> Pak Andi menempatkan dana untuk pendidikan anaknya pada instrumen investasi dengan suku bunga majemuk \(0,5\%\) per bulan. Mengingat laju inflasi biaya pendidikan, Pak Andi menghitung bahwa investasi akhirnya harus mencapai \(1,5\) kali lipat dari nilai awal sebelum ia mulai mencairkannya. Dengan mengasumsikan tidak ada setoran tambahan, berapa bulan waktu yang dibutuhkan hingga target tersebut tercapai? (Gunakan aproksimasi: \(\ln(1,5) \approx 0,405\) dan \(\ln(1,005) \approx 0,005\)).</div>
             <div class="options-grid">
@@ -734,7 +615,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 13</div>
             <div class="question-text">Sebuah pinjaman sebesar Rp50.000.000,00 akan dilunasi dengan sistem anuitas bulanan sebesar Rp2.000.000,00. Jika suku bunga yang ditetapkan adalah \(1\%\) per bulan, sisa utang pinjaman tersebut setelah pembayaran anuitas kedua adalah...</div>
             <div class="options-grid">
@@ -746,7 +627,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 14</div>
             <div class="question-text">Dalam sebuah gedung pertunjukan, pengaturan kursi penonton diatur sedemikian rupa sehingga baris paling depan memiliki 20 kursi, baris di belakangnya 24 kursi, baris berikutnya 28 kursi, dan seterusnya bertambah 4 kursi setiap barisnya. Terdapat total 15 baris kursi di gedung tersebut. Jika harga tiket adalah Rp50.000,00 per kursi dan pada suatu malam pertunjukan kursi terisi sebanyak \(80\%\), total pendapatan dari penjualan tiket pada malam tersebut adalah...</div>
             <div class="options-grid">
@@ -758,7 +639,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 15</div>
             <div class="question-text">Sebuah bola karet dijatuhkan dari ketinggian \(10\text{ meter}\). Setiap kali bola menyentuh lantai, bola tersebut memantul kembali dengan ketinggian \(\frac{3}{4}\) dari ketinggian sebelumnya. Panjang lintasan bola seluruhnya sampai bola benar-benar berhenti berayun adalah...</div>
             <div class="options-grid">
@@ -770,7 +651,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 16</div>
             <div class="question-text"><strong>[Kasus 2]</strong> Kak Lisa membuka rekening tabungan khusus modal usaha dengan sistem suku bunga majemuk \(0,6\%\) per bulan. Lisa menargetkan saldo akhirnya harus bertumbuh menjadi \(1,8\) kali lipat dari modal setoran awalnya agar cukup untuk membuka toko. Jika ia mendiamkan saja tabungan tersebut tanpa menyetor lagi maupun menarik dana, berapakah perkiraan waktu yang diperlukan hingga target modal tersebut tercapai? (Gunakan aproksimasi: \(\ln(1,8) \approx 0,588\) dan \(\ln(1,006) \approx 0,006\)).</div>
             <div class="options-grid">
@@ -782,7 +663,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 17</div>
             <div class="question-text">Sebuah perusahaan rintisan mencatat pendapatan kotor pada tahun pertamanya beroperasi sebesar Rp1.000.000.000,00. Karena strategi pemasaran yang agresif, pendapatan kotor ini diestimasikan selalu naik sebesar \(20\%\) dari pendapatan tahun sebelumnya. Total estimasi pendapatan kotor perusahaan tersebut selama 5 tahun pertama beroperasi adalah... (Gunakan petunjuk \((1,2)^5 \approx 2,48832\))</div>
             <div class="options-grid">
@@ -794,7 +675,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 18</div>
             <div class="question-text">Keuntungan bulanan sebuah toko serba ada diasumsikan terus bertambah secara konstan (membentuk barisan aritmetika) setiap bulannya. Diketahui keuntungan pada bulan pertama adalah Rp500.000,00. Jika total seluruh keuntungan selama 6 bulan pertama beroperasi mencapai Rp4.500.000,00, maka besar keuntungan toko tersebut khusus pada bulan ke-12 saja adalah...</div>
             <div class="options-grid">
@@ -806,7 +687,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 19</div>
             <div class="question-text"><strong>[Kasus 3]</strong> Pak Haji Umar menempatkan dana untuk melunasi ongkos haji pada tabungan syariah dengan bagi hasil yang setara dengan suku bunga majemuk \(0,2\%\) per bulan. Akibat pelemahan kurs dan inflasi asrama haji, Umar memproyeksikan bahwa dananya harus mencapai \(1,3\) kali lipat dari nilai awal supaya cukup melunasi biaya keberangkatan nanti. Berapa bulan masa tunggu finansial yang harus dilewati hingga dana tabungan tersebut mencapai target proyeksi, dengan asumsi tidak ada setoran rutin bulanan tambahan? (Gunakan aproksimasi: \(\ln(1,3) \approx 0,262\) dan \(\ln(1,002) \approx 0,002\)).</div>
             <div class="options-grid">
@@ -818,7 +699,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Level: Penalaran Tingkat Tinggi (HOTS) | Soal 20</div>
             <div class="question-text">Seseorang berencana menabung sebesar Rp1.000.000,00 secara rutin setiap awal bulan di sebuah lembaga keuangan yang memberikan suku bunga majemuk \(1\%\) per bulan. Total uang yang akan terkumpul tepat pada akhir bulan ke-12 adalah... (Ini merupakan konsep nilai masa depan dari anuitas awal. Gunakan petunjuk \((1,01)^{12} \approx 1,1268\))</div>
             <div class="options-grid">
@@ -831,7 +712,7 @@
         </div>
 
         <div class="section-title">Modul Pembelajaran: Perbandingan dan Campuran (Soal 5: Aljabar)</div>
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Rangkuman Materi</div>
             <div class="question-text">
                 <p>Perbandingan (rasio) adalah cara untuk membandingkan dua besaran atau lebih yang sejenis. Perbandingan dapat ditulis dalam bentuk \(a : b\) atau pecahan \(\frac{a}{b}\).</p>
@@ -853,7 +734,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian A: Konsep Dasar | Soal 1</div>
             <div class="question-text">Rasio kelereng Andi dan Budi adalah \(3 : 5\). Jika jumlah kelereng mereka berdua adalah 40 butir, berapakah banyak kelereng milik Budi?</div>
             <div class="options-grid">
@@ -864,7 +745,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian A: Konsep Dasar | Soal 2</div>
             <div class="question-text">Harga 4 buah buku tulis adalah Rp18.000,00. Berapakah harga 10 buah buku tulis yang sama?</div>
             <div class="options-grid">
@@ -875,7 +756,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian A: Konsep Dasar | Soal 3</div>
             <div class="question-text">Suatu pekerjaan dapat diselesaikan oleh 12 orang pekerja dalam waktu 20 hari. Jika pekerjaan tersebut ingin diselesaikan dalam waktu 15 hari, berapa banyak pekerja yang dibutuhkan?</div>
             <div class="options-grid">
@@ -886,7 +767,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian A: Konsep Dasar | Soal 4</div>
             <div class="question-text">Jarak dua kota pada peta dengan skala \(1 : 1.500.000\) adalah 8 cm. Berapa kilometer jarak sebenarnya kedua kota tersebut?</div>
             <div class="options-grid">
@@ -897,7 +778,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian A: Konsep Dasar | Soal 5</div>
             <div class="question-text">Perbandingan uang Ali terhadap uang Cici adalah \(2 : 3\), sedangkan perbandingan uang Cici terhadap uang Doni adalah \(4 : 5\). Jika digabungkan, berapakah perbandingan uang Ali terhadap uang Doni?</div>
             <div class="options-grid">
@@ -908,7 +789,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian B: Tingkat Menengah | Soal 6</div>
             <div class="question-text">Pipa A dapat mengisi sebuah tangki kosong hingga penuh dalam waktu 4 jam. Pipa B dapat mengisi tangki yang sama dalam waktu 6 jam. Jika kedua pipa dibuka bersamaan, berapa lama waktu yang dibutuhkan hingga tangki penuh?</div>
             <div class="options-grid">
@@ -919,7 +800,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian B: Tingkat Menengah | Soal 7</div>
             <div class="question-text">Seorang peternak memiliki persediaan makanan untuk 30 ekor ayam selama 15 hari. Jika ia menjual 5 ekor ayamnya, berapa hari persediaan makanan tersebut akan habis?</div>
             <div class="options-grid">
@@ -930,7 +811,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian B: Tingkat Menengah | Soal 8</div>
             <div class="question-text">Untuk membuat kue bagi 8 porsi, dibutuhkan 200 gram terigu dan 120 gram gula. Jika Ibu ingin membuat kue untuk 20 porsi, berapa gram total terigu dan gula yang harus disiapkan?</div>
             <div class="options-grid">
@@ -941,7 +822,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian B: Tingkat Menengah | Soal 9</div>
             <div class="question-text">Roda gigi P memiliki 24 gigi dan roda gigi Q memiliki 36 gigi. Jika roda gigi P berputar sebanyak 15 kali, berapa kali roda gigi Q akan berputar?</div>
             <div class="options-grid">
@@ -952,7 +833,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian B: Tingkat Menengah | Soal 10</div>
             <div class="question-text">Sebanyak 2 liter larutan garam dengan konsentrasi 10% dicampur dengan 3 liter larutan garam dengan konsentrasi 20%. Berapa persen konsentrasi larutan garam setelah dicampur?</div>
             <div class="options-grid">
@@ -963,7 +844,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 11</div>
             <div class="question-text">Pekerjaan membangun jembatan direncanakan selesai dalam waktu 40 hari oleh 24 pekerja. Setelah dikerjakan selama 15 hari, pekerjaan terhenti selama 5 hari karena cuaca buruk. Agar pekerjaan selesai tepat waktu sesuai rencana, berapa banyak <strong>tambahan</strong> pekerja yang harus didatangkan?</div>
             <div class="options-grid">
@@ -974,7 +855,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 12</div>
             <div class="question-text"><strong>[Kasus Laboratorium]</strong> Seorang asisten lab ingin membuat 1000 ml larutan asam dengan konsentrasi target 25%. Namun, ia salah membaca resep dan malah membuat 1000 ml larutan yang terlalu encer di konsentrasi 10%. Berapa mililiter dari larutan salah (10%) ini yang harus dibuang dan diganti sepenuhnya dengan larutan asam konsentrasi 40% agar target konsentrasinya tepat tercapai 25%?</div>
             <div class="options-grid">
@@ -985,7 +866,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 13</div>
             <div class="question-text">Kereta api A berangkat dari kota P ke kota Q dengan kecepatan 60 km/jam. Setengah jam kemudian, kereta api B menyusul dari kota P melalui jalur yang sama dengan kecepatan 80 km/jam. Berapa lama waktu yang dibutuhkan kereta api B untuk menyusul kereta api A terhitung sejak B berangkat?</div>
             <div class="options-grid">
@@ -996,7 +877,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 14</div>
             <div class="question-text">Perbandingan umur Ayah dan Kakak 5 tahun yang lalu adalah \(3 : 1\). Pada 5 tahun yang akan datang, perbandingan umur mereka menjadi \(2 : 1\). Berapa jumlah umur mereka saat ini?</div>
             <div class="options-grid">
@@ -1007,7 +888,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 15</div>
             <div class="question-text">Sebuah foto berbentuk persegi panjang diperbesar sedemikian rupa sehingga perbandingan luas sebelum dan sesudah diperbesar adalah \(4 : 9\). Jika keliling foto sebelum diperbesar adalah 40 cm, berapakah keliling foto setelah diperbesar?</div>
             <div class="options-grid">
@@ -1018,7 +899,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 16</div>
             <div class="question-text"><strong>[Kasus Otomotif]</strong> Sebuah radiator mobil berisi 400 liter cairan pendingin (coolant) dengan konsentrasi antibeku 20%. Standar keselamatan untuk daerah bersalju mengharuskan konsentrasi antibeku berada di angka 40%. Berapa liter cairan dari radiator tersebut yang harus dikuras dan diganti dengan cairan antibeku murni (100%) agar mencapai konsentrasi standar 40%?</div>
             <div class="options-grid">
@@ -1029,7 +910,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 17</div>
             <div class="question-text">Tiga orang pelari, X, Y, dan Z mengikuti lomba lari 100 meter. Ketika X mencapai garis finish, Y berada 10 meter di belakangnya. Ketika Y mencapai garis finish, Z berada 10 meter di belakang Y. Dengan asumsi kecepatan masing-masing pelari konstan, berapa meter jarak Z dari garis finish saat X menyelesaikan balapan?</div>
             <div class="options-grid">
@@ -1040,7 +921,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 18</div>
             <div class="question-text">Tangki penampungan air memiliki 3 keran pembuangan: keran kecil, sedang, dan besar. Keran kecil saja dapat mengosongkan tangki dalam 6 jam, keran sedang dalam 4 jam, dan keran besar dalam 3 jam. Jika keran kecil dan sedang dibuka bersamaan selama 1 jam, kemudian keran besar juga ikut dibuka, berapa total waktu yang dibutuhkan sejak awal hingga tangki benar-benar kosong?</div>
             <div class="options-grid">
@@ -1051,7 +932,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 19</div>
             <div class="question-text"><strong>[Kasus Parfum]</strong> Seorang peracik parfum memiliki 200 ml racikan dengan konsentrasi alkohol 40%. Pelanggan VVIP meminta agar parfum tersebut dinaikkan tingkat intensitasnya menjadi konsentrasi 60% alkohol. Berapa mililiter dari racikan awal (40%) yang harus disedot keluar dan diganti dengan alkohol murni konsentrasi 80% agar pesanan tercapai?</div>
             <div class="options-grid">
@@ -1062,7 +943,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 20</div>
             <div class="question-text">Diketahui \(\frac{x}{y+z} = \frac{y}{x+z} = \frac{z}{x+y} = k\). Jika \(x, y, z\) adalah bilangan real positif yang tidak nol, tentukanlah nilai dari \(k\)!</div>
             <div class="options-grid">
@@ -1075,7 +956,7 @@
 
         <div class="section-title">Modul Komposisi Fungsi dan Fungsi Invers</div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Rangkuman Materi</div>
             <div class="question-text">
                 <h4>Komposisi Fungsi</h4>
@@ -1100,7 +981,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 1</div>
             <div class="question-text">Diketahui \(f(x) = 3x - 5\) dan \(g(x) = 2x + 1\). Nilai dari \((f \circ g)(2)\) adalah ...</div>
             <div class="options-grid">
@@ -1112,7 +993,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 2</div>
             <div class="question-text">Jika \(f(x) = x^2 + 2x - 1\) dan \(g(x) = x - 3\), maka \((g \circ f)(x)\) adalah ...</div>
             <div class="options-grid">
@@ -1124,7 +1005,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 3</div>
             <div class="question-text">Invers dari fungsi \(f(x) = \frac{2x + 3}{x - 4}, x \neq 4\) adalah ...</div>
             <div class="options-grid">
@@ -1136,7 +1017,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 4</div>
             <div class="question-text">Diketahui \(f(x) = 5x + 2\). Jika \(f^{-1}(a) = 2\), maka nilai \(a\) adalah ...</div>
             <div class="options-grid">
@@ -1148,7 +1029,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 5</div>
             <div class="question-text">Diberikan fungsi \(f(x) = 2x\). Hasil dari \((I \circ f)(x)\) di mana \(I\) adalah fungsi identitas adalah ...</div>
             <div class="options-grid">
@@ -1160,7 +1041,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 6</div>
             <div class="question-text">Diketahui \((f \circ g)(x) = 4x^2 + 8x - 3\) dan \(g(x) = 2x + 1\). Maka rumus fungsi \(f(x)\) adalah ...</div>
             <div class="options-grid">
@@ -1172,7 +1053,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 7</div>
             <div class="question-text">Jika \(f(x) = 2x + 1\) dan \((g \circ f)(x) = 6x - 5\), maka \(g(x)\) adalah ...</div>
             <div class="options-grid">
@@ -1184,7 +1065,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 8</div>
             <div class="question-text">Invers dari fungsi komposisi \((f \circ g)(x)\) jika \(f(x) = x + 3\) dan \(g(x) = 2x - 1\) adalah ...</div>
             <div class="options-grid">
@@ -1196,7 +1077,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 9</div>
             <div class="question-text">Diketahui \(f(x) = \frac{x+1}{x-2}\) dan \(g(x) = 2x + 1\). Nilai \(x\) yang memenuhi \((f \circ g)(x) = 2\) adalah ...</div>
             <div class="options-grid">
@@ -1208,7 +1089,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 10</div>
             <div class="question-text">Jika \(f(x) = 3x - 1\), maka nilai dari \((f^{-1} \circ f^{-1})(11)\) adalah ...</div>
             <div class="options-grid">
@@ -1220,7 +1101,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 11</div>
             <div class="question-text"><strong>[Variasi Produksi - Backwards]</strong> Pabrik kertas memproses kayu mentah \(x\) menjadi bahan setengah jadi \(m\) melalui fungsi \(m = 2x - 1\). Bahan setengah jadi diproses menjadi kertas \(y\) melalui \(y = 0,8m + 0,2\). Jika dihasilkan 16,2 ton kertas, berapa ton kayu mentah yang masuk?</div>
             <div class="options-grid">
@@ -1232,7 +1113,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 12</div>
             <div class="question-text">Tumpahan minyak membentuk lingkaran dengan jari-jari \(r(t) = 2t + 1\) (meter) setelah \(t\) jam. Luas tumpahan dinyatakan dengan \(L(r) = \pi r^2\). Luas tumpahan tsb setelah 3 jam adalah ...</div>
             <div class="options-grid">
@@ -1244,7 +1125,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 13</div>
             <div class="question-text">Diketahui \(f(x) = \frac{ax + 1}{2x - 4}\). Jika fungsi ini memenuhi \((f \circ f)(x) = x\), maka nilai \(a\) adalah ...</div>
             <div class="options-grid">
@@ -1256,7 +1137,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 14</div>
             <div class="question-text"><strong>[Variasi Harga - Backwards]</strong> Biaya produksi gadget \(x\) menentukan harga grosir \(y = 1,2x + 2\). Harga konsumen \(z\) ditentukan dari harga grosir yaitu \(z = 1,1y + 0,5\) (dalam jutaan). Jika konsumen membeli gadget seharga Rp17,00 juta, berapakah biaya produksi aslinya?</div>
             <div class="options-grid">
@@ -1268,7 +1149,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 15</div>
             <div class="question-text">Komisi agen asuransi \(K(P) = 0,1P + 500.000\) dan Bonus akhir tahun \(B(K) = 0,5K + 1.000.000\). Jika agen menerima total bonus Rp3.000.000,00, berapa total premi \(P\) yang ia kumpulkan?</div>
             <div class="options-grid">
@@ -1280,7 +1161,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 16</div>
             <div class="question-text">Diketahui \(f(x) = x^2\) untuk \(x \geq 0\) dan \(g(x) = \sqrt{x + 1}\). Domain dari fungsi \((f \circ g)^{-1}(x)\) adalah ...</div>
             <div class="options-grid">
@@ -1292,7 +1173,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 17</div>
             <div class="question-text"><strong>[Variasi Konversi - Backwards]</strong> Turis menukar USD (\(x\)) ke IDR (\(z\)) lewat mata uang SGD (\(y\)). Kurs USD-SGD: \(y = 1,35x\). Kurs SGD-IDR: \(z = 11.000y - 5.000\). Jika turis menerima uang Rp14.845.000,00, berapakah jumlah USD awal yang ditukarkan?</div>
             <div class="options-grid">
@@ -1304,7 +1185,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 18</div>
             <div class="question-text">Jika diketahui \(f(x-1) = 2x+1\) dan \(g(x) = 3x+2\), maka nilai dari fungsi komposisi invers \((f^{-1} \circ g)(3)\) adalah ...</div>
             <div class="options-grid">
@@ -1316,7 +1197,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 19</div>
             <div class="question-text">Fungsi \(f\) memenuhi \(f(x+y) = f(x) + f(y) + xy\) untuk semua bilangan riil, dan \(f(1) = 2\). Nilai dari \(f(4)\) adalah ...</div>
             <div class="options-grid">
@@ -1328,7 +1209,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: HOTS (Higher Order Thinking Skills) | Soal 20</div>
             <div class="question-text">Diketahui \(f(x) = 2x + 10\) dan \(g(x) = x - 20\). Nilai \(x\) yang memenuhi persamaan \((f \circ g)(x) = g^{-1}(x)\) adalah ...</div>
             <div class="options-grid">
@@ -1347,43 +1228,43 @@
         <!-- MODUL SKALAR DAN VEKTOR -->
         <div class="section-title">Modul Pembelajaran: Skalar dan Vektor</div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Rangkuman Materi Vektor</div>
             <div class="question-text">
-                <h4 style="color: var(--primary-color); margin-bottom: 5px;">1. Definisi Skalar dan Vektor</h4>
-                <ul style="margin-top: 5px; margin-bottom: 10px;">
+                <h4 class="text-primary mb-1">1. Definisi Skalar dan Vektor</h4>
+                <ul class="mt-1 mb-4">
                     <li><strong>Skalar:</strong> Besaran yang hanya memiliki nilai (besar) saja. Contoh: massa, waktu, suhu, jarak, kelajuan.</li>
                     <li><strong>Vektor:</strong> Besaran yang memiliki nilai (besar) dan juga arah. Contoh: perpindahan, kecepatan, percepatan, gaya, momentum.</li>
                 </ul>
 
-                <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 5px;">2. Notasi dan Komponen Vektor</h4>
+                <h4 class="text-primary mt-4 mb-1">2. Notasi dan Komponen Vektor</h4>
                 <p>Sebuah vektor biasanya disimbolkan dengan huruf yang diberi tanda panah di atasnya (\(\vec{v}\)) atau dicetak tebal (\(\mathbf{v}\)).<br>Dalam bidang 2 Dimensi, vektor dapat dituliskan dalam komponen sumbu \(x\) dan \(y\):</p>
                 \[ \vec{v} = v_x \hat{i} + v_y \hat{j} \quad \text{atau} \quad \vec{v} = \begin{pmatrix} v_x \\ v_y \end{pmatrix} \]
                 <p>Besar (panjang) dari vektor \(\vec{v}\) dirumuskan dengan:</p>
                 \[ |\vec{v}| = \sqrt{v_x^2 + v_y^2} \]
 
-                <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 5px;">3. Operasi Penjumlahan Vektor</h4>
+                <h4 class="text-primary mt-4 mb-1">3. Operasi Penjumlahan Vektor</h4>
                 <p>Secara grafis, penjumlahan dua vektor \(\vec{a}\) dan \(\vec{b}\) dapat dilakukan dengan dua metode utama:</p>
 
                 <!-- Grafik Canvas Penjumlahan Vektor -->
-                <canvas id="vectorGraph" style="width: 100%; max-width: 600px; height: auto; background: white; border: 1px solid #ccc; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></canvas>
+                <canvas id="vectorGraph" class="canvas-graph w-full max-w-600 block mx-auto"></canvas>
 
                 <p><strong>Menghitung Besar Resultan (Analitis):</strong><br>Jika dua vektor memiliki titik pangkal yang sama dan diapit oleh sudut \(\theta\) (Aturan Jajar Genjang), besar resultannya adalah:</p>
                 \[ |\vec{R}| = \sqrt{|\vec{a}|^2 + |\vec{b}|^2 + 2|\vec{a}||\vec{b}|\cos\theta} \]
                 <p>Jika menggunakan Aturan Segitiga (ujung vektor pertama bertemu pangkal vektor kedua) dengan <strong>sudut dalam</strong> sebesar \(\alpha\):</p>
                 \[ |\vec{R}|^2 = |\vec{a}|^2 + |\vec{b}|^2 - 2|\vec{a}||\vec{b}|\cos\alpha \]
-                <p style="font-size: 0.9em; color: #666;"><em>(Catatan: Rumus aturan cosinus segitiga menggunakan tanda negatif karena \(\alpha = 180^\circ - \theta\))</em></p>
+                <p class="text-sm text-muted"><em>(Catatan: Rumus aturan cosinus segitiga menggunakan tanda negatif karena \(\alpha = 180^\circ - \theta\))</em></p>
 
-                <h4 style="color: var(--primary-color); margin-top: 20px; margin-bottom: 5px;">4. Perkalian Vektor</h4>
+                <h4 class="text-primary mt-4 mb-1">4. Perkalian Vektor</h4>
                 <p><strong>Perkalian Titik (Dot Product):</strong> Menghasilkan nilai skalar.</p>
                 \[ \vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|\cos\theta \quad \text{atau} \quad \vec{a} \cdot \vec{b} = a_x b_x + a_y b_y + a_z b_z \]
             </div>
         </div>
 
-        <h3 style="color: var(--primary-color); margin-top: 40px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Bagian 2: Latihan Soal</h3>
+        <h3 class="text-primary mt-5 border-b pb-2">Bagian 2: Latihan Soal</h3>
 
         <!-- Soal Vektor Basic -->
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 1</div>
             <div class="question-text">Di antara besaran-besaran berikut: Kecepatan, Jarak, Waktu, Gaya, dan Massa. Manakah yang merupakan kelompok besaran vektor?</div>
             <div class="options-grid">
@@ -1395,7 +1276,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 2</div>
             <div class="question-text">Diketahui vektor \(\vec{u} = 5\hat{i} - 12\hat{j}\). Tentukan panjang (besar) dari vektor \(\vec{u}\)!</div>
             <div class="options-grid">
@@ -1407,7 +1288,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 3</div>
             <div class="question-text">Diberikan vektor \(\vec{p} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}\) dan \(\vec{q} = \begin{pmatrix} -1 \\ 4 \end{pmatrix}\). Tentukan hasil dari \(2\vec{p} + \vec{q}\)!</div>
             <div class="options-grid">
@@ -1419,7 +1300,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 4</div>
             <div class="question-text">Tentukan vektor satuan yang searah dengan vektor \(\vec{v} = 3\hat{i} + 4\hat{j}\)!</div>
             <div class="options-grid">
@@ -1431,7 +1312,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 5</div>
             <div class="question-text">Hitunglah perkalian titik (dot product) antara vektor \(\vec{A} = 2\hat{i} + 3\hat{j}\) dan \(\vec{B} = 4\hat{i} - \hat{j}\)!</div>
             <div class="options-grid">
@@ -1444,7 +1325,7 @@
         </div>
 
         <!-- Soal Vektor Medium -->
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 6</div>
             <div class="question-text">Dua buah vektor gaya masing-masing besarnya 10 N dan 15 N mengapit sudut \(60^\circ\). Hitunglah besar resultan kedua gaya tersebut!</div>
             <div class="options-grid">
@@ -1456,7 +1337,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 7</div>
             <div class="question-text">Diketahui \(\vec{u} = 3\hat{i} + \hat{j}\) dan \(\vec{v} = 2\hat{i} - 4\hat{j}\). Tentukan nilai cosinus sudut yang dibentuk oleh kedua vektor tersebut!</div>
             <div class="options-grid">
@@ -1468,7 +1349,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 8</div>
             <div class="question-text">Diberikan tiga titik dalam ruang 3 dimensi: \(A(1, 2, 3)\), \(B(4, -1, 5)\), dan \(C(x, y, z)\). Jika vektor \(\vec{AB}\) sama dengan vektor \(\vec{BC}\), tentukan koordinat titik \(C\)!</div>
             <div class="options-grid">
@@ -1480,7 +1361,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 9</div>
             <div class="question-text">Sebuah perahu menyeberangi sungai dengan kecepatan \(4 \text{ m/s}\) tegak lurus terhadap arus sungai. Jika kecepatan arus sungai adalah \(3 \text{ m/s}\), berapakah kecepatan resultan perahu relatif terhadap pengamat di tepi sungai?</div>
             <div class="options-grid">
@@ -1492,7 +1373,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 2: Menengah (Medium) | Soal 10</div>
             <div class="question-text">Tentukan panjang proyeksi ortogonal vektor \(\vec{a} = 4\hat{i} - 2\hat{j} + 2\hat{k}\) pada vektor \(\vec{b} = 2\hat{i} - \hat{j} + 2\hat{k}\)!</div>
             <div class="options-grid">
@@ -1505,7 +1386,7 @@
         </div>
 
         <!-- Soal Vektor HOTS -->
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 11</div>
             <div class="question-text">Sebuah drone kargo terbang dari titik peluncuran. Drone tersebut terbang sejauh 12 km ke arah Timur, kemudian berbelok 5 km ke arah Utara. Setelah itu, drone naik secara vertikal lurus ke atas sejauh 84 km. Berapakah jarak lurus drone tersebut saat ini dari titik peluncuran?</div>
             <div class="options-grid">
@@ -1517,7 +1398,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 12</div>
             <div class="question-text"><strong>(Navigasi)</strong> Sebuah pesawat terbang lurus ke arah Timur sejauh 150 km. Karena menghindari awan badai, pilot memutar haluan pesawat sehingga menyimpang sebesar \(60^\circ\) ke arah Utara dari lintasan awal. Pesawat terbang di jalur yang baru ini sejauh 100 km. Berapa kilometer perpindahan lurus pesawat tersebut dari titik awal keberangkatannya?</div>
             <div class="options-grid">
@@ -1529,7 +1410,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 13</div>
             <div class="question-text">Usaha (\(W\)) didefinisikan sebagai perkalian titik antara vektor gaya (\(\vec{F}\)) dan vektor perpindahan (\(\vec{s}\)). Sebuah objek ditarik dengan gaya \(\vec{F} = 3p\hat{i} + 2\hat{j} - \hat{k}\) (dalam Newton) dan mengalami perpindahan \(\vec{s} = 2\hat{i} - p\hat{j} + 5\hat{k}\) (dalam meter). Jika usaha total yang dilakukan adalah 13 Joule, tentukanlah nilai \(p\) yang mungkin!</div>
             <div class="options-grid">
@@ -1541,7 +1422,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 14</div>
             <div class="question-text">Tiga buah gaya \(\vec{F_1}\), \(\vec{F_2}\), dan \(\vec{F_3}\) bekerja pada sebuah titik materi dalam keadaan setimbang (\(\Sigma \vec{F} = 0\)). Jika \(\vec{F_1} = 10 \text{ N}\) searah sumbu \(x\) positif, dan \(\vec{F_2} = 20 \text{ N}\) membentuk sudut \(120^\circ\) terhadap \(\vec{F_1}\), tentukan besar dan arah vektor gaya \(\vec{F_3}\)!</div>
             <div class="options-grid">
@@ -1553,7 +1434,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 15</div>
             <div class="question-text"><strong>(Navigasi)</strong> Tim penjelajah hutan berjalan lurus ke arah Selatan sejauh 8 km. Tiba-tiba mereka menemukan tebing dan terpaksa membelok dari lintasan awalnya. Mereka membelok sebesar \(45^\circ\) ke arah Barat (dihitung dari arah lintasan Selatan semula) dan berjalan sejauh \(6\sqrt{2}\) km. Jarak lurus tim penjelajah saat ini dari titik awal keberangkatan adalah?</div>
             <div class="options-grid">
@@ -1565,7 +1446,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 16</div>
             <div class="question-text">Sebuah benda bermassa \(M\) digantung dalam keadaan setimbang oleh dua utas tali. Tali pertama menarik serong ke atas dengan sudut kemiringan \(\alpha\) terhadap garis horizontal, sedangkan tali kedua menarik secara mendatar (horizontal). Rumuskan besar tegangan tali pertama (\(T_1\)) dalam variabel \(M\), percepatan gravitasi \(g\), dan \(\alpha\)!</div>
             <div class="options-grid">
@@ -1577,7 +1458,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 17</div>
             <div class="question-text">Diketahui vektor \(\vec{p}\) dan \(\vec{q}\) membentuk sudut \(30^\circ\). Jika \(|\vec{p}| = 4\) dan \(|\vec{p} + \vec{q}| = \sqrt{21}\), maka tentukan panjang vektor \(\vec{q}\) yang mungkin!</div>
             <div class="options-grid">
@@ -1589,7 +1470,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 18</div>
             <div class="question-text"><strong>(Navigasi)</strong> Sebuah kapal patroli penjaga pantai bergerak ke arah Barat sejauh 30 mil laut. Kapal kemudian mengubah haluan untuk mengejar target, berbelok menyimpang sebesar \(120^\circ\) ke arah Utara dari lintasan awal perjalanannya. Setelah menempuh 20 mil laut di haluan baru, kapal berhenti. Berapakah jarak lurus kapal patroli tersebut dari titik keberangkatannya?</div>
             <div class="options-grid">
@@ -1601,7 +1482,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 19</div>
             <div class="question-text">Luas sebuah bangun jajar genjang yang dibentuk oleh dua vektor \(\vec{a}\) dan \(\vec{b}\) dapat dicari menggunakan panjang produk silang (cross product) \(|\vec{a} \times \vec{b}|\). Tentukan luas jajar genjang yang dibentuk oleh titik-titik \(P(1,0,0)\), \(Q(3,3,0)\), dan \(S(0,4,0)\) dengan titik pangkal di \(P\)!</div>
             <div class="options-grid">
@@ -1613,7 +1494,7 @@
             </div>
         </div>
         
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 3: Berpikir Tingkat Tinggi (HOTS) | Soal 20</div>
             <div class="question-text">Vektor posisi sebuah kapal \(A\) pada waktu \(t\) jam adalah \(\vec{r_A} = (4t)\hat{i} + (3t)\hat{j}\) km. Kapal \(B\) mulai bergerak dari titik \((10, 0)\) km dengan kecepatan konstan sedemikian rupa sehingga pergerakannya direpresentasikan oleh vektor posisi \(\vec{r_B} = (10 - t)\hat{i} + (vt)\hat{j}\). Berapakah kecepatan \(v\) kapal \(B\) pada sumbu y agar kapal \(A\) dan kapal \(B\) dapat berpapasan (berada di koordinat yang sama)?</div>
             <div class="options-grid">
@@ -1626,7 +1507,7 @@
         </div>
 
         <div class="section-title">Modul Pembelajaran: Trigonometri Dasar dan Aplikasinya</div>
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Bagian 1: Rangkuman Materi</div>
             <div class="question-text">
                 <h4>1. Perbandingan Trigonometri pada Segitiga Siku-Siku</h4>
@@ -1638,41 +1519,41 @@
                 </ul>
 
                 <h4>2. Nilai Trigonometri Sudut Istimewa</h4>
-                <table border="1" style="border-collapse: collapse; width: 100%; text-align: center; margin-bottom: 15px;">
+                <table border="1" class="w-full text-center collapse-border mb-3">
                     <thead>
                         <tr>
-                            <th style="padding: 8px;">Sudut (\(\alpha\))</th>
-                            <th style="padding: 8px;">\(0^\circ\)</th>
-                            <th style="padding: 8px;">\(30^\circ\)</th>
-                            <th style="padding: 8px;">\(45^\circ\)</th>
-                            <th style="padding: 8px;">\(60^\circ\)</th>
-                            <th style="padding: 8px;">\(90^\circ\)</th>
+                            <th>Sudut (\(\alpha\))</th>
+                            <th>\(0^\circ\)</th>
+                            <th>\(30^\circ\)</th>
+                            <th>\(45^\circ\)</th>
+                            <th>\(60^\circ\)</th>
+                            <th>\(90^\circ\)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="padding: 8px;">\(\sin \alpha\)</td>
-                            <td style="padding: 8px;">\(0\)</td>
-                            <td style="padding: 8px;">\(\frac{1}{2}\)</td>
-                            <td style="padding: 8px;">\(\frac{1}{2}\sqrt{2}\)</td>
-                            <td style="padding: 8px;">\(\frac{1}{2}\sqrt{3}\)</td>
-                            <td style="padding: 8px;">\(1\)</td>
+                            <td>\(\sin \alpha\)</td>
+                            <td>\(0\)</td>
+                            <td>\(\frac{1}{2}\)</td>
+                            <td>\(\frac{1}{2}\sqrt{2}\)</td>
+                            <td>\(\frac{1}{2}\sqrt{3}\)</td>
+                            <td>\(1\)</td>
                         </tr>
                         <tr>
-                            <td style="padding: 8px;">\(\cos \alpha\)</td>
-                            <td style="padding: 8px;">\(1\)</td>
-                            <td style="padding: 8px;">\(\frac{1}{2}\sqrt{3}\)</td>
-                            <td style="padding: 8px;">\(\frac{1}{2}\sqrt{2}\)</td>
-                            <td style="padding: 8px;">\(\frac{1}{2}\)</td>
-                            <td style="padding: 8px;">\(0\)</td>
+                            <td>\(\cos \alpha\)</td>
+                            <td>\(1\)</td>
+                            <td>\(\frac{1}{2}\sqrt{3}\)</td>
+                            <td>\(\frac{1}{2}\sqrt{2}\)</td>
+                            <td>\(\frac{1}{2}\)</td>
+                            <td>\(0\)</td>
                         </tr>
                         <tr>
-                            <td style="padding: 8px;">\(\tan \alpha\)</td>
-                            <td style="padding: 8px;">\(0\)</td>
-                            <td style="padding: 8px;">\(\frac{1}{3}\sqrt{3}\)</td>
-                            <td style="padding: 8px;">\(1\)</td>
-                            <td style="padding: 8px;">\(\sqrt{3}\)</td>
-                            <td style="padding: 8px;">\(\infty\)</td>
+                            <td>\(\tan \alpha\)</td>
+                            <td>\(0\)</td>
+                            <td>\(\frac{1}{3}\sqrt{3}\)</td>
+                            <td>\(1\)</td>
+                            <td>\(\sqrt{3}\)</td>
+                            <td>\(\infty\)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1687,7 +1568,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Pemahaman Konsep Dasar | Soal 1</div>
             <div class="question-text">Diketahui sebuah segitiga siku-siku dengan panjang sisi siku-sikunya adalah \(3\text{ cm}\) dan \(4\text{ cm}\). Jika \(\alpha\) adalah sudut yang berhadapan dengan sisi \(3\text{ cm}\), maka nilai \(\sin \alpha\) adalah...</div>
             <div class="options-grid">
@@ -1699,7 +1580,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Pemahaman Konsep Dasar | Soal 2</div>
             <div class="question-text">Nilai dari \(\sin 30^\circ + \cos 60^\circ\) adalah...</div>
             <div class="options-grid">
@@ -1711,7 +1592,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Pemahaman Konsep Dasar | Soal 3</div>
             <div class="question-text">Pada kuadran I, diketahui \(\sin x = \frac{5}{13}\). Nilai \(\tan x\) adalah...</div>
             <div class="options-grid">
@@ -1723,7 +1604,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Pemahaman Konsep Dasar | Soal 4</div>
             <div class="question-text">Sudut \(120^\circ\) setara dengan berapa radian?</div>
             <div class="options-grid">
@@ -1735,7 +1616,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Pemahaman Konsep Dasar | Soal 5</div>
             <div class="question-text">Nilai dari \(\cos^2 45^\circ + \sin^2 45^\circ\) adalah...</div>
             <div class="options-grid">
@@ -1747,7 +1628,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Tingkat Menengah | Soal 6</div>
             <div class="question-text">Sebuah tangga yang panjangnya \(6\text{ meter}\) bersandar pada tembok. Jarak ujung bawah tangga terhadap tembok adalah \(3\text{ meter}\). Sudut yang dibentuk oleh tangga dan tanah adalah...</div>
             <div class="options-grid">
@@ -1759,7 +1640,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Tingkat Menengah | Soal 7</div>
             <div class="question-text">Diketahui segitiga ABC dengan panjang sisi \(a = 8\text{ cm}\), \(b = 5\text{ cm}\), dan sudut \(C = 60^\circ\). Luas segitiga ABC tersebut adalah...</div>
             <div class="options-grid">
@@ -1771,7 +1652,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Tingkat Menengah | Soal 8</div>
             <div class="question-text">Nilai dari \(\frac{\tan 60^\circ - \tan 30^\circ}{1 + \tan 60^\circ \tan 30^\circ}\) adalah...</div>
             <div class="options-grid">
@@ -1783,7 +1664,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Tingkat Menengah | Soal 9</div>
             <div class="question-text">Seseorang mengamati puncak sebuah menara dari jarak \(50\text{ meter}\) dari alas menara (tinggi pengamat diabaikan). Jika sudut elevasi pengamatan adalah \(45^\circ\), tinggi menara tersebut adalah...</div>
             <div class="options-grid">
@@ -1795,7 +1676,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Tingkat Menengah | Soal 10</div>
             <div class="question-text">Diketahui segitiga PQR dengan \(\angle P = 45^\circ\), \(\angle Q = 30^\circ\), dan panjang \(PR = 10\text{ cm}\). Panjang sisi \(QR\) adalah...</div>
             <div class="options-grid">
@@ -1807,7 +1688,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Soal HOTS - Penalaran dan Aplikasi | Soal 11</div>
             <div class="question-text">Sebuah kapal berlayar dari pelabuhan A ke arah \(060^\circ\) sejauh \(40\text{ mil}\), kemudian berbelok ke arah \(120^\circ\) sejauh \(40\text{ mil}\). Jarak kapal dari pelabuhan A sekarang adalah...</div>
             <div class="options-grid">
@@ -1819,10 +1700,10 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Soal HOTS - Penalaran dan Aplikasi | Soal 12</div>
             <div class="question-text"><strong>[Analisis Pengamatan Beruntun]</strong> Budi yang memiliki tinggi mata \(1,6\text{ meter}\) berdiri dan mengamati puncak sebuah tiang bendera. Awalnya, sudut elevasi pandangannya ke puncak tiang adalah \(30^\circ\). Budi kemudian berjalan lurus sejauh \(10\text{ meter}\) mendekati tiang bendera tersebut, dan mendapati sudut elevasinya berubah menjadi \(60^\circ\). Ketinggian tiang bendera tersebut dari permukaan tanah adalah...</div>
-            <div class="options-grid">
+            <div class="options-list flex flex-col gap-2 mt-2">
                 <div class="option">A. \(5\sqrt{3}\text{ meter}\)</div>
                 <div class="option">B. \(10\sqrt{3}\text{ meter}\)</div>
                 <div class="option">C. \((1,6 + 5\sqrt{3})\text{ meter}\)</div>
@@ -1831,7 +1712,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Soal HOTS - Penalaran dan Aplikasi | Soal 13</div>
             <div class="question-text">Sudut depresi dari puncak sebuah tebing setinggi \(60\text{ meter}\) terhadap dua buah kapal yang berada pada satu garis lurus dengan tebing masing-masing adalah \(45^\circ\) dan \(30^\circ\). Jarak antara kedua kapal tersebut adalah...</div>
             <div class="options-grid">
@@ -1843,7 +1724,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Soal HOTS - Penalaran dan Aplikasi | Soal 14</div>
             <div class="question-text">Sebuah ruang kelas memiliki ukuran panjang \(8\text{ m}\), lebar \(6\text{ m}\), dan tinggi \(4\text{ m}\). Seekor cicak berada tepat di salah satu sudut plafon (langit-langit). Jarak terdekat yang harus ditempuh cicak merayap ke sudut lantai yang berada tepat berseberangan secara diagonal ruang adalah... (Cicak hanya bisa merayap di dinding/plafon/lantai).</div>
             <div class="options-grid">
@@ -1855,7 +1736,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Soal HOTS - Penalaran dan Aplikasi | Soal 15</div>
             <div class="question-text">Pasang surut air laut di suatu pelabuhan dimodelkan dengan fungsi \(h(t) = 5 + 3\cos(\frac{\pi}{6}t)\), dengan \(h\) adalah kedalaman air dalam meter dan \(t\) adalah waktu dalam jam setelah tengah malam. Selisih antara kedalaman air maksimum dan minimum adalah...</div>
             <div class="options-grid">
@@ -1867,10 +1748,10 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Soal HOTS - Penalaran dan Aplikasi | Soal 16</div>
             <div class="question-text"><strong>[Klaim Ketinggian Balon]</strong> Rina sedang mengamati sebuah balon udara yang diam di atas. Tinggi mata Rina adalah \(1,5\text{ meter}\). Pada pengamatan awal, sudut elevasinya adalah \(45^\circ\). Rina kemudian berjalan maju sejauh \(12\text{ meter}\), dan sudut elevasinya menjadi \(60^\circ\). Seorang temannya menghitung dan mengklaim bahwa ketinggian balon udara dari atas tanah adalah tepat \(18 + 6\sqrt{3}\text{ meter}\). Analisis paling tepat mengenai klaim tersebut adalah...</div>
-            <div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+            <div class="options-list flex flex-col gap-2 mt-2">
                 <div class="option">A. Benar, tinggi balon dari tanah tepat \(18 + 6\sqrt{3}\text{ meter}\).</div>
                 <div class="option">B. Salah, hasil tersebut baru menghitung tinggi dari mata pengamat. Ketinggian sesungguhnya dari tanah adalah \(19,5 + 6\sqrt{3}\text{ meter}\).</div>
                 <div class="option">C. Salah, teman Rina mengabaikan jarak berjalan \(12\text{ meter}\).</div>
@@ -1879,7 +1760,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Soal HOTS - Penalaran dan Aplikasi | Soal 17</div>
             <div class="question-text">Diketahui segi empat ABCD. Sudut \(\angle DAB = 90^\circ\), \(\angle ABD = 30^\circ\), dan panjang AB = \(5\sqrt{3}\text{ cm}\). Pada segitiga BCD, diketahui \(\angle DBC = 60^\circ\) dan panjang BC = \(5\text{ cm}\). Panjang sisi CD adalah...</div>
             <div class="options-grid">
@@ -1891,7 +1772,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Soal HOTS - Penalaran dan Aplikasi | Soal 18</div>
             <div class="question-text">Roda sebuah bianglala memiliki jari-jari \(15\text{ meter}\) dan titik terendahnya berada \(2\text{ meter}\) di atas permukaan tanah. Bianglala berputar berlawanan arah jarum jam dengan kecepatan konstan, menyelesaikan satu putaran dalam \(4\text{ menit}\). Jika posisi awal seseorang berada di titik paling bawah, ketinggiannya dari permukaan tanah setelah \(3\text{ menit}\) perjalanan adalah...</div>
             <div class="options-grid">
@@ -1903,7 +1784,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Soal HOTS - Penalaran dan Aplikasi | Soal 19</div>
             <div class="question-text"><strong>[Pengukuran Tinggi Menara]</strong> Anton, dengan tinggi pengamatan (dari mata ke tanah) \(1,7\text{ meter}\), melihat puncak menara telekomunikasi dengan sudut elevasi \(30^\circ\). Ia memutuskan untuk mendekati menara tersebut sejauh \(20\text{ meter}\). Pada posisi barunya, sudut elevasi berubah menjadi \(45^\circ\). Berdasarkan data tersebut, tinggi keseluruhan menara telekomunikasi dari permukaan tanah adalah...</div>
             <div class="options-grid">
@@ -1915,7 +1796,7 @@
             </div>
         </div>
 
-        <div class="question-card" style="border-style: solid;">
+        <div class="question-card border-solid">
             <div class="question-meta">Soal HOTS - Penalaran dan Aplikasi | Soal 20</div>
             <div class="question-text">Bayangan sebuah tiang vertikal berubah seiring dengan bergeraknya matahari. Pada pagi hari ketika sudut elevasi matahari adalah \(30^\circ\), panjang bayangan tiang adalah \(L_1\). Menjelang siang, ketika sudut elevasi matahari adalah \(60^\circ\), panjang bayangannya memendek menjadi \(L_2\). Rasio \(\frac{L_1}{L_2}\) adalah...</div>
             <div class="options-grid">
@@ -1927,22 +1808,367 @@
             </div>
         </div>
 
-        <div class="section-title">Soal 7: Geometri Analitik</div>
-        <div class="question-card">
-            <div class="question-meta">Konteks: Posisi Pusat Gempa (Titik Potong Persamaan Lingkaran)</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal irisan dua lingkaran akan diletakkan di sini ]</div>
+        <div class="section-title">Modul Pembelajaran: Geometri Analitik Lingkaran</div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian A: Rangkuman Materi Lingkaran</div>
+            <div class="question-text">
+                <p>Lingkaran adalah tempat kedudukan titik-titik \((x,y)\) yang berjarak sama (jari-jari, \(r\)) terhadap satu titik tertentu (pusat lingkaran).</p>
+
+                <div class="text-center mt-4 mb-4">
+                    <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                            </marker>
+                        </defs>
+                        <line x1="25" y1="200" x2="250" y2="200" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+                        <text x="260" y="205" font-family="sans-serif" font-size="14" font-style="italic">x</text>
+
+                        <line x1="100" y1="275" x2="100" y2="50" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+                        <text x="95" y="40" font-family="sans-serif" font-size="14" font-style="italic">y</text>
+
+                        <circle cx="150" cy="150" r="75" stroke="blue" stroke-width="2" fill="none" />
+
+                        <circle cx="150" cy="150" r="3" fill="black" />
+                        <text x="155" y="165" font-family="sans-serif" font-size="14">P(a,b)</text>
+
+                        <line x1="150" y1="150" x2="203" y2="97" stroke="red" stroke-width="2" />
+                        <text x="165" y="115" font-family="sans-serif" font-size="14" font-style="italic" fill="red">r</text>
+
+                        <circle cx="203" cy="97" r="3" fill="black" />
+                        <text x="208" y="92" font-family="sans-serif" font-size="14">(x,y)</text>
+                    </svg>
+                </div>
+
+                <h4>1. Persamaan Lingkaran</h4>
+                <ul>
+                    <li><strong>Pusat di \(O(0,0)\) dan berjari-jari \(r\)</strong>:
+                    \[x^2 + y^2 = r^2\]</li>
+                    <li><strong>Pusat di \(P(a,b)\) dan berjari-jari \(r\)</strong> (Bentuk Baku):
+                    \[(x - a)^2 + (y - b)^2 = r^2\]</li>
+                    <li><strong>Bentuk Umum Persamaan Lingkaran</strong>:
+                    \[x^2 + y^2 + Ax + By + C = 0\]
+                    Dari bentuk umum tersebut, dapat ditentukan:
+                    <ul>
+                        <li>Titik Pusat: \(P\left(-\frac{A}{2}, -\frac{B}{2}\right)\)</li>
+                        <li>Jari-jari: \(r = \sqrt{\left(-\frac{A}{2}\right)^2 + \left(-\frac{B}{2}\right)^2 - C}\)</li>
+                    </ul>
+                    </li>
+                </ul>
+
+                <h4>2. Kedudukan Titik terhadap Lingkaran \(x^2 + y^2 = r^2\)</h4>
+                <p>Misalkan terdapat titik \(A(x_1, y_1)\). Substitusikan ke persamaan:</p>
+                <ul>
+                    <li>Jika \(x_1^2 + y_1^2 < r^2\), titik berada <strong>di dalam</strong> lingkaran.</li>
+                    <li>Jika \(x_1^2 + y_1^2 = r^2\), titik berada <strong>tepat pada</strong> lingkaran.</li>
+                    <li>Jika \(x_1^2 + y_1^2 > r^2\), titik berada <strong>di luar</strong> lingkaran.</li>
+                </ul>
+                <p><em>Konsep yang sama berlaku untuk bentuk umum dengan mensubstitusi \((x_1, y_1)\) ke persamaannya.</em></p>
+
+                <h4>3. Persamaan Garis Singgung Lingkaran</h4>
+                <p>Jika titik singgungnya adalah \((x_1, y_1)\) yang terletak <strong>pada</strong> lingkaran, maka:</p>
+                <ul>
+                    <li>Pada lingkaran \(x^2 + y^2 = r^2\): \(\quad x_1x + y_1y = r^2\)</li>
+                    <li>Pada lingkaran \((x-a)^2 + (y-b)^2 = r^2\): \(\quad (x_1-a)(x-a) + (y_1-b)(y-b) = r^2\)</li>
+                    <li>Pada bentuk umum: \(\quad x_1x + y_1y + \frac{A}{2}(x+x_1) + \frac{B}{2}(y+y_1) + C = 0\)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 1: Konsep Dasar | Soal 1</div>
+            <div class="question-text">
+                Tentukan koordinat titik pusat dan panjang jari-jari dari persamaan lingkaran \(x^2 + y^2 = 64\).
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Pusat \((0,0)\) dan \(r = 64\)</div>
+                <div class="option">B. Pusat \((64,0)\) dan \(r = 8\)</div>
+                <div class="option">C. Pusat \((0,0)\) dan \(r = 8\)</div>
+                <div class="option">D. Pusat \((0,0)\) dan \(r = 32\)</div>
+                <div class="option">E. Pusat \((8,8)\) dan \(r = 8\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 1: Konsep Dasar | Soal 2</div>
+            <div class="question-text">
+                Tentukan koordinat titik pusat dan panjang jari-jari dari persamaan lingkaran \((x - 3)^2 + (y + 7)^2 = 25\).
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Pusat \((-3, 7)\) dan \(r = 5\)</div>
+                <div class="option">B. Pusat \((3, -7)\) dan \(r = 5\)</div>
+                <div class="option">C. Pusat \((3, -7)\) dan \(r = 25\)</div>
+                <div class="option">D. Pusat \((-3, 7)\) dan \(r = 25\)</div>
+                <div class="option">E. Pusat \((3, -7)\) dan \(r = \sqrt{5}\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 1: Konsep Dasar | Soal 3</div>
+            <div class="question-text">
+                Persamaan lingkaran yang berpusat di \(O(0,0)\) dan melalui titik \((5, -12)\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(x^2 + y^2 = 13\)</div>
+                <div class="option">B. \(x^2 + y^2 = -169\)</div>
+                <div class="option">C. \(x^2 + y^2 = 144\)</div>
+                <div class="option">D. \((x - 5)^2 + (y + 12)^2 = 169\)</div>
+                <div class="option">E. \(x^2 + y^2 = 169\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 1: Konsep Dasar | Soal 4</div>
+            <div class="question-text">
+                Persamaan lingkaran dengan titik pusat \((-2, 4)\) dan memiliki jari-jari \(\sqrt{10}\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \((x - 2)^2 + (y + 4)^2 = 10\)</div>
+                <div class="option">B. \((x + 2)^2 + (y - 4)^2 = 100\)</div>
+                <div class="option">C. \((x - 2)^2 + (y + 4)^2 = \sqrt{10}\)</div>
+                <div class="option">D. \((x + 2)^2 + (y - 4)^2 = 10\)</div>
+                <div class="option">E. \((x + 2)^2 + (y - 4)^2 = \sqrt{10}\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 1: Konsep Dasar | Soal 5</div>
+            <div class="question-text">
+                Bentuk umum dari persamaan lingkaran \((x - 1)^2 + (y + 2)^2 = 9\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(x^2 + y^2 - 2x + 4y - 4 = 0\)</div>
+                <div class="option">B. \(x^2 + y^2 + 2x - 4y - 4 = 0\)</div>
+                <div class="option">C. \(x^2 + y^2 - 2x + 4y + 4 = 0\)</div>
+                <div class="option">D. \(x^2 + y^2 - 2x + 4y - 14 = 0\)</div>
+                <div class="option">E. \(x^2 + y^2 + 2x + 4y - 4 = 0\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 2: Tingkat Menengah | Soal 6</div>
+            <div class="question-text">
+                Tentukan titik pusat dan jari-jari dari lingkaran dengan persamaan \(x^2 + y^2 - 8x + 10y - 12 = 0\).
+            </div>
+            <div class="options-grid">
+                <div class="option">A. Pusat \((-4, 5)\) dan \(r = \sqrt{53}\)</div>
+                <div class="option">B. Pusat \((4, -5)\) dan \(r = \sqrt{29}\)</div>
+                <div class="option">C. Pusat \((4, -5)\) dan \(r = \sqrt{53}\)</div>
+                <div class="option">D. Pusat \((-8, 10)\) dan \(r = 12\)</div>
+                <div class="option">E. Pusat \((4, -5)\) dan \(r = 53\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 2: Tingkat Menengah | Soal 7</div>
+            <div class="question-text">
+                Tanpa menggambar, tentukan kedudukan titik \(K(4, 3)\) terhadap lingkaran \(x^2 + y^2 - 6x + 2y + 5 = 0\).
+            </div>
+            <div class="options-list flex flex-col gap-2 mt-2">
+                <div class="option">A. Titik berada di dalam lingkaran</div>
+                <div class="option">B. Titik berada tepat pada garis lingkaran</div>
+                <div class="option">C. Titik berada di luar lingkaran</div>
+                <div class="option">D. Titik merupakan pusat lingkaran</div>
+                <div class="option">E. Titik memotong lingkaran di dua titik</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 2: Tingkat Menengah | Soal 8</div>
+            <div class="question-text">
+                Titik \((k, 2)\) terletak tepat pada lingkaran \(x^2 + y^2 - 4x + 6y - 12 = 0\). Nilai \(k\) yang memenuhi adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(-2\)</div>
+                <div class="option">B. \(0\)</div>
+                <div class="option">C. \(2\)</div>
+                <div class="option">D. \(4\)</div>
+                <div class="option">E. \(-4\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 2: Tingkat Menengah | Soal 9</div>
+            <div class="question-text">
+                Persamaan garis singgung pada lingkaran \(x^2 + y^2 = 169\) di titik \((-5, 12)\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(5x - 12y = 169\)</div>
+                <div class="option">B. \(-12x + 5y = 169\)</div>
+                <div class="option">C. \(-5x - 12y = 169\)</div>
+                <div class="option">D. \(12x - 5y = 169\)</div>
+                <div class="option">E. \(-5x + 12y = 169\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 2: Tingkat Menengah | Soal 10</div>
+            <div class="question-text">
+                Persamaan garis singgung pada lingkaran \((x - 2)^2 + (y + 1)^2 = 25\) yang ditarik melalui titik singgung \((5, 3)\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(3x + 4y + 27 = 0\)</div>
+                <div class="option">B. \(3x + 4y - 27 = 0\)</div>
+                <div class="option">C. \(4x + 3y - 27 = 0\)</div>
+                <div class="option">D. \(3x - 4y - 27 = 0\)</div>
+                <div class="option">E. \(4x - 3y + 27 = 0\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 11</div>
+            <div class="question-text">
+                Sebuah lingkaran menyinggung sumbu-x positif dan sumbu-y positif. Jika pusat lingkaran tersebut dilalui oleh garis lurus dengan persamaan \(3x - 2y - 6 = 0\), persamaan lingkaran tersebut adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \((x - 6)^2 + (y - 6)^2 = 6\)</div>
+                <div class="option">B. \((x + 6)^2 + (y + 6)^2 = 36\)</div>
+                <div class="option">C. \((x - 3)^2 + (y - 3)^2 = 9\)</div>
+                <div class="option">D. \((x - 6)^2 + (y - 6)^2 = 36\)</div>
+                <div class="option">E. \((x - 2)^2 + (y - 2)^2 = 4\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 12</div>
+            <div class="question-text">
+                <strong>[Studi Kasus Radar Pantai]</strong><br>
+                Dua buah stasiun radar penjaga pantai, Alfa dan Bravo, mendeteksi keberadaan kapal tak dikenal. Stasiun Alfa berada di koordinat \((-8, 0)\) dan stasiun Bravo berada di \((8, 0)\) dalam satuan kilometer. Pada layar monitor, kedua radar mengunci sinyal kapal tersebut tepat pada radius jangkauan \(10\text{ km}\) dari masing-masing stasiun. Berdasarkan prinsip geometri analitik, koordinat yang menjadi kemungkinan posisi kapal tak dikenal tersebut adalah...
+            </div>
+            <div class="options-list flex flex-col gap-2 mt-2">
+                <div class="option">A. \((0, 6)\) atau \((0, -6)\)</div>
+                <div class="option">B. \((0, 8)\) atau \((0, -8)\)</div>
+                <div class="option">C. \((6, 0)\) atau \((-6, 0)\)</div>
+                <div class="option">D. \((8, 6)\) atau \((-8, -6)\)</div>
+                <div class="option">E. \((10, 0)\) saja</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 13</div>
+            <div class="question-text">
+                Jarak terpendek dari titik \(P(10, 8)\) ke kurva lingkaran \(x^2 + y^2 - 4x - 2y - 20 = 0\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(\sqrt{113} + 5\)</div>
+                <div class="option">B. \(\sqrt{113}\)</div>
+                <div class="option">C. \(\sqrt{113} - 5\)</div>
+                <div class="option">D. \(5\)</div>
+                <div class="option">E. \(\sqrt{113} - 25\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 14</div>
+            <div class="question-text">
+                Diberikan dua titik \(A(-3, 0)\) dan \(B(3, 0)\). Tempat kedudukan titik-titik \(P(x,y)\) yang bergerak sedemikian rupa sehingga jarak \(P\) ke \(B\) selalu berbanding dua kali jarak \(P\) ke \(A\) akan membentuk kurva berupa...
+            </div>
+            <div class="options-list flex flex-col gap-2 mt-2">
+                <div class="option">A. Lingkaran dengan pusat \((5,0)\) dan jari-jari \(4\)</div>
+                <div class="option">B. Lingkaran dengan pusat \((-5,0)\) dan jari-jari \(4\)</div>
+                <div class="option">C. Lingkaran dengan pusat \((-5,0)\) dan jari-jari \(16\)</div>
+                <div class="option">D. Garis lurus tegak lurus sumbu X dengan persamaan \(x = -5\)</div>
+                <div class="option">E. Parabola yang berpuncak di \((-5,0)\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 15</div>
+            <div class="question-text">
+                Persamaan lingkaran yang melalui tiga titik berikut: \(O(0,0)\), \(A(6,0)\), dan \(B(0,8)\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \((x + 3)^2 + (y + 4)^2 = 25\)</div>
+                <div class="option">B. \((x - 6)^2 + (y - 8)^2 = 100\)</div>
+                <div class="option">C. \((x - 3)^2 + (y - 4)^2 = 5\)</div>
+                <div class="option">D. \(x^2 + y^2 = 100\)</div>
+                <div class="option">E. \((x - 3)^2 + (y - 4)^2 = 25\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 16</div>
+            <div class="question-text">
+                <strong>[Studi Kasus Deteksi Sonar Bawah Air]</strong><br>
+                Sistem pertahanan laut menggunakan dua pelampung sonar yang dipasang pada koordinat \((0, -12)\) dan \((0, 12)\) dalam satuan mil. Keduanya secara bersamaan menerima pantulan gelombang akustik dari kapal selam. Berdasarkan kalkulasi waktu tunda gelombang, diketahui kapal selam tersebut berjarak tepat \(15\text{ mil}\) dari masing-masing pelampung sonar. Di manakah kemungkinan koordinat kapal selam tersebut berada?
+            </div>
+            <div class="options-list flex flex-col gap-2 mt-2">
+                <div class="option">A. \((12, 0)\) atau \((-12, 0)\)</div>
+                <div class="option">B. \((9, 0)\) atau \((-9, 0)\)</div>
+                <div class="option">C. \((0, 9)\) atau \((0, -9)\)</div>
+                <div class="option">D. \((15, 0)\) atau \((-15, 0)\)</div>
+                <div class="option">E. \((9, 12)\) atau \((-9, -12)\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 17</div>
+            <div class="question-text">
+                Sebuah satelit mengorbit bumi dengan lintasan melingkar pada bidang khatulistiwa yang dimodelkan dengan persamaan \(x^2 + y^2 = 10000\) (dalam satuan skala). Sebuah komet melintas lurus memotong orbit satelit dengan lintasan berupa garis \(x + y = 140\). Titik potong masuk dan keluarnya komet tersebut dari area orbit satelit adalah...
+            </div>
+            <div class="options-list flex flex-col gap-2 mt-2">
+                <div class="option">A. \((-60,80)\) dan \((-80,60)\)</div>
+                <div class="option">B. \((100,40)\) dan \((40,100)\)</div>
+                <div class="option">C. \((60,80)\) dan \((80,60)\)</div>
+                <div class="option">D. \((80,-60)\) dan \((60,-80)\)</div>
+                <div class="option">E. \((70,70)\) saja</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 18</div>
+            <div class="question-text">
+                Dari sebuah titik \(P(0, 5)\) yang terletak di luar lingkaran \(x^2 + y^2 = 9\), ditarik garis-garis singgung ke lingkaran tersebut. Gradien dari garis-garis singgung tersebut adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(\pm \frac{3}{4}\)</div>
+                <div class="option">B. \(\pm \frac{4}{3}\)</div>
+                <div class="option">C. \(\pm \frac{5}{3}\)</div>
+                <div class="option">D. \(\pm \frac{3}{5}\)</div>
+                <div class="option">E. \(\pm \frac{16}{9}\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 19</div>
+            <div class="question-text">
+                <strong>[Studi Kasus Sinyal Telekomunikasi]</strong><br>
+                Dua menara pemancar sinyal (BTS), Menara Utara dan Menara Selatan, diletakkan berjejer pada satu garis bujur. Menara Utara berada di posisi \((0, 24)\text{ km}\) dan Menara Selatan berada di \((0, -24)\text{ km}\) dari pusat kota \((0,0)\). Seorang kurir kehilangan sinyal GPS-nya tepat saat ia berada di perbatasan luar irisan kedua BTS tersebut. Diketahui kedua BTS tersebut masing-masing memancarkan sinyal maksimal sejauh radius \(25\text{ km}\). Berapakah koordinat lokasi terakhir kurir tersebut sebelum sinyal hilang total?
+            </div>
+            <div class="options-list flex flex-col gap-2 mt-2">
+                <div class="option">A. \((0, 7)\) atau \((0, -7)\)</div>
+                <div class="option">B. \((24, 0)\) atau \((-24, 0)\)</div>
+                <div class="option">C. \((7, 0)\) atau \((-7, 0)\)</div>
+                <div class="option">D. \((25, 0)\) atau \((-25, 0)\)</div>
+                <div class="option">E. \((7, 24)\) atau \((-7, 24)\)</div>
+            </div>
+        </div>
+
+        <div class="question-card border-solid">
+            <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 20</div>
+            <div class="question-text">
+                Dua buah lingkaran \(L_1: (x-2)^2 + (y-3)^2 = r^2\) dan \(L_2: (x-10)^2 + (y-9)^2 = 64\) saling bersinggungan di luar. Panjang jari-jari \(r\) dari lingkaran \(L_1\) adalah...
+            </div>
+            <div class="options-grid">
+                <div class="option">A. \(18\)</div>
+                <div class="option">B. \(10\)</div>
+                <div class="option">C. \(8\)</div>
+                <div class="option">D. \(4\)</div>
+                <div class="option">E. \(2\)</div>
+            </div>
         </div>
 
         <div class="section-title">Soal 10: Geometri Dimensi Tiga</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Jarak Titik ke Bidang dalam Kubus</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal jarak titik A ke bidang BDP pada kubus akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal jarak titik A ke bidang BDP pada kubus akan diletakkan di sini ]</div>
         </div>
 
         <div class="section-title">Soal 11: Transformasi Geometri</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Desain Grafis (Komposisi Rotasi dan Pencerminan)</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal matriks transformasi ekuivalen akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal matriks transformasi ekuivalen akan diletakkan di sini ]</div>
         </div>
     </div>
 
@@ -1951,19 +2177,19 @@
         <div class="section-title">Soal 12: Limit & Kekontinuan Fungsi</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Fungsi Biaya Pengiriman (Fungsi Sepotong/Piecewise)</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal analisis limit kiri dan kanan akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal analisis limit kiri dan kanan akan diletakkan di sini ]</div>
         </div>
 
         <div class="section-title">Soal 13: Aplikasi Turunan (Optimasi)</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Efisiensi Kemasan (Luas Permukaan Minimum Tabung)</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal nilai minimum turunan pertama akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal nilai minimum turunan pertama akan diletakkan di sini ]</div>
         </div>
 
         <div class="section-title">Soal 14: Luas Daerah (Integral / Geometri)</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Desain Taman (Daerah Dibatasi Dua Kurva Lingkaran)</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal perhitungan luas di antara dua kurva akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal perhitungan luas di antara dua kurva akan diletakkan di sini ]</div>
         </div>
     </div>
 
@@ -1972,19 +2198,19 @@
         <div class="section-title">Soal 8: Statistika (Data Bivariat)</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Interpretasi Persamaan Regresi dan Koefisien Determinasi</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal interpretasi R-square akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal interpretasi R-square akan diletakkan di sini ]</div>
         </div>
 
         <div class="section-title">Soal 9: Logika Matematika</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Nilai Kebenaran dan Ingkaran (Implikasi)</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal p -> q dan negasinya akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal p -> q dan negasinya akan diletakkan di sini ]</div>
         </div>
 
         <div class="section-title">Soal 15: Peluang & Teorema Bayes</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Validitas Tes Kesehatan (Peluang Bersyarat)</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal peluang kejadian saling bebas bersyarat akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal peluang kejadian saling bebas bersyarat akan diletakkan di sini ]</div>
         </div>
     </div>
 
@@ -1993,31 +2219,31 @@
         <div class="section-title">Soal 16: Integrasi Teknologi (TPACK)</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Penggunaan GeoGebra sebagai Cognitive Tool</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal pedagogik penggunaan software dinamis akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal pedagogik penggunaan software dinamis akan diletakkan di sini ]</div>
         </div>
 
         <div class="section-title">Soal 17: Penanganan Miskonsepsi Siswa</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Mengatasi Gambler's Fallacy pada Materi Peluang</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal strategi guru mengatasi miskonsepsi empiris akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal strategi guru mengatasi miskonsepsi empiris akan diletakkan di sini ]</div>
         </div>
 
         <div class="section-title">Soal 18: Analisis Logika Siswa</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Evaluasi Argumen pada Limit Pecahan Bersusun</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal evaluasi cara berfikir siswa (infinite continued fraction) akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal evaluasi cara berfikir siswa (infinite continued fraction) akan diletakkan di sini ]</div>
         </div>
 
         <div class="section-title">Soal 19: Strategi Instruksional Efisien</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Pembekalan Cara Cepat & Konseptual pada Fungsi Invers</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal strategi mengajar efektif di bawah 1 menit akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal strategi mengajar efektif di bawah 1 menit akan diletakkan di sini ]</div>
         </div>
 
         <div class="section-title">Soal 20: Analisis Kesalahan Aljabar</div>
         <div class="question-card">
             <div class="question-meta">Konteks: Tindak Lanjut Guru atas Pelanggaran Syarat Penyebut (Nol)</div>
-            <div class="question-text" style="text-align: center;">[ Tempat input soal evaluasi pencoretan aljabar yang invalid akan diletakkan di sini ]</div>
+            <div class="question-text text-center">[ Tempat input soal evaluasi pencoretan aljabar yang invalid akan diletakkan di sini ]</div>
         </div>
     </div>
 </div>
