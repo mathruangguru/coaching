@@ -2491,11 +2491,329 @@
     </div>
 </div>
 
-        <div class="section-title">Soal 11: Transformasi Geometri</div>
-        <div class="question-card">
-            <div class="question-meta">Konteks: Desain Grafis (Komposisi Rotasi dan Pencerminan)</div>
-            <div class="question-text text-center">[ Tempat input soal matriks transformasi ekuivalen akan diletakkan di sini ]</div>
-        </div>
+<div class="section-title">Modul Pembelajaran & Latihan Soal <br> Transformasi Geometri</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Rangkuman Materi Transformasi Geometri</div>
+<div class="question-text">
+    <p>Transformasi geometri adalah perubahan letak, ukuran, atau bentuk suatu objek geometri (titik, garis, kurva, atau bidang). Secara umum terdapat empat jenis transformasi utama:</p>
+
+    <h4>1. Translasi (Pergeseran)</h4>
+    <p>Translasi memindahkan setiap titik pada bidang dengan jarak dan arah tertentu. Jika titik \(A(x,y)\) ditranslasikan oleh \(T = \begin{pmatrix} a \\ b \end{pmatrix}\), maka bayangannya adalah \(A'(x', y')\) dengan:</p>
+    \[ \begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} a \\ b \end{pmatrix} \]
+
+    <h4>2. Refleksi (Pencerminan)</h4>
+    <p>Refleksi memindahkan titik dengan sifat seperti cermin. Matriks transformasi untuk refleksi:</p>
+    <ul>
+        <li>Terhadap sumbu X: \(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} \Rightarrow A'(x, -y)\)</li>
+        <li>Terhadap sumbu Y: \(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} \Rightarrow A'(-x, y)\)</li>
+        <li>Terhadap garis \(y = x\): \(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} \Rightarrow A'(y, x)\)</li>
+        <li>Terhadap garis \(y = -x\): \(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} \Rightarrow A'(-y, -x)\)</li>
+        <li>Terhadap garis \(x = h\): \(A'(2h - x, y)\)</li>
+        <li>Terhadap garis \(y = k\): \(A'(x, 2k - y)\)</li>
+    </ul>
+
+    <h4>3. Rotasi (Perputaran)</h4>
+    <p>Perputaran ditentukan oleh pusat perputaran dan besar sudut. Sudut positif berarti berlawanan arah jarum jam.</p>
+    <ul>
+        <li>Pusat \(O(0,0)\) sejauh \(\theta\): 
+        \[ \begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} \]</li>
+        <li>Pusat \(P(a,b)\) sejauh \(\theta\):
+        \[ \begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} \begin{pmatrix} x - a \\ y - b \end{pmatrix} + \begin{pmatrix} a \\ b \end{pmatrix} \]</li>
+    </ul>
+
+    <h4>4. Dilatasi (Perkalian)</h4>
+    <p>Dilatasi adalah transformasi yang mengubah ukuran tanpa mengubah bentuk.</p>
+    <ul>
+        <li>Pusat \(O(0,0)\) dengan faktor skala \(k\): \(A'(kx, ky)\)</li>
+        <li>Pusat \(P(a,b)\) dengan faktor skala \(k\): \(x' = k(x-a)+a\) dan \(y' = k(y-b)+b\).</li>
+    </ul>
+
+    <h4>5. Komposisi Transformasi</h4>
+    <p>Jika transformasi \(T_1\) dilanjutkan oleh \(T_2\), dinotasikan sebagai \(T_2 \circ T_1\). Dalam bentuk matriks, perkalian dilakukan dari belakang:</p>
+    \[ M_{\text{total}} = M_2 \times M_1 \]
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Level Konsep Dasar | Soal 1</div>
+<div class="question-text">
+    Bayangan titik \(P(3, -5)\) oleh translasi \(T = \begin{pmatrix} -2 \\ 4 \end{pmatrix}\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \((1, -1)\)</div>
+    <div class="option">B. \((5, -9)\)</div>
+    <div class="option">C. \((-1, 1)\)</div>
+    <div class="option">D. \((1, -9)\)</div>
+    <div class="option">E. \((-5, 9)\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Level Konsep Dasar | Soal 2</div>
+<div class="question-text">
+    Titik \(A(4, 2)\) dicerminkan terhadap sumbu X. Bayangan titik \(A\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \((4, 2)\)</div>
+    <div class="option">B. \((-4, 2)\)</div>
+    <div class="option">C. \((-4, -2)\)</div>
+    <div class="option">D. \((4, -2)\)</div>
+    <div class="option">E. \((2, 4)\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Level Konsep Dasar | Soal 3</div>
+<div class="question-text">
+    Bayangan titik \(B(-2, 5)\) jika dirotasikan sejauh \(90^\circ\) berlawanan arah jarum jam dengan pusat \(O(0,0)\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \((5, 2)\)</div>
+    <div class="option">B. \((-5, -2)\)</div>
+    <div class="option">C. \((2, 5)\)</div>
+    <div class="option">D. \((-5, 2)\)</div>
+    <div class="option">E. \((5, -2)\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Level Konsep Dasar | Soal 4</div>
+<div class="question-text">
+    Sebuah titik \(C(2, -3)\) didilatasikan dengan pusat \(O(0,0)\) dan faktor skala 3. Koordinat bayangannya adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \((6, -9)\)</div>
+    <div class="option">B. \((-6, 9)\)</div>
+    <div class="option">C. \((6, 9)\)</div>
+    <div class="option">D. \((\frac{2}{3}, -1)\)</div>
+    <div class="option">E. \((5, 0)\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Level Konsep Dasar | Soal 5</div>
+<div class="question-text">
+    Transformasi yang matriks kesesuaiannya adalah \(\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}\) merupakan transformasi...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Rotasi \(90^\circ\)</div>
+    <div class="option">B. Refleksi terhadap sumbu X</div>
+    <div class="option">C. Refleksi terhadap sumbu Y</div>
+    <div class="option">D. Refleksi terhadap garis \(y = x\)</div>
+    <div class="option">E. Refleksi terhadap garis \(y = -x\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian B: Level Medium | Soal 6</div>
+<div class="question-text">
+    Bayangan garis \(2x - y + 5 = 0\) oleh translasi \(T = \begin{pmatrix} 3 \\ -1 \end{pmatrix}\) adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. \(2x - y - 2 = 0\)</div>
+    <div class="option">B. \(2x - y + 2 = 0\)</div>
+    <div class="option">C. \(2x - y - 12 = 0\)</div>
+    <div class="option">D. \(2x + y + 2 = 0\)</div>
+    <div class="option">E. \(x - 2y - 2 = 0\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian B: Level Medium | Soal 7</div>
+<div class="question-text">
+    Titik \(K\) dicerminkan terhadap garis \(y = x\) menghasilkan bayangan \(K'(4, -1)\). Koordinat titik \(K\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \((4, -1)\)</div>
+    <div class="option">B. \((-4, 1)\)</div>
+    <div class="option">C. \((-1, 4)\)</div>
+    <div class="option">D. \((1, -4)\)</div>
+    <div class="option">E. \((-1, -4)\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian B: Level Medium | Soal 8</div>
+<div class="question-text">
+    Titik \(M(3, 4)\) dirotasikan sebesar \(180^\circ\) dengan pusat rotasi \(P(1, 2)\). Bayangan titik \(M\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \((-1, 0)\)</div>
+    <div class="option">B. \((-3, -4)\)</div>
+    <div class="option">C. \((1, 0)\)</div>
+    <div class="option">D. \((-1, 4)\)</div>
+    <div class="option">E. \((5, 6)\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian B: Level Medium | Soal 9</div>
+<div class="question-text">
+    Luas bayangan sebuah segitiga dengan luas awal \(15 \text{ cm}^2\) yang didilatasikan dengan pusat \((0,0)\) dan faktor skala \(k=2\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(15 \text{ cm}^2\)</div>
+    <div class="option">B. \(30 \text{ cm}^2\)</div>
+    <div class="option">C. \(45 \text{ cm}^2\)</div>
+    <div class="option">D. \(60 \text{ cm}^2\)</div>
+    <div class="option">E. \(120 \text{ cm}^2\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian B: Level Medium | Soal 10</div>
+<div class="question-text">
+    Titik \(P(-3, 2)\) ditranslasikan berturut-turut oleh \(T_1 = \begin{pmatrix} a \\ 3 \end{pmatrix}\) dan \(T_2 = \begin{pmatrix} 2 \\ b \end{pmatrix}\) menghasilkan \(P''(1, -1)\). Nilai \(a+b\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(-4\)</div>
+    <div class="option">B. \(-2\)</div>
+    <div class="option">C. \(0\)</div>
+    <div class="option">D. \(2\)</div>
+    <div class="option">E. \(4\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: Level HOTS | Soal 11</div>
+<div class="question-text">
+    Luas suatu bangun datar adalah \(24 \text{ cm}^2\). Bangun tersebut ditransformasikan berturut-turut oleh matriks \(M_1 = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\) dan dilanjutkan oleh matriks \(M_2 = \begin{pmatrix} 2 & -1 \\ -1 & 3 \end{pmatrix}\). Luas bangun datar setelah kedua transformasi tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(120 \text{ cm}^2\)</div>
+    <div class="option">B. \(144 \text{ cm}^2\)</div>
+    <div class="option">C. \(240 \text{ cm}^2\)</div>
+    <div class="option">D. \(360 \text{ cm}^2\)</div>
+    <div class="option">E. \(480 \text{ cm}^2\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: Level HOTS | Soal 12</div>
+<div class="question-text">
+    <strong>(Grafik Komputer)</strong> Sebuah objek pada layar monitor diproses dengan instruksi transformasi ganda. Pertama, objek diputar (rotasi) sebesar \(90^\circ\) searah jarum jam dengan pusat \(O(0,0)\). Kemudian, hasilnya langsung dicerminkan terhadap garis \(y = -x\). Transformasi tunggal (satu langkah) yang memberikan hasil ekuivalen dengan kedua operasi tersebut adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Pencerminan terhadap sumbu X</div>
+    <div class="option">B. Pencerminan terhadap sumbu Y</div>
+    <div class="option">C. Rotasi sejauh \(180^\circ\)</div>
+    <div class="option">D. Pencerminan terhadap garis \(y = x\)</div>
+    <div class="option">E. Identitas (posisi tidak berubah)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: Level HOTS | Soal 13</div>
+<div class="question-text">
+    Persamaan kurva \(y = x^2 - 4x + 3\) jika direfleksikan terhadap sumbu Y dilanjutkan dilatasi dengan pusat \((0,0)\) dan faktor skala \(-2\) adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. \(y = \frac{1}{2}x^2 + 4x - 6\)</div>
+    <div class="option">B. \(y = -\frac{1}{2}x^2 + 4x - 6\)</div>
+    <div class="option">C. \(y = \frac{1}{2}x^2 - 4x + 6\)</div>
+    <div class="option">D. \(y = -2x^2 + 8x - 6\)</div>
+    <div class="option">E. \(y = 2x^2 + 8x - 6\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: Level HOTS | Soal 14</div>
+<div class="question-text">
+    Sebuah titik pemancar sinyal \(S(x,y)\) ditransformasikan oleh matriks \(\begin{pmatrix} a & b \\ c & d \end{pmatrix}\) menghasilkan \(S'(1, -2)\). Jika matriks transformasinya adalah \(\begin{pmatrix} 2 & 1 \\ -1 & 1 \end{pmatrix}\), maka koordinat awal pemancar tersebut terletak pada kuadran...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Kuadran I</div>
+    <div class="option">B. Kuadran II</div>
+    <div class="option">C. Kuadran III</div>
+    <div class="option">D. Kuadran IV</div>
+    <div class="option">E. Tepat pada sumbu koordinat</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: Level HOTS | Soal 15</div>
+<div class="question-text">
+    Jika transformasi \(T_1\) adalah pencerminan terhadap garis \(y = x\), dan \(T_2\) adalah pencerminan terhadap garis \(y = -x\). Matriks transformasi tunggal untuk operasi \(T_1 \circ T_2 \circ T_1\) adalah...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. \(\begin{pmatrix} 0 & -1 \\ -1 & 0 \end{pmatrix}\)</div>
+    <div class="option">B. \(\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}\)</div>
+    <div class="option">C. \(\begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}\)</div>
+    <div class="option">D. \(\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\)</div>
+    <div class="option">E. \(\begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix}\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: Level HOTS | Soal 16</div>
+<div class="question-text">
+    <strong>(Aplikasi Rendering)</strong> Dalam sebuah aplikasi grafik komputer, suatu poligon mengalami dua tahap transformasi matriks secara berurutan. Tahap pertama adalah pencerminan terhadap sumbu X. Tahap kedua adalah rotasi sebesar \(180^\circ\) dengan pusat titik asal \((0,0)\). Operasi matriks tunggal apakah yang akan menghasilkan posisi akhir yang sama untuk poligon tersebut?
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Pencerminan terhadap garis \(y = -x\)</div>
+    <div class="option">B. Pencerminan terhadap sumbu X</div>
+    <div class="option">C. Pencerminan terhadap sumbu Y</div>
+    <div class="option">D. Rotasi sejauh \(90^\circ\) berlawanan arah jarum jam</div>
+    <div class="option">E. Dilatasi dengan faktor \(-1\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: Level HOTS | Soal 17</div>
+<div class="question-text">
+    Titik \(P(a, b)\) direfleksikan terhadap garis \(x = 2\) menghasilkan \(P'\), kemudian \(P'\) direfleksikan lagi terhadap garis \(y = 3\) menghasilkan \(P''(5, 2)\). Nilai dari \(a^2 + b^2\) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(13\)</div>
+    <div class="option">B. \(15\)</div>
+    <div class="option">C. \(17\)</div>
+    <div class="option">D. \(20\)</div>
+    <div class="option">E. \(25\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: Level HOTS | Soal 18</div>
+<div class="question-text">
+    Persamaan bayangan lingkaran \(x^2 + y^2 = 4\) oleh transformasi yang bersesuaian dengan matriks \(\begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}\) membentuk elips dengan luasan sebesar...
+</div>
+<div class="options-grid">
+    <div class="option">A. \(4\pi\)</div>
+    <div class="option">B. \(6\pi\)</div>
+    <div class="option">C. \(12\pi\)</div>
+    <div class="option">D. \(24\pi\)</div>
+    <div class="option">E. \(36\pi\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: Level HOTS | Soal 19</div>
+<div class="question-text">
+    <strong>(Algoritma Sprite)</strong> Sebuah karakter game (sprite) bergerak berdasarkan logika transformasi linear. Mula-mula, karakter tersebut dicerminkan terhadap sumbu Y. Segera setelah itu, sistem memproses pencerminan lagi terhadap garis \(y = x\). Jika programmer ingin menggabungkan kedua perintah ini menjadi satu langkah transformasi matriks yang efisien, instruksi apa yang seharusnya ia panggil?
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Rotasi \(90^\circ\) berlawanan arah jarum jam</div>
+    <div class="option">B. Rotasi \(90^\circ\) searah jarum jam (atau \(-90^\circ\))</div>
+    <div class="option">C. Rotasi \(180^\circ\)</div>
+    <div class="option">D. Pencerminan terhadap garis \(y = -x\)</div>
+    <div class="option">E. Pencerminan terhadap sumbu X</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: Level HOTS | Soal 20</div>
+<div class="question-text">
+    Titik \(A(x,y)\) ditransformasikan dengan matriks \(\begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}\) (shear), kemudian dilanjutkan dengan rotasi \(90^\circ\) searah jarum jam. Jika bayangan akhirnya adalah \((4, -3)\), berapakah nilai koordinat awal \(x\)?
+</div>
+<div class="options-grid">
+    <div class="option">A. \(3\)</div>
+    <div class="option">B. \(4\)</div>
+    <div class="option">C. \(-5\)</div>
+    <div class="option">D. \(5\)</div>
+    <div class="option">E. \(-3\)</div>
+</div>
+</div>
     </div>
 
     <!-- TAB 3: KALKULUS -->
