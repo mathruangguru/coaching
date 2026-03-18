@@ -467,18 +467,348 @@
 </div>
 </div>
 
-        <!-- Slot Soal 4 -->
-        <div class="question-card border-solid">
-            <div class="question-meta">Soal Nomor 4</div>
-            <div class="question-text">[ Masukkan Teks Soal 4 di Sini ]</div>
-            <div class="options-list">
-                <div class="option">A. [ Opsi A ]</div>
-                <div class="option">B. [ Opsi B ]</div>
-                <div class="option">C. [ Opsi C ]</div>
-                <div class="option">D. [ Opsi D ]</div>
-            </div>
-            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
-        </div>
+<div class="section-title">Modul Pembelajaran: Persamaan Linear Satu Variabel (PLSV) <br> & Analisis Jenis Penyelesaian</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian 1: Rangkuman Materi</div>
+<div class="question-text">
+    <p>Persamaan Linear Satu Variabel (PLSV) adalah kalimat terbuka yang dihubungkan dengan tanda sama dengan (\(=\)) dan hanya memiliki satu variabel berpangkat satu. Bentuk umum PLSV adalah \(ax + b = 0\), dengan \(a \neq 0\).</p>
+
+    <h4>Jenis-Jenis Himpunan Penyelesaian PLSV</h4>
+    <p>Terkadang, saat kita menyederhanakan sebuah persamaan linear (misalnya dengan memindahkan semua variabel ke satu sisi dan konstanta ke sisi lain), variabel tersebut saling menghilangkan. Berdasarkan hasil akhirnya (bentuk \(ax = b\)), sebuah persamaan dapat diklasifikasikan menjadi tiga jenis berdasarkan penyelesaiannya:</p>
+
+    <ol>
+        <li><strong>Memiliki Tepat Satu Penyelesaian (Kondisi Normal):</strong> <br>
+        Terjadi jika setelah disederhanakan, sisa koefisien variabel <strong>tidak nol</strong> (\(a \neq 0\)). <br>
+        <em>Contoh:</em> \(3x - 2 = x + 4 \implies 2x = 6 \implies x = 3\).</li>
+        
+        <li><strong>Persamaan Identitas (Banyak Penyelesaian Tak Hingga):</strong> <br>
+        Terjadi jika setelah disederhanakan, variabel habis dan menyisakan pernyataan yang <strong>selalu benar</strong> (\(a = 0\) dan \(b = 0\), misal \(0 = 0\) atau \(c = c\)). Artinya, berapapun nilai \(x\) yang disubstitusikan, persamaan akan selalu seimbang. Himpunan penyelesaiannya adalah seluruh bilangan real (\(x \in \mathbb{R}\)). <br>
+        <em>Contoh:</em> \(2(x + 3) = 2x + 6 \implies 2x + 6 = 2x + 6 \implies 0 = 0\).</li>
+        
+        <li><strong>Persamaan Kontradiksi (Tidak Memiliki Penyelesaian):</strong> <br>
+        Terjadi jika setelah disederhanakan, variabel habis dan menyisakan pernyataan yang <strong>salah</strong> (\(a = 0\) dan \(b \neq 0\), misal \(0 = 5\) atau \(2 = -3\)). Artinya, tidak ada nilai \(x\) berapapun yang dapat membuat persamaan tersebut benar. Himpunan penyelesaiannya adalah himpunan kosong (\(\emptyset\)). <br>
+        <em>Contoh:</em> \(x + 2 = x + 5 \implies 2 = 5\) (Pernyataan Salah).</li>
+    </ol>
+
+    <h4>Diagram Alir Analisis Penyelesaian PLSV</h4>
+    
+    <div style="text-align: center; margin: 25px 0;">
+        <svg width="600" height="350" viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                </marker>
+            </defs>
+
+            <rect x="200" y="10" width="200" height="40" rx="10" fill="#e6f2ff" stroke="black" stroke-width="2"/>
+            <text x="300" y="35" font-family="sans-serif" font-size="14" text-anchor="middle">Bentuk Akhir: ax = b</text>
+
+            <line x1="300" y1="50" x2="300" y2="80" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+
+            <polygon points="300,80 400,110 300,140 200,110" fill="#ffe6cc" stroke="black" stroke-width="2"/>
+            <text x="300" y="115" font-family="sans-serif" font-size="14" text-anchor="middle">Apakah a = 0?</text>
+
+            <line x1="400" y1="110" x2="480" y2="110" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+            <text x="440" y="105" font-family="sans-serif" font-size="12" text-anchor="middle">Tidak</text>
+
+            <rect x="480" y="80" width="110" height="60" rx="10" fill="#ccffcc" stroke="black" stroke-width="2"/>
+            <text x="535" y="100" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Satu Solusi</text>
+            <text x="535" y="115" font-family="sans-serif" font-size="12" text-anchor="middle">x = b/a</text>
+            <text x="535" y="130" font-family="sans-serif" font-size="10" text-anchor="middle">(Jika b=0, x=0)</text>
+
+            <line x1="300" y1="140" x2="300" y2="180" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+            <text x="315" y="165" font-family="sans-serif" font-size="12" text-anchor="middle">Ya</text>
+
+            <polygon points="300,180 400,215 300,250 200,215" fill="#ffe6cc" stroke="black" stroke-width="2"/>
+            <text x="300" y="210" font-family="sans-serif" font-size="14" text-anchor="middle">Apakah b = 0?</text>
+            <text x="300" y="225" font-family="sans-serif" font-size="10" text-anchor="middle">(Bentuk mjd 0x = b)</text>
+
+            <line x1="400" y1="215" x2="450" y2="215" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+            <text x="425" y="210" font-family="sans-serif" font-size="12" text-anchor="middle">Ya</text>
+
+            <rect x="450" y="190" width="140" height="50" rx="10" fill="#ccffcc" stroke="black" stroke-width="2"/>
+            <text x="520" y="210" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Identitas (0=0)</text>
+            <text x="520" y="225" font-family="sans-serif" font-size="10" text-anchor="middle">Solusi: Seluruh Bil. Real (x&#8712;&#8477;)</text>
+
+            <line x1="300" y1="250" x2="300" y2="290" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+            <text x="320" y="275" font-family="sans-serif" font-size="12" text-anchor="middle">Tidak</text>
+
+            <rect x="230" y="290" width="140" height="50" rx="10" fill="#ccffcc" stroke="black" stroke-width="2"/>
+            <text x="300" y="310" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Kontradiksi (0=b, b&#8800;0)</text>
+            <text x="300" y="325" font-family="sans-serif" font-size="10" text-anchor="middle">Solusi: Himpunan Kosong (&#8709;)</text>
+        </svg>
+    </div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Konsep Dasar | Soal 1</div>
+<div class="question-text">
+    Penyelesaian dari persamaan \(4x - 7 = 13\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(x = 1.5\)</div>
+    <div class="option">B. \(x = 5\)</div>
+    <div class="option">C. \(x = -5\)</div>
+    <div class="option">D. \(x = 20\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Konsep Dasar | Soal 2</div>
+<div class="question-text">
+    Hasil penyelesaian dari persamaan \(3(x - 2) = 15\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(x = 5\)</div>
+    <div class="option">B. \(x = 7\)</div>
+    <div class="option">C. \(x = 3\)</div>
+    <div class="option">D. \(x = \frac{17}{3}\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Konsep Dasar | Soal 3</div>
+<div class="question-text">
+    Nilai \(x\) yang memenuhi \(5x + 3 = 2x - 9\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(x = -4\)</div>
+    <div class="option">B. \(x = 4\)</div>
+    <div class="option">C. \(x = -2\)</div>
+    <div class="option">D. \(x = -12\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Konsep Dasar | Soal 4</div>
+<div class="question-text">
+    Manakah dari bentuk di bawah ini yang <strong>bukan</strong> merupakan Persamaan Linear Satu Variabel?
+</div>
+<div class="options-grid">
+    <div class="option">A. \(2x + 5 = 11\)</div>
+    <div class="option">B. \(\frac{1}{2}y - 3 = 4\)</div>
+    <div class="option">C. \(x^2 - 4 = 0\)</div>
+    <div class="option">D. \(3(m - 1) = m\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Konsep Dasar | Soal 5</div>
+<div class="question-text">
+    Nilai \(x\) dari persamaan pecahan \(\frac{x}{3} + 4 = 6\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(x = 6\)</div>
+    <div class="option">B. \(x = \frac{10}{3}\)</div>
+    <div class="option">C. \(x = \frac{2}{3}\)</div>
+    <div class="option">D. \(x = 30\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian B: Tingkat Menengah | Soal 6</div>
+<div class="question-text">
+    Penyelesaian dari \(4(2x - 1) - 3(x + 2) = 14\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(x = 4.8\)</div>
+    <div class="option">B. \(x = 2.4\)</div>
+    <div class="option">C. \(x = 4\)</div>
+    <div class="option">D. \(x = 2\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian B: Tingkat Menengah | Soal 7</div>
+<div class="question-text">
+    Jika \(\frac{2x - 3}{4} = \frac{x + 1}{3}\), maka nilai \(x\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(x = 13\)</div>
+    <div class="option">B. \(x = 5\)</div>
+    <div class="option">C. \(x = 6.5\)</div>
+    <div class="option">D. \(x = \frac{5}{2}\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian B: Tingkat Menengah | Soal 8</div>
+<div class="question-text">
+    Sebuah persegi panjang memiliki panjang \((3x + 2)\text{ cm}\) dan lebar \((x - 1)\text{ cm}\). Jika kelilingnya \(34\text{ cm}\), maka panjang persegi panjang tersebut adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(4\text{ cm}\)</div>
+    <div class="option">B. \(8\text{ cm}\)</div>
+    <div class="option">C. \(14\text{ cm}\)</div>
+    <div class="option">D. \(17\text{ cm}\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian B: Tingkat Menengah | Soal 9</div>
+<div class="question-text">
+    Diketahui persamaan \(0,4x - 1,2 = 0,1x + 0,6\). Nilai dari \(2x - 3\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(x = 6\)</div>
+    <div class="option">B. \(9\)</div>
+    <div class="option">C. \(15\)</div>
+    <div class="option">D. \(-1.8\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian B: Tingkat Menengah | Soal 10</div>
+<div class="question-text">
+    Himpunan penyelesaian dari \(3 - 2(1 - x) = 5 - (x - 3)\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(\{ \frac{7}{3} \}\)</div>
+    <div class="option">B. \(\{ \frac{5}{3} \}\)</div>
+    <div class="option">C. \(\{ 3 \}\)</div>
+    <div class="option">D. \(\{ -1 \}\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: HOTS | Soal 11</div>
+<div class="question-text">
+    Umur Ayah 3 kali umur Budi. Sepuluh tahun yang akan datang, jumlah umur mereka adalah 72 tahun. Model matematika yang benar untuk mencari umur Budi saat ini (\(x\)) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(3x + x + 10 = 72\)</div>
+    <div class="option">B. \(3x + x + 20 = 72\)</div>
+    <div class="option">C. \(3(x + 10) + x = 72\)</div>
+    <div class="option">D. \(3x + 10 = 72\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: HOTS | Soal 12</div>
+<div class="question-text">
+    Seorang guru memberikan soal \(3(x + 2) - x = 2x + 10\). Budi mengerjakan dan menyederhanakannya menjadi \(2x + 6 = 2x + 10\), yang kemudian menghasilkan \(6 = 10\). Budi menyimpulkan bahwa soal tersebut salah ketik. Tanggapan matematis yang paling tepat dari guru adalah ....
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. "Ya, soalnya salah ketik, seharusnya ruas kanan adalah \(2x + 6\) agar bisa dicari \(x\)-nya."</div>
+    <div class="option">B. "Kamu salah memindahkan ruas, \(x\) tidak boleh saling menghilangkan."</div>
+    <div class="option">C. "Kesimpulanmu salah, seharusnya nilai \(x\) adalah \(0\) karena variabelnya habis."</div>
+    <div class="option">D. "Perhitunganmu benar. Persamaan ini memang tidak memiliki penyelesaian karena berujung pada pernyataan yang salah (kontradiksi)."</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: HOTS | Soal 13</div>
+<div class="question-text">
+    Agar persamaan linear \(k(x - 2) + 4 = 3x - 6\) <strong>tidak memiliki penyelesaian</strong>, maka nilai konstanta \(k\) yang memenuhi adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(k = 0\)</div>
+    <div class="option">B. \(k = 3\)</div>
+    <div class="option">C. \(k = -3\)</div>
+    <div class="option">D. \(k = 5\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: HOTS | Soal 14</div>
+<div class="question-text">
+    Jika disederhanakan, persamaan pecahan \(\frac{3}{x-2} = \frac{3}{x+2}\) akan menghasilkan sebuah kesimpulan. Kesimpulan matematis yang paling tepat dari persamaan tersebut adalah ....
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Persamaan memiliki himpunan penyelesaian seluruh bilangan real kecuali \(2\) dan \(-2\).</div>
+    <div class="option">B. Persamaan tidak memiliki penyelesaian karena berujung pada \(6 = -6\).</div>
+    <div class="option">C. Nilai \(x\) yang memenuhi adalah \(x = 0\).</div>
+    <div class="option">D. Persamaan ini adalah persamaan identitas.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: HOTS | Soal 15</div>
+<div class="question-text">
+    Saat ujian ulangan, terdapat soal: \(5x - 3(x - 2) = 2x + 6\). Siti menjawab: <em>"Setelah disederhanakan, variabel \(x\) di ruas kiri dan kanan habis (\(0 = 0\)). Karena \(x\)-nya habis menjadi nol, maka jawabannya adalah \(x = 0\)."</em> <br>
+    Evaluasi yang paling tepat terhadap jawaban Siti adalah ....
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Jawaban Siti benar, karena jika koefisien \(x\) menjadi \(0\), otomatis nilai variabelnya adalah \(0\).</div>
+    <div class="option">B. Jawaban Siti salah. Persamaan yang berujung \(0=0\) disebut identitas, yang berarti persamaan tersebut bernilai benar untuk semua bilangan real \(x\).</div>
+    <div class="option">C. Jawaban Siti salah. Jika hasilnya \(0=0\), itu menandakan soal tersebut tidak dapat diselesaikan.</div>
+    <div class="option">D. Jawaban Siti salah. Seharusnya Siti mengumpulkan semua \(x\) ke sebelah kiri sebelum menyimpulkan.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: HOTS | Soal 16</div>
+<div class="question-text">
+    Jumlah tiga bilangan ganjil berurutan adalah 63. Jika bilangan terkecil adalah \(2n + 1\), maka nilai dari bilangan yang terbesar adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(19\)</div>
+    <div class="option">B. \(21\)</div>
+    <div class="option">C. \(23\)</div>
+    <div class="option">D. \(25\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: HOTS | Soal 17</div>
+<div class="question-text">
+    Perhatikan persamaan berikut: \(2[4 - 3(x - 1)] = -6x + 14\). Siswa yang ceroboh mungkin akan menjawab persamaan ini tidak memiliki penyelesaian. Padahal penyelesaian yang benar adalah ....
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Persamaan ini tidak memiliki penyelesaian (\(\emptyset\)).</div>
+    <div class="option">B. Nilai \(x = 0\).</div>
+    <div class="option">C. Persamaan ini adalah identitas (semua nilai \(x\) memenuhi).</div>
+    <div class="option">D. Jawaban akhir adalah \(14 = 14\), sehingga \(x = 14\).</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: HOTS | Soal 18</div>
+<div class="question-text">
+    Andi menyelesaikan persamaan \(2(3x - 4) + 5 = x + 7\) dengan langkah-langkah berikut:
+    <ul>
+        <li>Langkah 1: \(6x - 4 + 5 = x + 7\)</li>
+        <li>Langkah 2: \(6x + 1 = x + 7\)</li>
+        <li>Langkah 3: \(5x = 6\)</li>
+        <li>Langkah 4: \(x = \frac{6}{5}\)</li>
+    </ul>
+    Kesalahan pertama yang dilakukan Andi terletak pada ....
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Langkah 1, Andi lupa mengalikan \(-4\) dengan \(2\) sesuai sifat distributif.</div>
+    <div class="option">B. Langkah 2, penjumlahan \(-4 + 5\) seharusnya \(-9\).</div>
+    <div class="option">C. Langkah 3, saat memindahkan \(x\) ke kiri seharusnya menjadi ditambahkan, bukan dikurangkan.</div>
+    <div class="option">D. Andi tidak melakukan kesalahan, jawabannya benar.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: HOTS | Soal 19</div>
+<div class="question-text">
+    Seorang siswa bertanya kepada gurunya mengenai persamaan \(\frac{1}{2}x + \frac{1}{2}x = x\). Siswa tersebut berkata, <em>"Pak, kalau \(x\)-nya saya pindah ke kiri, jadinya \(x - x = 0\), terus \(0 = 0\). Saya bingung cara mencari nilai pastinya."</em> Penjelasan matematis yang paling tepat untuk disampaikan guru adalah ....
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. "Jawaban akhirnya adalah \(x = 0\) karena itulah angka yang tersisa di ruas kanan."</div>
+    <div class="option">B. "Kamu salah menghitung pecahan. Setengah ditambah setengah tidak membuang variabel \(x\)."</div>
+    <div class="option">C. "Persamaan ini tidak memiliki himpunan penyelesaian karena variabelnya hilang."</div>
+    <div class="option">D. "Persamaan ini disebut identitas. Itu bukan berarti tidak bisa dicari, melainkan berlaku untuk <strong>angka berapapun</strong> yang kamu masukkan sebagai \(x\)."</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian C: HOTS | Soal 20</div>
+<div class="question-text">
+    Agar persamaan linear parametrik \(a(x - 3) + b = 2x - 1\) menjadi sebuah <strong>persamaan identitas</strong> yang berlaku untuk semua \(x\), maka nilai \(a + b\) haruslah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. \(5\)</div>
+    <div class="option">B. \(7\)</div>
+    <div class="option">C. \(1\)</div>
+    <div class="option">D. \(-5\)</div>
+</div>
+</div>
 
         <!-- Slot Soal 5 -->
         <div class="question-card border-solid">
