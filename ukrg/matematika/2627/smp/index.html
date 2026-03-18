@@ -1162,19 +1162,341 @@
 </div>
 </div>
 
-        <!-- Slot Soal 8 -->
-        <div class="question-card border-solid">
-            <div class="question-meta">Soal Nomor 8</div>
-            <div class="question-text">[ Masukkan Teks Soal 8 di Sini ]</div>
-            <div class="options-list">
-                <div class="option">A. [ Opsi A ]</div>
-                <div class="option">B. [ Opsi B ]</div>
-                <div class="option">C. [ Opsi C ]</div>
-                <div class="option">D. [ Opsi D ]</div>
-            </div>
-            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
-        </div>
+<div class="section-title">Modul Pembelajaran & Latihan Soal<br>Sistem Persamaan Linear Dua Variabel (SPLDV)</div>
 
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">1. Rangkuman Materi: SPLDV</div>
+<div class="question-text">
+    <p>Sistem Persamaan Linear Dua Variabel (SPLDV) adalah sistem yang terdiri dari dua persamaan linear yang masing-masing memiliki dua variabel (misalnya \(x\) dan \(y\)). Bentuk umumnya adalah:</p>
+    \begin{align*}
+        a_1x + b_1y &= c_1 \\
+        a_2x + b_2y &= c_2
+    \end{align*}
+
+    <h4>Metode Penyelesaian</h4>
+    <p>Terdapat tiga metode utama untuk mencari himpunan penyelesaian \((x, y)\) dari sebuah SPLDV:</p>
+    <ol>
+        <li><strong>Substitusi:</strong> Menyatakan salah satu variabel dalam bentuk variabel lain dari satu persamaan, lalu memasukkannya ke persamaan kedua. Metode ini sangat efektif untuk soal perbandingan/rasio (seperti soal jumlah hewan).</li>
+        <li><strong>Eliminasi:</strong> Menyamakan koefisien salah satu variabel pada kedua persamaan, lalu menjumlahkan/mengurangkannya agar variabel tersebut hilang.</li>
+        <li><strong>Campuran:</strong> Menggunakan eliminasi untuk mencari satu variabel pertama, lalu menggunakan substitusi untuk mencari variabel kedua.</li>
+    </ol>
+
+    <h4>Interpretasi Geometris</h4>
+    <p>Secara grafis, penyelesaian SPLDV merupakan titik potong dari dua garis lurus di bidang Kartesius. Jika kedua garis berpotongan di satu titik, maka sistem tersebut memiliki tepat satu solusi penyelesaian.</p>
+
+    <div style="text-align: center; margin: 25px 0;">
+        <svg width="400" height="350" viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#e0e0e0" stroke-width="1">
+                <line x1="60" y1="290" x2="300" y2="290" />
+                <line x1="60" y1="250" x2="300" y2="250" />
+                <line x1="60" y1="210" x2="300" y2="210" />
+                <line x1="60" y1="170" x2="300" y2="170" />
+                <line x1="60" y1="130" x2="300" y2="130" />
+                <line x1="60" y1="90" x2="300" y2="90" />
+                <line x1="60" y1="50" x2="300" y2="50" />
+                
+                <line x1="60" y1="290" x2="60" y2="50" />
+                <line x1="100" y1="290" x2="100" y2="50" />
+                <line x1="140" y1="290" x2="140" y2="50" />
+                <line x1="180" y1="290" x2="180" y2="50" />
+                <line x1="220" y1="290" x2="220" y2="50" />
+                <line x1="260" y1="290" x2="260" y2="50" />
+                <line x1="300" y1="290" x2="300" y2="50" />
+            </g>
+            
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                </marker>
+            </defs>
+            <line x1="40" y1="250" x2="320" y2="250" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="330" y="255" font-family="sans-serif" font-size="14" font-style="italic">x</text>
+            
+            <line x1="100" y1="310" x2="100" y2="30" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="95" y="20" font-family="sans-serif" font-size="14" font-style="italic">y</text>
+            
+            <text x="90" y="265" font-family="sans-serif" font-size="12">0</text>
+            
+            <line x1="80" y1="70" x2="280" y2="270" stroke="blue" stroke-width="2" />
+            <text x="285" y="275" font-family="sans-serif" font-size="12" fill="blue">x+y=4</text>
+            
+            <line x1="120" y1="290" x2="240" y2="50" stroke="red" stroke-width="2" />
+            <text x="245" y="55" font-family="sans-serif" font-size="12" fill="red">2x-y=2</text>
+            
+            <circle cx="180" cy="170" r="4" fill="black" />
+            <text x="188" y="165" font-family="sans-serif" font-size="12" font-weight="bold">Solusi (2,2)</text>
+        </svg>
+    </div>
+
+    <h4>Tips Menyelesaikan Soal Cerita (Aplikasi SPLDV)</h4>
+    <ol>
+        <li><strong>Misalkan</strong> objek yang tidak diketahui menjadi variabel (contoh: \(x\) untuk bebek, \(y\) untuk sapi).</li>
+        <li><strong>Modelkan</strong> informasi menjadi persamaan matematika. Perhatikan fakta yang tidak tersurat secara langsung, seperti bebek memiliki 2 kaki dan sapi memiliki 4 kaki.</li>
+        <li><strong>Selesaikan</strong> sistem persamaan tersebut menggunakan substitusi atau eliminasi.</li>
+        <li><strong>Verifikasi</strong> kembali apa yang ditanyakan (Apakah jumlah total, selisih, atau hanya salah satu variabel?).</li>
+    </ol>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">A. Pemahaman Konsep Dasar | Soal 1</div>
+<div class="question-text">
+    Diketahui sistem persamaan \(x + y = 8\) dan \(x - y = 2\). Nilai dari \(x\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 3</div>
+    <div class="option">B. 5</div>
+    <div class="option">C. 6</div>
+    <div class="option">D. 10</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">A. Pemahaman Konsep Dasar | Soal 2</div>
+<div class="question-text">
+    Himpunan penyelesaian dari \(2x + y = 7\) dan \(x - y = 2\) adalah \((x, y)\). Nilai \(y\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 1</div>
+    <div class="option">B. 3</div>
+    <div class="option">C. 4</div>
+    <div class="option">D. 9</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">A. Pemahaman Konsep Dasar | Soal 3</div>
+<div class="question-text">
+    Jika \(3x + 2y = 12\) dan diketahui nilai \(x = 2\), maka nilai \(y\) yang memenuhi persamaan tersebut adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 2</div>
+    <div class="option">B. 3</div>
+    <div class="option">C. 4</div>
+    <div class="option">D. 6</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">A. Pemahaman Konsep Dasar | Soal 4</div>
+<div class="question-text">
+    Diketahui SPLDV \(x + 3y = 10\) dan \(2x - y = 6\). Nilai dari \(x + y\) adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 2</div>
+    <div class="option">B. 4</div>
+    <div class="option">C. 6</div>
+    <div class="option">D. 8</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">A. Pemahaman Konsep Dasar | Soal 5</div>
+<div class="question-text">
+    Dari sistem persamaan \(4x - 3y = 1\) dan \(2x + y = 3\), berapakah nilai dari \(x - y\)?
+</div>
+<div class="options-grid">
+    <div class="option">A. -1</div>
+    <div class="option">B. 0</div>
+    <div class="option">C. 1</div>
+    <div class="option">D. 2</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">B. Tingkat Menengah (Medium) | Soal 6</div>
+<div class="question-text">
+    Harga 2 buku dan 1 pensil adalah Rp15.000,00. Harga 1 buku dan 1 pensil adalah Rp9.000,00. Harga 1 buah buku adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. Rp3.000,00</div>
+    <div class="option">B. Rp6.000,00</div>
+    <div class="option">C. Rp9.000,00</div>
+    <div class="option">D. Rp15.000,00</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">B. Tingkat Menengah (Medium) | Soal 7</div>
+<div class="question-text">
+    Jumlah dua bilangan bulat adalah 20, sedangkan selisih kedua bilangan tersebut adalah 4. Hasil kali kedua bilangan tersebut adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 80</div>
+    <div class="option">B. 96</div>
+    <div class="option">C. 100</div>
+    <div class="option">D. 120</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">B. Tingkat Menengah (Medium) | Soal 8</div>
+<div class="question-text">
+    Umur seorang ayah saat ini adalah 3 kali umur anaknya. Jika selisih umur mereka adalah 20 tahun, maka umur anak tersebut adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 10 tahun</div>
+    <div class="option">B. 15 tahun</div>
+    <div class="option">C. 30 tahun</div>
+    <div class="option">D. 40 tahun</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">B. Tingkat Menengah (Medium) | Soal 9</div>
+<div class="question-text">
+    Keliling sebuah persegi panjang adalah 40 cm. Jika panjangnya 4 cm lebih panjang dari lebarnya, berapakah luas persegi panjang tersebut?
+</div>
+<div class="options-grid">
+    <div class="option">A. 84 \(\text{cm}^2\)</div>
+    <div class="option">B. 96 \(\text{cm}^2\)</div>
+    <div class="option">C. 100 \(\text{cm}^2\)</div>
+    <div class="option">D. 120 \(\text{cm}^2\)</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">B. Tingkat Menengah (Medium) | Soal 10</div>
+<div class="question-text">
+    Harga 5 kg apel dan 3 kg jeruk adalah Rp79.000,00. Sedangkan harga 3 kg apel dan 2 kg jeruk adalah Rp49.000,00. Harga 1 kg apel adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. Rp8.000,00</div>
+    <div class="option">B. Rp10.000,00</div>
+    <div class="option">C. Rp11.000,00</div>
+    <div class="option">D. Rp12.000,00</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">C. Tingkat Tinggi (HOTS) | Soal 11</div>
+<div class="question-text">
+    Lima tahun yang lalu, umur Andi adalah 4 kali umur Budi. Saat ini, jumlah umur mereka berdua adalah 55 tahun. Umur Andi 3 tahun yang akan datang adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 14 tahun</div>
+    <div class="option">B. 38 tahun</div>
+    <div class="option">C. 41 tahun</div>
+    <div class="option">D. 44 tahun</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">C. Tingkat Tinggi (HOTS) | Soal 12</div>
+<div class="question-text">
+    Sebuah peternakan memelihara ayam dan kambing. Total kaki hewan-hewan tersebut terhitung sebanyak 120 kaki. Jika diketahui jumlah kambing di peternakan tersebut adalah seperempat dari jumlah ayam, maka selisih jumlah ayam dan kambing adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 10</div>
+    <div class="option">B. 30</div>
+    <div class="option">C. 40</div>
+    <div class="option">D. 50</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">C. Tingkat Tinggi (HOTS) | Soal 13</div>
+<div class="question-text">
+    Di sebuah tempat parkir terdapat 84 kendaraan yang terdiri atas sepeda motor dan mobil. Setelah dihitung, jumlah roda seluruhnya adalah 220. Jika tarif parkir sepeda motor Rp2.000,00 dan mobil Rp5.000,00, maka besar uang parkir yang diterima adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. Rp168.000,00</div>
+    <div class="option">B. Rp230.000,00</div>
+    <div class="option">C. Rp246.000,00</div>
+    <div class="option">D. Rp420.000,00</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">C. Tingkat Tinggi (HOTS) | Soal 14</div>
+<div class="question-text">
+    Sebuah bilangan terdiri dari dua angka. Jumlah kedua angka tersebut adalah 12. Jika letak angkanya ditukar, maka bilangan yang baru bernilai 54 lebih besar dari bilangan semula. Bilangan semula adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 39</div>
+    <div class="option">B. 48</div>
+    <div class="option">C. 57</div>
+    <div class="option">D. 93</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">C. Tingkat Tinggi (HOTS) | Soal 15</div>
+<div class="question-text">
+    Jika pembilang dan penyebut suatu pecahan ditambahkan 1, nilainya menjadi \(\frac{1}{2}\). Jika pembilang dan penyebut dikurangi 1, nilainya menjadi \(\frac{1}{3}\). Jumlah dari pembilang dan penyebut pecahan tersebut adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 3</div>
+    <div class="option">B. 7</div>
+    <div class="option">C. 10</div>
+    <div class="option">D. 21</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">C. Tingkat Tinggi (HOTS) | Soal 16</div>
+<div class="question-text">
+    Di sebuah taman margasatwa, terdapat populasi burung pelikan dan harimau. Penjaga menghitung total kaki hewan-hewan tersebut dan mendapati ada 180 kaki. Jika diketahui jumlah harimau adalah \(\frac{2}{5}\) dari jumlah burung pelikan, berapakah total populasi kedua hewan tersebut?
+</div>
+<div class="options-grid">
+    <div class="option">A. 20 ekor</div>
+    <div class="option">B. 30 ekor</div>
+    <div class="option">C. 50 ekor</div>
+    <div class="option">D. 70 ekor</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">C. Tingkat Tinggi (HOTS) | Soal 17</div>
+<div class="question-text">
+    Pekerja A dan B dapat menyelesaikan sebuah proyek bersama-sama dalam 6 hari. Jika A bekerja sendirian, ia bisa menyelesaikannya dalam 10 hari. Berapa hari yang dibutuhkan B untuk menyelesaikan proyek tersebut sendirian?
+</div>
+<div class="options-grid">
+    <div class="option">A. 4 hari</div>
+    <div class="option">B. 15 hari</div>
+    <div class="option">C. 16 hari</div>
+    <div class="option">D. 60 hari</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">C. Tingkat Tinggi (HOTS) | Soal 18</div>
+<div class="question-text">
+    Sebuah perahu motor menempuh jarak 30 km melawan arus sungai dalam waktu 3 jam. Saat kembali menempuh jarak yang sama searah arus sungai, perahu tersebut hanya membutuhkan waktu 2 jam. Kecepatan perahu di air yang tenang adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 2,5 km/jam</div>
+    <div class="option">B. 10,0 km/jam</div>
+    <div class="option">C. 12,5 km/jam</div>
+    <div class="option">D. 15,0 km/jam</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">C. Tingkat Tinggi (HOTS) | Soal 19</div>
+<div class="question-text">
+    Di sebuah area konservasi serangga, terdapat laba-laba (memiliki 8 kaki) dan belalang (memiliki 6 kaki). Total kaki serangga-serangga tersebut adalah 100 kaki. Jika jumlah laba-laba adalah setengah dari jumlah belalang, maka selisih jumlah belalang dan laba-laba di area tersebut adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 5</div>
+    <div class="option">B. 10</div>
+    <div class="option">C. 15</div>
+    <div class="option">D. 40</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">C. Tingkat Tinggi (HOTS) | Soal 20</div>
+<div class="question-text">
+    Seorang asisten laboratorium perlu membuat 30 Liter larutan alkohol dengan konsentrasi 40%. Ia memiliki dua jenis larutan cadangan: alkohol 20% dan alkohol 50%. Volume larutan alkohol 20% yang harus dicampurkan adalah ....
+</div>
+<div class="options-grid">
+    <div class="option">A. 10 Liter</div>
+    <div class="option">B. 12 Liter</div>
+    <div class="option">C. 15 Liter</div>
+    <div class="option">D. 20 Liter</div>
+</div>
+</div>
         <!-- Slot Soal 15 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 15</div>
@@ -1206,23 +1528,340 @@
     <div id="tab-geometri" class="tab-content">
         <div class="section-title">Modul: Geometri Dimensi Tiga & Bangun Ruang</div>
 
-        <!-- Slot Soal 9 -->
-        <div class="question-card border-solid">
-            <div class="question-meta">Soal Nomor 9</div>
-            <div class="question-text">
-                [ Masukkan Teks Soal 9 di Sini ]
-                <div class="canvas-container">
-                    <canvas id="canvasBalok" width="400" height="250" class="max-w-full block mx-auto"></canvas>
-                </div>
-            </div>
-            <div class="options-list">
-                <div class="option">A. [ Opsi A ]</div>
-                <div class="option">B. [ Opsi B ]</div>
-                <div class="option">C. [ Opsi C ]</div>
-                <div class="option">D. [ Opsi D ]</div>
-            </div>
-            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
-        </div>
+        <div class="section-title">Modul Pembelajaran: Geometri Bangun Ruang Sisi Lengkung<br>(Lintasan Terpendek pada Permukaan Tabung)</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian A: Rangkuman Materi</div>
+<div class="question-text">
+    <h4>1. Konsep Dasar Selimut Tabung</h4>
+    <p>Tabung (silinder) adalah bangun ruang yang memiliki bidang alas dan bidang atas berbentuk lingkaran yang sejajar dan kongruen. Jika selimut tabung "dibuka" atau dibentangkan, bangun datar yang terbentuk adalah sebuah <strong>persegi panjang</strong>.</p>
+    <ul>
+        <li><strong>Panjang persegi panjang</strong> merupakan <strong>keliling alas tabung</strong> ($K = \pi \cdot d = 2 \pi r$).</li>
+        <li><strong>Lebar persegi panjang</strong> merupakan <strong>tinggi tabung</strong> ($t$).</li>
+    </ul>
+
+    <h4>2. Lintasan Terpendek (Geodesik) pada Permukaan Tabung</h4>
+    <p>Untuk mencari jarak terpendek (lintasan) yang ditempuh oleh suatu benda (misalnya semut) yang bergerak di sepanjang permukaan (selimut) tabung dari satu titik ke titik lain, kita <strong>tidak boleh</strong> menarik garis lurus yang menembus ruang di dalam tabung.</p>
+
+    <p>Cara menyelesaikannya adalah dengan <strong>menggunakan jaring-jaring selimut tabung</strong>. Jarak terpendek di permukaan lengkung tiga dimensi akan menjadi <strong>garis lurus</strong> ketika permukaan tersebut dibentangkan menjadi bangun datar dua dimensi.</p>
+
+    <h4>Kasus Khusus: Bergerak dari Depan-Bawah ke Belakang-Atas</h4>
+    <p>Jika sebuah titik berada di bawah (depan) dan titik tujuan berada di atas persis di sisi sebaliknya (belakang), maka:</p>
+    <ol>
+        <li>Benda tersebut menempuh <strong>setengah putaran</strong> keliling selimut tabung secara horizontal.</li>
+        <li>Jarak mendatar pada jaring-jaring adalah: $x = \frac{1}{2} \times K = \frac{1}{2} \cdot \pi \cdot d$.</li>
+        <li>Jarak vertikal adalah tinggi tabung: $y = t$.</li>
+        <li>Lintasan terpendek ($s$) dihitung menggunakan <strong>Teorema Pythagoras</strong>:
+        $$ s = \sqrt{x^2 + y^2} = \sqrt{\left(\frac{1}{2}\pi d\right)^2 + t^2} $$</li>
+    </ol>
+
+    <div style="text-align: center; margin: 30px 0;">
+        <svg width="600" height="280" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                </marker>
+            </defs>
+
+            <ellipse cx="120" cy="50" rx="60" ry="15" fill="none" stroke="black" stroke-width="2"/>
+            <path d="M 180 230 A 60 15 0 0 0 60 230" fill="none" stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+            <path d="M 60 230 A 60 15 0 0 0 180 230" fill="none" stroke="black" stroke-width="2"/>
+            <line x1="60" y1="50" x2="60" y2="230" stroke="black" stroke-width="2"/>
+            <line x1="180" y1="50" x2="180" y2="230" stroke="black" stroke-width="2"/>
+            
+            <line x1="40" y1="50" x2="40" y2="230" stroke="black" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+            <text x="30" y="145" font-family="sans-serif" font-size="14" font-style="italic" text-anchor="end">t</text>
+
+            <circle cx="120" cy="245" r="4" fill="black"/>
+            <text x="120" y="265" font-family="sans-serif" font-size="12" text-anchor="middle">A (Depan)</text>
+            <circle cx="120" cy="35" r="4" fill="black"/>
+            <text x="120" y="25" font-family="sans-serif" font-size="12" text-anchor="middle">B (Belakang)</text>
+
+            <path d="M 120 245 Q 180 230 180 140" fill="none" stroke="red" stroke-width="2.5" stroke-dasharray="6,4"/>
+            <path d="M 180 140 Q 180 50 120 35" fill="none" stroke="red" stroke-width="2.5" stroke-dasharray="2,4"/>
+            <polygon points="120,35 130,37 127,45" fill="red"/>
+
+            <line x1="220" y1="140" x2="300" y2="140" stroke="black" stroke-width="4" marker-end="url(#arrow)"/>
+
+            <rect x="350" y="50" width="180" height="180" fill="#f0f8ff" stroke="black" stroke-width="2"/>
+            
+            <circle cx="350" cy="230" r="4" fill="black"/>
+            <text x="350" y="250" font-family="sans-serif" font-size="12" text-anchor="middle">A</text>
+            <circle cx="530" cy="50" r="4" fill="black"/>
+            <text x="530" y="40" font-family="sans-serif" font-size="12" text-anchor="middle">B</text>
+
+            <line x1="350" y1="230" x2="530" y2="50" stroke="red" stroke-width="2.5" marker-end="url(#arrow)"/>
+            <text x="430" y="130" font-family="sans-serif" font-size="14" fill="red" font-style="italic" transform="rotate(-45 430,130)">s (Jarak)</text>
+
+            <line x1="350" y1="265" x2="530" y2="265" stroke="black" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+            <text x="440" y="255" font-family="sans-serif" font-size="12" text-anchor="middle">x = 1/2 &#960; d</text>
+
+            <line x1="550" y1="50" x2="550" y2="230" stroke="black" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+            <text x="560" y="145" font-family="sans-serif" font-size="12" font-style="italic">y = t</text>
+        </svg>
+    </div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Konsep Dasar | Soal 1</div>
+<div class="question-text">
+    Apabila sebuah tabung dipotong pada salah satu garis pelukisnya dan dibuka, maka jaring-jaring selimut tabung tersebut akan membentuk bangun datar berupa...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Jajar genjang</div>
+    <div class="option">B. Persegi panjang</div>
+    <div class="option">C. Elips</div>
+    <div class="option">D. Setengah lingkaran</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Konsep Dasar | Soal 2</div>
+<div class="question-text">
+    Luas selimut tabung yang memiliki jari-jari alas $r$ dan tinggi $t$ dapat dirumuskan dengan...
+</div>
+<div class="options-grid">
+    <div class="option">A. $\pi \cdot r^2 \cdot t$</div>
+    <div class="option">B. $\pi \cdot d \cdot t^2$</div>
+    <div class="option">C. $2 \cdot \pi \cdot r \cdot t$</div>
+    <div class="option">D. $2 \cdot \pi \cdot r^2$</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Konsep Dasar | Soal 3</div>
+<div class="question-text">
+    Kunci utama untuk mencari lintasan terpendek seekor semut yang merayap di permukaan luar tabung dari bagian bawah ke bagian atas adalah dengan...
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Mengukur garis lurus yang menembus ruang dalam tabung.</div>
+    <div class="option">B. Membuka selimut tabung menjadi bangun datar dua dimensi.</div>
+    <div class="option">C. Menggunakan rumus volume tabung.</div>
+    <div class="option">D. Menjumlahkan diameter tabung dengan tinggi tabung.</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Konsep Dasar | Soal 4</div>
+<div class="question-text">
+    Pada jaring-jaring selimut tabung (persegi panjang), lintasan terpendek dari pojok kiri bawah ke pojok kanan atas memposisikan lintasan tersebut sebagai ... pada sebuah segitiga siku-siku.
+</div>
+<div class="options-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+    <div class="option">A. Sisi alas</div>
+    <div class="option">B. Sisi tegak</div>
+    <div class="option">C. Sisi miring (Hipotenusa)</div>
+    <div class="option">D. Garis tinggi</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian I: Konsep Dasar | Soal 5</div>
+<div class="question-text">
+    Jarak mendatar yang ditempuh jika suatu benda mengitari tepat <strong>setengah putaran</strong> melingkari selimut luar tabung dengan diameter alas $d$ adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. $\pi \cdot d$</div>
+    <div class="option">B. $d$</div>
+    <div class="option">C. $\frac{1}{4} \cdot \pi \cdot d$</div>
+    <div class="option">D. $\frac{1}{2} \cdot \pi \cdot d$</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian II: Penerapan Menengah | Soal 6</div>
+<div class="question-text">
+    Sebuah tabung memiliki diameter alas 14 cm dan tinggi 10 cm. Jika selimut tabung tersebut dibentangkan, berapakah panjang dari persegi panjang jaring-jaring tersebut? ($\pi = \frac{22}{7}$)
+</div>
+<div class="options-grid">
+    <div class="option">A. 44 cm</div>
+    <div class="option">B. 22 cm</div>
+    <div class="option">C. 14 cm</div>
+    <div class="option">D. 154 cm</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian II: Penerapan Menengah | Soal 7</div>
+<div class="question-text">
+    Seekor cecak merayap pada tiang berbentuk tabung dengan diameter $\frac{6}{\pi}$ meter. Cecak tersebut bergerak dari bawah ke atas tiang yang tingginya 8 meter dengan mengelilingi tiang <strong>tepat satu putaran penuh</strong>. Jarak lintasan terpendek cecak tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 10 meter</div>
+    <div class="option">B. 14 meter</div>
+    <div class="option">C. $\sqrt{64 + \frac{36}{\pi^2}}$ meter</div>
+    <div class="option">D. 12 meter</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian II: Penerapan Menengah | Soal 8</div>
+<div class="question-text">
+    Selembar kertas berbentuk persegi panjang dengan ukuran 12 cm $\times$ 5 cm digulung sehingga membentuk sebuah selimut tabung dengan tinggi 5 cm. Jarak garis lurus pada selimut tabung antara dua ujung titik sudut kertas yang berseberangan sebelum digulung adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 17 cm</div>
+    <div class="option">B. $\sqrt{119}$ cm</div>
+    <div class="option">C. 13 cm</div>
+    <div class="option">D. 10 cm</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian II: Penerapan Menengah | Soal 9</div>
+<div class="question-text">
+    Untuk membedakan konsep: Jika ada sebuah titik A di tepi bawah tabung dan titik B di tepi atas tabung posisinya tepat di seberang (membelah diameter alas). Berapakah jarak garis lurus <strong>menembus ruang dalam tabung</strong> (bukan di permukaan)? Diketahui diameter $d$ dan tinggi $t$.
+</div>
+<div class="options-grid">
+    <div class="option">A. $\sqrt{\left(\frac{1}{2}\pi d\right)^2 + t^2}$</div>
+    <div class="option">B. $\sqrt{d^2 + t^2}$</div>
+    <div class="option">C. $d + t$</div>
+    <div class="option">D. $\sqrt{(\pi d)^2 + t^2}$</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian II: Penerapan Menengah | Soal 10</div>
+<div class="question-text">
+    Jika jarak terpendek seekor serangga merayap mengelilingi tabung sebanyak setengah putaran adalah 15 cm, dan tinggi tabung adalah 12 cm, maka setengah dari keliling alas tabung tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 27 cm</div>
+    <div class="option">B. 3 cm</div>
+    <div class="option">C. 9 cm</div>
+    <div class="option">D. 81 cm</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 11</div>
+<div class="question-text">
+    Seekor semut merayap dari bagian bawah luar sebuah tong berbentuk silinder. Tong tersebut memiliki diameter alas $\frac{8}{\pi}$ m dan tinggi 5 m. Semut tersebut merayap menuju bagian atas tong sedemikian rupa sehingga ia mengelilingi selimut tong sebanyak <strong>1,5 putaran</strong>. Jarak lintasan terpendek yang dilaluinya adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 13 m</div>
+    <div class="option">B. 17 m</div>
+    <div class="option">C. $\sqrt{89}$ m</div>
+    <div class="option">D. $\sqrt{25 + \frac{144}{\pi^2}}$ m</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 12</div>
+<div class="question-text">
+    Sebuah pilar bangunan berbentuk tabung memiliki ukuran diameter alas $\frac{10}{\pi}$ meter dan tinggi 12 meter. Seekor cecak berada di lantai dasar, tepat di sisi depan pilar. Terdapat seekor nyamuk mati yang menempel di atap persis di pinggiran atas pilar, namun letaknya tepat berada di sisi belakang pilar. Jika cecak tersebut merayap melingkari selimut luar pilar menuju nyamuk, rute jarak terpendeknya adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. $\sqrt{244}$ meter</div>
+    <div class="option">B. 13 meter</div>
+    <div class="option">C. 17 meter</div>
+    <div class="option">D. $\sqrt{144 + \frac{100}{\pi^2}}$ meter</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 13</div>
+<div class="question-text">
+    Sebuah ruangan berbentuk balok memiliki ukuran panjang 4 m, lebar 3 m, dan tinggi 5 m. Seekor laba-laba berada di pojok lantai bawah dan ingin menangkap lalat yang berada di pojok atap atas yang jaraknya paling jauh secara diagonal. Laba-laba hanya bisa merayap di dinding/lantai. Jarak lintasan terpendek yang bisa dilalui laba-laba adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. $\sqrt{50}$ meter</div>
+    <div class="option">B. 12 meter</div>
+    <div class="option">C. $\sqrt{74}$ meter</div>
+    <div class="option">D. $\sqrt{80}$ meter</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 14</div>
+<div class="question-text">
+    Pada sebuah silinder tegak dengan jari-jari $\frac{15}{\pi}$ cm dan tinggi 16 cm, terdapat titik P di alas bagian luar, dan titik Q di atap bagian luar. Jika diproyeksikan ke bidang alas datar, sudut pusat yang dibentuk oleh letak P dan Q adalah $120^\circ$. Jarak terpendek merayap di permukaan silinder dari P ke Q adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. $2\sqrt{89}$ cm</div>
+    <div class="option">B. 26 cm</div>
+    <div class="option">C. 34 cm</div>
+    <div class="option">D. $\sqrt{256 + \frac{675}{\pi^2}}$ cm</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 15</div>
+<div class="question-text">
+    Sebuah tabung kayu solid memiliki ukuran diameter alas $\frac{16}{\pi}$ meter dan tinggi 15 meter. Seekor semut berada di lantai dasar, tepat di sisi depan tabung. Terdapat setetes madu yang menempel di bibir atas tabung, namun letaknya tepat berada di sisi belakang (berlawanan arah $180^\circ$). Jika semut merayap melingkari selimut luar tabung tersebut, berapakah rute jarak terpendek menuju madu tersebut?
+</div>
+<div class="options-grid">
+    <div class="option">A. 23 meter</div>
+    <div class="option">B. $\sqrt{281}$ meter</div>
+    <div class="option">C. $\sqrt{225 + \frac{256}{\pi^2}}$ meter</div>
+    <div class="option">D. 17 meter</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 16</div>
+<div class="question-text">
+    Dua ekor semut berlomba merayap pada permukaan luar tabung (diameter $\frac{14}{\pi}$ cm, tinggi 24 cm). Keduanya mulai dari titik depan-bawah menuju titik belakang-atas. Semut Pertama merayap tegak lurus ke atas hingga ujung tabung (24 cm), lalu berjalan melingkari bibir tabung hingga ke belakang. Semut Kedua memilih rute diagonal melingkari selimut sebagai lintasan terpendek. Selisih jarak tempuh kedua semut tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 6 cm</div>
+    <div class="option">B. 0 cm</div>
+    <div class="option">C. 31 cm</div>
+    <div class="option">D. 25 cm</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 17</div>
+<div class="question-text">
+    Tabung memiliki diameter $\frac{16}{\pi}$ meter dan tinggi 7 meter. Semut merayap dari bibir bawah tabung ke bibir atas. Namun karena ada lapisan licin lurus secara vertikal, semut memutarinya dengan lintasan heliks (spiral) sebanyak <strong>1,5 putaran</strong>. Titik akhirnya berada di atap tabung yang letaknya tepat membelakangi titik asalnya (di sisi yang berlawanan). Jarak yang ditempuh semut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 31 meter</div>
+    <div class="option">B. $\sqrt{305}$ meter</div>
+    <div class="option">C. 25 meter</div>
+    <div class="option">D. 40 meter</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 18</div>
+<div class="question-text">
+    Sebuah menara penyimpanan (silo) berbentuk tabung silinder memiliki ukuran diameter alas $\frac{18}{\pi}$ meter dan tinggi 40 meter. Seekor semut berada di lantai dasar, tepat di sisi depan tabung. Sebuah gumpalan gula menempel di bibir atas tabung, namun letaknya tepat berada di sisi belakang. Jika semut merayap melingkari selimut luar tabung tersebut, berapakah rute jarak terpendek menuju gula tersebut?
+</div>
+<div class="options-grid">
+    <div class="option">A. 49 meter</div>
+    <div class="option">B. $\sqrt{1924}$ meter</div>
+    <div class="option">C. $\sqrt{1681 + \frac{324}{\pi^2}}$ meter</div>
+    <div class="option">D. 41 meter</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 19</div>
+<div class="question-text">
+    Sebuah gelas silinder tanpa tutup <strong>yang ketebalannya diabaikan</strong> memiliki ukuran diameter alas $\frac{14}{\pi}$ cm dan tinggi 12 cm. Seekor semut berada di pojok dasar LUAR depan gelas. Ia melihat sisa minuman di dasar DALAM bagian belakang gelas. Ia harus merayap naik ke bibir gelas di luar, menyeberang, dan merayap turun di sisi dalam gelas. Jarak terpendek yang bisa ditempuh semut (selalu menempel pada dinding) adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 31 cm</div>
+    <div class="option">B. 25 cm</div>
+    <div class="option">C. $\sqrt{193} + 12$ cm</div>
+    <div class="option">D. $2\sqrt{157}$ cm</div>
+</div>
+</div>
+
+<div class="question-card" style="border-style: solid;">
+<div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 20</div>
+<div class="question-text">
+    Pipa instalasi gas berbentuk silinder memiliki jari-jari $\frac{5}{\pi}$ m dan tinggi 24 m. Titik A berada di pangkal bawah pipa dan titik B di ujung atas tegak lurus di atas A. Sebuah robot inspeksi diharuskan merayap dari A ke B melingkari selimut pipa secara diagonal <strong>tepat satu kali putaran penuh</strong> (tidak boleh lurus vertikal). Jarak yang ditempuh robot inspeksi tersebut adalah...
+</div>
+<div class="options-grid">
+    <div class="option">A. 24 meter</div>
+    <div class="option">B. 34 meter</div>
+    <div class="option">C. $\sqrt{576 + \frac{100}{\pi^2}}$ meter</div>
+    <div class="option">D. 26 meter</div>
+</div>
+</div>
 
         <!-- Slot Soal 10 -->
         <div class="question-card border-solid">
