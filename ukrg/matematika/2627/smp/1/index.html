@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaching UKRG - Pemodelan Aljabar pada Fungsi Linear</title>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --bg: #f4f6f8; --radius: 8px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+        @media (max-width: 768px) { .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; } h1 { font-size: 1.6rem; } }
+        .subtitle { color: #666; font-size: 1.1rem; }
+        .text-sm { font-size: 0.9rem; } .text-muted { color: #555; } .mt-2 { margin-top: 10px; }
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; }
+        .question-card { background: #fafafa; border: 1px solid #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul: Pemodelan & Sistem Persamaan</div>
+    <div class="section-title">Rangkuman Materi dan Latihan Soal:<br>Pemodelan Aljabar pada Fungsi Linear</div>
+
+    <div class="question-card">
+        <div class="question-meta">Bagian 1: Rangkuman Materi</div>
+        <div class="question-text">
+            <p>Dalam penerapan matematika di kehidupan sehari-hari, banyak situasi dapat dimodelkan menggunakan <strong>Fungsi Linear</strong>. Bentuk umum dari fungsi linear adalah:</p>
+            \[ f(x) = mx + c \]
+            <p>Di mana:</p>
+            <ul>
+                <li>\(f(x)\) adalah nilai total atau hasil fungsi bergantung pada nilai \(x\).</li>
+                <li>\(x\) adalah variabel bebas (misalnya: waktu, jarak, jumlah barang).</li>
+                <li>\(m\) adalah <strong>gradien</strong> atau tingkat perubahan. Dalam konteks biaya, ini sering disebut sebagai <strong>Biaya Variabel</strong> (contoh: biaya per jam, biaya per kilometer).</li>
+                <li>\(c\) adalah <strong>konstanta</strong> atau nilai awal. Dalam konteks biaya, ini sering disebut sebagai <strong>Biaya Tetap</strong> (contoh: biaya administrasi, tarif buka kunci, biaya registrasi).</li>
+            </ul>
+            <h4>Konsep Kritis: Transaksi Tunggal vs Transaksi Ganda</h4>
+            <p>Kesalahan umum dalam pemodelan aljabar terjadi ketika suatu transaksi dilakukan lebih dari satu kali.<br>
+            Misalkan fungsi biaya taksi adalah \(C(x) = 10.000 + 5.000x\).</p>
+            <ul>
+                <li>Jika seseorang melakukan <strong>satu kali</strong> perjalanan sejauh \((a + b)\) km, maka biayanya adalah:<br> \(C(a+b) = 10.000 + 5.000(a+b)\).</li>
+                <li>Jika seseorang melakukan <strong>dua kali</strong> perjalanan terpisah, perjalanan pertama sejauh \(a\) km dan perjalanan kedua sejauh \(b\) km, maka biayanya adalah penjumlahan dua fungsi:<br> \(C(a) + C(b) = (10.000 + 5.000a) + (10.000 + 5.000b) = 20.000 + 5.000(a+b)\).</li>
+            </ul>
+            <p>Perhatikan bahwa pada transaksi terpisah, <strong>biaya tetap dikenakan berulang kali</strong>. Model \(f(a+b) \neq f(a) + f(b)\) jika \(c \neq 0\).</p>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">Tingkat Dasar (Konsep dan Identifikasi) | Soal 1</div>
+        <div class="question-text">Tarif sebuah ojek <em>online</em> dirumuskan dengan fungsi \(T(x) = 12.000 + 2.500x\), dengan \(x\) adalah jarak tempuh dalam kilometer. Angka \(12.000\) pada fungsi tersebut secara logis mewakili...</div>
+        <div class="options-list">
+            <div class="option">A. Biaya yang harus dibayar per kilometer perjalanan.</div>
+            <div class="option">B. Total biaya jika penumpang menempuh jarak \(12\) kilometer.</div>
+            <div class="option">C. Biaya minimum atau tarif dasar pemesanan sebelum memperhitungkan jarak.</div>
+            <div class="option">D. Jarak maksimal yang dapat ditempuh oleh penumpang dalam satu kali pesanan.</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">Tingkat Dasar (Konsep dan Identifikasi) | Soal 2</div>
+        <div class="question-text">Sebuah pabrik roti memiliki biaya operasional harian sebesar Rp 500.000 untuk sewa tempat, dan dibutuhkan biaya Rp 2.000 untuk memproduksi setiap bungkus roti. Jika \(x\) adalah jumlah roti yang diproduksi, model matematika untuk total biaya harian \(B(x)\) adalah...</div>
+        <div class="options-list">
+            <div class="option">A. \(B(x) = 502.000x\)</div>
+            <div class="option">B. \(B(x) = 500.000 + 2.000x\)</div>
+            <div class="option">C. \(B(x) = 2.000 + 500.000x\)</div>
+            <div class="option">D. \(B(x) = 500.000(2.000 + x)\)</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">Tingkat Dasar (Konsep dan Identifikasi) | Soal 3</div>
+        <div class="question-text">Diketahui sebuah fungsi biaya \(C(t) = 300t + 50\). Berapakah nilai dari \(C(10)\)?</div>
+        <div class="options-grid">
+            <div class="option">A. \(3.050\)</div>
+            <div class="option">B. \(3.500\)</div>
+            <div class="option">C. \(800\)</div>
+            <div class="option">D. \(350\)</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">Tingkat Dasar (Konsep dan Identifikasi) | Soal 4</div>
+        <div class="question-text">Dalam rumus \(P(n) = 10.000n - 2.000\), bagian manakah yang menunjukkan komponen variabel (yang nilainya bisa berubah-ubah tergantung input)?</div>
+        <div class="options-grid">
+            <div class="option">A. \(-2.000\)</div>
+            <div class="option">B. \(10.000n\)</div>
+            <div class="option">C. \(8.000n\)</div>
+            <div class="option">D. \(P(n)\)</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">Tingkat Dasar (Konsep dan Identifikasi) | Soal 5</div>
+        <div class="question-text">Sebuah provider internet mengenakan biaya langganan bulanan sebesar Rp 150.000 dan tambahan Rp 5.000 per Gigabyte (GB) data yang melebihi kuota. Jika fungsi tagihan tambahan adalah \(T(g) = 150.000 + 5.000g\), variabel \(g\) merepresentasikan...</div>
+        <div class="options-list">
+            <div class="option">A. Total data bulanan yang digunakan secara keseluruhan.</div>
+            <div class="option">B. Jumlah pemakaian data (dalam GB) yang melebihi kuota batas wajar.</div>
+            <div class="option">C. Kecepatan internet yang didapatkan oleh pelanggan.</div>
+            <div class="option">D. Jumlah bulan pelanggan tersebut telah berlangganan.</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">Tingkat Menengah (Aplikasi Sederhana) | Soal 6</div>
+        <div class="question-text">Andi berlangganan majalah dengan biaya awal pendaftaran Rp 25.000. Setelah 4 bulan berlangganan, total yang ia bayarkan adalah Rp 105.000. Jika tarif per bulan selalu sama, berapakah tarif per bulan majalah tersebut?</div>
+        <div class="options-grid">
+            <div class="option">A. Rp 26.250</div>
+            <div class="option">B. Rp 20.000</div>
+            <div class="option">C. Rp 32.500</div>
+            <div class="option">D. Rp 25.000</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">Tingkat Menengah (Aplikasi Sederhana) | Soal 7</div>
+        <div class="question-text">Terdapat dua jenis keanggotaan <em>gym</em>. Gym A mengenakan biaya daftar Rp 100.000 dan iuran bulanan Rp 150.000. Gym B tanpa biaya daftar, namun iuran bulanannya Rp 200.000. Pada bulan ke berapakah total biaya yang dikeluarkan untuk kedua Gym tersebut bernilai persis sama?</div>
+        <div class="options-grid">
+            <div class="option">A. Bulan ke-2</div>
+            <div class="option">B. Bulan ke-3</div>
+            <div class="option">C. Bulan ke-4</div>
+            <div class="option">D. Bulan ke-5</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">Tingkat Menengah (Aplikasi Sederhana) | Soal 8</div>
+        <div class="question-text">Sebuah tangki air berisi 500 liter. Air dipompa keluar dari tangki dengan kecepatan konstan 25 liter per menit. Model matematika volume air di dalam tangki \(V\) setelah \(m\) menit adalah...</div>
+        <div class="options-list">
+            <div class="option">A. \(V(m) = 500 + 25m\)</div>
+            <div class="option">B. \(V(m) = 500 - 25m\)</div>
+            <div class="option">C. \(V(m) = 25m - 500\)</div>
+            <div class="option">D. \(V(m) = \frac{500}{25m}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">Tingkat Menengah (Aplikasi Sederhana) | Soal 9</div>
+        <div class="question-text">Biaya sewa lapangan futsal dirumuskan dengan \(F(h) = 50.000 + 100.000h\), di mana \(h\) adalah lama sewa dalam jam. Jika Budi menyewa lapangan tersebut dan membayar total Rp 350.000, berapa jam Budi menyewa lapangan?</div>
+        <div class="options-grid">
+            <div class="option">A. 2 jam</div>
+            <div class="option">B. 2,5 jam</div>
+            <div class="option">C. 3 jam</div>
+            <div class="option">D. 3,5 jam</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">Tingkat Menengah (Aplikasi Sederhana) | Soal 10</div>
+        <div class="question-text">Gaji seorang tenaga pemasaran dirumuskan sebagai \(G(x) = 2.000.000 + 50.000x\), dengan \(x\) adalah jumlah produk yang berhasil terjual. Jika pada bulan ini ia ingin mendapatkan gaji minimal Rp 3.500.000, berapa produk minimal yang harus ia jual?</div>
+        <div class="options-grid">
+            <div class="option">A. 20 produk</div>
+            <div class="option">B. 30 produk</div>
+            <div class="option">C. 35 produk</div>
+            <div class="option">D. 40 produk</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">High Order Thinking Skills (HOTS) | Soal 11</div>
+        <div class="question-text">Perhatikan grafik hubungan biaya cetak buku terhadap jumlah buku yang dicetak berikut.
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="450" height="300" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke="#e0e0e0" stroke-dasharray="5,5">
+                        <line x1="110" y1="40" x2="110" y2="250" />
+                        <line x1="170" y1="40" x2="170" y2="250" />
+                        <line x1="230" y1="40" x2="230" y2="250" />
+                        <line x1="290" y1="40" x2="290" y2="250" />
+                        <line x1="350" y1="40" x2="350" y2="250" />
+                        <line x1="50" y1="216.67" x2="380" y2="216.67" />
+                        <line x1="50" y1="183.33" x2="380" y2="183.33" />
+                        <line x1="50" y1="150" x2="380" y2="150" />
+                        <line x1="50" y1="116.67" x2="380" y2="116.67" />
+                        <line x1="50" y1="83.33" x2="380" y2="83.33" />
+                        <line x1="50" y1="50" x2="380" y2="50" />
+                    </g>
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                        </marker>
+                    </defs>
+                    <line x1="50" y1="250" x2="390" y2="250" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+                    <line x1="50" y1="250" x2="50" y2="30" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="220" y="290" font-family="sans-serif" font-size="14" text-anchor="middle">Jumlah Buku (x)</text>
+                    <text x="15" y="140" font-family="sans-serif" font-size="14" text-anchor="middle" transform="rotate(-90 15,140)">Total Biaya (ribuan Rp)</text>
+                    <g font-family="sans-serif" font-size="12" text-anchor="middle">
+                        <text x="50" y="265">0</text>
+                        <text x="110" y="265">10</text>
+                        <text x="170" y="265">20</text>
+                        <text x="230" y="265">30</text>
+                        <text x="290" y="265">40</text>
+                        <text x="350" y="265">50</text>
+                    </g>
+                    <g font-family="sans-serif" font-size="12" text-anchor="end">
+                        <text x="45" y="221">200</text>
+                        <text x="45" y="188">400</text>
+                        <text x="45" y="155">600</text>
+                        <text x="45" y="121">800</text>
+                        <text x="45" y="88">1000</text>
+                    </g>
+                    <line x1="50" y1="216.67" x2="350" y2="91.67" stroke="blue" stroke-width="3" />
+                </svg>
+            </div>
+            Dari grafik di atas, dapat disimpulkan bahwa pabrik percetakan memiliki komponen "Biaya Pra-Cetak" (pengaturan mesin, desain awal) yang harus dibayar terlepas dari jumlah buku yang dicetak. Jika seseorang ingin mencetak 100 buku, berapakah estimasi biaya totalnya?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. Rp 1.500.000</div>
+            <div class="option">B. Rp 1.700.000</div>
+            <div class="option">C. Rp 2.000.000</div>
+            <div class="option">D. Tidak dapat ditentukan karena grafiknya merupakan fungsi kuadrat, bukan linear.</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">High Order Thinking Skills (HOTS) | Soal 12</div>
+        <div class="question-text">Tarif penyewaan komputer di sebuah warung internet (warnet) VIP mematuhi rumus \(W(t) = 3.000 + 5.000t\), dengan \(t\) adalah durasi bermain dalam jam. Angka 3.000 adalah biaya <em>login</em> akun. Candra datang ke warnet tersebut pada siang hari dan bermain selama \(a\) jam. Pada malam harinya, ia datang kembali ke warnet yang sama, melakukan <em>login</em> ulang, dan bermain selama \(b\) jam. <br> Candra menghitung estimasi pengeluarannya hari itu dengan model aljabar: \(W_{total} = 3.000 + 5.000(a+b)\). Analisis kesalahan pada perhitungan Candra adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Variabel \(a\) dan \(b\) seharusnya saling dikalikan menjadi \(5.000(ab)\), karena merupakan dua kejadian majemuk.</div>
+            <div class="option">B. Model tersebut sudah benar, tetapi penulisannya seharusnya disederhanakan menjadi \(W_{total} = 8.000(a+b)\).</div>
+            <div class="option">C. Candra mengabaikan fakta bahwa biaya <em>login</em> dikenakan dua kali untuk dua sesi penyewaan yang dilakukan secara terpisah.</div>
+            <div class="option">D. Biaya per jam pada siang dan malam hari memiliki tarif yang berbeda, sehingga penggunaan satu variabel waktu tidak valid.</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">High Order Thinking Skills (HOTS) | Soal 13</div>
+        <div class="question-text">Sebuah perusahaan ekspedisi menawarkan dua paket pengiriman. Paket A: Biaya tetap Rp 10.000 ditambah Rp 2.000 per kg. Paket B: Tanpa biaya tetap, tetapi Rp 4.500 per kg. Jika \(x\) adalah berat barang dalam kg, kapan seorang pelanggan sebaiknya memilih Paket A agar lebih ekonomis secara matematis?</div>
+        <div class="options-list">
+            <div class="option">A. Saat pelanggan mengirim barang yang beratnya kurang dari 4 kg.</div>
+            <div class="option">B. Saat pelanggan mengirim barang yang beratnya tepat 4 kg.</div>
+            <div class="option">C. Saat pelanggan mengirim barang yang beratnya lebih dari 4 kg.</div>
+            <div class="option">D. Paket A tidak akan pernah lebih ekonomis dibandingkan Paket B berapapun beratnya.</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">High Order Thinking Skills (HOTS) | Soal 14</div>
+        <div class="question-text">Keuntungan penjualan tiket dari sebuah acara dirumuskan dengan \(P(x) = 150.000x - 2.500.000\), di mana \(x\) adalah jumlah tiket terjual. Setelah evaluasi, panitia menyadari bahwa mereka salah mencatat. Biaya sewa gedung (konstanta negatif) ternyata dua kali lipat lebih mahal dari perkiraan semula. Model aljabar keuntungan yang benar menjadi...</div>
+        <div class="options-list">
+            <div class="option">A. \(P_{baru}(x) = 300.000x - 2.500.000\)</div>
+            <div class="option">B. \(P_{baru}(x) = 150.000x - 5.000.000\)</div>
+            <div class="option">C. \(P_{baru}(x) = 150.000(2x) - 2.500.000\)</div>
+            <div class="option">D. \(P_{baru}(x) = 75.000x - 5.000.000\)</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">High Order Thinking Skills (HOTS) | Soal 15</div>
+        <div class="question-text">Dina menabung dengan pola linear \(S(w) = 50.000 + 20.000w\), di mana \(w\) adalah minggu ke-\(w\) sejak dia mulai menabung rutin. Kakaknya, Dito, melihat rumus tersebut dan berkata, "Berarti pada minggu ke-4, uangmu pasti sama dengan dua kali lipat uangmu pada minggu ke-2". Secara aljabar, pernyataan Dito adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Benar, karena \(20.000(4) = 2 \times 20.000(2)\), sehingga pertumbuhannya proporsional secara langsung.</div>
+            <div class="option">B. Benar, karena keduanya menabung secara rutin setiap minggunya dengan nominal yang konstan.</div>
+            <div class="option">C. Salah, karena \(S(4) = 130.000\), sedangkan \(2 \times S(2) = 180.000\). Keberadaan saldo awal merusak perbandingan senilai.</div>
+            <div class="option">D. Salah, karena fungsi linear tidak bisa digunakan untuk memprediksi nilai di masa depan, melainkan fungsi eksponensial.</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">High Order Thinking Skills (HOTS) | Soal 16</div>
+        <div class="question-text">Aplikasi ojek <em>online</em> M-Jek memiliki tarif yang dirumuskan sebagai \(T(j) = 10.000 + 3.000j\), dengan \(j\) mewakili jarak tempuh dalam kilometer. Tarif Rp 10.000 adalah biaya minimum penjemputan. Dika memesan M-Jek dari rumah ke sekolah sejauh \(x\) km. Setelah pulang sekolah, ia memesan M-Jek lagi dari sekolah kembali ke rumah dengan jarak yang sama (\(x\) km). <br> Dika menganggarkan total biayanya dengan mengalikan jaraknya dengan 2, menghasilkan rumus: \(T_{total} = 10.000 + 3.000(2x)\). Manakah pernyataan di bawah ini yang menunjukkan kelemahan fatal dari rumus anggaran Dika?</div>
+        <div class="options-list">
+            <div class="option">A. Dika tidak menyadari bahwa biaya minimum penjemputan seharusnya tidak ditambahkan ke dalam rumus jika rutenya berulang.</div>
+            <div class="option">B. Dika mengabaikan variabel kemacetan, sehingga \(2x\) bukan representasi waktu yang tepat.</div>
+            <div class="option">C. Dika hanya memperhitungkan satu kali biaya minimum penjemputan, padahal ia melakukan dua kali transaksi pemesanan (berangkat dan pulang).</div>
+            <div class="option">D. Dika seharusnya menggunakan rumus \(T_{total} = (10.000 + 3.000)(2x)\) untuk memastikan perhitungan terdistribusi secara merata.</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">High Order Thinking Skills (HOTS) | Soal 17</div>
+        <div class="question-text">Sebuah kolam berkapasitas 2.000 liter diisi air menggunakan selang besar dengan laju \(50\) liter/menit. Di saat yang sama, terdapat kebocoran kecil yang membuang air \(5\) liter/menit. Jika volume air mula-mula adalah 200 liter, persamaan linear untuk volume air di kolam \(V\) terhadap waktu \(t\) (dalam menit) adalah...</div>
+        <div class="options-list">
+            <div class="option">A. \(V(t) = 200 + 50t - 5t\)</div>
+            <div class="option">B. \(V(t) = 200 + 55t\)</div>
+            <div class="option">C. \(V(t) = 2.000 - 45t\)</div>
+            <div class="option">D. \(V(t) = 200(50t - 5t)\)</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">High Order Thinking Skills (HOTS) | Soal 18</div>
+        <div class="question-text">Pabrik \(X\) memiliki persamaan fungsi produksi harian \(f(x) = 50x + 1000\), dengan \(x\) adalah jam kerja mesin. Suatu hari mesin mengalami <em>error</em> sehingga pada 3 jam pertama mesin hanya memproduksi separuh dari tingkat normalnya, namun biaya operasional tetap (konstanta) tidak berubah. Fungsi produksi pada 3 jam pertama tersebut adalah...</div>
+        <div class="options-list">
+            <div class="option">A. \(g(x) = 25x + 1000\) untuk \(0 \le x \le 3\)</div>
+            <div class="option">B. \(g(x) = 25x + 500\) untuk \(0 \le x \le 3\)</div>
+            <div class="option">C. \(g(x) = 50x + 500\) untuk \(0 \le x \le 3\)</div>
+            <div class="option">D. \(g(x) = 25(x + 1000)\) untuk \(0 \le x \le 3\)</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">High Order Thinking Skills (HOTS) | Soal 19</div>
+        <div class="question-text">Sebuah gedung parkir VIP di mall memiliki tarif masuk sebesar Rp 15.000 (dibayar di awal) dan biaya progresif Rp 4.000 per jam pemakaian. Tarif ini dituliskan sebagai \(P(t) = 15.000 + 4.000t\). <br> Pak Rudi masuk ke mall tersebut selama \(m\) jam, lalu keluar. Satu jam kemudian, Pak Rudi masuk kembali ke gedung parkir yang sama karena barangnya tertinggal, dan parkir selama \(n\) jam. <br> Penjaga parkir menghitung total pembayaran dua nota Pak Rudi menjadi \(Total = 30.000 + 4.000(m+n)\). Pak Rudi protes dan berpendapat rumusnya seharusnya \(Total = 15.000 + 4.000(m+n)\) karena ia memarkir mobil yang sama di hari yang sama. Mengapa argumen protes Pak Rudi salah secara matematis?</div>
+        <div class="options-list">
+            <div class="option">A. Argumen Pak Rudi salah karena ia seharusnya menjumlahkan seluruh waktu parkir lalu dikalikan dengan dua.</div>
+            <div class="option">B. Sistem <em>gate</em> parkir mencatat dua entri kendaraan terpisah, sehingga <em>fixed cost</em> (biaya masuk awal) secara mutlak dikenakan pada setiap proses masuk kendaraan terlepas dari identitas pemiliknya.</div>
+            <div class="option">C. Argumen Pak Rudi salah karena tarif per jam pada kedatangan kedua harus dikuadratkan secara hukum progresif.</div>
+            <div class="option">D. Karena jarak antara kedatangan pertama dan kedua hanya satu jam, biaya tetap seharusnya dihapus sepenuhnya dari perhitungan.</div>
+        </div>
+    </div>
+
+    <div class="question-card">
+        <div class="question-meta">High Order Thinking Skills (HOTS) | Soal 20</div>
+        <div class="question-text">Fungsi \(K(x) = 30x - 120\) menyatakan estimasi kerugian minimum sebuah festival (dalam ribuan Rupiah) jika terdapat \(x\) pengunjung yang batal hadir. Berdasarkan fungsi ini, jika kita mencari nilai fungsi invers \(K^{-1}(0)\), apakah interpretasi logis dari nilai tersebut di dunia nyata?</div>
+        <div class="options-list">
+            <div class="option">A. Menunjukkan besaran kerugian tetap ketika tidak ada sama sekali pengunjung yang batal hadir.</div>
+            <div class="option">B. Menunjukkan batas maksimal pengunjung yang boleh batal hadir agar acara tersebut bisa diselenggarakan.</div>
+            <div class="option">C. Menunjukkan jumlah pengunjung yang batal hadir yang mengakibatkan festival berada pada titik impas (tidak rugi dan tidak untung).</div>
+            <div class="option">D. Menunjukkan harga setiap satu tiket pengunjung yang batal hadir adalah nol rupiah.</div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
