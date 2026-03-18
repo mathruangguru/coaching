@@ -32,16 +32,10 @@
         .text-muted { color: #555; }
         .text-sm { font-size: 0.9rem; }
         .text-center { text-align: center; }
-        .mt-1 { margin-top: 5px; } 
-        .mt-2 { margin-top: 10px; } 
-        .mt-4 { margin-top: 20px; } 
-        .mt-5 { margin-top: 40px; }
-        .mb-1 { margin-bottom: 5px; } 
-        .mb-3 { margin-bottom: 15px; } 
-        .mb-4 { margin-bottom: 20px; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
         .pb-2 { padding-bottom: 10px; }
-        .flex { display: flex; } 
-        .flex-col { flex-direction: column; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
         .items-center { align-items: center; }
         .gap-2 { gap: 8px; }
         .w-full { width: 100%; }
@@ -52,78 +46,28 @@
         .border-solid { border-style: solid !important; }
 
         /* --- Base & Reset --- */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
-            background: var(--bg); 
-            margin: 0; 
-            padding: 20px; 
-        }
-        h1 { font-size: 2.2rem; margin-bottom: 5px; color: var(--primary); }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
         h3, h4 { color: var(--primary); margin-top: 0; }
 
-        /* --- Layout & Components --- */
-        .container { 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            background: #fff; 
-            padding: 30px; 
-            border-radius: var(--radius); 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
-        }
-        
-        header { 
-            text-align: center; 
-            margin-bottom: 30px; 
-            border-bottom: 3px solid var(--secondary); 
-            padding: 10px 0 20px; 
-            position: relative; 
-        }
-        .logo { 
-            position: absolute; 
-            top: 10px; 
-            height: 65px; 
-            object-fit: contain; 
-        }
-        .logo-left { left: 10px; } 
-        .logo-right { right: 10px; }
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
 
         @media (max-width: 768px) {
             .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
             h1 { font-size: 1.6rem; }
         }
 
-        .subtitle { color: #2c3e50; font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
-        .description { color: #666; font-size: 0.95rem; font-weight: 500; }
-
-        .tabs { 
-            display: flex; 
-            margin-bottom: 20px; 
-            border-bottom: 2px solid #ddd; 
-            overflow-x: auto; 
-            white-space: nowrap; 
-            padding-bottom: 5px; 
-            scrollbar-width: thin; 
-            scrollbar-color: var(--secondary) #f0f0f0; 
-        }
+        .subtitle { color: #666; font-size: 1.1rem; }
+        .tabs { display: flex; border-bottom: 2px solid #ddd; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; scrollbar-width: thin; scrollbar-color: var(--secondary) #f0f0f0; margin-bottom: 20px; }
         .tabs::-webkit-scrollbar { height: 6px; }
         .tabs::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 4px; }
         .tabs::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
 
-        .tab-button { 
-            padding: 12px 25px; 
-            cursor: pointer; 
-            background: #e0e0e0; 
-            border: none; 
-            border-radius: var(--radius) var(--radius) 0 0; 
-            margin-right: 5px; 
-            font-weight: 600; 
-            color: #555; 
-            transition: 0.3s; 
-            flex: 0 0 auto; 
-            text-align: center; 
-        }
+        .tab-button { padding: 12px 25px; cursor: pointer; background: #e0e0e0; border: none; border-radius: var(--radius) var(--radius) 0 0; margin-right: 5px; font-weight: 600; color: #555; transition: 0.3s; flex: 0 0 auto; text-align: center; }
         .tab-button:hover { background: #dcdcdc; }
         .tab-button.active { background: var(--secondary); color: #fff; }
 
@@ -131,64 +75,21 @@
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .section-title { 
-            background: var(--primary); 
-            color: #fff; 
-            padding: 12px 20px; 
-            margin-top: 30px; 
-            margin-bottom: 20px; 
-            font-size: 1.2rem; 
-            border-radius: var(--radius); 
-            display: flex; 
-            align-items: center; 
-        }
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; }
 
-        .question-card { 
-            background: #fafafa; 
-            border: 1px dashed #ccc; 
-            border-radius: var(--radius); 
-            padding: 20px; 
-            margin-bottom: 20px; 
-            transition: 0.2s; 
-        }
-        .question-card:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
-            border-color: var(--secondary); 
-            background: #fff; 
-        }
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
 
         .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
-        .question-meta { 
-            font-size: 0.9rem; 
-            font-weight: 600; 
-            color: var(--primary); 
-            margin-bottom: 15px; 
-            display: inline-block; 
-            background: #e8f4fd; 
-            padding: 5px 12px; 
-            border-radius: 4px; 
-            border-left: 3px solid var(--secondary); 
-        }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
 
-        .options-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 12px; 
-            margin-top: 15px; 
-        }
-        .option { 
-            background: #f8f9fa; 
-            padding: 12px 15px; 
-            border: 1px solid #eee; 
-            border-radius: 4px; 
-            font-size: 0.95rem; 
-            cursor: pointer; 
-            transition: 0.2s; 
-        }
-        .option:hover { background-color: #fff9f0; border-color: var(--secondary); }
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
 
-        .canvas-container { text-align: center; margin: 20px auto; background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: var(--radius); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .canvas-container { text-align: center; margin: 20px auto; background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: var(--radius); }
 
         @media print {
             body { background: #fff; }
@@ -207,8 +108,8 @@
         <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
         <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
         <h1>Coaching UKRG Matematika</h1>
-        <p class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</p>
-        <p class="description">Latihan menuju UKRG Matematika SMP</p>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
     </header>
 
     <!-- Tab Navigation -->
@@ -221,271 +122,291 @@
 
     <!-- TAB 1: ALJABAR & BILANGAN -->
     <div id="tab-aljabar" class="tab-content active">
-        <div class="section-title">Pemodelan Aljabar & Sistem Persamaan</div>
+        <div class="section-title">Modul: Pemodelan & Sistem Persamaan</div>
         
         <!-- Slot Soal 3 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 3</div>
-            <div class="question-text">[ Input Teks Soal 3 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 3 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 4 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 4</div>
-            <div class="question-text">[ Input Teks Soal 4 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 4 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 5 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 5</div>
-            <div class="question-text">[ Input Teks Soal 5 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 5 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 8 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 8</div>
-            <div class="question-text">[ Input Teks Soal 8 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 8 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 15 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 15</div>
-            <div class="question-text">[ Input Teks Soal 15 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 15 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 19 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 19</div>
-            <div class="question-text">[ Input Teks Soal 19 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 19 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
     </div>
 
     <!-- TAB 2: GEOMETRI & RUANG -->
     <div id="tab-geometri" class="tab-content">
-        <div class="section-title">Geometri Dimensi Tiga & Bidang Datar</div>
+        <div class="section-title">Modul: Geometri Dimensi Tiga & Bangun Ruang</div>
 
         <!-- Slot Soal 9 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 9</div>
             <div class="question-text">
-                [ Input Teks Soal 9 di Sini ]
-                <div class="canvas-container max-w-full block">
-                    <canvas id="canvasBalok" width="400" height="250"></canvas>
+                [ Masukkan Teks Soal 9 di Sini ]
+                <div class="canvas-container">
+                    <canvas id="canvasBalok" width="400" height="250" class="max-w-full block mx-auto"></canvas>
                 </div>
             </div>
-            <div class="options-grid">
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 10 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 10</div>
-            <div class="question-text">[ Input Teks Soal 10 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 10 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 11 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 11</div>
-            <div class="question-text">[ Input Teks Soal 11 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 11 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 16 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 16</div>
-            <div class="question-text">[ Input Teks Soal 16 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 16 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 20 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 20</div>
-            <div class="question-text">[ Input Teks Soal 20 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 20 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
     </div>
 
     <!-- TAB 3: STATISTIKA & DATA -->
     <div id="tab-statistika" class="tab-content">
-        <div class="section-title">Interpretasi Data & Rata-rata</div>
+        <div class="section-title">Modul: Literasi Data & Statistik</div>
 
         <!-- Slot Soal 12 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 12</div>
             <div class="question-text">
-                [ Input Teks Soal 12 di Sini ]
-                <div class="canvas-container max-w-full block">
-                    <canvas id="canvasChart" width="400" height="200"></canvas>
+                [ Masukkan Teks Soal 12 di Sini ]
+                <div class="canvas-container">
+                    <canvas id="canvasChart" width="400" height="200" class="max-w-full block mx-auto"></canvas>
                 </div>
             </div>
-            <div class="options-grid">
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 13 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 13</div>
-            <div class="question-text">[ Input Teks Soal 13 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 13 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 17 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 17</div>
-            <div class="question-text">[ Input Teks Soal 17 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 17 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
     </div>
 
     <!-- TAB 4: PEDAGOGIK & ANALISIS -->
     <div id="tab-pedagogik" class="tab-content">
-        <div class="section-title">Strategi Scaffolding & Diagnosis Siswa</div>
+        <div class="section-title">Modul: Strategi Scaffolding & Diagnosis</div>
 
         <!-- Slot Soal 1 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 1</div>
-            <div class="question-text">[ Input Teks Soal 1 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 1 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 2 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 2</div>
-            <div class="question-text">[ Input Teks Soal 2 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 2 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 6 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 6</div>
-            <div class="question-text">[ Input Teks Soal 6 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 6 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 7 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 7</div>
-            <div class="question-text">[ Input Teks Soal 7 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 7 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 14 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 14</div>
-            <div class="question-text">[ Input Teks Soal 14 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 14 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
 
         <!-- Slot Soal 18 -->
         <div class="question-card border-solid">
             <div class="question-meta">Soal Nomor 18</div>
-            <div class="question-text">[ Input Teks Soal 18 di Sini ]</div>
-            <div class="options-grid">
+            <div class="question-text">[ Masukkan Teks Soal 18 di Sini ]</div>
+            <div class="options-list">
                 <div class="option">A. [ Opsi A ]</div>
                 <div class="option">B. [ Opsi B ]</div>
                 <div class="option">C. [ Opsi C ]</div>
                 <div class="option">D. [ Opsi D ]</div>
             </div>
+            <div class="explanation"><strong>Pembahasan:</strong> [ Masukkan Analisis/Jawaban di Sini ]</div>
         </div>
     </div>
 
@@ -530,11 +451,11 @@
         ctx.moveTo(250,200); ctx.lineTo(300,150);
         ctx.stroke();
 
-        ctx.fillStyle = 'purple';
+        ctx.fillStyle = '#9b59b6';
         ctx.beginPath(); ctx.arc(150, 140, 6, 0, Math.PI*2); ctx.fill();
         ctx.fillText("Laba-laba", 130, 130);
 
-        ctx.fillStyle = 'red';
+        ctx.fillStyle = '#e74c3c';
         ctx.beginPath(); ctx.arc(200, 90, 6, 0, Math.PI*2); ctx.fill();
         ctx.fillText("Lalat", 190, 80);
     }
@@ -546,7 +467,7 @@
         ctx.clearRect(0,0,c.width,c.height);
 
         const data = [9.8, 9.5, 9.2];
-        const labels = ["Tahun 1", "Tahun 2", "Tahun 3"];
+        const labels = ["Thn 1", "Thn 2", "Thn 3"];
         const baseY = 9.0;
 
         ctx.fillStyle = '#3498db';
