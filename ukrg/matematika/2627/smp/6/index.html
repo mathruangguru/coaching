@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 6: Keliling dan Luas Lingkaran - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul dan Latihan Soal: Keliling dan Luas Lingkaran<br>
+    <span style="font-size: 16px; font-weight: normal; font-style: italic;">Fokus Konsep: Relasi Kuadratik dan Pemecahan Masalah (HOTS)</span></div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi</div>
+        <div class="question-text">
+            <p>Banyak kesalahan logika terjadi dalam kehidupan sehari-hari ketika membandingkan ukuran dua buah benda berbentuk lingkaran (seperti pizza, kue, atau martabak) hanya dengan melihat diameter atau kelilingnya secara penjumlahan biasa.</p>
+
+            <h4>1. Konsep Dasar Lingkaran</h4>
+            <ul>
+                <li><strong>Jari-jari (\(r\))</strong>: Jarak dari titik pusat ke tepi lingkaran.</li>
+                <li><strong>Diameter (\(d\))</strong>: Tali busur terpanjang yang melalui titik pusat. Nilainya \(d = 2r\).</li>
+            </ul>
+
+            <h4>2. Keliling Lingkaran</h4>
+            <p>Keliling adalah panjang garis luar lingkaran. Pertumbuhannya <strong>linear</strong> terhadap panjang jari-jari.</p>
+            \[K = 2\pi r \quad \text{atau} \quad K = \pi d\]
+
+            <h4>3. Luas Lingkaran (Konsep Paling Krusial)</h4>
+            <p>Luas adalah besaran area dua dimensi di dalam lingkaran. Pertumbuhannya <strong>kuadratik</strong> terhadap panjang jari-jari.</p>
+            \[L = \pi r^2 \quad \text{atau} \quad L = \frac{1}{4} \pi d^2\]
+            
+            <p><strong>Penting untuk diingat:</strong> Karena rumus luas menggunakan sistem kuadrat (\(r^2\)), jika diameter atau jari-jari sebuah lingkaran membesar 2 kali lipat, maka <strong>luasnya akan membesar 4 kali lipat</strong> (\(2^2\)), bukan 2 kali lipat! Oleh karena itu, menjumlahkan panjang diameter dua lingkaran kecil tidak bisa digunakan untuk membandingkannya dengan satu lingkaran besar.</p>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 1</div>
+        <div class="question-text">
+            Sebuah piring berbentuk lingkaran memiliki jari-jari 10 cm. Berapakah luas permukaan piring tersebut? (\(\pi = 3,14\))
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 62,8 \(\text{cm}^2\)</div>
+            <div class="option">B. 314 \(\text{cm}^2\)</div>
+            <div class="option">C. 31,4 \(\text{cm}^2\)</div>
+            <div class="option">D. 1256 \(\text{cm}^2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 2</div>
+        <div class="question-text">
+            Sebuah jam dinding memiliki diameter 28 cm. Panjang keliling tepi jam tersebut adalah... (\(\pi = \frac{22}{7}\))
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 44 cm</div>
+            <div class="option">B. 88 cm</div>
+            <div class="option">C. 616 cm</div>
+            <div class="option">D. 2464 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 3</div>
+        <div class="question-text">
+            Jika diketahui luas suatu lingkaran adalah \(144\pi \text{ cm}^2\), berapakah panjang jari-jarinya?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 12 cm</div>
+            <div class="option">B. 24 cm</div>
+            <div class="option">C. 72 cm</div>
+            <div class="option">D. 36 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 4</div>
+        <div class="question-text">
+            Perbandingan rumus keliling dan luas lingkaran selalu melibatkan nilai konstanta \(\pi\). Jika jari-jari lingkaran diperbesar dari \(r\) menjadi \(3r\), maka luas lingkarannya akan menjadi...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 3 kali lipat</div>
+            <div class="option">B. 6 kali lipat</div>
+            <div class="option">C. 9 kali lipat</div>
+            <div class="option">D. 12 kali lipat</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 5</div>
+        <div class="question-text">
+            Sebuah ban sepeda mempunyai keliling 132 cm. Jika \(\pi = \frac{22}{7}\), maka panjang jari-jari ban sepeda tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 21 cm</div>
+            <div class="option">B. 42 cm</div>
+            <div class="option">C. 10,5 cm</div>
+            <div class="option">D. 1386 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Menengah (Medium) | Soal 6</div>
+        <div class="question-text">
+            Perhatikan gambar berikut!
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                        </marker>
+                    </defs>
+                    
+                    <circle cx="150" cy="150" r="100" fill="#d3d3d3" stroke="black" stroke-width="2"/>
+                    
+                    <circle cx="150" cy="150" r="60" fill="white" stroke="black" stroke-width="2"/>
+                    
+                    <circle cx="150" cy="150" r="4" fill="black"/>
+                    <text x="150" y="140" font-family="sans-serif" font-size="16" text-anchor="middle" font-weight="bold">O</text>
+                    
+                    <line x1="150" y1="150" x2="210" y2="150" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="180" y="168" font-family="sans-serif" font-size="14" text-anchor="middle">6 m</text>
+                    
+                    <line x1="150" y1="150" x2="220.7" y2="79.3" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="175" y="105" font-family="sans-serif" font-size="14" text-anchor="end" transform="rotate(-45 185,115)">10 m</text>
+                </svg>
+            </div>
+            
+            Sebuah taman memiliki bentuk seperti cincin (annulus) dengan batas luar berpusat di O dan batas dalam juga berpusat di O. Jika jari-jari lingkaran luar 10 m dan jari-jari lingkaran dalam 6 m, luas area yang diarsir abu-abu adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(16\pi \text{ m}^2\)</div>
+            <div class="option">B. \(36\pi \text{ m}^2\)</div>
+            <div class="option">C. \(64\pi \text{ m}^2\)</div>
+            <div class="option">D. \(136\pi \text{ m}^2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Menengah (Medium) | Soal 7</div>
+        <div class="question-text">
+            Sebuah plat logam berbentuk setengah lingkaran penuh (padat) memiliki jari-jari 14 cm. Keliling total dari plat logam tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 44 cm</div>
+            <div class="option">B. 72 cm</div>
+            <div class="option">C. 88 cm</div>
+            <div class="option">D. 308 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Menengah (Medium) | Soal 8</div>
+        <div class="question-text">
+            Jika rasio jari-jari dua buah lingkaran adalah \(3 : 4\), maka rasio luas kedua lingkaran tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(3 : 4\)</div>
+            <div class="option">B. \(6 : 8\)</div>
+            <div class="option">C. \(9 : 16\)</div>
+            <div class="option">D. \(27 : 64\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Menengah (Medium) | Soal 9</div>
+        <div class="question-text">
+            Di dalam sebuah persegi yang panjang sisinya 14 cm, terdapat sebuah lingkaran yang menyinggung keempat sisi persegi tersebut. Luas daerah di dalam persegi namun di luar lingkaran adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 42 \(\text{cm}^2\)</div>
+            <div class="option">B. 56 \(\text{cm}^2\)</div>
+            <div class="option">C. 154 \(\text{cm}^2\)</div>
+            <div class="option">D. 196 \(\text{cm}^2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Menengah (Medium) | Soal 10</div>
+        <div class="question-text">
+            Sebuah kawat dengan panjang 88 cm dibengkokkan secara sempurna membentuk sebuah lingkaran. Luas area di dalam lingkaran tersebut adalah... (\(\pi = \frac{22}{7}\))
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 154 \(\text{cm}^2\)</div>
+            <div class="option">B. 616 \(\text{cm}^2\)</div>
+            <div class="option">C. 1232 \(\text{cm}^2\)</div>
+            <div class="option">D. 2464 \(\text{cm}^2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penalaran Tinggi (HOTS) | Soal 11</div>
+        <div class="question-text">
+            Sebuah area pabrik berbentuk lingkaran diputuskan untuk diperluas demi menambah mesin produksi. Jika panjang jari-jari area tersebut ditambahkan sebesar 20% dari ukuran awalnya, berapakah persentase peningkatan luas area pabrik tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 20%</div>
+            <div class="option">B. 40%</div>
+            <div class="option">C. 44%</div>
+            <div class="option">D. 400%</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penalaran Tinggi (HOTS) | Soal 12</div>
+        <div class="question-text">
+            Restoran "Italiano" mengadakan promo akhir pekan. Pelanggan dapat memilih paket seharga Rp 150.000 untuk mendapatkan <strong>dua loyang</strong> pizza <em>Medium</em> (masing-masing berdiameter 20 cm) atau <strong>satu loyang</strong> pizza <em>Jumbo</em> (berdiameter 30 cm). Jika Anda ingin mendapatkan jumlah porsi pizza (volume makanan) yang paling menguntungkan secara matematis, pilihan mana yang harus diambil beserta alasan yang tepat?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Dua loyang pizza <em>Medium</em>, karena total diameternya adalah \(20 + 20 = 40\text{ cm}\), yang jelas lebih besar dari 30 cm.</div>
+            <div class="option">B. Satu loyang pizza <em>Jumbo</em>, karena luas satu pizza berdiameter 30 cm (\(225\pi\)) lebih besar dari total luas dua pizza berdiameter 20 cm (\(200\pi\)).</div>
+            <div class="option">C. Sama saja, karena promo restoran dirancang dengan total volume makanan yang setara untuk menjebak pelanggan.</div>
+            <div class="option">D. Dua loyang pizza <em>Medium</em>, karena memiliki total keliling \(40\pi\) dibandingkan pizza <em>Jumbo</em> yang hanya memiliki keliling \(30\pi\).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penalaran Tinggi (HOTS) | Soal 13</div>
+        <div class="question-text">
+            Seekor kambing ditambatkan pada sebuah tiang di tengah padang rumput yang luas menggunakan tali sepanjang 5 meter. Sebulan kemudian, peternak mengganti tali tersebut menjadi 10 meter. Berapakah <strong>tambahan</strong> luas area rumput baru yang kini dapat dijangkau oleh kambing tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(25\pi \text{ m}^2\)</div>
+            <div class="option">B. \(50\pi \text{ m}^2\)</div>
+            <div class="option">C. \(75\pi \text{ m}^2\)</div>
+            <div class="option">D. \(100\pi \text{ m}^2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penalaran Tinggi (HOTS) | Soal 14</div>
+        <div class="question-text">
+            Roda sebuah traktor raksasa memiliki diameter 1,4 meter. Traktor tersebut harus melintasi sebuah jalan lurus sepanjang 2,2 km. Berapa kali roda traktor berputar penuh dari titik awal hingga mencapai tujuan akhir? (\(\pi = \frac{22}{7}\))
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 50 kali</div>
+            <div class="option">B. 500 kali</div>
+            <div class="option">C. 1000 kali</div>
+            <div class="option">D. 5000 kali</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penalaran Tinggi (HOTS) | Soal 15</div>
+        <div class="question-text">
+            Andi berdebat dengan ibunya saat membuat kue dadar gulung teflon. Ibu menuangkan sisa adonan ke dalam <strong>tiga teflon kecil</strong> dengan diameter masing-masing 12 cm dengan ketebalan dadar yang seragam. Andi bersikeras bahwa lebih baik adonan dituang ke <strong>satu teflon besar</strong> berdiameter 22 cm saja, dan mendebat ibunya dengan berkata: <em>"Bu, lebih hemat teflon besar! Kapasitas tiga teflon kecil itu \(12+12+12 = 36\text{ cm}\), jauh lebih boros menghabiskan adonan daripada teflon 22 cm."</em> Konsep matematis apakah yang dapat mendemonstrasikan bahwa klaim Andi keliru?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Konsep Keliling Lingkaran, karena tepi teflon kecil memakan adonan lebih panjang.</div>
+            <div class="option">B. Konsep Volume Kerucut, karena adonan dituangkan dari mangkuk.</div>
+            <div class="option">C. Konsep Luas Lingkaran, yang membuktikan tiga teflon kecil (\(108\pi\)) memuat <strong>lebih sedikit</strong> adonan dibandingkan satu teflon besar (\(121\pi\)).</div>
+            <div class="option">D. Konsep Perbandingan Senilai, yang membuktikan bahwa \(36 > 22\), sehingga pendapat Andi sejatinya benar.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penalaran Tinggi (HOTS) | Soal 16</div>
+        <div class="question-text">
+            Disediakan sebuah kawat baja dengan panjang 120 cm. Kawat tersebut dapat dibentuk menjadi persegi sempurna, atau dibentuk menjadi lingkaran sempurna. Manakah dari pernyataan berikut yang benar jika membandingkan luas area di dalam kedua bangun datar tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Luas persegi selalu lebih besar dari luas lingkaran, karena persegi memiliki 4 sudut.</div>
+            <div class="option">B. Luas lingkaran lebih besar dari luas persegi, dengan rasio perbandingan \(L_{\text{lingkaran}}\) terhadap \(L_{\text{persegi}}\) adalah mendekati \(14 : 11\).</div>
+            <div class="option">C. Luas keduanya sama besar, karena panjang kawat awal yang digunakan adalah sama.</div>
+            <div class="option">D. Luas persegi lebih besar karena \(30 \times 30 > \pi \times 15^2\).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penalaran Tinggi (HOTS) | Soal 17</div>
+        <div class="question-text">
+            Pada gambar di bawah ini, terdapat persegi ABCD dengan panjang sisi 14 cm. Titik P, Q, R, dan S adalah titik tengah masing-masing sisi. Terdapat empat buah area seperempat lingkaran yang berpusat di titik sudut A, B, C, dan D dengan jari-jari 7 cm.
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="250" height="250" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="50" width="200" height="200" fill="white" stroke="black" stroke-width="2"/>
+                    
+                    <defs>
+                        <clipPath id="square-clip">
+                            <rect x="50" y="50" width="200" height="200" />
+                        </clipPath>
+                    </defs>
+                    
+                    <g clip-path="url(#square-clip)">
+                        <circle cx="50" cy="250" r="100" fill="#d3d3d3" stroke="black" stroke-width="2"/>
+                        <circle cx="250" cy="250" r="100" fill="#d3d3d3" stroke="black" stroke-width="2"/>
+                        <circle cx="250" cy="50" r="100" fill="#d3d3d3" stroke="black" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="100" fill="#d3d3d3" stroke="black" stroke-width="2"/>
+                    </g>
+                    
+                    <rect x="50" y="50" width="200" height="200" fill="none" stroke="black" stroke-width="2"/>
+
+                    <text x="35" y="270" font-family="sans-serif" font-size="16" font-style="italic">A</text>
+                    <text x="255" y="270" font-family="sans-serif" font-size="16" font-style="italic">B</text>
+                    <text x="255" y="40" font-family="sans-serif" font-size="16" font-style="italic">C</text>
+                    <text x="35" y="40" font-family="sans-serif" font-size="16" font-style="italic">D</text>
+
+                    <text x="145" y="270" font-family="sans-serif" font-size="16" font-style="italic">P</text>
+                    <text x="260" y="155" font-family="sans-serif" font-size="16" font-style="italic">Q</text>
+                    <text x="145" y="40" font-family="sans-serif" font-size="16" font-style="italic">R</text>
+                    <text x="35" y="155" font-family="sans-serif" font-size="16" font-style="italic">S</text>
+                </svg>
+            </div>
+
+            Berapakah luas daerah di dalam persegi yang <strong>tidak</strong> diarsir? (\(\pi = \frac{22}{7}\))
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 42 \(\text{cm}^2\)</div>
+            <div class="option">B. 154 \(\text{cm}^2\)</div>
+            <div class="option">C. 196 \(\text{cm}^2\)</div>
+            <div class="option">D. 10,5 \(\text{cm}^2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penalaran Tinggi (HOTS) | Soal 18</div>
+        <div class="question-text">
+            Sebuah pipa tembaga memiliki diameter luar 24 cm dan diameter dalam 20 cm. Pipa tersebut dipotong secara melintang. Luas penampang tembaga yang terlihat pada irisan potongan tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(16\pi \text{ cm}^2\)</div>
+            <div class="option">B. \(44\pi \text{ cm}^2\)</div>
+            <div class="option">C. \(88\pi \text{ cm}^2\)</div>
+            <div class="option">D. \(176\pi \text{ cm}^2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penalaran Tinggi (HOTS) | Soal 19</div>
+        <div class="question-text">
+            Doni dan Dini berdebat cara membagi kue tart berbentuk lingkaran. Kue Tart A berdiameter 16 cm, dan Kue Tart B berdiameter 24 cm. Dini mengambil <strong>satu kue utuh Tart A</strong>, lalu berkata: <em>"Aku dapat lebih banyak kue darimu, karena diamater kueku \(16+16=32\text{ cm}\) (jika dijejerkan 2 kue, yang seukuran satu), lebih dari 24 cm!"</em> Padahal Doni memegang <strong>setengah potong Tart B</strong>. Argumen logis manakah yang tepat untuk mengakhiri perdebatan ini?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Dini benar, karena membandingkan ukuran kue harus berdasarkan diameter linear yang menyentuh piring.</div>
+            <div class="option">B. Dini salah, karena setengah potongan Tart B memiliki luas \(72\pi \text{ cm}^2\), yang mana lebih besar dibanding seluruh Tart A yang hanya seluas \(64\pi \text{ cm}^2\).</div>
+            <div class="option">C. Dini salah, karena volume kue ditentukan oleh kelilingnya. Setengah keliling Tart B (\(12\pi\)) sama dengan keliling utuh sebagian Tart A.</div>
+            <div class="option">D. Dini benar, karena satu kue bulat penuh selalu memiliki luas lebih besar dari setengah potongan kue jenis apapun.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penalaran Tinggi (HOTS) | Soal 20</div>
+        <div class="question-text">
+            Pada sebuah lingkaran dengan jari-jari 14 cm, ditarik dua buah jari-jari tegak lurus (membentuk sudut siku-siku di pusat). Jika sebuah tali busur menghubungkan ujung kedua jari-jari tersebut, luas daerah tembereng (area di antara busur dan tali busur) yang terbentuk adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 56 \(\text{cm}^2\)</div>
+            <div class="option">B. 98 \(\text{cm}^2\)</div>
+            <div class="option">C. 154 \(\text{cm}^2\)</div>
+            <div class="option">D. 252 \(\text{cm}^2\)</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
