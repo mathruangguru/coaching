@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 5: Geometri Sisi Lengkung - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul: Geometri Dimensi Tiga & Bangun Ruang</div>
+
+    <div class="section-title">Modul Pembelajaran: Geometri Bangun Ruang Sisi Lengkung<br>(Lintasan Terpendek pada Permukaan Tabung)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Rangkuman Materi</div>
+        <div class="question-text">
+            <h4>1. Konsep Dasar Selimut Tabung</h4>
+            <p>Tabung (silinder) adalah bangun ruang yang memiliki bidang alas dan bidang atas berbentuk lingkaran yang sejajar dan kongruen. Jika selimut tabung "dibuka" atau dibentangkan, bangun datar yang terbentuk adalah sebuah <strong>persegi panjang</strong>.</p>
+            <ul>
+                <li><strong>Panjang persegi panjang</strong> merupakan <strong>keliling alas tabung</strong> ($K = \pi \cdot d = 2 \pi r$).</li>
+                <li><strong>Lebar persegi panjang</strong> merupakan <strong>tinggi tabung</strong> ($t$).</li>
+            </ul>
+
+            <h4>2. Lintasan Terpendek (Geodesik) pada Permukaan Tabung</h4>
+            <p>Untuk mencari jarak terpendek (lintasan) yang ditempuh oleh suatu benda (misalnya semut) yang bergerak di sepanjang permukaan (selimut) tabung dari satu titik ke titik lain, kita <strong>tidak boleh</strong> menarik garis lurus yang menembus ruang di dalam tabung.</p>
+
+            <p>Cara menyelesaikannya adalah dengan <strong>menggunakan jaring-jaring selimut tabung</strong>. Jarak terpendek di permukaan lengkung tiga dimensi akan menjadi <strong>garis lurus</strong> ketika permukaan tersebut dibentangkan menjadi bangun datar dua dimensi.</p>
+
+            <h4>Kasus Khusus: Bergerak dari Depan-Bawah ke Belakang-Atas</h4>
+            <p>Jika sebuah titik berada di bawah (depan) dan titik tujuan berada di atas persis di sisi sebaliknya (belakang), maka:</p>
+            <ol>
+                <li>Benda tersebut menempuh <strong>setengah putaran</strong> keliling selimut tabung secara horizontal.</li>
+                <li>Jarak mendatar pada jaring-jaring adalah: $x = \frac{1}{2} \times K = \frac{1}{2} \cdot \pi \cdot d$.</li>
+                <li>Jarak vertikal adalah tinggi tabung: $y = t$.</li>
+                <li>Lintasan terpendek ($s$) dihitung menggunakan <strong>Teorema Pythagoras</strong>:
+                $$ s = \sqrt{x^2 + y^2} = \sqrt{\left(\frac{1}{2}\pi d\right)^2 + t^2} $$</li>
+            </ol>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <svg width="600" height="280" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                        </marker>
+                    </defs>
+
+                    <ellipse cx="120" cy="50" rx="60" ry="15" fill="none" stroke="black" stroke-width="2"/>
+                    <path d="M 180 230 A 60 15 0 0 0 60 230" fill="none" stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+                    <path d="M 60 230 A 60 15 0 0 0 180 230" fill="none" stroke="black" stroke-width="2"/>
+                    <line x1="60" y1="50" x2="60" y2="230" stroke="black" stroke-width="2"/>
+                    <line x1="180" y1="50" x2="180" y2="230" stroke="black" stroke-width="2"/>
+                    
+                    <line x1="40" y1="50" x2="40" y2="230" stroke="black" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+                    <text x="30" y="145" font-family="sans-serif" font-size="14" font-style="italic" text-anchor="end">t</text>
+
+                    <circle cx="120" cy="245" r="4" fill="black"/>
+                    <text x="120" y="265" font-family="sans-serif" font-size="12" text-anchor="middle">A (Depan)</text>
+                    <circle cx="120" cy="35" r="4" fill="black"/>
+                    <text x="120" y="25" font-family="sans-serif" font-size="12" text-anchor="middle">B (Belakang)</text>
+
+                    <path d="M 120 245 Q 180 230 180 140" fill="none" stroke="red" stroke-width="2.5" stroke-dasharray="6,4"/>
+                    <path d="M 180 140 Q 180 50 120 35" fill="none" stroke="red" stroke-width="2.5" stroke-dasharray="2,4"/>
+                    <polygon points="120,35 130,37 127,45" fill="red"/>
+
+                    <line x1="220" y1="140" x2="300" y2="140" stroke="black" stroke-width="4" marker-end="url(#arrow)"/>
+
+                    <rect x="350" y="50" width="180" height="180" fill="#f0f8ff" stroke="black" stroke-width="2"/>
+                    
+                    <circle cx="350" cy="230" r="4" fill="black"/>
+                    <text x="350" y="250" font-family="sans-serif" font-size="12" text-anchor="middle">A</text>
+                    <circle cx="530" cy="50" r="4" fill="black"/>
+                    <text x="530" y="40" font-family="sans-serif" font-size="12" text-anchor="middle">B</text>
+
+                    <line x1="350" y1="230" x2="530" y2="50" stroke="red" stroke-width="2.5" marker-end="url(#arrow)"/>
+                    <text x="430" y="130" font-family="sans-serif" font-size="14" fill="red" font-style="italic" transform="rotate(-45 430,130)">s (Jarak)</text>
+
+                    <line x1="350" y1="265" x2="530" y2="265" stroke="black" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+                    <text x="440" y="255" font-family="sans-serif" font-size="12" text-anchor="middle">x = 1/2 &#960; d</text>
+
+                    <line x1="550" y1="50" x2="550" y2="230" stroke="black" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+                    <text x="560" y="145" font-family="sans-serif" font-size="12" font-style="italic">y = t</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 1</div>
+        <div class="question-text">
+            Apabila sebuah tabung dipotong pada salah satu garis pelukisnya dan dibuka, maka jaring-jaring selimut tabung tersebut akan membentuk bangun datar berupa...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Jajar genjang</div>
+            <div class="option">B. Persegi panjang</div>
+            <div class="option">C. Elips</div>
+            <div class="option">D. Setengah lingkaran</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 2</div>
+        <div class="question-text">
+            Luas selimut tabung yang memiliki jari-jari alas $r$ dan tinggi $t$ dapat dirumuskan dengan...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. $\pi \cdot r^2 \cdot t$</div>
+            <div class="option">B. $\pi \cdot d \cdot t^2$</div>
+            <div class="option">C. $2 \cdot \pi \cdot r \cdot t$</div>
+            <div class="option">D. $2 \cdot \pi \cdot r^2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 3</div>
+        <div class="question-text">
+            Kunci utama untuk mencari lintasan terpendek seekor semut yang merayap di permukaan luar tabung dari bagian bawah ke bagian atas adalah dengan...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Mengukur garis lurus yang menembus ruang dalam tabung.</div>
+            <div class="option">B. Membuka selimut tabung menjadi bangun datar dua dimensi.</div>
+            <div class="option">C. Menggunakan rumus volume tabung.</div>
+            <div class="option">D. Menjumlahkan diameter tabung dengan tinggi tabung.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 4</div>
+        <div class="question-text">
+            Pada jaring-jaring selimut tabung (persegi panjang), lintasan terpendek dari pojok kiri bawah ke pojok kanan atas memposisikan lintasan tersebut sebagai ... pada sebuah segitiga siku-siku.
+        </div>
+        <div class="options-list">
+            <div class="option">A. Sisi alas</div>
+            <div class="option">B. Sisi tegak</div>
+            <div class="option">C. Sisi miring (Hipotenusa)</div>
+            <div class="option">D. Garis tinggi</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 5</div>
+        <div class="question-text">
+            Jarak mendatar yang ditempuh jika suatu benda mengitari tepat <strong>setengah putaran</strong> melingkari selimut luar tabung dengan diameter alas $d$ adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. $\pi \cdot d$</div>
+            <div class="option">B. $d$</div>
+            <div class="option">C. $\frac{1}{4} \cdot \pi \cdot d$</div>
+            <div class="option">D. $\frac{1}{2} \cdot \pi \cdot d$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Penerapan Menengah | Soal 6</div>
+        <div class="question-text">
+            Sebuah tabung memiliki diameter alas 14 cm dan tinggi 10 cm. Jika selimut tabung tersebut dibentangkan, berapakah panjang dari persegi panjang jaring-jaring tersebut? ($\pi = \frac{22}{7}$)
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 44 cm</div>
+            <div class="option">B. 22 cm</div>
+            <div class="option">C. 14 cm</div>
+            <div class="option">D. 154 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Penerapan Menengah | Soal 7</div>
+        <div class="question-text">
+            Seekor cecak merayap pada tiang berbentuk tabung dengan diameter $\frac{6}{\pi}$ meter. Cecak tersebut bergerak dari bawah ke atas tiang yang tingginya 8 meter dengan mengelilingi tiang <strong>tepat satu putaran penuh</strong>. Jarak lintasan terpendek cecak tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 10 meter</div>
+            <div class="option">B. 14 meter</div>
+            <div class="option">C. $\sqrt{64 + \frac{36}{\pi^2}}$ meter</div>
+            <div class="option">D. 12 meter</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Penerapan Menengah | Soal 8</div>
+        <div class="question-text">
+            Selembar kertas berbentuk persegi panjang dengan ukuran 12 cm $\times$ 5 cm digulung sehingga membentuk sebuah selimut tabung dengan tinggi 5 cm. Jarak garis lurus pada selimut tabung antara dua ujung titik sudut kertas yang berseberangan sebelum digulung adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 17 cm</div>
+            <div class="option">B. $\sqrt{119}$ cm</div>
+            <div class="option">C. 13 cm</div>
+            <div class="option">D. 10 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Penerapan Menengah | Soal 9</div>
+        <div class="question-text">
+            Untuk membedakan konsep: Jika ada sebuah titik A di tepi bawah tabung dan titik B di tepi atas tabung posisinya tepat di seberang (membelah diameter alas). Berapakah jarak garis lurus <strong>menembus ruang dalam tabung</strong> (bukan di permukaan)? Diketahui diameter $d$ dan tinggi $t$.
+        </div>
+        <div class="options-grid">
+            <div class="option">A. $\sqrt{\left(\frac{1}{2}\pi d\right)^2 + t^2}$</div>
+            <div class="option">B. $\sqrt{d^2 + t^2}$</div>
+            <div class="option">C. $d + t$</div>
+            <div class="option">D. $\sqrt{(\pi d)^2 + t^2}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Penerapan Menengah | Soal 10</div>
+        <div class="question-text">
+            Jika jarak terpendek seekor serangga merayap mengelilingi tabung sebanyak setengah putaran adalah 15 cm, dan tinggi tabung adalah 12 cm, maka setengah dari keliling alas tabung tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 27 cm</div>
+            <div class="option">B. 3 cm</div>
+            <div class="option">C. 9 cm</div>
+            <div class="option">D. 81 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 11</div>
+        <div class="question-text">
+            Seekor semut merayap dari bagian bawah luar sebuah tong berbentuk silinder. Tong tersebut memiliki diameter alas $\frac{8}{\pi}$ m dan tinggi 5 m. Semut tersebut merayap menuju bagian atas tong sedemikian rupa sehingga ia mengelilingi selimut tong sebanyak <strong>1,5 putaran</strong>. Jarak lintasan terpendek yang dilaluinya adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 13 m</div>
+            <div class="option">B. 17 m</div>
+            <div class="option">C. $\sqrt{89}$ m</div>
+            <div class="option">D. $\sqrt{25 + \frac{144}{\pi^2}}$ m</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 12</div>
+        <div class="question-text">
+            Sebuah pilar bangunan berbentuk tabung memiliki ukuran diameter alas $\frac{10}{\pi}$ meter dan tinggi 12 meter. Seekor cecak berada di lantai dasar, tepat di sisi depan pilar. Terdapat seekor nyamuk mati yang menempel di atap persis di pinggiran atas pilar, namun letaknya tepat berada di sisi belakang pilar. Jika cecak tersebut merayap melingkari selimut luar pilar menuju nyamuk, rute jarak terpendeknya adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. $\sqrt{244}$ meter</div>
+            <div class="option">B. 13 meter</div>
+            <div class="option">C. 17 meter</div>
+            <div class="option">D. $\sqrt{144 + \frac{100}{\pi^2}}$ meter</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 13</div>
+        <div class="question-text">
+            Sebuah ruangan berbentuk balok memiliki ukuran panjang 4 m, lebar 3 m, dan tinggi 5 m. Seekor laba-laba berada di pojok lantai bawah dan ingin menangkap lalat yang berada di pojok atap atas yang jaraknya paling jauh secara diagonal. Laba-laba hanya bisa merayap di dinding/lantai. Jarak lintasan terpendek yang bisa dilalui laba-laba adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. $\sqrt{50}$ meter</div>
+            <div class="option">B. 12 meter</div>
+            <div class="option">C. $\sqrt{74}$ meter</div>
+            <div class="option">D. $\sqrt{80}$ meter</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 14</div>
+        <div class="question-text">
+            Pada sebuah silinder tegak dengan jari-jari $\frac{15}{\pi}$ cm dan tinggi 16 cm, terdapat titik P di alas bagian luar, dan titik Q di atap bagian luar. Jika diproyeksikan ke bidang alas datar, sudut pusat yang dibentuk oleh letak P dan Q adalah $120^\circ$. Jarak terpendek merayap di permukaan silinder dari P ke Q adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. $2\sqrt{89}$ cm</div>
+            <div class="option">B. 26 cm</div>
+            <div class="option">C. 34 cm</div>
+            <div class="option">D. $\sqrt{256 + \frac{675}{\pi^2}}$ cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 15</div>
+        <div class="question-text">
+            Sebuah tabung kayu solid memiliki ukuran diameter alas $\frac{16}{\pi}$ meter dan tinggi 15 meter. Seekor semut berada di lantai dasar, tepat di sisi depan tabung. Terdapat setetes madu yang menempel di bibir atas tabung, namun letaknya tepat berada di sisi belakang (berlawanan arah $180^\circ$). Jika semut merayap melingkari selimut luar tabung tersebut, berapakah rute jarak terpendek menuju madu tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 23 meter</div>
+            <div class="option">B. $\sqrt{281}$ meter</div>
+            <div class="option">C. $\sqrt{225 + \frac{256}{\pi^2}}$ meter</div>
+            <div class="option">D. 17 meter</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 16</div>
+        <div class="question-text">
+            Dua ekor semut berlomba merayap pada permukaan luar tabung (diameter $\frac{14}{\pi}$ cm, tinggi 24 cm). Keduanya mulai dari titik depan-bawah menuju titik belakang-atas. Semut Pertama merayap tegak lurus ke atas hingga ujung tabung (24 cm), lalu berjalan melingkari bibir tabung hingga ke belakang. Semut Kedua memilih rute diagonal melingkari selimut sebagai lintasan terpendek. Selisih jarak tempuh kedua semut tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 6 cm</div>
+            <div class="option">B. 0 cm</div>
+            <div class="option">C. 31 cm</div>
+            <div class="option">D. 25 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 17</div>
+        <div class="question-text">
+            Tabung memiliki diameter $\frac{16}{\pi}$ meter dan tinggi 7 meter. Semut merayap dari bibir bawah tabung ke bibir atas. Namun karena ada lapisan licin lurus secara vertikal, semut memutarinya dengan lintasan heliks (spiral) sebanyak <strong>1,5 putaran</strong>. Titik akhirnya berada di atap tabung yang letaknya tepat membelakangi titik asalnya (di sisi yang berlawanan). Jarak yang ditempuh semut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 31 meter</div>
+            <div class="option">B. $\sqrt{305}$ meter</div>
+            <div class="option">C. 25 meter</div>
+            <div class="option">D. 40 meter</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 18</div>
+        <div class="question-text">
+            Sebuah menara penyimpanan (silo) berbentuk tabung silinder memiliki ukuran diameter alas $\frac{18}{\pi}$ meter dan tinggi 40 meter. Seekor semut berada di lantai dasar, tepat di sisi depan tabung. Sebuah gumpalan gula menempel di bibir atas tabung, namun letaknya tepat berada di sisi belakang. Jika semut merayap melingkari selimut luar tabung tersebut, berapakah rute jarak terpendek menuju gula tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 49 meter</div>
+            <div class="option">B. $\sqrt{1924}$ meter</div>
+            <div class="option">C. $\sqrt{1681 + \frac{324}{\pi^2}}$ meter</div>
+            <div class="option">D. 41 meter</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 19</div>
+        <div class="question-text">
+            Sebuah gelas silinder tanpa tutup <strong>yang ketebalannya diabaikan</strong> memiliki ukuran diameter alas $\frac{14}{\pi}$ cm dan tinggi 12 cm. Seekor semut berada di pojok dasar LUAR depan gelas. Ia melihat sisa minuman di dasar DALAM bagian belakang gelas. Ia harus merayap naik ke bibir gelas di luar, menyeberang, dan merayap turun di sisi dalam gelas. Jarak terpendek yang bisa ditempuh semut (selalu menempel pada dinding) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 31 cm</div>
+            <div class="option">B. 25 cm</div>
+            <div class="option">C. $\sqrt{193} + 12$ cm</div>
+            <div class="option">D. $2\sqrt{157}$ cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 20</div>
+        <div class="question-text">
+            Pipa instalasi gas berbentuk silinder memiliki jari-jari $\frac{5}{\pi}$ m dan tinggi 24 m. Titik A berada di pangkal bawah pipa dan titik B di ujung atas tegak lurus di atas A. Sebuah robot inspeksi diharuskan merayap dari A ke B melingkari selimut pipa secara diagonal <strong>tepat satu kali putaran penuh</strong> (tidak boleh lurus vertikal). Jarak yang ditempuh robot inspeksi tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 24 meter</div>
+            <div class="option">B. 34 meter</div>
+            <div class="option">C. $\sqrt{576 + \frac{100}{\pi^2}}$ meter</div>
+            <div class="option">D. 26 meter</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
