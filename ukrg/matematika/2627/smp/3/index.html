@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 3: Fungsi Linear & Representasi - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran & Latihan Soal<br>Fungsi Linear dan Strategi Representasinya</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Rangkuman Materi</div>
+        <div class="question-text">
+            <h4>1. Konsep Dasar Fungsi Linear</h4>
+            <p>Fungsi linear adalah fungsi polinomial berderajat satu yang grafiknya berupa garis lurus. Bentuk umum fungsi linear adalah:</p>
+            \[ f(x) = ax + b \quad \text{atau} \quad y = mx + c \]
+            <p>Dalam konteks masalah sehari-hari (seperti biaya sewa, tarif taksi, dll):</p>
+            <ul>
+                <li><strong>Konstanta (\(b\) atau \(c\)):</strong> Merepresentasikan nilai awal atau <strong>biaya tetap</strong> (fixed cost) yang dibebankan terlepas dari seberapa banyak variabel independen berubah.</li>
+                <li><strong>Koefisien (\(a\) atau \(m\)):</strong> Merepresentasikan gradien, tingkat perubahan, atau <strong>biaya variabel</strong> (misal: biaya per jam, biaya per kilometer).</li>
+            </ul>
+
+            <h4>2. Sistem Persamaan Linear Dua Variabel (SPLDV) dan Titik Impas (Break-Even Point)</h4>
+            <p>Ketika terdapat dua fungsi linear yang memodelkan dua situasi berbeda (misalnya Studio A dan Studio B), membandingkan keduanya seringkali mengharuskan kita mencari <strong>titik potong</strong> dari kedua fungsi tersebut. Titik potong ini disebut sebagai Titik Impas (Break-Even Point), yaitu kondisi di mana kedua pilihan menghasilkan nilai (biaya) yang sama.</p>
+            <ul>
+                <li><strong>Secara Aljabar:</strong> Diselesaikan dengan menyamakan kedua fungsi \(f(x) = g(x)\) (metode substitusi atau eliminasi).</li>
+                <li><strong>Secara Geometris/Spasial:</strong> Diselesaikan dengan menggambar kedua garis pada bidang Kartesius dan mengidentifikasi koordinat titik \((x, y)\) di mana kedua garis saling bersilangan.</li>
+            </ul>
+
+            <h4>3. Strategi Pembelajaran & Kemampuan Representasi Multipel</h4>
+            <p>Dalam membelajarkan matematika, guru harus mengembangkan berbagai ranah penalaran siswa.</p>
+            <ul>
+                <li><strong>Representasi Numerik/Tabel:</strong> Melatih siswa melihat pola angka secara berurutan. Kelemahannya: memakan waktu untuk bilangan pecahan atau rentang data yang besar.</li>
+                <li><strong>Representasi Aljabar/Simbolik:</strong> Melatih siswa berpikir abstrak dan analitis menggunakan manipulasi simbol. Kelemahannya: miskin makna konteks visual jika diajarkan tanpa gambar (mekanistik murni).</li>
+                <li><strong>Representasi Visual/Spasial (Grafik):</strong> <strong>Paling efektif</strong> untuk menunjukkan perbandingan secara utuh (holistik). Siswa dapat langsung melihat garis mana yang "lebih rendah" (lebih murah) sebelum dan sesudah titik potong.</li>
+            </ul>
+            <p>Menggabungkan grafik ke dalam koordinat Kartesius menstimulasi <strong>penalaran spasial</strong> (melihat posisi dan kemiringan garis) dan <strong>penalaran numerik</strong> (membaca titik potong pada sumbu X dan Y) secara <strong>bersamaan</strong>.</p>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 1</div>
+        <div class="question-text">
+            Sebuah layanan taksi online membebankan tarif dasar Rp15.000,00 saat pemesanan dan tambahan Rp4.000,00 untuk setiap kilometer perjalanan. Model matematika untuk total biaya \(y\) jika jarak tempuh adalah \(x\) kilometer adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(y = 15.000x + 4.000\)</div>
+            <div class="option">B. \(y = 4.000x + 15.000\)</div>
+            <div class="option">C. \(y = 19.000x\)</div>
+            <div class="option">D. \(y = 4.000(x + 15.000)\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 2</div>
+        <div class="question-text">
+            Diketahui fungsi biaya sebuah layanan adalah \(f(x) = 25.000x + 50.000\). Jika seseorang menggunakan layanan tersebut selama 4 jam (\(x=4\)), berapakah total biaya yang harus dibayar?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. Rp 150.000,00</div>
+            <div class="option">B. Rp 100.000,00</div>
+            <div class="option">C. Rp 250.000,00</div>
+            <div class="option">D. Rp 300.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 3</div>
+        <div class="question-text">
+            Dalam persamaan \(y = -3x + 12\), angka -3 merepresentasikan...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Titik potong sumbu \(x\)</div>
+            <div class="option">B. Titik potong sumbu \(y\)</div>
+            <div class="option">C. Tingkat perubahan (gradien) dari fungsi</div>
+            <div class="option">D. Nilai maksimum fungsi</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 4</div>
+        <div class="question-text">
+            Titik perpotongan antara garis \(y = 2x\) dan \(y = x + 5\) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \((5, 10)\)</div>
+            <div class="option">B. \((10, 5)\)</div>
+            <div class="option">C. \((5, 5)\)</div>
+            <div class="option">D. \((2, 7)\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar (Basic) | Soal 5</div>
+        <div class="question-text">
+            Manakah dari representasi berikut yang secara langsung menunjukkan suatu data bersifat diskrit dan tidak memiliki nilai di antara dua titik?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Garis lurus yang tidak terputus pada koordinat Kartesius</div>
+            <div class="option">B. Diagram lingkaran (Pie Chart)</div>
+            <div class="option">C. Himpunan titik-titik yang berdiri sendiri (Scatter Plot)</div>
+            <div class="option">D. Kurva parabola</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penerapan (Medium) | Soal 6</div>
+        <div class="question-text">
+            Rental Mobil "A" mematok harga sewa harian Rp200.000,00 ditambah Rp10.000,00 per kilometer perjalanan. Rental "B" mematok harga sewa harian Rp100.000,00 ditambah Rp15.000,00 per kilometer. Pada jarak berapakah biaya sewa kedua rental tersebut sama?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 10 km</div>
+            <div class="option">B. 15 km</div>
+            <div class="option">C. 20 km</div>
+            <div class="option">D. 25 km</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penerapan (Medium) | Soal 7</div>
+        <div class="question-text">
+            Dua orang anak menabung di bank. Anak pertama mulai dengan saldo awal Rp500.000,00 dan menabung Rp50.000,00 setiap minggu. Anak kedua memiliki saldo awal Rp200.000,00 dan menabung Rp100.000,00 per minggu. Persamaan yang benar untuk mencari minggu ke-\(x\) di mana saldo mereka sama adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(500.000x + 50.000 = 200.000x + 100.000\)</div>
+            <div class="option">B. \(550.000x = 300.000x\)</div>
+            <div class="option">C. \(50.000x + 500.000 = 100.000x + 200.000\)</div>
+            <div class="option">D. \((500.000 + 50.000)x = (200.000 + 100.000)x\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penerapan (Medium) | Soal 8</div>
+        <div class="question-text">
+            Seorang kurir pengiriman barang ditawari dua sistem gaji oleh perusahaannya. Sistem A: Gaji tetap Rp2.000.000,00/bulan ditambah Rp2.000,00/paket yang diantar. Sistem B: Tanpa gaji tetap, tetapi dibayar Rp7.000,00/paket. Jika kurir tersebut mengantar 500 paket dalam sebulan, sistem mana yang lebih menguntungkan dan berapa selisihnya?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Sistem A, selisih Rp 500.000,00</div>
+            <div class="option">B. Sistem B, selisih Rp 500.000,00</div>
+            <div class="option">C. Sistem B, selisih Rp 1.500.000,00</div>
+            <div class="option">D. Kedua sistem memberikan hasil yang sama</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penerapan (Medium) | Soal 9</div>
+        <div class="question-text">
+            Diketahui grafik fungsi linear memotong sumbu-\(y\) di titik \((0, 40.000)\) dan melewati titik \((2, 70.000)\). Bentuk fungsi linear tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(f(x) = 15.000x + 40.000\)</div>
+            <div class="option">B. \(f(x) = 30.000x + 40.000\)</div>
+            <div class="option">C. \(f(x) = 40.000x + 15.000\)</div>
+            <div class="option">D. \(f(x) = 70.000x + 40.000\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Penerapan (Medium) | Soal 10</div>
+        <div class="question-text">
+            Dalam sebuah pameran buku, tiket masuk seharga Rp20.000,00 dan rata-rata setiap buku dijual seharga Rp40.000,00. Jika Budi membawa uang Rp200.000,00, berapa banyak maksimal buku yang bisa ia beli?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 5 buku</div>
+            <div class="option">B. 4 buku</div>
+            <div class="option">C. 6 buku</div>
+            <div class="option">D. 3 buku</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Analisis & Pedagogik (HOTS) | Soal 11</div>
+        <div class="question-text">
+            Perhatikan grafik yang menunjukkan biaya layanan katering dari dua vendor, Vendor P dan Vendor Q, berdasarkan jumlah porsi makanan (\(x\)).
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="500" height="350" viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke="#ccc" stroke-dasharray="4,4">
+                        <line x1="130" y1="30" x2="130" y2="300" />
+                        <line x1="210" y1="30" x2="210" y2="300" />
+                        <line x1="290" y1="30" x2="290" y2="300" />
+                        <line x1="370" y1="30" x2="370" y2="300" />
+                        <line x1="450" y1="30" x2="450" y2="300" />
+                        <line x1="50" y1="250" x2="450" y2="250" />
+                        <line x1="50" y1="200" x2="450" y2="200" />
+                        <line x1="50" y1="150" x2="450" y2="150" />
+                        <line x1="50" y1="100" x2="450" y2="100" />
+                        <line x1="50" y1="50" x2="450" y2="50" />
+                    </g>
+                    
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                        </marker>
+                    </defs>
+                    <line x1="50" y1="300" x2="470" y2="300" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+                    <line x1="50" y1="300" x2="50" y2="20" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+                    
+                    <text x="250" y="340" font-family="sans-serif" font-size="14" text-anchor="middle">Jumlah Porsi (x)</text>
+                    <text x="15" y="160" font-family="sans-serif" font-size="14" text-anchor="middle" transform="rotate(-90 15,160)">Biaya (y) dalam Ribuan</text>
+
+                    <g font-family="sans-serif" font-size="12" text-anchor="middle">
+                        <text x="50" y="315">0</text>
+                        <text x="130" y="315">20</text>
+                        <text x="210" y="315">40</text>
+                        <text x="290" y="315">60</text>
+                        <text x="370" y="315">80</text>
+                        <text x="450" y="315">100</text>
+                    </g>
+
+                    <g font-family="sans-serif" font-size="12" text-anchor="end">
+                        <text x="40" y="254">200</text>
+                        <text x="40" y="204">400</text>
+                        <text x="40" y="154">600</text>
+                        <text x="40" y="104">800</text>
+                        <text x="40" y="54">1000</text>
+                    </g>
+
+                    <line x1="50" y1="250" x2="450" y2="125" stroke="blue" stroke-width="3" />
+                    
+                    <line x1="50" y1="300" x2="450" y2="50" stroke="red" stroke-width="3" />
+
+                    <circle cx="210" cy="200" r="4" fill="black" />
+                    <text x="210" y="190" font-family="sans-serif" font-size="12" text-anchor="middle" font-weight="bold">(40, 400)</text>
+
+                    <rect x="60" y="30" width="100" height="50" fill="white" stroke="black" />
+                    <line x1="65" y1="45" x2="85" y2="45" stroke="blue" stroke-width="3" />
+                    <text x="90" y="49" font-family="sans-serif" font-size="12">Vendor P</text>
+                    <line x1="65" y1="65" x2="85" y2="65" stroke="red" stroke-width="3" />
+                    <text x="90" y="69" font-family="sans-serif" font-size="12">Vendor Q</text>
+                </svg>
+            </div>
+
+            Seorang ketua panitia acara akan memesan 80 porsi makanan. Keputusan paling logis berdasarkan analisis grafik di atas adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Memilih Vendor Q karena grafiknya dimulai dari titik nol, menandakan harga per porsinya lebih murah di semua kondisi.</div>
+            <div class="option">B. Memilih Vendor P karena untuk \(x > 40\), garis Vendor P berada di bawah garis Vendor Q, sehingga total biayanya lebih murah.</div>
+            <div class="option">C. Memilih Vendor Q karena pada awalnya garis merah berada di bawah garis biru, menguntungkan pembeli jangka panjang.</div>
+            <div class="option">D. Memilih Vendor P atau Vendor Q akan sama saja karena keduanya memiliki nilai yang identik pada suatu titik impas.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Analisis & Pedagogik (HOTS) | Soal 12</div>
+        <div class="question-text">
+            Seorang siswa menyelesaikan masalah perbandingan tarif pulsa \(1000 + 50x < 75x\). Ia mengerjakan: \(1000 < 25x \Rightarrow x < 40\). Ia menyimpulkan "Tarif pertama lebih murah jika menelepon kurang dari 40 menit." Kesalahan konseptual utama siswa ini terletak pada...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Kesalahan melakukan pengurangan \(75x - 50x\).</div>
+            <div class="option">B. Menukar tanda ketidaksamaan pada hasil akhir pembagian.</div>
+            <div class="option">C. Salah menafsirkan arti dari \(x > 40\) menjadi \(x < 40\) dalam konteks penyelesaian akhirnya.</div>
+            <div class="option">D. Menggunakan model pertidaksamaan, padahal masalah perbandingan harga mutlak harus menggunakan persamaan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Analisis & Pedagogik (HOTS) | Soal 13</div>
+        <div class="question-text">
+            Layanan Percetakan A mematok biaya jasa desain Rp100.000,00 ditambah biaya cetak Rp5.000,00/lembar. Percetakan B menggratiskan jasa desain tetapi mematok biaya cetak Rp10.000,00/lembar. Seorang guru ingin siswanya menganalisis kapan Percetakan A menjadi lebih hemat. <strong>Strategi representasi yang paling efektif untuk mengembangkan kemampuan penalaran spasial dan numerik siswa secara bersamaan</strong> adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Membuat tabel perhitungan manual dari 1 lembar hingga 25 lembar untuk mencari titik transisi selisih harga secara numerik.</div>
+            <div class="option">B. Meminta siswa membuat diagram batang membandingkan harga di jumlah 10 lembar dan 30 lembar.</div>
+            <div class="option">C. Menggambar grafik kedua fungsi biaya pada satu bidang koordinat dan mengidentifikasi area sesudah titik potongnya.</div>
+            <div class="option">D. Memerintahkan siswa menyelesaikan persamaan \(100.000 + 5.000x = 10.000x\) dengan eliminasi substitusi murni tanpa konteks visual.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Analisis & Pedagogik (HOTS) | Soal 14</div>
+        <div class="question-text">
+            Sebuah perusahaan ekspedisi (Ekspedisi X) memiliki tarif \(y = 5.000x + 10.000\) (dimana \(x\) = kg). Perusahaan pesaing (Ekspedisi Y) ingin merumuskan tarif \(y = mx\) tanpa biaya awal. Agar Ekspedisi Y <strong>hanya lebih murah</strong> untuk paket dengan berat kurang dari 5 kg, maka nilai gradien \(m\) yang harus ditetapkan oleh Ekspedisi Y adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(m = 7.000\)</div>
+            <div class="option">B. \(m = 5.000\)</div>
+            <div class="option">C. \(m = 10.000\)</div>
+            <div class="option">D. \(m = 3.000\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Analisis & Pedagogik (HOTS) | Soal 15</div>
+        <div class="question-text">
+            Apa dampak visual pada grafik \(y = mx + c\) jika biaya awal (\(c\)) diturunkan drastis, tetapi biaya variabel per unit (\(m\)) dinaikkan dengan tajam?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Garis akan bergeser ke atas secara sejajar tanpa mengubah kemiringan.</div>
+            <div class="option">B. Titik potong dengan sumbu-\(y\) menjadi lebih rendah, dan garis akan menjadi lebih curam.</div>
+            <div class="option">C. Garis akan memotong sumbu-\(x\) di titik positif dan menjadi lebih landai.</div>
+            <div class="option">D. Garis akan melengkung menyerupai kurva kuadrat terbuka ke atas.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Analisis & Pedagogik (HOTS) | Soal 16</div>
+        <div class="question-text">
+            Dalam kelas matematika, Pak Budi memberikan studi kasus tentang dua skema langganan internet bulanan (Skema Flat vs Skema Kuota). Pak Budi memiliki tujuan agar siswa tidak hanya pandai mencari angka kapan biaya akan sama, tetapi juga mampu membayangkan kecepatan pertumbuhan biaya kedua skema tersebut jika pemakaian sangat besar. <strong>Media dan representasi yang paling tepat digunakan Pak Budi</strong> adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Lembar kerja yang berisi deretan panjang angka dalam tabel substitusi.</div>
+            <div class="option">B. Proyeksi kedua persamaan linear pada grafik Kartesius untuk memperlihatkan kemiringan dan titik silang antar garis.</div>
+            <div class="option">C. Papan tulis untuk menurunkan rumus fungsi invers dari kedua skema tersebut agar siswa tahu batasannya secara matematis.</div>
+            <div class="option">D. Penggunaan kalkulator saintifik untuk memprogram fungsi pencarian akar persamaan dua variabel secara otomatis.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Analisis & Pedagogik (HOTS) | Soal 17</div>
+        <div class="question-text">
+            Sebuah warnet mengubah kebijakan tarifnya dari "Rp5.000,00 per jam" menjadi "Bayar Rp10.000,00 untuk 3 jam pertama, setelah itu Rp3.000,00 per jam". Jika direpresentasikan ke dalam grafik matematika standar, maka grafik tarif yang baru akan...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Menjadi sebuah garis lurus tunggal yang memotong titik \((0, 10.000)\).</div>
+            <div class="option">B. Berupa grafik fungsi sepotong (piecewise) yang horizontal dari \(x=0\) ke \(x=3\), lalu naik dengan gradien positif untuk \(x > 3\).</div>
+            <div class="option">C. Berbentuk kurva eksponensial karena adanya penurunan harga per jam.</div>
+            <div class="option">D. Tidak dapat digambarkan ke dalam bidang koordinat karena memiliki dua aturan berbeda.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Analisis & Pedagogik (HOTS) | Soal 18</div>
+        <div class="question-text">
+            Seorang peserta didik mengajukan pernyataan: "<em>Jika perusahaan A menetapkan biaya per unit lebih tinggi dari perusahaan B, maka total biaya perusahaan A pasti akan selalu lebih mahal di titik mana pun.</em>" Syarat matematis apa yang bisa diberikan untuk mematahkan (menjadi <em>counter-example</em>) argumen siswa tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Menunjukkan kasus di mana biaya tetap perusahaan B sangat besar, sehingga perusahaan A tetap lebih murah di jumlah unit yang kecil.</div>
+            <div class="option">B. Menunjukkan kasus di mana kedua perusahaan sama-sama tidak memungut biaya tetap (nilai \(c = 0\)).</div>
+            <div class="option">C. Menunjukkan kasus di mana variabel \(x\) diganti dengan nilai desimal, bukan bilangan bulat.</div>
+            <div class="option">D. Menunjukkan bahwa fungsi perusahaan A adalah fungsi kuadrat, bukan fungsi linear.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Analisis & Pedagogik (HOTS) | Soal 19</div>
+        <div class="question-text">
+            Guru memberikan masalah: Tarif kurir A adalah Rp15.000,00/kg. Tarif kurir B adalah flat Rp50.000,00 untuk berat berapa pun hingga 10 kg. Guru meminta siswa menemukan titik impas dan mengevaluasi layanan mana yang dipilih. Jika tujuan utamanya adalah membangun <strong>koneksi yang koheren antara perhitungan aljabar dan visualisasi ruang memori kerja siswa</strong>, maka instruksi perancah (scaffolding) terbaik adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. "Hafalkan bahwa kurir B adalah garis datar, dan gunakan rumus cepat pembagian \(50.000 \div 15.000\)."</div>
+            <div class="option">B. "Gambarkan dua garis pada sumbu koordinat yang sama, tentukan koordinat silangnya, dan beri arsiran pada daerah di mana garis opsi A berada di atas garis opsi B."</div>
+            <div class="option">C. "Gunakan pendekatan <em>trial and error</em> dengan mencoba nilai berat 1 kg, 2 kg, dan 3 kg pada kertas buram, karena cara grafis terlalu kompleks."</div>
+            <div class="option">D. "Ubah data tarif menjadi bentuk Diagram Lingkaran ganda, sehingga terlihat perbedaan proporsi area kurir A dan kurir B."</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Analisis & Pedagogik (HOTS) | Soal 20</div>
+        <div class="question-text">
+            Mengapa penyelesaian murni secara aljabar (contoh: \(15x + 20 < 10x + 50 \rightarrow x < 6\)) sering kali kurang memadai untuk diimplementasikan langsung pada masalah <em>real-world optimization</em> (seperti pengadaan barang pabrik)?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Karena aljabar tidak memperhitungkan kemungkinan nilai negatif yang secara matematis valid tetapi secara realitas tidak masuk akal (batasan domain kontekstual).</div>
+            <div class="option">B. Karena hasil dari perhitungan aljabar selalu menghasilkan bilangan pecahan yang tidak bisa diterapkan pada jumlah barang diskrit.</div>
+            <div class="option">C. Karena metode eliminasi dan substitusi memiliki margin tingkat kesalahan yang lebih besar dibandingkan metode visual/grafik.</div>
+            <div class="option">D. Karena secara epistemologis angka pada aljabar tidak memiliki korespondensi dengan harga mata uang asli.</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
