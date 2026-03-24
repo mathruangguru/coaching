@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 15: Sifat-Sifat Eksponen - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Rangkuman Materi dan Latihan Soal<br>Sifat-Sifat Eksponen</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Rangkuman Materi Eksponen</div>
+        <div class="question-text">
+            <p>Eksponen atau bilangan berpangkat merupakan bentuk perkalian berulang dari suatu bilangan. Jika \(a\) adalah bilangan real dan \(n\) adalah bilangan bulat positif, maka pangkat ke-\(n\) dari \(a\) ditulis sebagai \(a^n\), yang didefinisikan sebagai:</p>
+            \[a^n = \underbrace{a \times a \times a \times \dots \times a}_{\text{sebanyak } n \text{ faktor}}\]
+            <p>Bilangan \(a\) disebut sebagai <strong>basis</strong> (bilangan pokok) dan \(n\) disebut sebagai <strong>eksponen</strong> (pangkat).</p>
+
+            <h4>Sifat-Sifat Operasi Eksponen</h4>
+            <p>Berikut adalah sifat-sifat dasar dari eksponen yang harus dikuasai untuk menghindari kesalahan dalam perhitungan:</p>
+            <ol>
+                <li><strong>Perkalian basis yang sama:</strong> \(a^m \times a^n = a^{m+n}\)</li>
+                <li><strong>Pembagian basis yang sama:</strong> \(\frac{a^m}{a^n} = a^{m-n}\), dengan \(a \neq 0\)</li>
+                <li><strong>Perpangkatan bilangan berpangkat:</strong> \((a^m)^n = a^{m \times n}\)</li>
+                <li><strong>Perpangkatan dari perkalian:</strong> \((a \times b)^n = a^n \times b^n\)</li>
+                <li><strong>Perpangkatan dari pembagian:</strong> \(\left(\frac{a}{b}\right)^n = \frac{a^n}{b^n}\), dengan \(b \neq 0\)</li>
+                <li><strong>Pangkat Nol:</strong> \(a^0 = 1\), untuk setiap \(a \neq 0\)</li>
+                <li><strong>Pangkat Negatif:</strong> \(a^{-n} = \frac{1}{a^n}\), dengan \(a \neq 0\)</li>
+                <li><strong>Pangkat Pecahan:</strong> \(a^{\frac{m}{n}} = \sqrt[n]{a^m}\)</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Pemahaman Dasar | Soal 1</div>
+        <div class="question-text">
+            Hasil dari bentuk perpangkatan \(2^3 \times 2^4\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(4^{12}\)</div>
+            <div class="option">B. \(4^7\)</div>
+            <div class="option">C. \(2^{12}\)</div>
+            <div class="option">D. \(2^7\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Pemahaman Dasar | Soal 2</div>
+        <div class="question-text">
+            Bentuk sederhana dari \((3^2)^4\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(3^6\)</div>
+            <div class="option">B. \(9^6\)</div>
+            <div class="option">C. \(9^8\)</div>
+            <div class="option">D. \(3^8\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Pemahaman Dasar | Soal 3</div>
+        <div class="question-text">
+            Hasil pembagian dari \(\frac{5^6}{5^2}\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(1^3\)</div>
+            <div class="option">B. \(1^4\)</div>
+            <div class="option">C. \(5^3\)</div>
+            <div class="option">D. \(5^4\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Pemahaman Dasar | Soal 4</div>
+        <div class="question-text">
+            Bentuk paling sederhana dari ekspresi \((2a)^3\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(2a^3\)</div>
+            <div class="option">B. \(6a^3\)</div>
+            <div class="option">C. \(8a\)</div>
+            <div class="option">D. \(8a^3\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Pemahaman Dasar | Soal 5</div>
+        <div class="question-text">
+            Tentukan nilai rasional dari \(7^0 + 2^{-1}\).
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(1,5\)</div>
+            <div class="option">B. \(-1\)</div>
+            <div class="option">C. \(0,5\)</div>
+            <div class="option">D. \(-2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Menengah (Medium) | Soal 6</div>
+        <div class="question-text">
+            Bentuk sederhana dari \(\frac{(a^2 b^3)^2}{a^3 b^4}\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(ab^2\)</div>
+            <div class="option">B. \(a^2b^2\)</div>
+            <div class="option">C. \(a^{-1}b^{-1}\)</div>
+            <div class="option">D. \(a^7b^9\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Menengah (Medium) | Soal 7</div>
+        <div class="question-text">
+            Nilai numerik dari \((8^{\frac{1}{3}})^5\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(10\)</div>
+            <div class="option">B. \(\frac{40}{3}\)</div>
+            <div class="option">C. \(32\)</div>
+            <div class="option">D. \(120\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Menengah (Medium) | Soal 8</div>
+        <div class="question-text">
+            Bentuk sederhana dari \((2^3 \times 3^2)^2\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(2^5 \times 3^4\)</div>
+            <div class="option">B. \(6^5\)</div>
+            <div class="option">C. \(36^{10}\)</div>
+            <div class="option">D. \(2^6 \times 3^4\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Menengah (Medium) | Soal 9</div>
+        <div class="question-text">
+            Jika diketahui persamaan eksponensial \(3^{x+1} = 81\), maka nilai dari \(x^2\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(16\)</div>
+            <div class="option">B. \(9\)</div>
+            <div class="option">C. \(25\)</div>
+            <div class="option">D. \(8\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Menengah (Medium) | Soal 10</div>
+        <div class="question-text">
+            Bentuk aljabar paling sederhana dari \(\frac{m^{-2} n^3}{m^3 n^{-1}}\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{n^4}{m^5}\)</div>
+            <div class="option">B. \(\frac{n^2}{m}\)</div>
+            <div class="option">C. \(mn^2\)</div>
+            <div class="option">D. \(\frac{m^5}{n^4}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Tinggi (HOTS) | Soal 11</div>
+        <div class="question-text">
+            Hasil dari \(2^{2024} - 2^{2023}\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(2^1\)</div>
+            <div class="option">B. \(1^{2024}\)</div>
+            <div class="option">C. \(2^{2023}\)</div>
+            <div class="option">D. \(0\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Tinggi (HOTS) | Soal 12</div>
+        <div class="question-text">
+            Jika diketahui \(2^a = 3\) dan \(2^b = 5\), berapakah nilai eksak dari \(2^{a+b+1}\)?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(16\)</div>
+            <div class="option">B. \(30\)</div>
+            <div class="option">C. \(15\)</div>
+            <div class="option">D. \(8\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Tinggi (HOTS) | Soal 13</div>
+        <div class="question-text">
+            [Studi Kasus Pembelajaran] Saat guru meminta siswa menghitung hasil dari \((-2)^4\), seorang siswa memberikan jawaban \(-16\). Analisis kesalahan konsep utama yang kemungkinan besar dialami oleh siswa tersebut adalah ...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Siswa mengeksekusi pangkat pada angkanya saja lalu menyematkan tanda negatif di akhir, memperlakukannya seolah-olah bentuknya adalah \(-2^4\) bukan \((-2)^4\).</div>
+            <div class="option">B. Siswa mengalikan basis dengan eksponen secara langsung, yaitu \((-2) \times 4 = -8\), lalu menggandakannya karena berpangkat genap.</div>
+            <div class="option">C. Siswa berasumsi bahwa semua bilangan bernilai negatif yang dipangkatkan dengan berapapun akan selalu mempertahankan tanda negatifnya pada hasil akhirnya.</div>
+            <div class="option">D. Siswa membalik tanda karena bilangan dipangkatkan dengan angka genap, tetapi ia salah dalam melakukan perhitungan aritmatika dasar pada perkalian berulangnya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Tinggi (HOTS) | Soal 14</div>
+        <div class="question-text">
+            Berapakah angka satuan (digit terakhir) dari hasil pemangkatan \(3^{2026}\)?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(1\)</div>
+            <div class="option">B. \(3\)</div>
+            <div class="option">C. \(7\)</div>
+            <div class="option">D. \(9\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Tinggi (HOTS) | Soal 15</div>
+        <div class="question-text">
+            Nilai \(x\) yang memenuhi persamaan akar dan eksponen \(\sqrt{3^{2x+1}} = 27^{x-2}\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{13}{4}\)</div>
+            <div class="option">B. \(\frac{11}{4}\)</div>
+            <div class="option">C. \(5\)</div>
+            <div class="option">D. \(\frac{7}{2}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Tinggi (HOTS) | Soal 16</div>
+        <div class="question-text">
+            [Studi Kasus Pembelajaran] Ketika diminta untuk menyederhanakan ekspresi \(\frac{x^8}{x^2}\), seorang siswa menuliskan jawabannya sebagai \(x^4\). Kesalahan kognitif spesifik apa yang sedang terjadi pada penyelesaian siswa tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Siswa membagi angka pangkatnya secara langsung (\(8 \div 2\)) alih-alih mengurangkannya (\(8 - 2\)), karena ia secara keliru terpengaruh oleh bentuk visual pembagian pecahan.</div>
+            <div class="option">B. Siswa mengurangkan pangkat pembilang dengan pangkat penyebut, lalu membaginya kembali dengan 2 secara berulang karena menganggap pangkat bersifat simetris.</div>
+            <div class="option">C. Siswa mengacaukan aturan pembagian eksponen dengan aturan perpangkatan berlapis \((x^a)^b = x^{a \times b}\), sehingga ia berasumsi pangkatnya harus difaktorkan atau dibagi.</div>
+            <div class="option">D. Siswa berasumsi bahwa variabel aljabar pada bagian penyebut secara otomatis berfungsi sebagai bilangan pengurang tunggal untuk eksponen tanpa melihat nilainya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Tinggi (HOTS) | Soal 17</div>
+        <div class="question-text">
+            Jika diketahui variabel \(a, b > 0\) dan \(\frac{a^x}{b^y} = c\), maka ekspresi aljabar yang nilainya ekuivalen dengan bentuk \(\left( \frac{a^{2x}}{b^{2y}} \right)^3\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(c^5\)</div>
+            <div class="option">B. \(c^6\)</div>
+            <div class="option">C. \(3c^2\)</div>
+            <div class="option">D. \(6c\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Tinggi (HOTS) | Soal 18</div>
+        <div class="question-text">
+            Jika \(A = 2^{5555}\), \(B = 3^{3333}\), dan \(C = 5^{2222}\), maka urutan bilangan tersebut mulai dari nilai yang <strong>terbesar ke yang terkecil</strong> adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(A, B, C\)</div>
+            <div class="option">B. \(C, B, A\)</div>
+            <div class="option">C. \(B, A, C\)</div>
+            <div class="option">D. \(A, C, B\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Tinggi (HOTS) | Soal 19</div>
+        <div class="question-text">
+            [Studi Kasus Pembelajaran] Saat diberikan soal penyederhanaan aljabar \(x^{-2} \times x^{-3}\), seorang murid menyelesaikannya dan mendapatkan hasil \(x^6\). Pemahaman konsep yang salah dari murid tersebut kemungkinan besar adalah ...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Siswa secara keliru mengalikan nilai eksponen satu sama lain serta menerapkan aturan "negatif dikali negatif menjadi positif" pada proses tersebut.</div>
+            <div class="option">B. Siswa dengan tepat menjumlahkan kedua pangkat negatif tersebut menjadi \(-5\), namun secara keliru memutlakkan nilainya sehingga berubah menjadi positif.</div>
+            <div class="option">C. Siswa menganggap pangkat negatif saling menghilangkan satu sama lain saat terjadi perkalian dua buah variabel aljabar yang sejenis.</div>
+            <div class="option">D. Siswa salah mengartikan operasi tersebut sebagai bentuk pecahan \(\frac{1}{x^{-2} \cdot x^{-3}}\) sehingga pangkat akhirnya melompat naik ke atas dan menjadi positif.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat Tinggi (HOTS) | Soal 20</div>
+        <div class="question-text">
+            Jika operasi aritmatika baru dengan simbol \((\star)\) didefinisikan sebagai \(a \star b = a^b - b^a\), maka nilai kuantitatif dari bentuk \((2 \star 3) \star 2\) adalah ...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(0,5\)</div>
+            <div class="option">B. \(-1,5\)</div>
+            <div class="option">C. \(1\)</div>
+            <div class="option">D. \(-3\)</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
