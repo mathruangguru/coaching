@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran & Evaluasi: Sifat Distributif pada Model Luas</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran & Evaluasi: Sifat Distributif pada Model Luas</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Sifat Distributif dan Model Luas</div>
+        <div class="question-text">
+            <p>Sifat distributif perkalian terhadap penjumlahan adalah salah satu konsep fundamental dalam aritmatika dan aljabar. Sifat ini menyatakan bahwa mengalikan sebuah bilangan dengan hasil penjumlahan dua bilangan lain akan memberikan hasil yang sama dengan mengalikan bilangan pertama dengan masing-masing bilangan di dalam kurung, lalu menjumlahkan hasilnya.</p>
+            <p>Secara matematis dituliskan sebagai:</p>
+            $$ a \times (b + c) = (a \times b) + (a \times c) $$
+
+            <h4 class="mt-4">Representasi Visual menggunakan Model Luas (Area Model)</h4>
+            <p>Konsep abstrak ini sangat efektif diajarkan menggunakan bangun datar persegi panjang. Luas persegi panjang adalah $Panjang \times Lebar$.</p>
+            <p>Perhatikan gambar di bawah ini:</p>
+
+            <div style="text-align: center; margin: 35px 0;">
+                <svg width="100%" style="max-width: 450px;" height="220" viewBox="0 0 450 220" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="20" width="250" height="120" fill="#e8f4fd" stroke="#333" stroke-width="2"/>
+                    <rect x="300" y="20" width="100" height="120" fill="#e8fce8" stroke="#333" stroke-width="2"/>
+                    
+                    <text x="30" y="85" font-family="sans-serif" font-size="20" font-style="italic" fill="#333" text-anchor="middle">a</text>
+                    <text x="175" y="165" font-family="sans-serif" font-size="20" font-style="italic" fill="#333" text-anchor="middle">b</text>
+                    <text x="350" y="165" font-family="sans-serif" font-size="20" font-style="italic" fill="#333" text-anchor="middle">c</text>
+                    
+                    <text x="175" y="85" font-family="sans-serif" font-size="20" fill="#333" text-anchor="middle"><tspan font-style="italic">a</tspan> &times; <tspan font-style="italic">b</tspan></text>
+                    <text x="350" y="85" font-family="sans-serif" font-size="20" fill="#333" text-anchor="middle"><tspan font-style="italic">a</tspan> &times; <tspan font-style="italic">c</tspan></text>
+                    
+                    <line x1="55" y1="195" x2="395" y2="195" stroke="gray" stroke-width="1.5"/>
+                    <polygon points="55,195 62,191 62,199" fill="gray"/>
+                    <polygon points="395,195 388,191 388,199" fill="gray"/>
+                    
+                    <rect x="200" y="180" width="50" height="30" fill="white"/>
+                    <text x="225" y="202" font-family="sans-serif" font-size="18" fill="#333" text-anchor="middle"><tspan font-style="italic">b</tspan> + <tspan font-style="italic">c</tspan></text>
+                </svg>
+            </div>
+
+            <p>Dari gambar di atas, kita dapat menghitung total luas persegi panjang besar dengan dua cara:</p>
+            <ol class="list-inside">
+                <li><strong>Menghitung luas keseluruhan secara langsung:</strong> Tinggi $a$ dikalikan dengan total alas $(b + c)$. Menghasilkan ekspresi: $a \times (b + c)$.</li>
+                <li><strong>Menghitung luas dua bagian terpisah lalu menjumlahkannya:</strong> Luas persegi panjang biru $(a \times b)$ ditambah luas persegi panjang hijau $(a \times c)$. Menghasilkan ekspresi: $(a \times b) + (a \times c)$.</li>
+            </ol>
+            <p>Karena keduanya menghitung luasan daerah yang sama, maka terbukti bahwa $a \times (b + c) = (a \times b) + (a \times c)$.</p>
+
+            <h4 class="mt-4">Kesalahan Umum Siswa (Miskonsepsi):</h4>
+            <p>Siswa sering kali hanya mengalikan faktor luar ($a$) dengan suku pertama di dalam kurung ($b$), dan lupa mengalikannya dengan suku kedua ($c$). Misalnya, menghitung $3 \times (4+2)$ menjadi $12 + 2 = 14$ (seharusnya $12 + 6 = 18$).</p>
+        </div>
+    </div>
+
+    <div class="section-title">Latihan Soal</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 1</div>
+        <div class="question-text">Manakah dari persamaan berikut yang menunjukkan penerapan sifat distributif yang benar?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $5 \times (4 + 3) = (5 \times 4) + 3$</div>
+            <div class="option"><strong>B.</strong> $5 \times (4 + 3) = (5 + 4) \times (5 + 3)$</div>
+            <div class="option"><strong>C.</strong> $5 \times (4 + 3) = (5 \times 4) + (5 \times 3)$</div>
+            <div class="option"><strong>D.</strong> $5 \times (4 + 3) = 5 \times 4 \times 3$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 2</div>
+        <div class="question-text">Sebuah persegi panjang besar dibagi menjadi dua bagian. Bagian pertama memiliki luas $6 \times 10$ dan bagian kedua memiliki luas $6 \times 4$. Bentuk perkalian yang merepresentasikan total luas persegi panjang tersebut adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $6 \times (10 \times 4)$</div>
+            <div class="option"><strong>B.</strong> $6 \times (10 + 4)$</div>
+            <div class="option"><strong>C.</strong> $12 \times (10 + 4)$</div>
+            <div class="option"><strong>D.</strong> $(6 + 10) \times (6 + 4)$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 3</div>
+        <div class="question-text">Hasil dari perhitungan menggunakan sifat distributif untuk $8 \times (5 + 2)$ adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $42$</div>
+            <div class="option"><strong>B.</strong> $56$</div>
+            <div class="option"><strong>C.</strong> $40$</div>
+            <div class="option"><strong>D.</strong> $80$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 4</div>
+        <div class="question-text">
+            Perhatikan gambar model luas di bawah ini!
+            <div style="text-align: center; margin: 20px 0;">
+                <svg width="100%" style="max-width: 300px;" height="160" viewBox="-20 -10 280 160" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="160" height="120" fill="#fafafa" stroke="#333" stroke-width="2"/>
+                    <rect x="160" y="0" width="80" height="120" fill="#fafafa" stroke="#333" stroke-width="2"/>
+                    <text x="-15" y="65" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">7</text>
+                    <text x="80" y="145" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">10</text>
+                    <text x="200" y="145" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">3</text>
+                </svg>
+            </div>
+            Luas keseluruhan dari bangun di atas adalah...
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $73$</div>
+            <div class="option"><strong>B.</strong> $91$</div>
+            <div class="option"><strong>C.</strong> $100$</div>
+            <div class="option"><strong>D.</strong> $210$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 5</div>
+        <div class="question-text">Jika diketahui $9 \times (x + 5) = 72 + 45$, maka nilai $x$ yang memenuhi persamaan tersebut adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $5$</div>
+            <div class="option"><strong>B.</strong> $7$</div>
+            <div class="option"><strong>C.</strong> $8$</div>
+            <div class="option"><strong>D.</strong> $9$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Level Menengah | Soal 6</div>
+        <div class="question-text">Bentuk sederhana dari ekspresi aljabar $4(3y + 6)$ adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $12y + 6$</div>
+            <div class="option"><strong>B.</strong> $7y + 10$</div>
+            <div class="option"><strong>C.</strong> $12y + 24$</div>
+            <div class="option"><strong>D.</strong> $24y$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Level Menengah | Soal 7</div>
+        <div class="question-text">Pak Budi memiliki lahan berbentuk persegi panjang. Panjangnya terdiri dari dua bagian: $15$ meter untuk kebun sayur dan $x$ meter untuk kolam ikan. Lebar seluruh lahan adalah $8$ meter. Jika total luas lahan Pak Budi adalah $160 \text{ m}^2$, berapakah panjang $x$?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $4$ meter</div>
+            <div class="option"><strong>B.</strong> $5$ meter</div>
+            <div class="option"><strong>C.</strong> $15$ meter</div>
+            <div class="option"><strong>D.</strong> $20$ meter</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Level Menengah | Soal 8</div>
+        <div class="question-text">Ekspresi $45a + 27$ dapat difaktorkan menggunakan sifat distributif kebalikannya. Bentuk pemfaktoran yang paling tepat (menggunakan FPB) adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $3(15a + 9)$</div>
+            <div class="option"><strong>B.</strong> $9(5a + 3)$</div>
+            <div class="option"><strong>C.</strong> $9a(5 + 3)$</div>
+            <div class="option"><strong>D.</strong> $9(5a + 27)$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Level Menengah | Soal 9</div>
+        <div class="question-text">
+            Perhatikan model luas berikut!
+            <div style="text-align: center; margin: 20px 0;">
+                <svg width="100%" style="max-width: 320px;" height="200" viewBox="-20 -10 320 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="200" height="160" fill="#fafafa" stroke="#333" stroke-width="2"/>
+                    <rect x="200" y="0" width="80" height="160" fill="#fafafa" stroke="#333" stroke-width="2"/>
+                    <text x="-12" y="85" font-family="sans-serif" font-size="16" font-style="italic" fill="#333" text-anchor="middle">y</text>
+                    <text x="100" y="85" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">30</text>
+                    <text x="240" y="85" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">12</text>
+                </svg>
+            </div>
+            Jika luas bagian pertama adalah $30$ dan bagian kedua adalah $12$, serta tinggi persegi panjang tersebut adalah $y=6$, berapakah total panjang alasnya?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $5$</div>
+            <div class="option"><strong>B.</strong> $7$</div>
+            <div class="option"><strong>C.</strong> $12$</div>
+            <div class="option"><strong>D.</strong> $42$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Level Menengah | Soal 10</div>
+        <div class="question-text">Untuk menghitung $14 \times 102$ secara cepat di luar kepala, Cika menggunakan sifat distributif. Manakah dari ekspresi berikut yang merepresentasikan cara berpikir Cika yang paling efisien?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $(10 + 4) \times (10 + 2)$</div>
+            <div class="option"><strong>B.</strong> $(14 \times 100) + (14 \times 2)$</div>
+            <div class="option"><strong>C.</strong> $14 \times 100 \times 2$</div>
+            <div class="option"><strong>D.</strong> $(14 + 100) \times (14 + 2)$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: Level HOTS | Soal 11</div>
+        <div class="question-text">Terdapat dua area model persegi panjang. Model A memiliki tinggi $p$ dan alas $(q+r)$. Model B memiliki tinggi $(p+2)$ dan alas $(q+r)$. Berapakah selisih luas antara Model B dan Model A?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $2q + 2r$</div>
+            <div class="option"><strong>B.</strong> $2qr$</div>
+            <div class="option"><strong>C.</strong> $p + 2$</div>
+            <div class="option"><strong>D.</strong> $2(q \times r)$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: Level HOTS | Soal 12</div>
+        <div class="question-text">Diberikan tiga angka yaitu $3, 4,$ dan $5$. Jika ketiga angka tersebut ditempatkan ke dalam format $A \times (B + C)$ sedemikian rupa sehingga menghasilkan nilai maksimum tanpa ada angka yang tersisa, berapakah nilai maksimum tersebut?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $35$</div>
+            <div class="option"><strong>B.</strong> $32$</div>
+            <div class="option"><strong>C.</strong> $27$</div>
+            <div class="option"><strong>D.</strong> $15$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: Level HOTS | Soal 13</div>
+        <div class="question-text">
+            <strong>[Studi Kasus Guru]</strong> Dalam mengukur pemahaman siswa tentang model luas persegi panjang dengan ukuran tinggi $7$ dan alas yang terbagi menjadi dua bagian: $10$ dan $3$, seorang siswa menuliskan perhitungan berikut di kertasnya:<br>
+            Luas $= 7 \times 10 + 3 = 73$.<br>
+            Sebagai guru yang sedang mengevaluasi, analisis manakah di bawah ini yang paling tepat untuk mendiagnosis kelemahan konseptual siswa tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Siswa keliru mengidentifikasi gambar sebagai bangun ruang, sehingga ia menghitung volumenya.</div>
+            <div class="option"><strong>B.</strong> Siswa mengira bahwa tinggi bangun datar (7) hanya bertindak sebagai pengali untuk ruas garis alas pertama, bukan sebagai dimensi pengali untuk seluruh panjang alas.</div>
+            <div class="option"><strong>C.</strong> Siswa bermaksud menggunakan rumus keliling persegi panjang dengan menjumlahkan sisi luar, namun ia lupa menambahkan sisi yang berhadapan.</div>
+            <div class="option"><strong>D.</strong> Siswa mengalami masalah dalam melakukan operasi penjumlahan dasar $70 + 3$ yang seharusnya $100$.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: Level HOTS | Soal 14</div>
+        <div class="question-text">Jika $k(m - n) = 40$ dan diketahui bahwa $k \times m = 75$, maka nilai dari $k \times n$ adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $115$</div>
+            <div class="option"><strong>B.</strong> $35$</div>
+            <div class="option"><strong>C.</strong> $-35$</div>
+            <div class="option"><strong>D.</strong> $40$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: Level HOTS | Soal 15</div>
+        <div class="question-text">Sebuah dinding berbentuk persegi panjang akan dicat. Dinding tersebut memiliki tinggi tetap $t$ meter. Lebar dinding dibagi menjadi dua area: area untuk cat warna putih selebar $x$ meter, dan area cat warna abu-abu selebar $y$ meter. Jika harga pengecatan per meter persegi untuk warna putih adalah Rp$10.000$ dan warna abu-abu adalah Rp$15.000$, ekspresi aljabar mana yang menyatakan total biaya pengecatan dinding tersebut?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $t \times (10.000x + 15.000y)$</div>
+            <div class="option"><strong>B.</strong> $t \times (x + y) \times (10.000 + 15.000)$</div>
+            <div class="option"><strong>C.</strong> $10.000tx + 15.000y$</div>
+            <div class="option"><strong>D.</strong> $25.000 \times t \times (x+y)$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: Level HOTS | Soal 16</div>
+        <div class="question-text">
+            <strong>[Studi Kasus Guru]</strong> Perhatikan gambar di bawah ini.
+            <div style="text-align: center; margin: 20px 0;">
+                <svg width="100%" style="max-width: 300px;" height="200" viewBox="-20 -10 280 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="160" height="160" fill="#fffde7" stroke="#333" stroke-width="2"/>
+                    <rect x="160" y="0" width="80" height="160" fill="#fffde7" stroke="#333" stroke-width="2"/>
+                    <text x="-15" y="85" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">6</text>
+                    <text x="80" y="185" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">20</text>
+                    <text x="200" y="185" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">5</text>
+                    <text x="80" y="85" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">I</text>
+                    <text x="200" y="85" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">II</text>
+                </svg>
+            </div>
+            Seorang siswa diminta menghitung luas total bangun di atas. Siswa tersebut menjawab: "Luasnya adalah $(6+20) \times (6+5) = 26 \times 11 = 286$." <br>
+            Hambatan konseptual apa yang sedang dialami oleh siswa tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Siswa gagal memahami konsep pemisahan bangun, sehingga menganggap area I dan II saling tumpang tindih.</div>
+            <div class="option"><strong>B.</strong> Siswa tidak menyadari bahwa panjang dan lebar harus dikalikan, melainkan ia menjumlahkan tinggi ke masing-masing alas sebelum melakukan perkalian akhir.</div>
+            <div class="option"><strong>C.</strong> Siswa menggunakan konsep menghitung keliling dengan cara menambahkan setiap elemen sisi terluar bangun datar.</div>
+            <div class="option"><strong>D.</strong> Siswa sudah memahami konsep luas, namun gagal pada tahap mengalikan nilai tempat puluhan dan satuan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: Level HOTS | Soal 17</div>
+        <div class="question-text">Dalam suatu eksperimen matematika, Budi diminta menyederhanakan bentuk $5(2x - 3) - 2(x + 4)$. Budi menuliskan langkah pertamanya sebagai $10x - 15 - 2x + 8$. Letak kesalahan Budi pada langkah ini disebabkan oleh...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Budi tidak mendistribusikan tanda negatif dari $-2$ ke dalam angka $+4$.</div>
+            <div class="option"><strong>B.</strong> Budi melakukan pengurangan $10x - 2x$ secara langsung padahal ada konstanta di antaranya.</div>
+            <div class="option"><strong>C.</strong> Budi gagal mengalikan $5$ dengan $-3$, yang seharusnya menghasilkan $-8$.</div>
+            <div class="option"><strong>D.</strong> Budi salah memahami sifat komutatif pada aljabar.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: Level HOTS | Soal 18</div>
+        <div class="question-text">Diketahui luas total sebuah area model yang terbagi tiga adalah $120 \text{ cm}^2$. Tingginya adalah $5 \text{ cm}$. Jika panjang alas bagian pertama adalah $x \text{ cm}$, bagian kedua adalah $10 \text{ cm}$, dan bagian ketiga adalah $(x-2) \text{ cm}$, berapakah nilai $x$?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $6$</div>
+            <div class="option"><strong>B.</strong> $8$</div>
+            <div class="option"><strong>C.</strong> $12$</div>
+            <div class="option"><strong>D.</strong> $16$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: Level HOTS | Soal 19</div>
+        <div class="question-text">
+            <strong>[Studi Kasus Guru]</strong> Diberikan sebuah model luas persegi panjang yang tingginya bernilai $8$ dan alasnya terbagi menjadi bagian $A=10$ dan bagian $B=2$. Seorang anak menuliskan jawaban untuk Luas Total dengan ekspresi: $8 \times 10 \times 2 = 160$. <br>
+            Sebagai guru, interpretasi manakah yang paling akurat mengenai kesalahan pola pikir anak tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Anak tersebut salah menerapkan operasi distributif dengan mengubah simbol penjumlahan antar dua alas menjadi operasi perkalian.</div>
+            <div class="option"><strong>B.</strong> Anak tersebut sudah benar dalam proses substitusi angka ke dalam rumus, namun salah menghitung hasil akhir perkalian puluhan.</div>
+            <div class="option"><strong>C.</strong> Anak tersebut menyangka bahwa bagian B merupakan faktor pengurang bagi bagian A.</div>
+            <div class="option"><strong>D.</strong> Anak tersebut secara otomatis menambahkan tinggi 8 ke setiap komponen alas sehingga membentuk bangun tiga dimensi.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: Level HOTS | Soal 20</div>
+        <div class="question-text">Jika direpresentasikan dalam model luas, persamaan aljabar $(a+b)(c+d) = ac + ad + bc + bd$ membutuhkan bangun datar yang dibagi menjadi...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Dua persegi panjang kecil.</div>
+            <div class="option"><strong>B.</strong> Tiga persegi panjang kecil.</div>
+            <div class="option"><strong>C.</strong> Empat persegi panjang kecil.</div>
+            <div class="option"><strong>D.</strong> Sebuah kubus dengan 4 sisi.</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
