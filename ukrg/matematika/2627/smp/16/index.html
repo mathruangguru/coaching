@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 16: Operasi dan Sifat Bentuk Akar - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran: Operasi dan Sifat Bentuk Akar</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Bentuk Akar</div>
+        <div class="question-text">
+            <p>Bentuk akar adalah akar dari bilangan rasional yang hasilnya merupakan bilangan irasional. Bentuk akar memiliki sifat-sifat khusus yang memudahkan kita dalam melakukan operasi aljabar.</p>
+
+            <h4>1. Sifat-sifat Operasi Bentuk Akar</h4>
+            <ul>
+                <li><strong>Penjumlahan & Pengurangan:</strong> \(a\sqrt{c} \pm b\sqrt{c} = (a \pm b)\sqrt{c}\) (Syarat: nilai di dalam akar harus sama).</li>
+                <li><strong>Perkalian:</strong> \(\sqrt{a} \times \sqrt{b} = \sqrt{a \times b}\) dan \(a\sqrt{b} \times c\sqrt{d} = (a \times c)\sqrt{b \times d}\).</li>
+                <li><strong>Pembagian:</strong> \(\frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}}\).</li>
+            </ul>
+
+            <h4>2. Merasionalkan Penyebut Bentuk Akar</h4>
+            <p>Pecahan yang memiliki bentuk akar pada penyebutnya harus dirasionalkan dengan mengalikan pembilang dan penyebut dengan akar sekawannya.</p>
+            <ul>
+                <li>Bentuk \(\frac{a}{\sqrt{b}}\) dikalikan dengan \(\frac{\sqrt{b}}{\sqrt{b}}\) sehingga menjadi \(\frac{a\sqrt{b}}{b}\).</li>
+                <li>Bentuk \(\frac{c}{a + \sqrt{b}}\) dikalikan dengan \(\frac{a - \sqrt{b}}{a - \sqrt{b}}\) (sekawan).</li>
+                <li>Bentuk \(\frac{c}{\sqrt{a} - \sqrt{b}}\) dikalikan dengan \(\frac{\sqrt{a} + \sqrt{b}}{\sqrt{a} + \sqrt{b}}\) (sekawan).</li>
+            </ul>
+
+            <h4>3. Aplikasi Geometri</h4>
+            <p>Dalam geometri, besaran panjang, lebar, luas, atau keliling seringkali melibatkan bentuk akar.</p>
+            <ul>
+                <li><strong>Luas Persegi Panjang (\(L\)):</strong> \(L = p \times l\)</li>
+                <li><strong>Keliling Persegi Panjang (\(K\)):</strong> \(K = 2(p + l)\)</li>
+                <li>Jika Luas (\(L\)) dan Panjang (\(p\)) diketahui berbentuk akar, maka lebar dihitung dengan \(l = \frac{L}{p}\), yang mengharuskan kita merasionalkan penyebutnya terlebih dahulu sebelum mencari Keliling.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 1</div>
+        <div class="question-text">
+            Bentuk paling sederhana dari \(\sqrt{48}\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(3\sqrt{4}\)</div>
+            <div class="option">B. \(4\sqrt{3}\)</div>
+            <div class="option">C. \(16\sqrt{3}\)</div>
+            <div class="option">D. \(6\sqrt{2}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 2</div>
+        <div class="question-text">
+            Hasil dari penjumlahan \(3\sqrt{5} + 4\sqrt{5}\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(7\sqrt{10}\)</div>
+            <div class="option">B. \(12\sqrt{5}\)</div>
+            <div class="option">C. \(7\sqrt{5}\)</div>
+            <div class="option">D. \(12\sqrt{25}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 3</div>
+        <div class="question-text">
+            Hasil dari \(2\sqrt{3} \times 3\sqrt{6}\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(18\sqrt{2}\)</div>
+            <div class="option">B. \(12\sqrt{2}\)</div>
+            <div class="option">C. \(5\sqrt{18}\)</div>
+            <div class="option">D. \(36\sqrt{2}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 4</div>
+        <div class="question-text">
+            Bentuk rasional dari \(\frac{6}{\sqrt{2}}\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(6\sqrt{2}\)</div>
+            <div class="option">B. \(12\sqrt{2}\)</div>
+            <div class="option">C. \(3\)</div>
+            <div class="option">D. \(3\sqrt{2}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 5</div>
+        <div class="question-text">
+            Hasil operasi dari \((2+\sqrt{3})(2-\sqrt{3})\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(4-\sqrt{3}\)</div>
+            <div class="option">B. \(1\)</div>
+            <div class="option">C. \(7\)</div>
+            <div class="option">D. \(4+\sqrt{3}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 6</div>
+        <div class="question-text">
+            Bentuk rasional dari pecahan \(\frac{10}{3-\sqrt{2}}\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{30-10\sqrt{2}}{7}\)</div>
+            <div class="option">B. \(10\)</div>
+            <div class="option">C. \(\frac{30+10\sqrt{2}}{7}\)</div>
+            <div class="option">D. \(30+10\sqrt{2}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 7</div>
+        <div class="question-text">
+            Bentuk sederhana dari \(\sqrt{75} - \sqrt{27} + \sqrt{12}\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(2\sqrt{3}\)</div>
+            <div class="option">B. \(4\sqrt{3}\)</div>
+            <div class="option">C. \(5\sqrt{3}\)</div>
+            <div class="option">D. \(10\sqrt{3}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 8</div>
+        <div class="question-text">
+            Diketahui sebuah segitiga siku-siku memiliki panjang sisi penyiku \(\sqrt{3}+\sqrt{2}\) cm dan \(\sqrt{3}-\sqrt{2}\) cm. Luas segitiga tersebut adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(1\) cm\(^2\)</div>
+            <div class="option">B. \(\sqrt{6}\) cm\(^2\)</div>
+            <div class="option">C. \(0,5\) cm\(^2\)</div>
+            <div class="option">D. \(5\) cm\(^2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 9</div>
+        <div class="question-text">
+            Jika \(x = \frac{\sqrt{5}+\sqrt{3}}{\sqrt{5}-\sqrt{3}}\), maka nilai \(x\) ekuivalen dengan ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(4-\sqrt{15}\)</div>
+            <div class="option">B. \(8+2\sqrt{15}\)</div>
+            <div class="option">C. \(2\)</div>
+            <div class="option">D. \(4+\sqrt{15}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 10</div>
+        <div class="question-text">
+            Bentuk sederhana dari \(\sqrt{8 + 2\sqrt{15}}\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\sqrt{5}-\sqrt{3}\)</div>
+            <div class="option">B. \(\sqrt{5}+\sqrt{3}\)</div>
+            <div class="option">C. \(\sqrt{8}+\sqrt{15}\)</div>
+            <div class="option">D. \(\sqrt{4}+\sqrt{4}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 11</div>
+        <div class="question-text">
+            Sebuah lapangan berbentuk persegi panjang memiliki luas \(20\text{ m}^2\). Jika panjang lapangan tersebut adalah \((3+\sqrt{5})\text{ m}\), maka keliling dari lapangan tersebut adalah ....
+            
+            <div style="width: 250px; height: 120px; border: 2px solid var(--primary); border-radius: 4px; margin: 30px auto; position: relative; display: flex; align-items: center; justify-content: center; background: #fff;">
+                <span style="font-weight: bold; color: var(--primary);">\(L = 20\text{ m}^2\)</span>
+                <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); width: max-content;">\(p = 3+\sqrt{5}\text{ m}\)</span>
+                <span style="position: absolute; left: -30px; top: 50%; transform: translateY(-50%);">\(l = ?\)</span>
+            </div>
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(18-4\sqrt{5}\text{ m}\)</div>
+            <div class="option">B. \(15-5\sqrt{5}\text{ m}\)</div>
+            <div class="option">C. \(36+8\sqrt{5}\text{ m}\)</div>
+            <div class="option">D. \(36-8\sqrt{5}\text{ m}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 12</div>
+        <div class="question-text">
+            Diketahui sistem persamaan \(x\sqrt{2} + y\sqrt{3} = 5\) dan \(x\sqrt{2} - y\sqrt{3} = 1\). Nilai dari \(x \cdot y\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(6\)</div>
+            <div class="option">B. \(\sqrt{6}\)</div>
+            <div class="option">C. \(2\sqrt{3}\)</div>
+            <div class="option">D. \(\frac{\sqrt{6}}{2}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 13</div>
+        <div class="question-text">
+            Nilai \(x\) yang memenuhi persamaan tak hingga \(x = \sqrt{2+\sqrt{2+\sqrt{2+\dots}}}\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\sqrt{2}\)</div>
+            <div class="option">B. \(1\)</div>
+            <div class="option">C. \(2\)</div>
+            <div class="option">D. \(\infty\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 14</div>
+        <div class="question-text">
+            Pak Budi memiliki sebidang tanah berbentuk persegi panjang dengan luas \(12\text{ m}^2\). Jika lebar tanah tersebut \((3-\sqrt{3})\text{ m}\), maka keliling tanah Pak Budi adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(18+2\sqrt{3}\text{ m}\)</div>
+            <div class="option">B. \(9+\sqrt{3}\text{ m}\)</div>
+            <div class="option">C. \(6+2\sqrt{3}\text{ m}\)</div>
+            <div class="option">D. \(18-2\sqrt{3}\text{ m}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 15</div>
+        <div class="question-text">
+            Sebuah balok memiliki panjang \((2+\sqrt{2})\text{ cm}\), lebar \((2-\sqrt{2})\text{ cm}\), dan tinggi \(\sqrt{5}\text{ cm}\). Volume balok tersebut adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(4\sqrt{5}\text{ cm}^3\)</div>
+            <div class="option">B. \(6\sqrt{5}\text{ cm}^3\)</div>
+            <div class="option">C. \(8\sqrt{5}\text{ cm}^3\)</div>
+            <div class="option">D. \(2\sqrt{5}\text{ cm}^3\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 16</div>
+        <div class="question-text">
+            Nilai dari deret \(\frac{1}{1+\sqrt{2}} + \frac{1}{\sqrt{2}+\sqrt{3}} + \frac{1}{\sqrt{3}+\sqrt{4}} + \dots + \frac{1}{\sqrt{99}+\sqrt{100}}\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(10\)</div>
+            <div class="option">B. \(9\)</div>
+            <div class="option">C. \(1\)</div>
+            <div class="option">D. \(\sqrt{99}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 17</div>
+        <div class="question-text">
+            Jika \(x = \sqrt[3]{2+\sqrt{5}} + \sqrt[3]{2-\sqrt{5}}\), maka nilai dari persamaan \(x^3 + 3x\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(8\)</div>
+            <div class="option">B. \(2\sqrt{5}\)</div>
+            <div class="option">C. \(4\)</div>
+            <div class="option">D. \(0\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 18</div>
+        <div class="question-text">
+            Luas permukaan sebuah lukisan yang berbentuk persegi panjang adalah \(42\text{ cm}^2\). Jika lukisan tersebut memiliki lebar \((\sqrt{11}-2)\text{ cm}\), panjang pita yang dibutuhkan untuk membingkai sekeliling lukisan tersebut adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(20-14\sqrt{11}\text{ cm}\)</div>
+            <div class="option">B. \(10+7\sqrt{11}\text{ cm}\)</div>
+            <div class="option">C. \(12+6\sqrt{11}\text{ cm}\)</div>
+            <div class="option">D. \(20+14\sqrt{11}\text{ cm}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 19</div>
+        <div class="question-text">
+            Sebuah segitiga siku-siku memiliki panjang sisi siku-siku \(a = \sqrt{3}+\sqrt{2}\) dan \(b = \sqrt{3}-\sqrt{2}\). Panjang garis tinggi yang tegak lurus dengan sisi miring segitiga tersebut adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\sqrt{10}\)</div>
+            <div class="option">B. \(\frac{\sqrt{10}}{10}\)</div>
+            <div class="option">C. \(2\sqrt{10}\)</div>
+            <div class="option">D. \(\frac{1}{5}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 20</div>
+        <div class="question-text">
+            Jika \(a\) dan \(b\) bilangan bulat positif yang memenuhi \(\sqrt{11 - 4\sqrt{7}} = \sqrt{a} - \sqrt{b}\), maka nilai \(a^2 - b^2\) adalah ....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(42\)</div>
+            <div class="option">B. \(33\)</div>
+            <div class="option">C. \(40\)</div>
+            <div class="option">D. \(45\)</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
