@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangkuman Materi dan Latihan Soal: Pemodelan Aljabar & Aritmetika Sosial</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.1rem; padding-top: 20px;}
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            .logo-right { padding-top: 0; display: block; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .options-grid { flex-direction: row; flex-wrap: wrap; }
+        .options-grid .option { flex: 1 1 calc(50% - 8px); min-width: 200px;}
+        
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">Bagian I: Rangkuman Materi</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-text">
+            <p>Pemecahan masalah aritmetika sosial dan aljabar dasar seringkali mengharuskan kita menerjemahkan soal cerita ke dalam bahasa matematika (model matematika).</p>
+
+            <h4 class="mt-4">1. Mengenal Variabel</h4>
+            <p>Gunakan huruf untuk mewakili objek yang belum diketahui atau sedang dibicarakan nilainya (contoh: $B$ untuk Buku, $P$ untuk Pensil).</p>
+
+            <h4 class="mt-4">2. Kata Kunci Operasi Hitung</h4>
+            <p>Perhatikan kata-kata kunci berikut untuk menghindari jebakan dalam membuat persamaan:</p>
+            <ul class="list-inside">
+                <li><strong>"...dari..."</strong> atau <strong>"...kali lipat..."</strong>: Menandakan operasi perkalian. <br>
+                Contoh: "Harga pensil adalah sepertiga dari buku" $\rightarrow P = \frac{1}{3} \times B$.</li>
+                <li><strong>"...lebih mahal dari..."</strong> atau <strong>"...lebih banyak dari..."</strong>: Menandakan penambahan ($+$). <br>
+                Contoh: "Pensil lebih mahal Rp2.000 dari penggaris" $\rightarrow P = G + 2.000$ <em>(Hati-hati: ini berarti penggaris lebih murah, sehingga $G = P - 2.000$)</em>.</li>
+                <li><strong>"...lebih murah dari..."</strong> atau <strong>"...kurang dari..."</strong>: Menandakan pengurangan ($-$).</li>
+            </ul>
+
+            <h4 class="mt-4">3. Langkah Penyelesaian (Metode Substitusi Dasar)</h4>
+            <ol class="list-inside" style="list-style-type: decimal;">
+                <li>Tuliskan nilai objek yang sudah diketahui secara pasti.</li>
+                <li>Cari nilai objek kedua dengan memasukkan (mensubstitusi) nilai objek pertama ke persamaannya.</li>
+                <li>Cari nilai objek ketiga (dan seterusnya) dengan memasukkan nilai yang baru didapat.</li>
+                <li>Kalikan harga masing-masing satuan objek dengan <strong>jumlah kuantitas</strong> yang diminta di soal akhir.</li>
+                <li>Jumlahkan seluruhnya.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section-title">Bagian II: Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat. Hati-hati, banyak opsi yang terlihat benar jika Anda melewatkan satu langkah!</em></p>
+
+    <div class="question-meta">Tingkat: Konsep Dasar (Soal 1 - 5)</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 1</div>
+        <div class="question-text">Harga satu buah buku tulis adalah Rp5.000,00 dan harga satu buah pensil adalah Rp2.000,00. Jika Budi membeli 2 buku tulis dan 3 pensil, total yang harus dibayar adalah....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp7.000,00</div>
+            <div class="option">B. Rp11.000,00</div>
+            <div class="option">C. Rp12.000,00</div>
+            <div class="option">D. Rp16.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 2</div>
+        <div class="question-text">Harga sebuah penghapus adalah sepertiga dari harga sebuah pulpen. Jika harga pulpen adalah Rp15.000,00, maka harga satu buah penghapus adalah....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp5.000,00</div>
+            <div class="option">B. Rp10.000,00</div>
+            <div class="option">C. Rp15.000,00</div>
+            <div class="option">D. Rp45.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 3</div>
+        <div class="question-text">Harga mainan robot lebih mahal Rp4.000,00 dibandingkan harga mainan mobil-mobilan. Jika harga mainan mobil-mobilan adalah Rp10.000,00, berapakah harga mainan robot?</div>
+        <div class="options-grid">
+            <div class="option">A. Rp4.000,00</div>
+            <div class="option">B. Rp6.000,00</div>
+            <div class="option">C. Rp10.000,00</div>
+            <div class="option">D. Rp14.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 4</div>
+        <div class="question-text">Doni membeli 5 buah apel dengan total harga Rp20.000,00. Berapakah harga satu buah apel tersebut?</div>
+        <div class="options-grid">
+            <div class="option">A. Rp4.000,00</div>
+            <div class="option">B. Rp15.000,00</div>
+            <div class="option">C. Rp25.000,00</div>
+            <div class="option">D. Rp100.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 5</div>
+        <div class="question-text">Diketahui nilai $X$ adalah 3 kali nilai $Y$. Jika nilai $Y$ adalah Rp6.000,00, berapakah jumlah dari $X$ dan $Y$?</div>
+        <div class="options-grid">
+            <div class="option">A. Rp9.000,00</div>
+            <div class="option">B. Rp12.000,00</div>
+            <div class="option">C. Rp18.000,00</div>
+            <div class="option">D. Rp24.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Tingkat: Medium (Soal 6 - 10)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 6</div>
+        <div class="question-text">Harga sepotong kemeja adalah Rp100.000,00. Toko memberikan diskon sebesar 20%. Berapakah harga yang harus dibayar untuk kemeja tersebut setelah diskon?</div>
+        <div class="options-grid">
+            <div class="option">A. Rp20.000,00</div>
+            <div class="option">B. Rp80.000,00</div>
+            <div class="option">C. Rp100.000,00</div>
+            <div class="option">D. Rp120.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 7</div>
+        <div class="question-text">Harga sebuah tas adalah Rp200.000,00. Harga sebuah dompet adalah setengah dari harga tas. Jika Susi membeli 2 tas dan 3 dompet, total belanjanya adalah....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp300.000,00</div>
+            <div class="option">B. Rp500.000,00</div>
+            <div class="option">C. Rp700.000,00</div>
+            <div class="option">D. Rp900.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 8</div>
+        <div class="question-text">Jika harga 3 buah cokelat adalah Rp12.000,00, maka uang yang harus disiapkan untuk membeli 5 buah cokelat yang sama adalah....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp15.000,00</div>
+            <div class="option">B. Rp20.000,00</div>
+            <div class="option">C. Rp36.000,00</div>
+            <div class="option">D. Rp60.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 9</div>
+        <div class="question-text">Harga ayam bakar per porsi adalah Rp30.000,00. Harga bebek bakar per porsi lebih mahal Rp15.000,00 dari ayam bakar. Jika Andi membeli 2 porsi ayam bakar dan 1 porsi bebek bakar, maka ia harus membayar....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp75.000,00</div>
+            <div class="option">B. Rp90.000,00</div>
+            <div class="option">C. Rp105.000,00</div>
+            <div class="option">D. Rp120.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 10</div>
+        <div class="question-text">Diketahui barang A seharga Rp15.000,00. Barang B lebih murah Rp3.000,00 dari barang A. Barang C lebih mahal Rp5.000,00 dari barang B. Harga barang C adalah....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp13.000,00</div>
+            <div class="option">B. Rp17.000,00</div>
+            <div class="option">C. Rp20.000,00</div>
+            <div class="option">D. Rp23.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Tingkat: HOTS (Soal 11 - 20)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 11</div>
+        <div class="question-text">Selisih uang Raka dan uang Bima adalah Rp10.000,00. Jika uang Raka lebih banyak dari Bima dan jumlah uang mereka berdua adalah Rp50.000,00, maka besar uang Raka adalah....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp20.000,00</div>
+            <div class="option">B. Rp30.000,00</div>
+            <div class="option">C. Rp40.000,00</div>
+            <div class="option">D. Rp60.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 12</div>
+        <div class="question-text">Toko Kopi Senja menjual kopi, donat, dan risol. Harga segelas kopi adalah Rp36.000,00. Harga sebuah donat adalah seperempat dari harga segelas kopi. Sementara itu, harga sebuah donat lebih murah Rp3.000,00 dibandingkan harga sebuah risol. Total harga jika seseorang membeli 3 kopi, 2 donat, dan 4 risol adalah....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp57.000,00</div>
+            <div class="option">B. Rp150.000,00</div>
+            <div class="option">C. Rp174.000,00</div>
+            <div class="option">D. Rp195.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 13</div>
+        <div class="question-text">Ani membeli 2 buku dan 1 pensil seharga Rp15.000,00. Budi membeli 1 buku dan 2 pensil seharga Rp12.000,00 di toko yang sama. Jika Cici membeli 1 buku dan 1 pensil dengan menyerahkan uang selembar Rp50.000,00, maka kembalian yang diterima Cici adalah....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp9.000,00</div>
+            <div class="option">B. Rp35.000,00</div>
+            <div class="option">C. Rp41.000,00</div>
+            <div class="option">D. Rp45.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 14</div>
+        <div class="question-text">Umur Pak RT saat ini adalah 3 kali umur anaknya. Lima tahun yang lalu, jumlah umur mereka berdua adalah 46 tahun. Berapakah umur Pak RT saat ini?</div>
+        <div class="options-grid">
+            <div class="option">A. 14 tahun</div>
+            <div class="option">B. 38 tahun</div>
+            <div class="option">C. 42 tahun</div>
+            <div class="option">D. 47 tahun</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 15</div>
+        <div class="question-text">Toko Pakaian Rapi menjual kemeja, dasi, dan kaus kaki. Harga sebuah kemeja adalah Rp150.000,00. Harga sebuah dasi adalah dua perlima dari harga sebuah kemeja. Sementara itu, harga sepasang kaus kaki lebih murah Rp25.000,00 dibandingkan harga sebuah dasi. Jika Budi membeli 2 kemeja, 1 dasi, dan 3 pasang kaus kaki, maka ia harus membayar....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp245.000,00</div>
+            <div class="option">B. Rp315.000,00</div>
+            <div class="option">C. Rp465.000,00</div>
+            <div class="option">D. Rp615.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 16</div>
+        <div class="question-text">Harga sebuah tiket bioskop kategori Dewasa adalah Rp50.000,00 dan kategori Anak-anak Rp30.000,00. Rombongan yang terdiri dari 10 orang membayar tiket masuk dengan total harga Rp420.000,00. Banyaknya orang dewasa dalam rombongan tersebut adalah....</div>
+        <div class="options-grid">
+            <div class="option">A. 4 orang</div>
+            <div class="option">B. 5 orang</div>
+            <div class="option">C. 6 orang</div>
+            <div class="option">D. 8 orang</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 17</div>
+        <div class="question-text">Harga 2 Kg Jeruk dan 3 Kg Apel adalah Rp140.000,00. Jika harga 1 Kg Jeruk adalah Rp25.000,00, lalu Ibu membeli 1 Kg Jeruk dan 2 Kg Apel menggunakan selembar uang Rp100.000,00, berapakah kembalian yang diterima Ibu?</div>
+        <div class="options-grid">
+            <div class="option">A. Rp15.000,00</div>
+            <div class="option">B. Rp25.000,00</div>
+            <div class="option">C. Rp35.000,00</div>
+            <div class="option">D. Rp85.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 18</div>
+        <div class="question-text">Sebuah toko perkakas menjual palu, obeng, dan tang. Harga sebuah palu adalah Rp45.000,00. Harga sebuah obeng adalah dua pertiga dari harga sebuah palu. Diketahui juga bahwa harga sebuah obeng lebih mahal Rp5.000,00 dari harga sebuah tang. Andi membeli 1 palu, 3 obeng, dan 2 tang. Total belanjaan Andi adalah....</div>
+        <div class="options-grid">
+            <div class="option">A. Rp100.000,00</div>
+            <div class="option">B. Rp110.000,00</div>
+            <div class="option">C. Rp185.000,00</div>
+            <div class="option">D. Rp205.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 19</div>
+        <div class="question-text">Harga sebuah sepatu olahraga adalah 3 kali lipat dari harga sepasang sandal. Rina membeli 1 buah sepatu dan 2 pasang sandal dengan total harga Rp250.000,00. Jika Rina memutuskan hanya membeli 2 buah sepatu saja, berapa yang harus ia bayar?</div>
+        <div class="options-grid">
+            <div class="option">A. Rp150.000,00</div>
+            <div class="option">B. Rp250.000,00</div>
+            <div class="option">C. Rp300.000,00</div>
+            <div class="option">D. Rp400.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 20</div>
+        <div class="question-text">Tio membeli dua jenis mainan, yaitu Robot dan Gasing. Harga 1 Robot Rp20.000,00 dan harga 1 Gasing Rp15.000,00. Jika Tio membeli tepat 12 mainan dengan total biaya Rp215.000,00, berapa banyak mainan Gasing yang dibeli Tio?</div>
+        <div class="options-grid">
+            <div class="option">A. 4 buah</div>
+            <div class="option">B. 5 buah</div>
+            <div class="option">C. 6 buah</div>
+            <div class="option">D. 7 buah</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
