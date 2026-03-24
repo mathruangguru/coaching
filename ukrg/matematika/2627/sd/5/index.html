@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran dan Evaluasi Pedagogi: Pengukuran Panjang dengan Satuan Tidak Baku</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">Bagian I: Rangkuman Materi</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Konsep Dasar Pengukuran Panjang</div>
+        <div class="question-text">
+            <h4>1. Konsep Dasar Pengukuran Panjang</h4>
+            <p>Pengukuran pada hakikatnya adalah proses membandingkan suatu besaran dengan besaran lain yang sejenis yang ditetapkan sebagai satuan. Sebelum siswa diperkenalkan dengan satuan baku (seperti sentimeter atau meter) dan alat ukur standar (seperti penggaris), siswa di kelas awal harus memahami konsep pengukuran melalui penggunaan <strong>satuan tidak baku</strong> (seperti jengkal, langkah, batang korek api, klip kertas, atau balok).</p>
+
+            <h4 class="mt-4">2. Prinsip-Prinsip Dasar Pengukuran (Unit Iteration)</h4>
+            <p>Agar pengukuran dengan satuan tidak baku menghasilkan nilai yang konsisten dan bermakna, siswa harus memahami empat prinsip dasar berikut:</p>
+            
+            <ol class="list-inside">
+                <li class="mt-4"><strong>Penyejajaran Titik Pangkal (<em>Baseline Alignment</em>):</strong> Titik awal benda yang diukur harus sejajar atau sama persis posisinya dengan titik awal unit pengukur pertama.
+                    <div style="text-align: center; margin: 15px 0;">
+                        <svg width="100%" style="max-width: 600px;" height="160" viewBox="-120 -30 600 160" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="0" y1="120" x2="0" y2="-20" stroke="red" stroke-width="2" stroke-dasharray="6,4"/>
+                            <text x="0" y="140" font-family="sans-serif" font-size="14" fill="red" text-anchor="middle">Titik pangkal sejajar</text>
+                            
+                            <rect x="0" y="0" width="100" height="30" fill="#a4c2f4" stroke="#333" stroke-width="2"/>
+                            <rect x="100" y="0" width="100" height="30" fill="#a4c2f4" stroke="#333" stroke-width="2"/>
+                            
+                            <rect x="0" y="60" width="330" height="40" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                            <text x="345" y="85" font-family="sans-serif" font-size="14" fill="#333">Benda yang diukur</text>
+                        </svg>
+                    </div>
+                </li>
+
+                <li class="mt-4"><strong>Kesinambungan Tanpa Celah (<em>No Gaps</em>):</strong> Unit-unit pengukur harus disusun secara berderet menyentuh satu sama lain tanpa ada ruang kosong di antaranya. Celah akan menyebabkan hasil ukur menjadi lebih kecil dari yang sebenarnya (underestimation).
+                    <div style="text-align: center; margin: 15px 0;">
+                        <svg width="100%" style="max-width: 600px;" height="140" viewBox="-80 -30 550 140" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="0" width="80" height="30" fill="#b6d7a8" stroke="#333" stroke-width="2"/>
+                            <rect x="105" y="0" width="80" height="30" fill="#b6d7a8" stroke="#333" stroke-width="2"/>
+                            <rect x="210" y="0" width="80" height="30" fill="#b6d7a8" stroke="#333" stroke-width="2"/>
+                            
+                            <line x1="80" y1="-10" x2="105" y2="-10" stroke="red" stroke-width="2" marker-start="url(#arrow1)" marker-end="url(#arrow1)"/>
+                            <text x="92.5" y="-20" font-family="sans-serif" font-size="14" fill="red" text-anchor="middle">Celah</text>
+                            
+                            <rect x="0" y="60" width="330" height="40" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                            
+                            <defs>
+                                <marker id="arrow1" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="red" />
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </li>
+
+                <li class="mt-4"><strong>Tanpa Tumpang Tindih (<em>No Overlaps</em>):</strong> Unit-unit pengukur tidak boleh saling menumpuk. Tumpang tindih akan menyebabkan hasil ukur menjadi lebih besar dari yang sebenarnya (overestimation).
+                    <div style="text-align: center; margin: 15px 0;">
+                        <svg width="100%" style="max-width: 600px;" height="150" viewBox="-80 -50 550 150" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="0" width="100" height="30" fill="#f9cb9c" fill-opacity="0.9" stroke="#333" stroke-width="2"/>
+                            <rect x="70" y="5" width="100" height="30" fill="#ffe599" fill-opacity="0.9" stroke="#333" stroke-width="2"/>
+                            <rect x="140" y="0" width="100" height="30" fill="#f9cb9c" fill-opacity="0.9" stroke="#333" stroke-width="2"/>
+                            
+                            <line x1="70" y1="-15" x2="100" y2="-15" stroke="red" stroke-width="2" marker-start="url(#arrow2)" marker-end="url(#arrow2)"/>
+                            <text x="85" y="-25" font-family="sans-serif" font-size="14" fill="red" text-anchor="middle">Tumpang tindih</text>
+                            
+                            <rect x="0" y="60" width="330" height="40" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                            
+                            <defs>
+                                <marker id="arrow2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="red" />
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </li>
+
+                <li class="mt-4"><strong>Unit Identik (<em>Identical Units</em>):</strong> Pengukuran yang akurat mengharuskan penggunaan unit yang ukurannya seragam (misal: semua klip kertas harus berukuran sama). Menggabungkan unit besar dan kecil tanpa konversi akan mengacaukan makna kuantitas ukuran.
+                    <div style="text-align: center; margin: 15px 0;">
+                        <svg width="100%" style="max-width: 600px;" height="140" viewBox="-80 -30 550 140" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="0" width="100" height="30" fill="#f4cccc" stroke="#333" stroke-width="2"/>
+                            <rect x="100" y="0" width="50" height="30" fill="#f4cccc" stroke="#333" stroke-width="2"/>
+                            <rect x="150" y="0" width="150" height="30" fill="#f4cccc" stroke="#333" stroke-width="2"/>
+                            
+                            <text x="150" y="-10" font-family="sans-serif" font-size="14" fill="red" text-anchor="middle">Ukuran unit tidak seragam</text>
+                            
+                            <rect x="0" y="60" width="330" height="40" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </li>
+            </ol>
+
+            <h4 class="mt-4">3. Tindakan Pedagogis Terhadap Kesalahan Siswa</h4>
+            <p>Ketika siswa melakukan kesalahan dalam pengukuran praktis, guru <strong>tidak boleh</strong> langsung menyalahkan alat, menyalahkan kemampuan kognitif berhitung siswa, atau langsung mengganti alat dengan penggaris standar. Guru harus:</p>
+            <ul class="list-inside">
+                <li>Mengidentifikasi kesalahan visual/motorik yang mencerminkan miskonsepsi prosedural.</li>
+                <li>Memberikan umpan balik yang spesifik pada prinsip dasar mana yang dilanggar (misal: mengingatkan prinsip "ujung-ke-ujung").</li>
+                <li>Meminta siswa melakukan pengukuran ulang dengan panduan scaffolding.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">Bagian II: Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat. Hati-hati, beberapa opsi dirancang untuk menjebak dengan menggunakan pendekatan yang seolah-olah empatik atau logis secara praktis, namun salah secara prinsip pedagogi matematika.</em></p>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">A. Pemahaman Konsep Dasar | Soal 1</div>
+        <div class="question-text">Tujuan utama guru kelas awal mengajarkan pengukuran menggunakan satuan tidak baku sebelum satuan baku adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Menghindari beban biaya pembelian alat ukur standar seperti penggaris yang mungkin memberatkan siswa.</div>
+            <div class="option"><strong>B.</strong> Mengurangi beban kognitif siswa dalam menghafal tangga konversi metrik seperti dari cm ke meter.</div>
+            <div class="option"><strong>C.</strong> Membangun pemahaman konseptual tentang apa arti "mengukur" melalui iterasi unit yang nyata dan dekat dengan keseharian anak.</div>
+            <div class="option"><strong>D.</strong> Menyesuaikan dengan kemampuan motorik halus anak yang belum mampu memegang penggaris dengan lurus.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">A. Pemahaman Konsep Dasar | Soal 2</div>
+        <div class="question-text">Saat menyusun klip kertas untuk mengukur panjang pensil, prinsip "Kesinambungan" mengharuskan siswa untuk...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Memulai pengukuran tepat dari bagian tengah pensil agar seimbang.</div>
+            <div class="option"><strong>B.</strong> Menyusun klip kertas secara ujung-ke-ujung tanpa celah dan tanpa saling bertumpuk.</div>
+            <div class="option"><strong>C.</strong> Menggunakan bantuan penggaris di bawah klip kertas agar susunannya tetap lurus.</div>
+            <div class="option"><strong>D.</strong> Memastikan jumlah klip kertas selalu menghasilkan bilangan genap agar mudah dibagi.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">A. Pemahaman Konsep Dasar | Soal 3</div>
+        <div class="question-text">Jika seorang anak mengukur meja dengan menggunakan campuran jengkal tangannya dan jengkal tangan gurunya, prinsip pengukuran manakah yang dilanggar?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Prinsip iterasi unit ganda.</div>
+            <div class="option"><strong>B.</strong> Prinsip titik pangkal (baseline).</div>
+            <div class="option"><strong>C.</strong> Prinsip kelurusan garis ukur.</div>
+            <div class="option"><strong>D.</strong> Prinsip penggunaan unit yang identik.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">A. Pemahaman Konsep Dasar | Soal 4</div>
+        <div class="question-text">Dalam konsep awal pengukuran panjang, mengapa "tumpang tindih" (overlapping) antar unit ukur menjadi sebuah kesalahan fatal?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Karena hal tersebut memicu overestimasi; jumlah unit yang terhitung menjadi lebih banyak seolah-olah objeknya sangat panjang, padahal aslinya lebih pendek.</div>
+            <div class="option"><strong>B.</strong> Karena menyebabkan alat ukur menjadi cepat rusak dan bengkok saat digunakan berulang kali oleh siswa.</div>
+            <div class="option"><strong>C.</strong> Karena mengharuskan siswa memahami konsep pecahan lebih awal dari kurikulum semestinya.</div>
+            <div class="option"><strong>D.</strong> Karena menyulitkan guru saat melakukan penilaian keterampilan motorik anak secara klasikal.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">A. Pemahaman Konsep Dasar | Soal 5</div>
+        <div class="question-text">Apa yang dimaksud dengan "konservasi panjang" (conservation of length) dalam perkembangan kognitif Piaget terkait pengukuran?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Pemahaman bahwa panjang suatu benda tidak berubah meskipun benda tersebut dipindahkan atau diubah bentuknya.</div>
+            <div class="option"><strong>B.</strong> Kemampuan untuk menyimpan alat ukur dengan baik agar tidak memuai saat terkena panas.</div>
+            <div class="option"><strong>C.</strong> Keterampilan merawat lingkungan dengan tidak menebang pohon secara berlebihan.</div>
+            <div class="option"><strong>D.</strong> Proses mengubah satuan dari sentimeter menjadi meter dengan membagi seratus.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">B. Soal Medium / Aplikasi Menengah | Soal 6</div>
+        <div class="question-text">Budi dan Andi sama-sama mengukur lebar papan tulis menggunakan buku tulis mereka masing-masing. Budi melaporkan lebarnya 10 buku, sedangkan Andi melaporkan 12 buku. Analisis paling logis terhadap perbedaan ini adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Salah satu siswa memiliki gangguan penglihatan sehingga menghitung buku yang sama dua kali.</div>
+            <div class="option"><strong>B.</strong> Papan tulis tersebut mengalami pemuaian di siang hari sehingga lebarnya bertambah.</div>
+            <div class="option"><strong>C.</strong> Buku tulis yang digunakan Budi ukurannya lebih panjang dibandingkan buku tulis milik Andi.</div>
+            <div class="option"><strong>D.</strong> Budi mengabaikan prinsip titik pangkal sehingga pengukurannya terpotong.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">B. Soal Medium / Aplikasi Menengah | Soal 7</div>
+        <div class="question-text">Seorang guru meminta siswa mengukur panjang buku pelajaran menggunakan koin. Saat evaluasi, guru mendapati rata-rata siswa kelas tersebut salah menghitung karena koin yang diletakkan melengkung mengikuti pola garis gelombang, bukan garis lurus sejajar buku. Tindakan guru seharusnya...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Memaklumi hal tersebut karena koin adalah benda bundar yang memang sulit diluruskan.</div>
+            <div class="option"><strong>B.</strong> Mengganti koin dengan penggaris karena koin bukan alat ukur yang valid dalam fisika.</div>
+            <div class="option"><strong>C.</strong> Memberikan lakban dua arah (double-tape) agar koin melekat kuat di atas buku.</div>
+            <div class="option"><strong>D.</strong> Menjelaskan bahwa pengukuran panjang objek lurus harus menggunakan lintasan terpendek berupa garis lurus sejajar.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">B. Soal Medium / Aplikasi Menengah | Soal 8</div>
+        <div class="question-text">Siti mengukur sebatang pensil menggunakan penggaris yang patah di bagian ujungnya. Ia menyejajarkan ujung pensil dengan angka 2 pada penggaris, dan ujung satunya berada di angka 10. Jika Siti belum memahami prinsip selisih, kesalahan apa yang paling mungkin ia katakan?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> "Panjang pensil ini adalah 12 sentimeter."</div>
+            <div class="option"><strong>B.</strong> "Panjang pensil ini adalah 8 sentimeter."</div>
+            <div class="option"><strong>C.</strong> "Panjang pensil ini adalah 10 sentimeter."</div>
+            <div class="option"><strong>D.</strong> "Pensil ini tidak bisa diukur karena penggarisnya rusak."</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">B. Soal Medium / Aplikasi Menengah | Soal 9</div>
+        <div class="question-text">Dika mengukur meja menggunakan klip kertas, namun ia menyusun klip kertas tersebut dengan formasi: klip pertama vertikal, klip kedua horizontal, klip ketiga vertikal, dan seterusnya. Apa dampak langsung dari tindakannya terhadap hasil pengukuran?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Tidak ada dampak, hasilnya akan sama asalkan jumlah klip kertasnya dihitung dengan benar.</div>
+            <div class="option"><strong>B.</strong> Hasilnya tidak merepresentasikan panjang yang akurat karena unit yang digunakan tidak konsisten secara spasial (dimensinya berubah).</div>
+            <div class="option"><strong>C.</strong> Hasil pengukurannya akan selalu menjadi bilangan ganjil karena pola selang-seling tersebut.</div>
+            <div class="option"><strong>D.</strong> Guru harus mengapresiasi kreativitas siswa dalam menemukan pola geometri abstrak.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">B. Soal Medium / Aplikasi Menengah | Soal 10</div>
+        <div class="question-text">Guru A meminta siswa mengukur lapangan basket menggunakan langkah kaki. Tantangan terbesar yang dapat menyebabkan inkonsistensi data antar siswa dalam metode ini adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Perbedaan warna sepatu olahraga yang digunakan oleh para siswa di kelas.</div>
+            <div class="option"><strong>B.</strong> Kelelahan fisik jika lapangan yang diukur terlalu luas dan cuaca terlalu panas.</div>
+            <div class="option"><strong>C.</strong> Siswa kesulitan menjaga konsistensi panjang rentang langkah mereka sendiri dari awal hingga akhir.</div>
+            <div class="option"><strong>D.</strong> Kesulitan siswa dalam mengkonversi jumlah langkah kaki menjadi ukuran standar meter.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Soal HOTS / Analisis Kritis Pedagogis | Soal 11</div>
+        <div class="question-text">Dalam sebuah observasi klinis, siswa X terlihat hanya memiliki satu balok kayu kecil. Untuk mengukur kotak pensil, ia menaruh balok itu di ujung kotak, menandai batas ujung balok dengan jarinya, lalu memindahkan balok tersebut ke sebelah jarinya, dan mengulanginya. Kemampuan kognitif kritis apa yang telah dicapai siswa X dibandingkan siswa yang membutuhkan banyak balok berderet?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Siswa X mengalami defisit perhatian sehingga tidak mampu menyusun benda dalam jumlah banyak secara bersamaan.</div>
+            <div class="option"><strong>B.</strong> Siswa X telah memahami prinsip konversi unit metrik standar.</div>
+            <div class="option"><strong>C.</strong> Siswa X telah menguasai konsep iterasi unit spasial dengan membayangkan posisi unit yang sudah dipindahkan.</div>
+            <div class="option"><strong>D.</strong> Siswa X menghindari bekerja kelompok dengan memonopoli satu-satunya alat ukur yang ada.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Soal HOTS / Analisis Kritis Pedagogis | Soal 12</div>
+        <div class="question-text">
+            <strong>Perhatikan ilustrasi pengukuran yang dilakukan seorang siswa di bawah ini!</strong>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <svg width="100%" style="max-width: 600px;" height="180" viewBox="-120 -50 600 180" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="80" width="380" height="30" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                    <text x="-15" y="100" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="end">Balok Kayu</text>
+                    
+                    <text x="-15" y="15" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="end">Unit Ukur</text>
+                    
+                    <rect x="0" y="0" width="90" height="25" fill="#a4c2f4" stroke="#333" stroke-width="2"/>
+                    <rect x="58" y="5" width="90" height="25" fill="#b4a7d6" fill-opacity="0.9" stroke="#333" stroke-width="2"/>
+                    <rect x="116" y="0" width="90" height="25" fill="#a4c2f4" fill-opacity="0.9" stroke="#333" stroke-width="2"/>
+                    <rect x="174" y="5" width="90" height="25" fill="#b4a7d6" fill-opacity="0.9" stroke="#333" stroke-width="2"/>
+                    <rect x="232" y="0" width="90" height="25" fill="#a4c2f4" fill-opacity="0.9" stroke="#333" stroke-width="2"/>
+                    <rect x="290" y="5" width="90" height="25" fill="#b4a7d6" fill-opacity="0.9" stroke="#333" stroke-width="2"/>
+                    
+                    <line x1="0" y1="120" x2="0" y2="-30" stroke="red" stroke-width="2" stroke-dasharray="6,4"/>
+                    <line x1="380" y1="120" x2="380" y2="-30" stroke="red" stroke-width="2" stroke-dasharray="6,4"/>
+                </svg>
+            </div>
+
+            Siswa tersebut melaporkan bahwa panjang balok kayu adalah 6 unit ukur. Padahal jika disusun dengan benar, panjang balok sebanding dengan 4 unit ukur. Berdasarkan aktivitas pengukurannya, manakah analisis guru yang paling tepat dan tindakan pedagogis yang harus dilakukan?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Siswa mengalami kesulitan motorik halus yang parah; Guru harus secara proaktif mengambil alih tangan siswa dan menuntunnya menyusun unit tersebut agar rapi.</div>
+            <div class="option"><strong>B.</strong> Siswa menempatkan alat ukur secara tumpang tindih. Guru perlu menegaskan prinsip dasar pengukuran: "menyusun unit ukuran ujung-ke-ujung secara kontinu tanpa penumpukan".</div>
+            <div class="option"><strong>C.</strong> Siswa kebingungan dengan konsep perhitungan dasar melebihi angka 4; Guru perlu menunda pelajaran pengukuran dan mengulang drill berhitung 1-10.</div>
+            <div class="option"><strong>D.</strong> Alat ukur yang digunakan terlalu licin sehingga mudah bergeser; Guru sebaiknya segera membagikan lem agar unit ukur tertempel kuat di meja kelas.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Soal HOTS / Analisis Kritis Pedagogis | Soal 13</div>
+        <div class="question-text">Guru B berpendapat, "Mengajar dengan jengkal atau korek api itu membuang waktu. Lebih baik anak kelas 1 SD langsung diajarkan menggunakan penggaris sentimeter agar terbiasa dengan presisi sejak dini." Risiko pedagogis terbesar dari pendekatan Guru B adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Siswa akan kecanduan alat bantu mekanis dan kehilangan kemampuan bernalar murni (mental math).</div>
+            <div class="option"><strong>B.</strong> Penggaris memiliki ujung yang tajam sehingga rentan mencederai siswa kelas bawah.</div>
+            <div class="option"><strong>C.</strong> Siswa mungkin bisa membaca angka di penggaris secara mekanis, namun tidak memahami makna konseptual bahwa panjang adalah akumulasi dari unit-unit kecil.</div>
+            <div class="option"><strong>D.</strong> Orang tua akan protes karena metode pengajaran dianggap terlalu kuno dan tidak interaktif.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Soal HOTS / Analisis Kritis Pedagogis | Soal 14</div>
+        <div class="question-text">Seorang anak diberikan kawat panjang yang ditekuk-tekuk melingkar, lalu diminta mengukur panjangnya menggunakan batang korek api yang lurus. Anak tersebut menangis frustrasi karena batang korek apinya selalu bergeser dan tidak bisa mengikuti bentuk lengkungan. Intervensi pedagogis terbaik yang mengeksplorasi pemecahan masalah adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> "Jangan menangis. Tinggalkan kawat itu, mari kita ukur pensil ini saja yang lebih mudah karena lurus."</div>
+            <div class="option"><strong>B.</strong> "Apakah kita bisa menekan kawat ini menjadi lurus terlebih dahulu, atau menggunakan benang fleksibel untuk menjiplak bentuknya lalu mengukur benang tersebut?"</div>
+            <div class="option"><strong>C.</strong> "Kamu kurang teliti. Cobalah patah-patahkan batang korek apinya menjadi sangat kecil agar bisa membelok."</div>
+            <div class="option"><strong>D.</strong> "Alat ukur lurus memang tidak diciptakan untuk benda melengkung; guru salah memberi soal."</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Soal HOTS / Analisis Kritis Pedagogis | Soal 15</div>
+        <div class="question-text">
+            <strong>Perhatikan ilustrasi di bawah ini!</strong>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <svg width="100%" style="max-width: 600px;" height="180" viewBox="-120 -30 600 180" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="60,110 360,110 360,135 60,135" fill="#fce5cd" stroke="#333" stroke-width="2"/>
+                    <polygon points="0,122.5 60,110 60,135" fill="#f9cb9c" stroke="#333" stroke-width="2"/>
+                    <polygon points="0,122.5 20,118.5 20,126.5" fill="#333"/>
+                    
+                    <text x="180" y="160" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Pensil</text>
+                    <text x="-15" y="45" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="end">Penghapus</text>
+                    
+                    <rect x="90" y="25" width="90" height="35" rx="5" fill="#f4cccc" stroke="#333" stroke-width="2"/>
+                    <rect x="180" y="25" width="90" height="35" rx="5" fill="#f4cccc" stroke="#333" stroke-width="2"/>
+                    <rect x="270" y="25" width="90" height="35" rx="5" fill="#f4cccc" stroke="#333" stroke-width="2"/>
+                    
+                    <line x1="0" y1="140" x2="0" y2="10" stroke="red" stroke-width="2" stroke-dasharray="6,4"/>
+                    <line x1="360" y1="140" x2="360" y2="10" stroke="red" stroke-width="2" stroke-dasharray="6,4"/>
+                </svg>
+            </div>
+
+            Berdasarkan gambar, siswa menyimpulkan panjang pensil adalah 3 penghapus. Padahal ruang untuk mencapai ujung pensil masih tersisa banyak. Kesalahan konseptual utama siswa dan perbaikannya adalah...
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Siswa mengabaikan ujung penghapus yang membulat; Guru harus memaksa siswa memotong tepi penghapus agar tegak lurus sempurna sebelum digunakan.</div>
+            <div class="option"><strong>B.</strong> Siswa gagal menyejajarkan titik pangkal (baseline). Guru harus menekankan pentingnya menempatkan unit pertama sejajar persis dengan ujung terluar benda yang diukur.</div>
+            <div class="option"><strong>C.</strong> Siswa tidak mempertimbangkan mata pensil sebagai bagian dari pensil; Guru harus menyarankan pensil ditumpulkan terlebih dahulu agar pengukurannya bulat.</div>
+            <div class="option"><strong>D.</strong> Siswa tidak mengerti konsep rasio; Guru perlu mengajarkan pecahan agar sisa ruang kosong di depan dan di belakang bisa dihitung sebagai nilai desimal.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Soal HOTS / Analisis Kritis Pedagogis | Soal 16</div>
+        <div class="question-text">Untuk mengecek pemahaman siswa terkait prinsip "Identical Units" (Unit Identik) dalam asesmen formatif, instruksi manakah yang paling efektif diberikan oleh guru?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> "Ukurlah tinggi pintu ini menggunakan penggaris 30 cm dan catat hasilnya dalam bentuk meter."</div>
+            <div class="option"><strong>B.</strong> "Gunakanlah campuran sedotan utuh dan sedotan yang sudah dipotong pendek untuk mengukur mejamu, lalu hitung totalnya."</div>
+            <div class="option"><strong>C.</strong> "Ukur bukumu dengan klip kertas besar. Sekarang, ukur lagi dengan klip kertas kecil. Mengapa hasil angkanya berbeda padahal bukunya sama?"</div>
+            <div class="option"><strong>D.</strong> "Coba hitung berapa detak jantungmu saat kamu berlari sejauh lebar lapangan sekolah."</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Soal HOTS / Analisis Kritis Pedagogis | Soal 17</div>
+        <div class="question-text">Ketika mengukur papan tulis, Rina menggunakan jengkalnya dan mendapat hasil 15 jengkal. Toni menggunakan lengannya dan mendapat hasil 3 lengan. Tika menggunakan langkah kakinya dan gagal karena menabrak meja. Dari kejadian ini, momentum pedagogis apa yang paling tepat untuk mengantarkan siswa pada pemahaman perlunya "Satuan Baku"?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Menghukum Tika karena ceroboh tidak menyingkirkan meja sebelum memulai aktivitas.</div>
+            <div class="option"><strong>B.</strong> Menegaskan bahwa lengan Toni adalah satuan ukur paling akurat karena lebih panjang, sehingga mengurangi resiko salah hitung.</div>
+            <div class="option"><strong>C.</strong> Membandingkan hasil Rina dan Toni yang berbeda-beda, dan mengajak kelas berdiskusi: "Bagaimana jika kita butuh membeli karpet penutup papan yang ukurannya pasti, satuan apa yang sebaiknya kita semua sepakati agar tidak membingungkan?"</div>
+            <div class="option"><strong>D.</strong> Menyuruh Rina dan Toni berlomba menghitung ulang secepat mungkin untuk melihat siapa yang paling teliti.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Soal HOTS / Analisis Kritis Pedagogis | Soal 18</div>
+        <div class="question-text">Dalam teori belajar Vygotsky, penting bagi guru untuk berada di Zona Perkembangan Proksimal (ZPD) siswa. Jika seorang siswa secara mandiri sudah mampu menyusun klip kertas berderet dengan benar tanpa celah, langkah perancah (scaffolding) selanjutnya yang paling tepat agar pengetahuannya meningkat adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Meminta siswa mengulang kegiatan tersebut sebanyak 10 kali agar ia menjadi lebih cepat (drill motorik).</div>
+            <div class="option"><strong>B.</strong> Menantang siswa: "Bagaimana jika ibu hanya memberi kamu SATU klip kertas? Bisakah kamu mengukur seluruh buku ini dengan satu klip itu?"</div>
+            <div class="option"><strong>C.</strong> Menyuruh siswa tersebut untuk berhenti belajar matematika dan beralih ke pelajaran seni mewarnai klip kertas.</div>
+            <div class="option"><strong>D.</strong> Langsung memberikan rumus luas persegipanjang $p \times l$ karena siswa sudah paham panjang.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Soal HOTS / Analisis Kritis Pedagogis | Soal 19</div>
+        <div class="question-text">
+            <strong>Perhatikan ilustrasi eksperimen siswa berikut!</strong>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <svg width="100%" style="max-width: 600px;" height="160" viewBox="-120 -20 600 160" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="90" width="375" height="25" fill="#d9ead3" stroke="#333" stroke-width="2"/>
+                    <text x="-15" y="108" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="end">Pita Kain</text>
+                    
+                    <text x="-15" y="35" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="end">Korek Api</text>
+                    
+                    <line x1="0" y1="30" x2="70" y2="30" stroke="#8b4513" stroke-width="4"/>
+                    <circle cx="75" cy="30" r="5" fill="red"/>
+                    
+                    <line x1="80" y1="30" x2="120" y2="30" stroke="#8b4513" stroke-width="4"/>
+                    <circle cx="125" cy="30" r="5" fill="red"/>
+                    
+                    <line x1="130" y1="30" x2="200" y2="30" stroke="#8b4513" stroke-width="4"/>
+                    <circle cx="205" cy="30" r="5" fill="red"/>
+                    
+                    <line x1="210" y1="30" x2="240" y2="30" stroke="#8b4513" stroke-width="4"/>
+                    <circle cx="245" cy="30" r="5" fill="red"/>
+                    
+                    <line x1="250" y1="30" x2="370" y2="30" stroke="#8b4513" stroke-width="4"/>
+                    <circle cx="375" cy="30" r="5" fill="red"/>
+                    
+                    <line x1="0" y1="130" x2="0" y2="-10" stroke="gray" stroke-width="2" stroke-dasharray="6,4"/>
+                    <line x1="375" y1="130" x2="375" y2="-10" stroke="gray" stroke-width="2" stroke-dasharray="6,4"/>
+                </svg>
+            </div>
+
+            Siswa melaporkan panjang pita adalah 5 batang korek api. Meskipun susunannya menempel ujung-ke-ujung (tanpa celah), guru menilai pengukurannya bermasalah. Analisis guru dan tindakan perbaikan yang paling tepat adalah...
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Siswa secara visual gagal menyadari adanya celah mikroskopis di antara batang; Guru harus mendesak siswa merapatkan susunan secara paksa menggunakan alat penjepit.</div>
+            <div class="option"><strong>B.</strong> Penggunaan korek api yang patah menyebabkan perhitungan menjadi angka desimal; Guru harus menghentikan aktivitas ini dan meminta siswa menghafal tabel perkalian.</div>
+            <div class="option"><strong>C.</strong> Siswa menggunakan unit ukur yang tidak identik ukurannya. Guru harus membimbing siswa untuk menyortir dan hanya menggunakan batang korek api dengan panjang yang seragam.</div>
+            <div class="option"><strong>D.</strong> Siswa memiliki gaya belajar kinetik yang belum terpenuhi; Guru perlu mewarnai tiap batang korek api dengan cat yang berbeda agar siswa lebih bersemangat belajar.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Soal HOTS / Analisis Kritis Pedagogis | Soal 20</div>
+        <div class="question-text">Seorang siswa kelas 1 SD mengukur panjang mejanya dengan jengkal. Ia menemukan bahwa panjangnya adalah 8 jengkal penuh, namun di bagian ujung masih tersisa ruang kosong yang ukurannya sekitar setengah jengkal. Cara terbaik guru merespons situasi ini tanpa membingungkan anak dengan pecahan kompleks adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Memaksa anak untuk melebarkan jari-jarinya di jengkal terakhir agar pas menyentuh ujung meja.</div>
+            <div class="option"><strong>B.</strong> Mengajarkan notasi pecahan matematika formal seperti $8 \frac{1}{2}$ dan menyuruh anak menghafalnya untuk ulangan.</div>
+            <div class="option"><strong>C.</strong> Mengabaikan sisa tersebut dan mengajarkan bahwa dalam matematika kelas 1, kita selalu membulatkan angka ke bawah.</div>
+            <div class="option"><strong>D.</strong> Memperkenalkan konsep bahasa estimasi, dengan mengajarkan anak untuk mengatakan: "Panjang meja ini ukurannya <em>antara 8 sampai 9 jengkal</em>" atau "<em>8 jengkal lebih sedikit</em>".</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
