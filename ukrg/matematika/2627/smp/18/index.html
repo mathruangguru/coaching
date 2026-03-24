@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 18: Barisan Aritmatika (Analisis Struktural) - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul & Latihan Soal: Barisan Aritmatika<br>(Analisis Struktural & HOTS)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Barisan Aritmatika</div>
+        <div class="question-text">
+            <p>Barisan aritmatika adalah barisan bilangan di mana selisih antara dua suku yang berurutan selalu tetap. Selisih yang tetap ini disebut <strong>beda (\(b\))</strong>.</p>
+
+            <h4>1. Rumus-rumus Dasar</h4>
+            <ul>
+                <li><strong>Suku ke-\(n\) (\(U_n\)):</strong> \(U_n = a + (n-1)b\) <br>
+                Di mana \(a\) adalah suku pertama (\(U_1\)), dan \(b\) adalah beda.</li>
+                <li><strong>Beda (\(b\)):</strong> \(b = U_n - U_{n-1}\)</li>
+            </ul>
+
+            <h4>2. Suku Tengah (\(U_t\))</h4>
+            <p>Jika suatu barisan aritmatika memiliki banyak suku (\(n\)) ganjil, maka barisan tersebut memiliki suku tengah (\(U_t\)). Posisi suku tengah berada pada urutan ke-\(t = \frac{n+1}{2}\).</p>
+            <ul>
+                <li><strong>Nilai Suku Tengah:</strong> \(U_t = \frac{a + U_n}{2}\)</li>
+                <li><strong>Hubungan \(U_t\) dengan \(b\) dan \(t\):</strong> \(U_t = a + (t-1)b\)</li>
+                <li><strong>Sifat Analisis Struktural:</strong> Suku tengah merepresentasikan rata-rata dari suku pertama dan suku terakhir, serta rata-rata dari pasangan suku manapun yang berjarak sama dari tengah (misal: \(\frac{U_2 + U_{n-1}}{2} = U_t\)).</li>
+            </ul>
+
+            <h4>3. Sisipan</h4>
+            <p>Jika di antara dua buah bilangan \(x\) dan \(y\) disisipkan \(k\) buah bilangan sehingga membentuk barisan aritmatika baru, maka beda barisan yang baru (\(b'\)) adalah:</p>
+            \[b' = \frac{y - x}{k + 1}\]
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">A. Level Konsep Dasar | Soal 1</div>
+        <div class="question-text">
+            Diketahui barisan aritmatika: \(2, 5, 8, 11, \dots\) Suku ke-10 dari barisan tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 27</div>
+            <div class="option">B. 29</div>
+            <div class="option">C. 30</div>
+            <div class="option">D. 32</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">A. Level Konsep Dasar | Soal 2</div>
+        <div class="question-text">
+            Beda (\(b\)) dari barisan aritmatika \(10, 6, 2, -2, \dots\) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(-4\)</div>
+            <div class="option">B. \(4\)</div>
+            <div class="option">C. \(-2\)</div>
+            <div class="option">D. \(2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">A. Level Konsep Dasar | Soal 3</div>
+        <div class="question-text">
+            Jika suku ke-3 suatu barisan aritmatika adalah 11 dan suku ke-5 adalah 19, maka suku pertamanya (\(a\)) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 3</div>
+            <div class="option">B. 4</div>
+            <div class="option">C. 7</div>
+            <div class="option">D. 15</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">A. Level Konsep Dasar | Soal 4</div>
+        <div class="question-text">
+            Manakah penulisan rumus yang benar untuk mencari Suku Tengah (\(U_t\)) jika diketahui suku pertama (\(a\)) dan suku terakhir (\(U_n\))?
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(\frac{U_n - a}{2}\)</div>
+            <div class="option">B. \(\frac{a + U_n}{2}\)</div>
+            <div class="option">C. \(a + \frac{U_n}{2}\)</div>
+            <div class="option">D. \(a + n \cdot b\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">A. Level Konsep Dasar | Soal 5</div>
+        <div class="question-text">
+            Di antara barisan bilangan berikut, manakah yang merupakan barisan aritmatika?
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(1, 3, 6, 10, 15\)</div>
+            <div class="option">B. \(2, 4, 8, 16, 32\)</div>
+            <div class="option">C. \(5, 2, -1, -4, -7\)</div>
+            <div class="option">D. \(1, 4, 9, 16, 25\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">B. Level Menengah | Soal 6</div>
+        <div class="question-text">
+            Sebuah barisan aritmatika memiliki suku pertama 5, beda 3, dan suku terakhir 41. Banyak suku (\(n\)) barisan tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 11</div>
+            <div class="option">B. 12</div>
+            <div class="option">C. 13</div>
+            <div class="option">D. 14</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">B. Level Menengah | Soal 7</div>
+        <div class="question-text">
+            Diketahui suatu barisan aritmatika dengan banyak suku ganjil. Jika suku pertamanya 7 dan suku terakhirnya 63, nilai dari suku tengahnya adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 28</div>
+            <div class="option">B. 31.5</div>
+            <div class="option">C. 35</div>
+            <div class="option">D. 70</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">B. Level Menengah | Soal 8</div>
+        <div class="question-text">
+            Suatu barisan memiliki nilai suku tengah 25. Jika suku pertamanya adalah 5, berapakah nilai suku terakhirnya?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 20</div>
+            <div class="option">B. 30</div>
+            <div class="option">C. 45</div>
+            <div class="option">D. 50</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">B. Level Menengah | Soal 9</div>
+        <div class="question-text">
+            Di antara bilangan 4 dan 28 disisipkan 3 bilangan sehingga membentuk barisan aritmatika baru. Beda (\(b\)) dari barisan yang baru tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 6</div>
+            <div class="option">B. 7</div>
+            <div class="option">C. 8</div>
+            <div class="option">D. 24</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">B. Level Menengah | Soal 10</div>
+        <div class="question-text">
+            Sebuah barisan aritmatika terdiri dari 15 suku. Jika suku tengahnya adalah 30 dan suku terakhirnya 58, maka beda (\(b\)) barisan tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 2</div>
+            <div class="option">B. 3</div>
+            <div class="option">C. 4</div>
+            <div class="option">D. 5</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Level HOTS | Soal 11</div>
+        <div class="question-text">
+            Jika setiap suku dari sebuah barisan aritmatika yang memiliki suku tengah 20 dikalikan dengan 2, kemudian dikurangi 5, maka nilai suku tengah dari barisan yang baru adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 15</div>
+            <div class="option">B. 20</div>
+            <div class="option">C. 35</div>
+            <div class="option">D. 40</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Level HOTS | Soal 12</div>
+        <div class="question-text">
+            [Soal Analisis Pedagogik] Seorang guru menugaskan: <em>"Diketahui barisan aritmatika dengan \(U_t = 30\) dan \(U_n = 50\). Jika beda (\(b\)) barisan diperbesar sedangkan \(U_n\) dan \(U_t\) dipertahankan tetap, bagaimana pengaruhnya terhadap banyak suku?"</em> <br>
+            Manakah di antara pertanyaan lanjutan berikut yang paling tepat untuk menguji pemahaman analisis struktural siswa seperti soal di atas?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Hitunglah nilai \(a\) jika \(b\) diubah menjadi 5 dengan rumus standar!</div>
+            <div class="option">B. Jika \(U_1\) dikurangi 4 namun \(U_t\) dan \(U_n\) tetap, apakah banyak suku (\(n\)) akan berubah? Buktikan!</div>
+            <div class="option">C. Berapakah jumlah 10 suku pertama dari barisan yang baru?</div>
+            <div class="option">D. Sebutkan tiga barisan berbeda yang juga memiliki \(U_t = 30\)!</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Level HOTS | Soal 13</div>
+        <div class="question-text">
+            Diketahui sebuah barisan aritmatika memiliki suku tengah 40 dengan banyak suku (\(n\)) bernilai ganjil. Jika beda (\(b\)) dilipatgandakan menjadi dua kali semula, tetapi suku tengahnya (\(U_t\)) dipertahankan tetap di posisinya, maka pernyataan yang benar adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Nilai suku pertama (\(a\)) bertambah besar</div>
+            <div class="option">B. Suku terakhir menjadi dua kali lipat</div>
+            <div class="option">C. Jangkauan barisan (selisih suku terakhir dan suku pertama) menjadi dua kali lipat</div>
+            <div class="option">D. Banyak suku barisan tersebut berkurang menjadi setengahnya</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Level HOTS | Soal 14</div>
+        <div class="question-text">
+            Perhatikan susunan balok yang membentuk deret aritmatika berikut:
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="400" height="150" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="100" width="40" height="20" fill="#e6f2ff" stroke="black" stroke-width="2"/>
+                    <text x="40" y="115" font-family="sans-serif" font-size="12" text-anchor="middle">\(U_1\)</text>
+                    
+                    <rect x="80" y="80" width="40" height="40" fill="#e6f2ff" stroke="black" stroke-width="2"/>
+                    <text x="100" y="105" font-family="sans-serif" font-size="12" text-anchor="middle">\(U_2\)</text>
+                    
+                    <rect x="140" y="60" width="40" height="60" fill="#b3d9ff" stroke="black" stroke-width="2"/>
+                    <text x="160" y="95" font-family="sans-serif" font-size="12" text-anchor="middle">14 cm</text>
+                    <text x="160" y="140" font-family="sans-serif" font-size="12" text-anchor="middle">Tumpukan 3</text>
+                    
+                    <text x="220" y="90" font-family="sans-serif" font-size="24" text-anchor="middle">...</text>
+                    
+                    <rect x="260" y="20" width="40" height="100" fill="#b3d9ff" stroke="black" stroke-width="2"/>
+                    <text x="280" y="75" font-family="sans-serif" font-size="12" text-anchor="middle">26 cm</text>
+                    <text x="280" y="140" font-family="sans-serif" font-size="12" text-anchor="middle">Tumpukan 7</text>
+                </svg>
+            </div>
+            
+            Jika tinggi tumpukan terus bertambah secara konstan dan diasumsikan total ada 15 tumpukan, maka tinggi tumpukan yang merupakan suku tengahnya adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 26 cm</div>
+            <div class="option">B. 29 cm</div>
+            <div class="option">C. 32 cm</div>
+            <div class="option">D. 35 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Level HOTS | Soal 15</div>
+        <div class="question-text">
+            [Soal Analisis Pedagogik] Setelah siswa berhasil menjawab soal dasar, guru memberikan instruksi: <em>"Suatu barisan memiliki \(U_n = 80\), \(U_t = 43\), dan \(a = 6\)."</em> Untuk menguji pemahaman *non-prosedural* siswa terhadap konsep posisi letak, manakah rancangan pertanyaan Open-Ended berikut yang paling relevan?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Tentukan nilai dari suku ke-15 pada barisan tersebut!</div>
+            <div class="option">B. Berapakah banyak bilangan yang harus disisipkan agar beda menjadi setengahnya?</div>
+            <div class="option">C. Jika nilai suku ke-2 (\(U_2\)) dinaikkan menjadi 15 sementara suku terakhir tetap, apakah posisi letak suku tengah akan bergeser? Jelaskan analisanya!</div>
+            <div class="option">D. Buktikan bahwa barisan tersebut memiliki tepat 25 suku dengan menggunakan rumus!</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Level HOTS | Soal 16</div>
+        <div class="question-text">
+            Dalam suatu barisan aritmatika, diketahui jumlahan suku-suku \(U_2 + U_5 + U_{14} = 72\). Nilai dari \(U_7\) barisan tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 18</div>
+            <div class="option">B. 24</div>
+            <div class="option">C. 36</div>
+            <div class="option">D. 72</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Level HOTS | Soal 17</div>
+        <div class="question-text">
+            Rumus jumlah \(n\) suku pertama dari suatu deret aritmatika dinyatakan dengan \(S_n = 2n^2 + 3n\). Jika banyak suku barisan tersebut adalah 11, berapakah nilai dari suku tengahnya?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 23</div>
+            <div class="option">B. 25</div>
+            <div class="option">C. 27</div>
+            <div class="option">D. 45</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Level HOTS | Soal 18</div>
+        <div class="question-text">
+            Suku tengah sebuah barisan aritmatika yang terdiri dari 5 suku bernilai 15. Jika hasil kali antara suku pertama dan suku terakhir barisan tersebut adalah 161, maka beda (\(b\)) barisan yang mungkin (untuk barisan naik) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 2</div>
+            <div class="option">B. 4</div>
+            <div class="option">C. 8</div>
+            <div class="option">D. 16</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Level HOTS | Soal 19</div>
+        <div class="question-text">
+            [Soal Analisis Pedagogik] Seorang guru mendapati siswanya selalu bergantung secara kaku pada rumus \(U_n = a + (n-1)b\). Untuk merangsang pemahaman analisis dinamis, manakah rancangan pertanyaan evaluasi yang paling memaksa siswa berpikir analitis terhadap hubungan antar variabel?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Jika suku pertama (\(a\)) dipertahankan, sementara beda (\(b\)) diperbesar dua kali lipat, buktikan bahwa selisih antara suku tengah (\(U_t\)) dan suku pertama (\(a\)) juga menjadi dua kali lipat!</div>
+            <div class="option">B. Hitung nilai beda (\(b\)) jika \(U_1 = 5\) dan \(U_t = 25\) dengan total suku \(n=11\)!</div>
+            <div class="option">C. Tentukan suku ke-100 dari barisan yang memiliki suku tengah 50 dan beda 2!</div>
+            <div class="option">D. Apakah 105 merupakan salah satu suku di dalam barisan yang berawal dari angka 5 dengan beda 4?</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">C. Level HOTS | Soal 20</div>
+        <div class="question-text">
+            Dalam suatu barisan aritmatika, diketahui Suku ke-\(m\) adalah \(n\) (\(U_m = n\)) dan Suku ke-\(n\) adalah \(m\) (\(U_n = m\)), dengan \(m \neq n\). Nilai dari suku ke-\((m+n)\) pada barisan tersebut selalu...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(0\)</div>
+            <div class="option">B. \(m+n\)</div>
+            <div class="option">C. \(m-n\)</div>
+            <div class="option">D. \(mn\)</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
