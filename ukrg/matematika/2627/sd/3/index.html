@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul: Representasi Pecahan, Desimal, dan Persentase pada Grid</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran: Representasi Pecahan, Desimal, dan Persentase pada Grid</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi</div>
+        <div class="question-text">
+            <h4>1. Konsep Dasar Grid $10 \times 10$</h4>
+            <p>Grid atau petak berukuran $10 \times 10$ adalah alat visual (manipulatif) yang sangat efektif untuk mengajarkan konsep persentase, desimal, dan pecahan.</p>
+            <ul>
+                <li><strong>Total Kotak:</strong> Sebuah grid $10 \times 10$ memiliki total $10 \times 10 = 100$ kotak kecil yang sama besar. Keseluruhan grid ini mewakili 1 bagian utuh, atau $100\%$, atau nilai desimal $1,00$.</li>
+                <li><strong>Satu Kotak Kecil:</strong> Karena ada 100 kotak, satu kotak kecil mewakili pecahan $\frac{1}{100}$. Dalam persentase, ini bernilai $1\%$. Dalam desimal, ini bernilai $0,01$.</li>
+                <li><strong>Satu Baris/Kolom Penuh:</strong> Satu baris (horizontal) atau satu kolom (vertikal) penuh berisi 10 kotak kecil. Ini mewakili pecahan $\frac{10}{100}$ atau $\frac{1}{10}$. Dalam persentase bernilai $10\%$, dan dalam desimal bernilai $0,1$.</li>
+            </ul>
+
+            <div style="text-align: center; margin: 30px 0; overflow-x: auto;">
+                <svg width="100%" style="max-width: 650px;" height="320" viewBox="-10 -10 660 320" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="30" height="30" fill="#a4c2f4"/>
+                    <rect x="60" y="0" width="30" height="300" fill="#d9ead3"/>
+
+                    <g stroke="#cccccc" stroke-width="1">
+                        <line x1="0" y1="0" x2="0" y2="300"/>
+                        <line x1="30" y1="0" x2="30" y2="300"/>
+                        <line x1="60" y1="0" x2="60" y2="300"/>
+                        <line x1="90" y1="0" x2="90" y2="300"/>
+                        <line x1="120" y1="0" x2="120" y2="300"/>
+                        <line x1="150" y1="0" x2="150" y2="300"/>
+                        <line x1="180" y1="0" x2="180" y2="300"/>
+                        <line x1="210" y1="0" x2="210" y2="300"/>
+                        <line x1="240" y1="0" x2="240" y2="300"/>
+                        <line x1="270" y1="0" x2="270" y2="300"/>
+                        <line x1="300" y1="0" x2="300" y2="300"/>
+                        
+                        <line x1="0" y1="0" x2="300" y2="0"/>
+                        <line x1="0" y1="30" x2="300" y2="30"/>
+                        <line x1="0" y1="60" x2="300" y2="60"/>
+                        <line x1="0" y1="90" x2="300" y2="90"/>
+                        <line x1="0" y1="120" x2="300" y2="120"/>
+                        <line x1="0" y1="150" x2="300" y2="150"/>
+                        <line x1="0" y1="180" x2="300" y2="180"/>
+                        <line x1="0" y1="210" x2="300" y2="210"/>
+                        <line x1="0" y1="240" x2="300" y2="240"/>
+                        <line x1="0" y1="270" x2="300" y2="270"/>
+                        <line x1="0" y1="300" x2="300" y2="300"/>
+                    </g>
+
+                    <rect x="0" y="240" width="300" height="30" fill="none" stroke="#e06666" stroke-width="4"/>
+
+                    <text x="320" y="20" font-family="sans-serif" font-size="15" fill="#333">&#8592; 1 kotak = 1% atau 0,01</text>
+                    <text x="320" y="155" font-family="sans-serif" font-size="15" fill="#333">&#8592; 1 kolom penuh = 10 kotak = 10% atau 0,1</text>
+                    <text x="320" y="260" font-family="sans-serif" font-size="15" fill="#333">&#8592; 1 baris penuh = 10 kotak = 10% atau 0,1</text>
+                </svg>
+            </div>
+
+            <h4 class="mt-4">2. Miskonsepsi Siswa yang Sering Terjadi</h4>
+            <ul>
+                <li><strong>Kebingungan Nilai Tempat (Perseratusan vs Persepuluhan):</strong> Siswa sering kali menganggap angka tunggal pada persentase (misal $8\%$) diwakili oleh kolom atau baris penuh, menganggap $1$ kolom $= 1\%$. Padahal 1 kolom bernilai $10\%$.</li>
+                <li><strong>Menyamakan Desimal secara Keliru:</strong> Siswa menganggap $0,4$ sama dengan $4\%$. Akibatnya, saat diminta mengarsir $0,4$, mereka hanya mengarsir 4 kotak kecil. Padahal $0,4 = \frac{40}{100}$ (40 kotak atau $40\%$).</li>
+                <li><strong>Mengabaikan Pembagi 100:</strong> Siswa tidak menghubungkan persentase dengan penyebut 100. Jika diminta $30\%$, mereka mungkin hanya mengarsir 3 kotak karena mereka fokus pada angka "3" dan membaginya dengan 10.</li>
+            </ul>
+
+            <h4 class="mt-4">3. Perancah (<em>Scaffolding</em>) yang Tepat</h4>
+            <p><em>Scaffolding</em> adalah bimbingan terarah dari guru untuk membantu siswa melewati kebingungannya.</p>
+            <ul>
+                <li><strong>Dekonstruksi Satuan:</strong> Meminta siswa menghitung secara manual jumlah kotak kecil dalam satu baris/kolom untuk membuktikan bahwa satu baris berisi 10, bukan 1.</li>
+                <li><strong>Menggunakan Pecahan Senilai:</strong> Membimbing siswa menuliskan bentuk pecahan biasa terlebih dahulu sebelum mengarsir. Misalnya $0,4 \rightarrow \frac{4}{10} \rightarrow \frac{40}{100}$. Dari sini visualisasi akan menjadi lebih jelas bahwa ada 40 kotak yang harus diarsir.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat! Terdapat opsi-opsi yang dirancang untuk menguji ketelitian dan pemahaman hierarki operasi Anda.</em></p>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 1</div>
+        <div class="question-text">Pada sebuah grid berukuran $10 \times 10$, nilai persentase yang diwakili oleh tepat 1 kotak kecil adalah...</div>
+        <div class="options-list">
+            <div class="option">A. $10\%$</div>
+            <div class="option">B. $1\%$</div>
+            <div class="option">C. $0,1\%$</div>
+            <div class="option">D. $100\%$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 2</div>
+        <div class="question-text">Bentuk desimal $0,25$ jika direpresentasikan pada grid $10 \times 10$ akan menghabiskan arsir sebanyak...</div>
+        <div class="options-list">
+            <div class="option">A. 25 baris penuh</div>
+            <div class="option">B. 5 kolom penuh</div>
+            <div class="option">C. 25 kotak kecil</div>
+            <div class="option">D. 2 kotak kecil dan setengah kotak tambahan</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 3</div>
+        <div class="question-text">Jika Rina mengarsir 3 baris secara penuh pada grid $10 \times 10$, maka nilai persentase bagian yang diarsir Rina adalah...</div>
+        <div class="options-list">
+            <div class="option">A. $3\%$</div>
+            <div class="option">B. $30\%$</div>
+            <div class="option">C. $0,3\%$</div>
+            <div class="option">D. $33\%$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 4</div>
+        <div class="question-text">Sebanyak 45 kotak kecil pada grid $10 \times 10$ telah diarsir. Bentuk pecahan biasa paling sederhana dari arsiran tersebut adalah...</div>
+        <div class="options-list">
+            <div class="option">A. $\frac{45}{100}$</div>
+            <div class="option">B. $\frac{9}{20}$</div>
+            <div class="option">C. $\frac{4}{5}$</div>
+            <div class="option">D. $\frac{9}{10}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 5</div>
+        <div class="question-text">Berapakah jumlah kotak yang harus diarsir untuk menunjukkan nilai $7\%$?</div>
+        <div class="options-list">
+            <div class="option">A. 7 baris penuh</div>
+            <div class="option">B. 70 kotak kecil</div>
+            <div class="option">C. 7 kotak kecil</div>
+            <div class="option">D. Setengah baris penuh</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Level Menengah | Soal 6</div>
+        <div class="question-text">Budi mengarsir 2 kolom penuh dan 8 kotak kecil tambahan pada grid $10 \times 10$. Nilai desimal yang mewakili daerah yang <strong>tidak diarsir</strong> adalah...</div>
+        <div class="options-list">
+            <div class="option">A. $0,28$</div>
+            <div class="option">B. $0,72$</div>
+            <div class="option">C. $0,82$</div>
+            <div class="option">D. $0,62$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Level Menengah | Soal 7</div>
+        <div class="question-text">Diminta untuk mengarsir $\frac{1}{4}$ bagian dari keseluruhan grid $10 \times 10$. Banyaknya kotak kecil yang harus diarsir adalah...</div>
+        <div class="options-list">
+            <div class="option">A. 4 kotak kecil</div>
+            <div class="option">B. 14 kotak kecil</div>
+            <div class="option">C. 25 kotak kecil</div>
+            <div class="option">D. 40 kotak kecil</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Level Menengah | Soal 8</div>
+        <div class="question-text">Sebuah grid $10 \times 10$ telah diarsir sebanyak $65\%$. Jika 1 baris penuh dihapus arsirannya, maka persentase arsiran yang baru adalah...</div>
+        <div class="options-list">
+            <div class="option">A. $64\%$</div>
+            <div class="option">B. $55\%$</div>
+            <div class="option">C. $60\%$</div>
+            <div class="option">D. $50\%$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Level Menengah | Soal 9</div>
+        <div class="question-text">Sita mengarsir separuh dari keseluruhan grid, kemudian menghapus arsiran pada 5 kotak kecil. Bentuk pecahan dari daerah yang <strong>masih</strong> terarsir adalah...</div>
+        <div class="options-list">
+            <div class="option">A. $\frac{9}{20}$</div>
+            <div class="option">B. $\frac{1}{2}$</div>
+            <div class="option">C. $\frac{11}{20}$</div>
+            <div class="option">D. $\frac{4}{5}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Level Menengah | Soal 10</div>
+        <div class="question-text">Jika satu grid $10 \times 10$ dianggap mewakili nilai Rp 50.000,00, berapakah nilai uang yang direpresentasikan oleh 4 baris penuh yang diarsir?</div>
+        <div class="options-list">
+            <div class="option">A. Rp 4.000,00</div>
+            <div class="option">B. Rp 20.000,00</div>
+            <div class="option">C. Rp 40.000,00</div>
+            <div class="option">D. Rp 2.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 11</div>
+        <div class="question-text">Sebuah bangun datar persegi dibagi menjadi 100 bagian dengan bentuk yang saling berbeda secara acak (ada yang berupa segitiga, trapesium, dll) namun totalnya menutupi seluruh bangun. Jika 1 bagian diarsir, mengapa hal tersebut <strong>tidak</strong> dapat disebut sebagai representasi $1\%$?</div>
+        <div class="options-list">
+            <div class="option">A. Karena bangun datar tidak boleh dibagi menjadi bentuk selain persegi kecil.</div>
+            <div class="option">B. Karena persentase selalu mensyaratkan setiap bagian penyusunnya memiliki luas (porsi) yang tepat sama besar.</div>
+            <div class="option">C. Karena $1\%$ hanya berlaku jika bangun luarnya berbentuk lingkaran seperti pada diagram kue (<em>pie chart</em>).</div>
+            <div class="option">D. Karena arsirannya tidak membentuk baris atau kolom yang beraturan secara vertikal maupun horizontal.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 12</div>
+        <div class="question-text">Perhatikan kasus pembelajaran berikut: Saat diminta menunjukkan nilai desimal $0,3$ pada sebuah grid $10 \times 10$, seorang siswa hanya mengarsir tepat 3 kotak kecil. Miskonsepsi apa yang terjadi pada siswa tersebut, dan bagaimana cara guru memberikan perancah (<em>scaffolding</em>) yang tepat?</div>
+        <div class="options-list">
+            <div class="option">A. Siswa mengira $0,3$ sama dengan $3\%$. Guru harus membimbing siswa memahami nilai tempat desimal dengan mengubah $0,3$ menjadi pecahan $\frac{30}{100}$, sehingga siswa menyadari ia perlu mengarsir 30 kotak (3 kolom penuh).</div>
+            <div class="option">B. Siswa sudah mengarsir dengan benar, karena angka 3 di belakang koma menunjukkan 3 satuan unit terkecil pada grid. Guru cukup memvalidasi pekerjaan siswa tersebut.</div>
+            <div class="option">C. Siswa menganggap grid $10 \times 10$ berisi 1000 kotak; guru harus mengingatkan bahwa grid ini hanya memiliki 100 kotak sehingga ia harus mengarsir 3 baris.</div>
+            <div class="option">D. Siswa belum bisa membedakan arah horizontal dan vertikal; guru meminta siswa mengarsir 3 kotak tersebut secara menyamping, bukan menurun.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 13</div>
+        <div class="question-text">Dua orang siswa mendapat tugas merepresentasikan pecahan $\frac{3}{5}$. Siswa A mengarsir 6 kolom penuh pada grid $10 \times 10$. Siswa B menggambar bangun persegi panjang sendiri, membaginya menjadi 5 kolom besar yang sama lebar, dan mengarsir 3 kolom di antaranya. Pernyataan evaluasi yang paling tepat terhadap hasil kerja kedua siswa adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Siswa A benar karena mengubah pecahan menjadi persentase ($60\%$), sedangkan Siswa B salah karena tidak menggunakan grid $10 \times 10$.</div>
+            <div class="option">B. Keduanya merepresentasikan nilai yang sama persis, Siswa A menggunakan strategi pecahan senilai $\frac{60}{100}$, sedangkan Siswa B menggunakan rasio langsung.</div>
+            <div class="option">C. Siswa B merepresentasikan ukuran yang lebih besar dari Siswa A karena bagian yang diarsir Siswa B ukurannya lebih luas secara fisik.</div>
+            <div class="option">D. Siswa A salah karena $\frac{3}{5}$ tidak bisa diletakkan di atas grid berisi 100, harusnya diarsir 3 kotak kecil saja.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 14</div>
+        <div class="question-text">Seorang guru memberikan instruksi: "Toko memberikan diskon ganda, yaitu $50\%$ lalu didiskon lagi $50\%$ dari harga yang baru. Tunjukkan pada grid $10 \times 10$ bagian akhir harga yang harus dibayar." Representasi arsiran akhir yang paling tepat adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Mengarsir seluruh grid (100 kotak) karena $50\% + 50\% = 100\%$.</div>
+            <div class="option">B. Tidak ada yang diarsir (0 kotak) karena harganya menjadi gratis.</div>
+            <div class="option">C. Mengarsir tepat 25 kotak kecil (bernilai $25\%$).</div>
+            <div class="option">D. Mengarsir 5 kolom penuh dan mengarsir kembali 5 kolom tersebut dengan warna berbeda.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 15</div>
+        <div class="question-text">Perhatikan kasus pembelajaran berikut: Saat diminta menunjukkan nilai $4\%$ pada sebuah grid $10 \times 10$, seorang siswa mengarsir 4 baris secara penuh dari kiri ke kanan. Miskonsepsi apa yang terjadi pada siswa tersebut, dan bagaimana cara guru memberikan perancah (<em>scaffolding</em>) yang tepat?</div>
+        <div class="options-list">
+            <div class="option">A. Siswa salah arah arsiran; guru harus memintanya mengarsir bagian kolom secara vertikal, bukan baris secara horizontal.</div>
+            <div class="option">B. Siswa belum memahami pecahan desimal; guru harus mengubah $4\%$ menjadi desimal 0,04 terlebih dahulu sebelum siswa mengarsir.</div>
+            <div class="option">C. Siswa tertukar antara persentase dan desimal; guru harus langsung menyuruhnya menghapus semua arsiran dan mengganti dengan 4 kotak kecil agar lebih cepat.</div>
+            <div class="option">D. Siswa menganggap satu baris penuh mewakili $1\%$. Guru harus meminta siswa menghitung kotak dalam satu baris untuk membuktikan bahwa 1 baris berisi 10 kotak, sehingga 4 baris berarti $40\%$.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 16</div>
+        <div class="question-text">Dalam sebuah kelas, Dika menyatakan bahwa "$25\%$ jauh lebih besar nilainya daripada $0,5$ karena $25$ lebih besar daripada angka $0,5$." Analisis kesalahan logika Dika yang paling tepat adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Dika membandingkan pembilang (25) dengan nilai desimal utuh tanpa menyamakan penyebut dasar referensinya (perseratusan vs persepuluhan).</div>
+            <div class="option">B. Dika sudah menggunakan logika yang benar, namun kurang teliti dalam menghitung jumlah kotaknya.</div>
+            <div class="option">C. Dika tidak menyadari bahwa persentase selalu bernilai di bawah nol, sedangkan desimal bisa di atas nol.</div>
+            <div class="option">D. Dika bingung karena grid $10 \times 10$ hanya bisa merepresentasikan bilangan cacah, bukan bilangan desimal.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 17</div>
+        <div class="question-text">Terdapat dua grid berukuran sama besar. Grid A diarsir bagian $\frac{2}{5}$ nya. Grid B diarsir bagian $0,35$ nya. Jika total kotak yang diarsir dari kedua grid tersebut digabungkan ke dalam sebuah <strong>grid baru yang lebih besar (ukuran $20 \times 10$)</strong>, berapakah bagian yang terarsir pada grid besar tersebut?</div>
+        <div class="options-list">
+            <div class="option">A. $0,75$ bagian</div>
+            <div class="option">B. $0,375$ bagian</div>
+            <div class="option">C. $75$ bagian</div>
+            <div class="option">D. $0,65$ bagian</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 18</div>
+        <div class="question-text">Perhatikan kasus pembelajaran berikut: Saat diminta menunjukkan nilai $60\%$ pada sebuah grid $10 \times 10$, seorang siswa hanya mengarsir 6 kotak kecil. Miskonsepsi apa yang terjadi pada siswa tersebut, dan bagaimana cara guru memberikan perancah (<em>scaffolding</em>) yang tepat?</div>
+        <div class="options-list">
+            <div class="option">A. Siswa menganggap persentase sama dengan persepuluhan dengan membagi nilai $60$ dengan $10$. Guru harus menunjukkan bahwa $1$ kotak $= 1\%$, sehingga $60\%$ berarti butuh 60 kotak.</div>
+            <div class="option">B. Siswa lupa mengarsir sisa kotaknya karena kehabisan waktu; guru hanya perlu memintanya melengkapi arsirannya dengan cepat.</div>
+            <div class="option">C. Siswa tertukar dengan representasi desimal $0,06$. Guru harus menjelaskan bahwa persentase adalah besaran mutlak yang tidak dapat dibagi lagi menjadi desimal.</div>
+            <div class="option">D. Siswa mengira grid tersebut bukan $10 \times 10$ tetapi $100 \times 100$. Guru harus menukar kertas soal siswa agar sesuai dengan pemahamannya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 19</div>
+        <div class="question-text">Jika diberikan sebuah grid berukuran $5 \times 5$ (total 25 kotak), berapakah jumlah kotak yang harus diarsir untuk menunjukkan representasi nilai $16\%$?</div>
+        <div class="options-list">
+            <div class="option">A. 16 kotak kecil</div>
+            <div class="option">B. 8 kotak kecil</div>
+            <div class="option">C. 4 kotak kecil</div>
+            <div class="option">D. 1,6 kotak kecil</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 20</div>
+        <div class="question-text">Seorang siswa kesulitan mengaitkan pecahan $\frac{5}{8}$ ke dalam bentuk persentase menggunakan grid $10 \times 10$. Tindakan *scaffolding* pedagogis yang <strong>kurang tepat</strong> dilakukan guru adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Meminta siswa mengubah pembagian $5 \div 8$ menjadi desimal terlebih dahulu.</div>
+            <div class="option">B. Memberikan grid yang lebih besar ukurannya (misal $16 \times 16$) agar lebih mudah dipotong.</div>
+            <div class="option">C. Memaksa siswa mengarsir tepat $\frac{5}{8}$ kotak kecil karena penyebut dan pembilangnya tidak bisa dijadikan 100 secara bulat.</div>
+            <div class="option">D. Membimbing siswa mencari pecahan senilai dengan penyebut 1000 ($\frac{625}{1000}$) lalu mengubah ke perseratus ($\frac{62,5}{100}$).</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
