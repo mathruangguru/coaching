@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran: Konsep Dasar Pecahan dan Analisis Miskonsepsi</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran: Konsep Dasar Pecahan dan Analisis Miskonsepsi</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Pecahan vs Rasio</div>
+        <div class="question-text">
+            <p>Dalam matematika dasar, konsep pecahan sering kali disalahpahami oleh siswa, terutama ketika dihadapkan pada representasi visual berupa sekumpulan benda.</p>
+            
+            <ol class="list-inside" style="list-style-type: decimal;">
+                <li class="mt-4"><strong>Pecahan sebagai <em>Part-to-Whole</em> (Bagian-terhadap-Keseluruhan)</strong><br>
+                    Pecahan digunakan untuk merepresentasikan sebagian dari satu kesatuan yang utuh. Dalam konsep ini:
+                    <ul class="list-inside" style="list-style-type: disc;">
+                        <li><strong>Pembilang (atas):</strong> Mewakili jumlah bagian yang menjadi perhatian (misal: yang diarsir, yang berwarna hitam).</li>
+                        <li><strong>Penyebut (bawah):</strong> Mewakili <strong>total keseluruhan</strong> bagian yang membentuk satu kesatuan penuh (gabungan yang diarsir dan tidak diarsir).</li>
+                    </ul>
+                    <em>Contoh:</em> Jika ada 3 bola merah dan 2 bola biru, maka pecahan bola merah adalah $\frac{3}{3+2} = \frac{3}{5}$.
+                </li>
+                
+                <li class="mt-4"><strong>Rasio sebagai <em>Part-to-Part</em> (Bagian-terhadap-Bagian)</strong><br>
+                    Rasio membandingkan satu kelompok bagian dengan kelompok bagian lainnya secara langsung, tanpa melibatkan total keseluruhan sebagai penyebut.<br>
+                    <em>Contoh:</em> Dari 3 bola merah dan 2 bola biru, rasio bola merah terhadap bola biru adalah $3 : 2$ atau dapat ditulis $\frac{3}{2}$ <strong>hanya dalam konteks rasio, bukan pecahan dari total</strong>.
+                </li>
+
+                <li class="mt-4"><strong>Miskonsepsi Umum Siswa</strong><br>
+                    Kekeliruan berpikir yang sangat sering terjadi adalah <strong>siswa menggunakan pola rasio <em>part-to-part</em> saat diminta mencari nilai pecahan <em>part-to-whole</em></strong>. Siswa melihat dua himpunan benda (misal A dan B), lalu secara refleks menjadikan jumlah benda A sebagai pembilang dan benda B sebagai penyebut, mengabaikan fakta bahwa penyebut haruslah total (A+B). Selain itu, siswa sering mengabaikan syarat utama pecahan visual: <strong>semua bagian harus memiliki luas/ukuran yang sama besar</strong>.
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section-title">Latihan Soal Uji Konsep</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat.</em></p>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 1</div>
+        <div class="question-text">Dalam sebuah pecahan $\frac{a}{b}$, huruf $b$ merepresentasikan penyebut. Apa makna matematis yang paling tepat dari penyebut dalam konsep pecahan <em>part-to-whole</em>?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Jumlah bagian yang sedang ditanyakan atau diarsir.</div>
+            <div class="option"><strong>B.</strong> Total keseluruhan bagian yang membentuk satu kesatuan utuh.</div>
+            <div class="option"><strong>C.</strong> Sisa bagian yang tidak diarsir atau tidak dihitung.</div>
+            <div class="option"><strong>D.</strong> Angka pembagi yang menentukan besarnya nilai suatu rasio.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 2</div>
+        <div class="question-text">Perhatikan deskripsi berikut: Sebuah loyang piza dipotong menjadi 8 bagian sama besar. Andi memakan 3 potong. Berapa nilai pecahan piza yang dimakan Andi dari keseluruhan piza?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{3}{5}$</div>
+            <div class="option"><strong>B.</strong> $\frac{5}{8}$</div>
+            <div class="option"><strong>C.</strong> $\frac{3}{8}$</div>
+            <div class="option"><strong>D.</strong> $\frac{8}{3}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 3</div>
+        <div class="question-text">Syarat mutlak agar suatu gambar bangun datar dapat digunakan untuk merepresentasikan pecahan secara valid adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Bangun datar tersebut harus dipotong atau dibagi menjadi bagian-bagian yang sama luas.</div>
+            <div class="option"><strong>B.</strong> Bangun datar tersebut harus berbentuk simetris seperti persegi atau lingkaran.</div>
+            <div class="option"><strong>C.</strong> Jumlah bagian yang diarsir harus lebih sedikit daripada bagian yang tidak diarsir.</div>
+            <div class="option"><strong>D.</strong> Gambar harus memiliki kontras warna yang jelas antara bagian pembilang dan penyebut.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 4</div>
+        <div class="question-text">Di dalam kotak terdapat 4 pensil dan 5 penghapus. Jika guru meminta siswa menyebutkan nilai pecahan pensil dari total seluruh barang di dalam kotak, maka bentuk yang benar adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{4}{5}$</div>
+            <div class="option"><strong>B.</strong> $\frac{5}{9}$</div>
+            <div class="option"><strong>C.</strong> $\frac{4}{9}$</div>
+            <div class="option"><strong>D.</strong> $\frac{5}{4}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 5</div>
+        <div class="question-text">Manakah dari representasi bilangan berikut yang memiliki nilai setara (pecahan senilai) dengan $\frac{2}{3}$?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{4}{9}$</div>
+            <div class="option"><strong>B.</strong> $\frac{6}{9}$</div>
+            <div class="option"><strong>C.</strong> $\frac{3}{2}$</div>
+            <div class="option"><strong>D.</strong> $\frac{4}{5}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Tingkat Menengah / Medium | Soal 6</div>
+        <div class="question-text">
+            <div style="text-align: center; margin: 20px 0;">
+                <svg width="100%" style="max-width: 250px;" height="150" viewBox="-20 -20 250 150" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="200" height="100" fill="none" stroke="#333" stroke-width="2"/>
+                    <line x1="50" y1="0" x2="50" y2="100" stroke="#333" stroke-width="2"/>
+                    <line x1="100" y1="0" x2="100" y2="100" stroke="#333" stroke-width="2"/>
+                    <rect x="0" y="0" width="50" height="100" fill="#d9d9d9"/>
+                    <rect x="0" y="0" width="200" height="100" fill="none" stroke="#333" stroke-width="2"/>
+                    <line x1="50" y1="0" x2="50" y2="100" stroke="#333" stroke-width="2"/>
+                    <line x1="100" y1="0" x2="100" y2="100" stroke="#333" stroke-width="2"/>
+                </svg>
+            </div>
+            Siswa A melihat gambar persegi panjang di atas yang dibagi menjadi 3 bagian vertikal. Ia menyatakan bahwa daerah yang diarsir bernilai $\frac{1}{3}$. Mengapa pernyataan siswa A keliru secara konsep geometri pecahan?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Karena pembilang seharusnya adalah daerah yang tidak diarsir.</div>
+            <div class="option"><strong>B.</strong> Karena rasio bagian yang diarsir terhadap yang tidak diarsir adalah 1 berbanding 2.</div>
+            <div class="option"><strong>C.</strong> Karena pembagian area pada persegi panjang tersebut tidak sama luas.</div>
+            <div class="option"><strong>D.</strong> Karena penyebut seharusnya melambangkan keliling bangun datar.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Tingkat Menengah / Medium | Soal 7</div>
+        <div class="question-text">Budi memiliki tali sepanjang 1 meter. Ia memotong $\frac{2}{7}$ bagian dari tali tersebut untuk mengikat kardus. Berapakah bagian tali yang belum digunakan Budi?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{5}{7}$</div>
+            <div class="option"><strong>B.</strong> $\frac{2}{5}$</div>
+            <div class="option"><strong>C.</strong> $\frac{7}{2}$</div>
+            <div class="option"><strong>D.</strong> $\frac{5}{2}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Tingkat Menengah / Medium | Soal 8</div>
+        <div class="question-text">Dari sekumpulan kelereng, $\frac{3}{8}$ bagiannya berwarna kuning, dan sisanya berwarna merah. Jika dikonversi menjadi perbandingan, bagaimana rasio kelereng kuning terhadap kelereng merah?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $3 : 8$</div>
+            <div class="option"><strong>B.</strong> $8 : 5$</div>
+            <div class="option"><strong>C.</strong> $5 : 3$</div>
+            <div class="option"><strong>D.</strong> $3 : 5$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Tingkat Menengah / Medium | Soal 9</div>
+        <div class="question-text">Seorang guru menuliskan persamaan di papan tulis: $\frac{1}{2} + \frac{1}{4} = \frac{2}{6}$. Sebagian besar siswa membenarkannya. Konsep apa yang paling diabaikan oleh siswa dalam kasus ini?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Siswa tidak memahami cara mengubah pecahan biasa menjadi desimal.</div>
+            <div class="option"><strong>B.</strong> Siswa mengabaikan kewajiban menyamakan penyebut (menyamakan ukuran unit) sebelum menjumlahkan pecahan.</div>
+            <div class="option"><strong>C.</strong> Siswa tertukar letak pembilang dan penyebut saat melakukan penjumlahan silang.</div>
+            <div class="option"><strong>D.</strong> Siswa tidak menyadari bahwa hasil penjumlahan dua pecahan harus selalu lebih besar dari 1.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Tingkat Menengah / Medium | Soal 10</div>
+        <div class="question-text">Jika $\frac{1}{3}$ bagian dari sebuah kebun ditanami jagung, dan setengah dari sisa kebun tersebut ditanami kedelai, maka pecahan yang menyatakan luas kebun kedelai dari keseluruhan kebun adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{1}{6}$</div>
+            <div class="option"><strong>B.</strong> $\frac{1}{3}$</div>
+            <div class="option"><strong>C.</strong> $\frac{2}{3}$</div>
+            <div class="option"><strong>D.</strong> $\frac{1}{2}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: <em>High Order Thinking Skills</em> (HOTS) | Soal 11</div>
+        <div class="question-text">
+            <div style="display: flex; justify-content: center; gap: 40px; margin: 20px 0;">
+                <svg width="150" height="150" viewBox="-120 -120 240 240" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="0" cy="0" r="100" fill="none" stroke="#333" stroke-width="2"/>
+                    <line x1="0" y1="0" x2="100" y2="0" stroke="#333" stroke-width="2"/>
+                    <line x1="0" y1="0" x2="0" y2="100" stroke="#333" stroke-width="2"/>
+                    <line x1="0" y1="0" x2="-100" y2="0" stroke="#333" stroke-width="2"/>
+                    <line x1="0" y1="0" x2="0" y2="-100" stroke="#333" stroke-width="2"/>
+                    <path d="M 0,0 L 100,0 A 100,100 0 0,0 0,-100 Z" fill="#d9d9d9"/>
+                    <path d="M 0,0 L 0,-100 A 100,100 0 0,0 -100,0 Z" fill="#d9d9d9"/>
+                    <circle cx="0" cy="0" r="100" fill="none" stroke="#333" stroke-width="2"/>
+                    <line x1="0" y1="0" x2="100" y2="0" stroke="#333" stroke-width="2"/>
+                    <line x1="0" y1="0" x2="0" y2="-100" stroke="#333" stroke-width="2"/>
+                    <line x1="0" y1="0" x2="-100" y2="0" stroke="#333" stroke-width="2"/>
+                </svg>
+                <svg width="150" height="150" viewBox="-120 -120 240 240" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="0" cy="0" r="100" fill="none" stroke="#333" stroke-width="2"/>
+                    <line x1="-100" y1="0" x2="100" y2="0" stroke="#333" stroke-width="2"/>
+                    <path d="M 0,0 L 100,0 A 100,100 0 0,0 -100,0 Z" fill="#d9d9d9"/>
+                    <circle cx="0" cy="0" r="100" fill="none" stroke="#333" stroke-width="2"/>
+                    <line x1="-100" y1="0" x2="100" y2="0" stroke="#333" stroke-width="2"/>
+                </svg>
+            </div>
+            Iwan disajikan dua gambar lingkaran. Lingkaran pertama dibagi 4, diarsir 2 bagian ($\frac{2}{4}$). Lingkaran kedua dibagi 2, diarsir 1 bagian ($\frac{1}{2}$). Iwan menyimpulkan bahwa arsiran di lingkaran pertama lebih besar nilainya karena angka pembilang dan penyebutnya lebih besar ($2>1$ dan $4>2$). Apa kekeliruan berpikir utama Iwan?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Iwan hanya memfokuskan perhatian pada luas daerah yang tidak diarsir.</div>
+            <div class="option"><strong>B.</strong> Iwan tidak memahami konsep pecahan senilai dan menganggap nilai pecahan semata-mata bergantung pada besaran angka penyusunnya.</div>
+            <div class="option"><strong>C.</strong> Iwan menjumlahkan pembilang lingkaran pertama dengan pembilang lingkaran kedua.</div>
+            <div class="option"><strong>D.</strong> Iwan menggunakan pendekatan rasio <em>part-to-part</em> untuk membandingkan dua lingkaran yang terpisah.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: <em>High Order Thinking Skills</em> (HOTS) | Soal 12</div>
+        <div class="question-text">Rina melihat di atas meja terdapat sekumpulan buku: 5 buku fiksi dan 2 buku pelajaran. Guru bertanya, <em>"Berapa nilai pecahan buku pelajaran dari seluruh buku di atas meja?"</em> Rina menjawab <strong>$\frac{2}{5}$</strong>. Ketika ditanya alasannya, ia menjawab: <em>"Karena buku pelajarannya ada 2 dan buku fiksinya ada 5."</em> Manakah pernyataan di bawah ini yang paling tepat mendiagnosis letak miskonsepsi Rina?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Rina salah dalam melakukan kalkulasi penjumlahan benda secara keseluruhan.</div>
+            <div class="option"><strong>B.</strong> Rina meletakkan penyebut pada posisi pembilang dan sebaliknya secara mekanis.</div>
+            <div class="option"><strong>C.</strong> Rina menggunakan logika rasio perbandingan bagian-ke-bagian (<em>part-to-part</em>) alih-alih menggunakan konsep pecahan bagian-ke-keseluruhan (<em>part-to-whole</em>).</div>
+            <div class="option"><strong>D.</strong> Rina menganggap bahwa bilangan pecahan harus selalu memiliki nilai pembilang yang lebih kecil dibandingkan nilai penyebut.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: <em>High Order Thinking Skills</em> (HOTS) | Soal 13</div>
+        <div class="question-text">
+            <div style="text-align: center; margin: 20px 0;">
+                <svg width="100%" style="max-width: 250px;" height="250" viewBox="-20 -20 250 250" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="70" height="70" fill="black" stroke="#333" stroke-width="2"/>
+                    <rect x="70" y="0" width="70" height="70" fill="none" stroke="#333" stroke-width="2"/>
+                    <rect x="140" y="0" width="70" height="70" fill="none" stroke="#333" stroke-width="2"/>
+                    <rect x="0" y="70" width="70" height="70" fill="none" stroke="#333" stroke-width="2"/>
+                    <rect x="70" y="70" width="70" height="70" fill="black" stroke="#333" stroke-width="2"/>
+                    <rect x="140" y="70" width="70" height="70" fill="none" stroke="#333" stroke-width="2"/>
+                    <rect x="0" y="140" width="70" height="70" fill="none" stroke="#333" stroke-width="2"/>
+                    <rect x="70" y="140" width="70" height="70" fill="black" stroke="#333" stroke-width="2"/>
+                    <rect x="140" y="140" width="70" height="70" fill="black" stroke="#333" stroke-width="2"/>
+                </svg>
+            </div>
+            Siswa dihadapkan pada papan kotak grid $3 \times 3$ seperti gambar di atas. Terdapat 4 kotak yang berwarna hitam. Siswa ditanya berapa pecahan area yang berwarna hitam. Siswa menjawab $\frac{4}{9}$. Analisis dari proses bernalar siswa tersebut adalah...
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Benar, siswa berhasil membedakan dan menghitung (bagian) dibagi dengan (total bagian).</div>
+            <div class="option"><strong>B.</strong> Salah, siswa seharusnya menjawab $\frac{4}{5}$ karena sisanya ada 5 kotak putih.</div>
+            <div class="option"><strong>C.</strong> Benar, meskipun siswa tidak menyadari bahwa kotak hitam saling terpisah.</div>
+            <div class="option"><strong>D.</strong> Salah, karena letak kotak hitam yang acak membuat nilai pecahannya tidak dapat ditentukan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: <em>High Order Thinking Skills</em> (HOTS) | Soal 14</div>
+        <div class="question-text">Pak Dedi membagikan 3 batang cokelat utuh yang identik secara merata kepada 5 orang anak. Jika Anton adalah salah satu anak tersebut, Siti (seorang siswa) menyatakan Anton mendapat $\frac{5}{3}$ bagian cokelat. Kesalahan konseptual apa yang terjadi pada pernyataan Siti?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Siti memahami pecahan sebagai operasi perkalian alih-alih pembagian.</div>
+            <div class="option"><strong>B.</strong> Siti menempatkan subjek pembagi (jumlah anak) sebagai pembilang dan objek yang dibagi (jumlah cokelat) sebagai penyebut.</div>
+            <div class="option"><strong>C.</strong> Siti menghitung rasio anak yang mendapat cokelat dengan anak yang tidak mendapat cokelat.</div>
+            <div class="option"><strong>D.</strong> Siti berasumsi bahwa setiap anak minimal harus menerima satu batang cokelat utuh terlebih dahulu.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: <em>High Order Thinking Skills</em> (HOTS) | Soal 15</div>
+        <div class="question-text">
+            <div style="text-align: center; margin: 20px 0;">
+                <svg width="100%" style="max-width: 500px;" height="100" viewBox="-20 -20 400 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="30" r="20" fill="black"/>
+                    <circle cx="70" cy="30" r="20" fill="black"/>
+                    <circle cx="120" cy="30" r="20" fill="black"/>
+                    <circle cx="170" cy="30" r="20" fill="white" stroke="#333" stroke-width="2"/>
+                    <circle cx="220" cy="30" r="20" fill="white" stroke="#333" stroke-width="2"/>
+                    <circle cx="270" cy="30" r="20" fill="white" stroke="#333" stroke-width="2"/>
+                    <circle cx="320" cy="30" r="20" fill="white" stroke="#333" stroke-width="2"/>
+                    <circle cx="370" cy="30" r="20" fill="white" stroke="#333" stroke-width="2"/>
+                </svg>
+            </div>
+            Guru menunjukkan ilustrasi koin di papan tulis: 3 koin hitam pekat dan 5 koin putih bergaris luar (seperti gambar). Guru memberikan instruksi: <em>"Tentukan nilai pecahan koin hitam dari kelompok koin tersebut!"</em> Doni langsung menulis angka $\mathbf{\frac{3}{5}}$ di bukunya. Berdasarkan prinsip didaktik matematika, manakah pernyataan berikut yang secara akurat menjelaskan <strong>kekeliruan berpikir</strong> Doni?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Doni terbalik dalam mengidentifikasi jumlah koin hitam dan koin putih.</div>
+            <div class="option"><strong>B.</strong> Doni tidak mengenali bahwa koin putih memiliki ukuran yang berbeda dengan koin hitam.</div>
+            <div class="option"><strong>C.</strong> Doni mendefinisikan penyebut dari sisa benda yang tidak ditanyakan (konsep rasio <em>part-to-part</em>), bukan dari seluruh benda (<em>part-to-whole</em>).</div>
+            <div class="option"><strong>D.</strong> Doni gagal memahami instruksi guru dan menghitung probabilitas terambilnya koin putih.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: <em>High Order Thinking Skills</em> (HOTS) | Soal 16</div>
+        <div class="question-text">Sebuah gelas A berisi air sebanyak $\frac{1}{2}$ bagian kapasitasnya. Gelas B yang berukuran sama identik berisi air sebanyak $\frac{1}{4}$ bagian kapasitasnya. Jika isi kedua gelas dituang seluruhnya ke dalam gelas C yang berukuran 2 kali lipat lebih besar dari gelas A, maka air di gelas C akan mengisi sebanyak...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{3}{4}$ bagian dari gelas C</div>
+            <div class="option"><strong>B.</strong> $\frac{2}{6}$ bagian dari gelas C</div>
+            <div class="option"><strong>C.</strong> $\frac{3}{8}$ bagian dari gelas C</div>
+            <div class="option"><strong>D.</strong> $\frac{2}{8}$ bagian dari gelas C</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: <em>High Order Thinking Skills</em> (HOTS) | Soal 17</div>
+        <div class="question-text">Dalam menempatkan pecahan $\frac{4}{7}$ dan $\frac{5}{9}$ pada garis bilangan, seorang anak menyimpulkan bahwa letak $\frac{4}{7}$ berada di sebelah kiri $\frac{5}{9}$ karena angka 4 dan 7 lebih kecil dari 5 dan 9. Evaluasi terhadap penalaran anak ini adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Benar, membandingkan angka penyusun secara individual adalah cara tercepat untuk mengurutkan pecahan.</div>
+            <div class="option"><strong>B.</strong> Benar, karena nilai desimal $\frac{4}{7}$ adalah $0,57$ yang mana lebih kecil dari nilai desimal $\frac{5}{9}$ yaitu $0,55$.</div>
+            <div class="option"><strong>C.</strong> Salah, baik secara prosedur maupun kesimpulan. Anak tidak menyamakan penyebut terlebih dahulu padahal nilai $\frac{4}{7}$ sebenarnya lebih besar dari $\frac{5}{9}$.</div>
+            <div class="option"><strong>D.</strong> Salah, karena letak pada garis bilangan hanya bisa ditentukan dari penyebutnya saja.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: <em>High Order Thinking Skills</em> (HOTS) | Soal 18</div>
+        <div class="question-text">Di lapangan olahraga terdapat susunan bola basket dan bola voli. Jumlah bola basket ada 7 buah dan bola voli ada 4 buah. Bimo diminta guru olahraganya untuk menuliskan nilai pecahan dari bola basket. Di papan tulis, Bimo menuliskan <strong>$\frac{7}{4}$</strong>. Ketika ditanya dari mana angka tersebut, Bimo berkata, <em>"Yang ditanyakan bola basket kan? Jumlahnya 7, dan yang satu lagi jumlahnya 4."</em> Dari kacamata pedagogis, apa akar kesalahan Bimo?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Bimo melakukan kesalahan komputasi saat menjumlahkan $7+4$.</div>
+            <div class="option"><strong>B.</strong> Bimo membandingkan dua sub-himpunan satu sama lain (rasio <em>part-to-part</em>), mengabaikan konsep fundamental bahwa pecahan mensyaratkan perbandingan sub-himpunan terhadap himpunan universal (keseluruhan).</div>
+            <div class="option"><strong>C.</strong> Bimo menuliskan pecahan campuran ke dalam bentuk pecahan biasa dengan prosedur yang keliru.</div>
+            <div class="option"><strong>D.</strong> Bimo tidak mengetahui perbedaan antara nilai pecahan murni dan pecahan tidak murni (<em>improper fraction</em>).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: <em>High Order Thinking Skills</em> (HOTS) | Soal 19</div>
+        <div class="question-text">
+            <div style="text-align: center; margin: 20px 0;">
+                <svg width="100%" style="max-width: 250px;" height="250" viewBox="-20 -20 250 250" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="200" height="200" fill="none" stroke="#333" stroke-width="2"/>
+                    <line x1="100" y1="0" x2="100" y2="200" stroke="#333" stroke-width="2"/>
+                    <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
+                    <polygon points="0,100 100,0 0,0" fill="#d9d9d9"/>
+                    <line x1="0" y1="100" x2="100" y2="0" stroke="#333" stroke-width="2"/>
+                    <rect x="100" y="100" width="100" height="100" fill="#d9d9d9"/>
+                    <rect x="0" y="0" width="200" height="200" fill="none" stroke="#333" stroke-width="2"/>
+                    <line x1="100" y1="0" x2="100" y2="200" stroke="#333" stroke-width="2"/>
+                    <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
+                </svg>
+            </div>
+            Perhatikan gambar persegi di atas. Persegi besar dibagi menjadi empat persegi kecil. Salah satu persegi kecil di kuadran kanan bawah diarsir penuh. Persegi kecil di kuadran kiri atas dibagi diagonal dan setengahnya diarsir. Berapakah nilai pecahan total luas area yang diarsir terhadap persegi besar?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{2}{4}$</div>
+            <div class="option"><strong>B.</strong> $\frac{2}{5}$</div>
+            <div class="option"><strong>C.</strong> $\frac{3}{8}$</div>
+            <div class="option"><strong>D.</strong> $\frac{1.5}{4}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: <em>High Order Thinking Skills</em> (HOTS) | Soal 20</div>
+        <div class="question-text">Lisa mencoba menyelesaikan pengurangan $\frac{5}{6} - \frac{1}{3}$. Ia menuliskan langkah: $\frac{5}{6} - \frac{1}{3} = \frac{5-1}{6-3} = \frac{4}{3}$. <br>
+        Apa penyebab mendasar terjadinya kesalahan operasional ini dari perspektif pemahaman konsep?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Lisa menerapkan aturan perkalian pecahan ke dalam operasi pengurangan tanpa membalik pecahannya.</div>
+            <div class="option"><strong>B.</strong> Lisa memperlakukan pembilang dan penyebut sebagai bilangan cacah yang independen dan mengoperasikannya secara terpisah, kehilangan makna dari unit pecahan itu sendiri.</div>
+            <div class="option"><strong>C.</strong> Lisa tidak memahami cara menyederhanakan pecahan $\frac{4}{3}$ menjadi $1 \frac{1}{3}$.</div>
+            <div class="option"><strong>D.</strong> Lisa mengira penyebut yang lebih besar selalu diletakkan di sebelah kiri sebelum dikurangkan.</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
