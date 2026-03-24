@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul dan Latihan Soal: Keliling dan Luas Bangun Datar Gabungan</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.1rem; padding-top: 20px;}
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            .logo-right { padding-top: 0; display: block; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">Rangkuman Materi: Bangun Datar Gabungan</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-text">
+            <p>Bangun datar gabungan adalah bangun datar yang terbentuk dari gabungan dua atau lebih bangun datar sederhana seperti persegi, persegi panjang, segitiga, dan lingkaran.</p>
+
+            <h4 class="mt-4">1. Konsep Keliling Bangun Datar Gabungan</h4>
+            <p><strong>Keliling</strong> adalah total panjang garis batas <strong>terluar</strong> dari suatu bangun.<br> 
+            Kesalahan yang paling sering terjadi saat menghitung keliling bangun gabungan adalah ikut menghitung sisi yang saling berimpit (garis di bagian dalam).<br>
+            <strong>Ingat: Sisi yang berimpit (berada di dalam bangun gabungan) TIDAK dihitung dalam keliling.</strong></p>
+
+            <h4 class="mt-4">2. Rumus-Rumus Dasar</h4>
+            <ul class="list-inside">
+                <li><strong>Persegi Panjang:</strong> Luas ($L$) $= p \times l$, Keliling ($K$) $= 2 \times (p + l)$</li>
+                <li><strong>Lingkaran:</strong> Luas ($L$) $= \pi \times r^2$, Keliling ($K$) $= \pi \times d$ atau $2 \times \pi \times r$</li>
+            </ul>
+            <p><em>Catatan:</em> $p$ = panjang, $l$ = lebar, $r$ = jari-jari, $d$ = diameter ($d = 2r$), $\pi \approx \frac{22}{7}$ atau $3,14$.</p>
+
+            <h4 class="mt-4">3. Analisis Bentuk Kapsul (Stadium)</h4>
+            <p>Bentuk pada soal contoh terdiri dari 1 persegi panjang dan 2 setengah lingkaran di ujungnya.</p>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <svg width="100%" style="max-width: 600px;" height="220" viewBox="-250 -80 700 260" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 0,100 L 200,100 A 50,50 0 0,0 200,0 L 0,0 A 50,50 0 0,0 0,100 Z" fill="#e8f4fd" stroke="#333" stroke-width="3"/>
+                    
+                    <line x1="0" y1="0" x2="0" y2="100" stroke="#333" stroke-width="2" stroke-dasharray="8,4"/>
+                    <line x1="200" y1="0" x2="200" y2="100" stroke="#333" stroke-width="2" stroke-dasharray="8,4"/>
+                    
+                    <text x="100" y="-15" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">Panjang (<tspan font-style="italic">p</tspan>)</text>
+                    <text x="-80" y="55" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">Lebar (<tspan font-style="italic">l</tspan>) = Diameter (<tspan font-style="italic">d</tspan>)</text>
+                </svg>
+            </div>
+
+            <p>Keliling bentuk ini <strong>bukanlah</strong> keliling persegi panjang ditambah keliling lingkaran. Garis putus-putus tidak dihitung.<br>
+            Rumus kelilingnya adalah:</p>
+            $$ K_{\text{gabungan}} = (2 \times p) + \text{Keliling Lingkaran Penuh} $$
+        </div>
+    </div>
+
+    <div class="section-title">Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat!</em></p>
+
+    <div class="question-meta">A. Pemahaman Konsep Dasar (Level 1)</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 1</div>
+        <div class="question-text">Pernyataan yang benar mengenai keliling bangun datar gabungan adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Jumlah luas seluruh bangun datar penyusunnya.</div>
+            <div class="option"><strong>B.</strong> Jumlah panjang seluruh garis batas terluar bangun tersebut.</div>
+            <div class="option"><strong>C.</strong> Jumlah keliling masing-masing bangun penyusun tanpa terkecuali.</div>
+            <div class="option"><strong>D.</strong> Menjumlahkan semua sisi terluar dan sisi dalam yang berimpit.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 2</div>
+        <div class="question-text">Rumus untuk mencari keliling sebuah lingkaran jika diketahui diameternya ($d$) adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\pi \times d$</div>
+            <div class="option"><strong>B.</strong> $\frac{1}{4} \times \pi \times d^2$</div>
+            <div class="option"><strong>C.</strong> $\pi \times r^2$</div>
+            <div class="option"><strong>D.</strong> $2 \times \pi \times d$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 3</div>
+        <div class="question-text">Sebuah persegi panjang memiliki panjang $12\text{ cm}$ dan lebar $5\text{ cm}$. Keliling persegi panjang tersebut adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $17\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $34\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $60\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $120\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 4</div>
+        <div class="question-text">Jika sebuah lingkaran memiliki keliling $44\text{ cm}$ dan menggunakan $\pi = \frac{22}{7}$, maka panjang jari-jarinya adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $7\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $14\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $21\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $49\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 5</div>
+        <div class="question-text">Bangun setengah lingkaran memiliki diameter $14\text{ cm}$. Jika kita ingin memagari <strong>seluruh</strong> pinggiran bangun setengah lingkaran tersebut (melengkung dan lurus), panjang pagar yang dibutuhkan adalah... ($\pi = \frac{22}{7}$)</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $22\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $36\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $44\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $58\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">B. Soal Medium (Level 2)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 6</div>
+        <div class="question-text">Diketahui luas sebuah persegi panjang adalah $96\text{ cm}^2$. Jika panjangnya adalah $12\text{ cm}$, berapakah keliling persegi panjang tersebut?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $20\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $32\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $40\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $48\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 7</div>
+        <div class="question-text">
+            Perhatikan gambar bangun yang terdiri dari persegi dan segitiga sama kaki di atasnya.
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <svg width="100%" style="max-width: 300px;" height="250" viewBox="-50 -20 250 280" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="0,210 120,210 120,90 0,90" fill="#fafafa" stroke="#333" stroke-width="3"/>
+                    <polygon points="0,90 60,0 120,90" fill="#fafafa" stroke="#333" stroke-width="3"/>
+                    
+                    <line x1="0" y1="90" x2="120" y2="90" stroke="#333" stroke-width="2" stroke-dasharray="6,4"/>
+                    
+                    <text x="60" y="240" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">8 cm</text>
+                    <text x="110" y="45" font-family="sans-serif" font-size="16" fill="#333" text-anchor="start">5 cm</text>
+                </svg>
+            </div>
+            
+            Keliling bangun gabungan di atas adalah...
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $26\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $34\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $42\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $50\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 8</div>
+        <div class="question-text">Keliling bangun berbentuk tiga perempat ($\frac{3}{4}$) lingkaran dengan jari-jari $10\text{ cm}$ adalah... ($\pi = 3,14$)</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $47,1\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $67,1\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $78,5\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $94,2\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 9</div>
+        <div class="question-text">Sebuah roda sepeda memiliki jari-jari $21\text{ cm}$. Jika roda tersebut berputar sebanyak 100 kali, jarak yang ditempuh sepeda tersebut adalah... ($\pi = \frac{22}{7}$)</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $13.200\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $6.600\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $1.386\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $132\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 10</div>
+        <div class="question-text">Pak Budi memiliki taman berbentuk persegi panjang dengan panjang $15\text{ m}$ dan lebar $10\text{ m}$. Di tengah taman terdapat kolam ikan berbentuk lingkaran dengan diameter $7\text{ m}$. Pak Budi ingin memasang pagar di <strong>sekeliling taman</strong> dan <strong>sekeliling kolam</strong>. Total panjang pagar yang dibutuhkan adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $50\text{ m}$</div>
+            <div class="option"><strong>B.</strong> $72\text{ m}$</div>
+            <div class="option"><strong>C.</strong> $150\text{ m}$</div>
+            <div class="option"><strong>D.</strong> $188\text{ m}$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">C. Soal HOTS (Level 3)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 11</div>
+        <div class="question-text">
+            Perhatikan gambar dua lingkaran sepusat berikut!
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <svg width="100%" style="max-width: 300px;" height="250" viewBox="-150 -150 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+                        </marker>
+                    </defs>
+                    
+                    <circle cx="0" cy="0" r="100" fill="#e0e0e0" stroke="#333" stroke-width="3"/>
+                    <circle cx="0" cy="0" r="50" fill="#fff" stroke="#333" stroke-width="3"/>
+                    
+                    <line x1="0" y1="0" x2="50" y2="0" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="25" y="-10" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">7</text>
+                    
+                    <line x1="0" y1="0" x2="0" y2="-100" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="-20" y="-50" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">14</text>
+                </svg>
+            </div>
+            
+            Seekor semut berjalan menyusuri garis batas lingkaran dalam, lalu pindah lurus ke luar, dan menyusuri garis batas lingkaran luar hingga kembali ke titik awal. Jika panjang lintasan perpindahan tidak dihitung, total jarak lintasan melingkar semut adalah... ($\pi = \frac{22}{7}$)
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $44\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $88\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $132\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $616\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 12</div>
+        <div class="question-text">
+            Bangun datar di bawah ini terdiri dari sebuah persegi panjang dan dua buah setengah lingkaran identik yang menempel pada sisi lebarnya.
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <svg width="100%" style="max-width: 450px;" height="200" viewBox="-100 -80 400 250" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+                        </marker>
+                    </defs>
+
+                    <path d="M 0,100 L 200,100 A 50,50 0 0,0 200,0 L 0,0 A 50,50 0 0,0 0,100 Z" fill="#e8f4fd" stroke="#333" stroke-width="3"/>
+                    
+                    <line x1="0" y1="0" x2="0" y2="100" stroke="#333" stroke-width="2" stroke-dasharray="8,4"/>
+                    <line x1="200" y1="0" x2="200" y2="100" stroke="#333" stroke-width="2" stroke-dasharray="8,4"/>
+                    
+                    <line x1="0" y1="-20" x2="200" y2="-20" stroke="#333" stroke-width="2" marker-start="url(#arrow2)" marker-end="url(#arrow2)"/>
+                    <text x="100" y="-35" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">20 cm</text>
+                </svg>
+            </div>
+            
+            Jika diketahui <strong>luas</strong> persegi panjang di bagian tengah adalah $240\text{ cm}^2$, maka keliling dari bangun datar gabungan tersebut adalah... (Gunakan $\pi = 3,14$)
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $77,68\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $101,68\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $277,68\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $115,36\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 13</div>
+        <div class="question-text">Di dalam sebuah persegi yang panjang sisinya $14\text{ cm}$, dibuat empat buah setengah lingkaran pada masing-masing sisi persegi menghadap ke luar. Keliling bangun gabungan yang terbentuk (menyerupai bunga) adalah... ($\pi = \frac{22}{7}$)</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $56\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $88\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $144\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $176\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 14</div>
+        <div class="question-text">Sebuah taman kota berbentuk persegi panjang berukuran $30\text{ m} \times 20\text{ m}$. Di setiap sudut taman dibuat area bunga berbentuk seperempat lingkaran dengan jari-jari $7\text{ m}$. Sisa taman akan dikelilingi pagar untuk lintasan lari. Berapakah panjang lintasan lari (keliling area yang tersisa)?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $100\text{ m}$</div>
+            <div class="option"><strong>B.</strong> $88\text{ m}$</div>
+            <div class="option"><strong>C.</strong> $144\text{ m}$</div>
+            <div class="option"><strong>D.</strong> $154\text{ m}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 15</div>
+        <div class="question-text">Seorang pelari mengelilingi sebuah lapangan. Lapangan tersebut berbentuk persegi panjang dengan panjang $100\text{ m}$ dan lebar $70\text{ m}$, namun di kedua sisi lebarnya ditambahkan bentuk setengah lingkaran. Jika pelari tersebut berlari sebanyak $3$ putaran penuh, jarak tempuh totalnya adalah... ($\pi = \frac{22}{7}$)</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $420\text{ m}$</div>
+            <div class="option"><strong>B.</strong> $1.260\text{ m}$</div>
+            <div class="option"><strong>C.</strong> $1.680\text{ m}$</div>
+            <div class="option"><strong>D.</strong> $3.780\text{ m}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 16</div>
+        <div class="question-text">
+            Perhatikan gambar kapsul (gabungan persegi panjang dan dua setengah lingkaran) di bawah ini.
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <svg width="100%" style="max-width: 450px;" height="180" viewBox="-100 -50 450 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 0,100 L 250,100 A 50,50 0 0,0 250,0 L 0,0 A 50,50 0 0,0 0,100 Z" fill="#fadbd8" stroke="#333" stroke-width="3"/>
+                    
+                    <line x1="0" y1="0" x2="0" y2="100" stroke="#333" stroke-width="2" stroke-dasharray="8,4"/>
+                    <line x1="250" y1="0" x2="250" y2="100" stroke="#333" stroke-width="2" stroke-dasharray="8,4"/>
+                </svg>
+            </div>
+            
+            Diketahui jarak tegak lurus antara sisi atas dan sisi bawah persegi panjang (lebarnya) adalah $10\text{ cm}$. Jika luas daerah persegi panjang di tengah adalah $120\text{ cm}^2$, keliling seluruh bangun datar gabungan tersebut adalah... ($\pi = 3,14$)
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $55,4\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $75,4\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $86,8\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $151,4\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 17</div>
+        <div class="question-text">Sebuah pelat logam dibentuk dari persegi dengan memotong setengah lingkaran pada salah satu sisinya ke arah dalam. Jika sisi persegi adalah $28\text{ cm}$, keliling pelat logam tersebut adalah... ($\pi = \frac{22}{7}$)</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $112\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $128\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $156\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $84\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 18</div>
+        <div class="question-text">Jendela bergaya Eropa berbentuk persegi panjang yang di atasnya terdapat bentuk setengah lingkaran. Jika lebar jendela adalah $140\text{ cm}$ dan tinggi bagian persegi panjangnya adalah $150\text{ cm}$, panjang bingkai kayu yang dibutuhkan untuk membingkai pinggiran terluar jendela tersebut adalah... ($\pi = \frac{22}{7}$)</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $660\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $520\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $800\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $730\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 19</div>
+        <div class="question-text">Sebuah logo perusahaan dirancang dengan bentuk dasar persegi panjang yang diapit dua setengah lingkaran saling membelakangi pada sisi kanan dan kirinya. Panjang sisi atas persegi panjang tersebut adalah $25\text{ cm}$. Jika luas area persegi panjangnya adalah $350\text{ cm}^2$, keliling total bentuk logo tersebut adalah... ($\pi = \frac{22}{7}$)</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $94\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $122\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $138\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $394\text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 20</div>
+        <div class="question-text">
+            Tiga buah pipa air berdiameter $14\text{ cm}$ diikat erat dengan seutas kawat seperti pada gambar penampang melintang di bawah ini.
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <svg width="100%" style="max-width: 300px;" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="200" r="50" fill="#e0e0e0" stroke="#333" stroke-width="3"/>
+                    <circle cx="200" cy="200" r="50" fill="#e0e0e0" stroke="#333" stroke-width="3"/>
+                    <circle cx="150" cy="113.4" r="50" fill="#e0e0e0" stroke="#333" stroke-width="3"/>
+
+                    <line x1="100" y1="250" x2="200" y2="250" stroke="#2c3e50" stroke-width="4"/>
+                    <line x1="243.3" y1="175" x2="193.3" y2="88.4" stroke="#2c3e50" stroke-width="4"/>
+                    <line x1="106.7" y1="88.4" x2="56.7" y2="175" stroke="#2c3e50" stroke-width="4"/>
+
+                    <path d="M 200,250 A 50,50 0 0,0 243.3,175" fill="none" stroke="#2c3e50" stroke-width="4"/>
+                    <path d="M 193.3,88.4 A 50,50 0 0,0 106.7,88.4" fill="none" stroke="#2c3e50" stroke-width="4"/>
+                    <path d="M 56.7,175 A 50,50 0 0,0 100,250" fill="none" stroke="#2c3e50" stroke-width="4"/>
+                </svg>
+            </div>
+            
+            Panjang kawat minimal yang dibutuhkan untuk mengikat ketiga pipa tersebut adalah... ($\pi = \frac{22}{7}$)
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $44\text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $86\text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $130\text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $172\text{ cm}$</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
