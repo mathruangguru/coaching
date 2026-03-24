@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pedagogi: Pengajaran Konsep Volume dan Kapasitas</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">Modul Pedagogi: Pengajaran Konsep Volume dan Kapasitas</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Pendekatan Konseptual Pengajaran Volume</div>
+        <div class="question-text">
+            <p>Dalam pembelajaran matematika, khususnya pada materi bangun ruang, pengenalan konsep <strong>volume</strong> tidak boleh langsung dimulai dengan pemberian rumus ($p \times l \times t$). Pendekatan didaktis yang tepat harus melalui urutan instruksional yang menjembatani pemikiran konkret siswa menuju abstrak (rumus matematis).</p>
+            
+            <p>Urutan pengajaran yang ideal meliputi:</p>
+            <ol class="list-inside">
+                <li><strong>Pemahaman Konsep Dasar (Kapasitas):</strong> Volume harus dipahami sebagai "kapasitas" atau seberapa banyak ruang tiga dimensi yang dapat diisi oleh suatu benda. Guru dapat memulainya dengan membandingkan dua wadah kosong secara visual.</li>
+                <li><strong>Penggunaan Satuan Tak Baku:</strong> Sebelum mengenal centimeter kubik ($cm^3$), siswa perlu mengisi wadah menggunakan objek konkret tak baku seperti kubus kayu kecil, kelereng, atau beras. Ini menanamkan konsep bahwa mengukur volume berarti "menghitung jumlah unit penyusun ruang". <em>Catatan:</em> Kubus lebih ideal daripada kelereng karena kelereng menyisakan ruang kosong (celah/rongga) yang membuat pengukuran kurang akurat.</li>
+                <li><strong>Transisi ke Satuan Baku:</strong> Guru mengganti kubus kayu sembarang dengan kubus satuan baku (misal: rusuk 1 cm).</li>
+                <li><strong>Konseptualisasi Rumus (Abstraksi):</strong> Siswa diajak mengamati pola susunan kubus satuan. Mereka melihat bahwa jumlah kubus pada satu lapisan dasar adalah (panjang $\times$ lebar), dan jumlah lapisan mewakili (tinggi). Dari sinilah rumus $V = p \times l \times t$ diturunkan secara bermakna, mencegah hafalan mekanis tanpa arti.</li>
+            </ol>
+
+            <div style="text-align: center; margin: 35px 0;">
+                <svg width="100%" style="max-width: 450px;" height="300" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke="#999" stroke-width="2" stroke-dasharray="5,5" fill="none">
+                        <polygon points="150,200 350,200 350,100 150,100" />
+                        <line x1="150" y1="200" x2="75" y2="250" />
+                    </g>
+
+                    <polygon points="75,150 275,150 350,100 150,100" fill="#d6eaf8" fill-opacity="0.9" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+                    
+                    <polygon points="75,250 275,250 275,150 75,150" fill="#f0f8ff" fill-opacity="0.9" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+                    
+                    <polygon points="275,250 350,200 350,100 275,150" fill="#aed6f1" fill-opacity="0.9" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+
+                    <text x="175" y="280" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">
+                        Panjang (<tspan font-style="italic" font-weight="normal">p</tspan>)
+                    </text>
+                    
+                    <text x="325" y="245" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="start">
+                        Lebar (<tspan font-style="italic" font-weight="normal">l</tspan>)
+                    </text>
+                    
+                    <text x="65" y="205" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="end">
+                        Tinggi (<tspan font-style="italic" font-weight="normal">t</tspan>)
+                    </text>
+                    
+                    <text x="212" y="80" font-family="sans-serif" font-size="16" font-style="italic" fill="#333" text-anchor="middle">
+                        Luas Alas = p &times; l
+                    </text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat. Hati-hati, banyak opsi yang terlihat rasional namun secara pedagogis kurang tepat.</em></p>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 1</div>
+        <div class="question-text">Secara konseptual, perbedaan mendasar antara mengajarkan luas permukaan dan volume pada siswa sekolah dasar adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Luas permukaan menggunakan operasi penjumlahan, sedangkan volume murni menggunakan operasi perkalian berulang.</div>
+            <div class="option">B. Luas permukaan berkaitan dengan panjang garis batas objek, sedangkan volume berkaitan dengan berat objek tersebut.</div>
+            <div class="option">C. Luas permukaan berkaitan dengan "membungkus" kulit luar bentuk 3D, sedangkan volume berkaitan dengan "mengisi" kapasitas ruang di dalamnya.</div>
+            <div class="option">D. Luas permukaan lebih mudah diajarkan dengan alat peraga air, sedangkan volume diajarkan dengan kertas lipat.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 2</div>
+        <div class="question-text">Saat mengajar, seorang guru menggunakan gelas plastik dan gayung. Gayung di sini bertindak sebagai...</div>
+        <div class="options-list">
+            <div class="option">A. Satuan volume baku yang telah diakui secara internasional.</div>
+            <div class="option">B. Alat ukur observasional untuk menguji hukum Archimedes.</div>
+            <div class="option">C. Media pengalih perhatian agar siswa tertarik pada pelajaran sains terpadu.</div>
+            <div class="option">D. Satuan tak baku untuk memperkenalkan konsep perbandingan kapasitas ruang.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 3</div>
+        <div class="question-text">Mengapa sebuah "kubus" dianggap sebagai bentuk geometris yang paling ideal untuk dijadikan satuan ukuran dasar volume (satuan tak baku maupun baku)?</div>
+        <div class="options-list">
+            <div class="option">A. Karena kubus memiliki sisi-sisi yang tajam sehingga melatih kehati-hatian siswa saat praktik.</div>
+            <div class="option">B. Karena kubus dapat ditumpuk tanpa menyisakan ruang kosong (celah) di antara unit-unitnya.</div>
+            <div class="option">C. Karena kubus adalah bangun ruang pertama yang ditemukan dalam sejarah matematika klasik.</div>
+            <div class="option">D. Karena volume kubus paling mudah dihitung dengan rumus tunggal $s^3$ dibandingkan bentuk lain.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 4</div>
+        <div class="question-text">Apa makna sebenarnya dari pernyataan "Volume balok ini adalah 24 $cm^3$" secara konseptual?</div>
+        <div class="options-list">
+            <div class="option">A. Balok tersebut memiliki total luas bidang datar sebesar 24 persegi.</div>
+            <div class="option">B. Diperlukan waktu 24 detik untuk mengisi penuh balok tersebut dengan air.</div>
+            <div class="option">C. Ruang di dalam balok tersebut setara dengan gabungan 24 buah kubus yang masing-masing rusuknya berukuran 1 cm.</div>
+            <div class="option">D. Hasil kali dari panjang, lebar, dan tinggi balok tersebut adalah angka 24, tanpa peduli bentuk unit penyusunnya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 5</div>
+        <div class="question-text">Dalam tahap pengenalan awal, cara paling konkret untuk membuktikan bahwa dua wadah dengan bentuk berbeda (misal: tinggi-sempit vs pendek-lebar) memiliki volume yang <strong>sama</strong> adalah dengan...</div>
+        <div class="options-list">
+            <div class="option">A. Mengukur dimensi keduanya dengan penggaris lalu memasukkannya ke dalam rumus masing-masing.</div>
+            <div class="option">B. Menuangkan air hingga penuh dari wadah pertama ke wadah kedua tanpa ada yang tumpah atau tersisa.</div>
+            <div class="option">C. Menimbang kedua wadah tersebut saat kosong di atas neraca analog kelas.</div>
+            <div class="option">D. Meminta siswa menggambar kedua wadah tersebut di buku kotak-kotak berskala.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 6</div>
+        <div class="question-text">Seorang guru menggunakan "kelereng" untuk mengukur volume kotak pensil. Siswa menyimpulkan volume kotak adalah 30 kelereng. Secara matematis, kelemahan utama dari aktivitas ini adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Kelereng terlalu licin sehingga sulit dihitung oleh siswa dan memicu kegaduhan kelas.</div>
+            <div class="option">B. Kelereng adalah bentuk bola, sehingga ada ruang intersisial (rongga kosong) antar kelereng yang tidak terukur.</div>
+            <div class="option">C. Harga kelereng tidak efisien untuk dibeli sebagai alat peraga dalam jumlah massal di sekolah.</div>
+            <div class="option">D. Kelereng tidak merepresentasikan satuan ukur liter, yang mana merupakan standar pengukuran cairan modern.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 7</div>
+        <div class="question-text">Dalam menjembatani antara penggunaan kubus kayu (tak baku) dengan rumus abstrak volume, langkah semi-konkret apa yang harus dilakukan guru?</div>
+        <div class="options-list">
+            <div class="option">A. Meminta siswa menghitung luas alas wadah saja, lalu langsung dikalikan tinggi agar menghemat waktu.</div>
+            <div class="option">B. Menjelaskan bahwa perkalian lebih cepat daripada penjumlahan dengan memberikan 50 soal latihan berhitung.</div>
+            <div class="option">C. Meminta siswa menyusun kubus kayu membentuk satu lapisan alas (mewakili $p \times l$), lalu menghitung berapa lapisan (mewakili $t$) yang dibutuhkan untuk memenuhi wadah.</div>
+            <div class="option">D. Membakar satu kubus kayu untuk menunjukkan bahwa volume bisa berubah akibat perubahan fisika dan kimia.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 8</div>
+        <div class="question-text">Siswa A dapat menjawab dengan cepat bahwa volume balok berukuran $5 \times 4 \times 3$ adalah 60. Namun, saat diberi balok transparan berisi air setengahnya dan ditanya volumenya, ia kebingungan. Diagnosis pedagogis untuk Siswa A adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Ia belum menguasai operasi perkalian dasar tiga digit.</div>
+            <div class="option">B. Ia mengalami disleksia angka saat dihadapkan pada benda tiga dimensi yang nyata.</div>
+            <div class="option">C. Ia hanya memiliki kelancaran prosedural (menghafal rumus), tetapi kurang dalam pemahaman konseptual spasial.</div>
+            <div class="option">D. Ia terbiasa dengan metode penemuan terbimbing sehingga menolak soal berjenis aplikatif.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 9</div>
+        <div class="question-text">Konsep konservasi volume Piaget (bahwa volume cairan tetap sama meski dipindah ke wadah yang bentuknya sangat berbeda) umumnya mulai dikuasai anak pada usia...</div>
+        <div class="options-list">
+            <div class="option">A. Tahap Sensorimotor (0-2 tahun).</div>
+            <div class="option">B. Tahap Pra-operasional (2-7 tahun).</div>
+            <div class="option">C. Tahap Operasional Konkret (7-11 tahun).</div>
+            <div class="option">D. Tahap Menjelang Dewasa / Universitas.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 10</div>
+        <div class="question-text">Guru memberikan balok kayu solid (pejal). Bagaimana siswa mengukur volumenya menggunakan pendekatan kubus satuan tak baku, mengingat balok tersebut tidak berongga untuk diisi?</div>
+        <div class="options-list">
+            <div class="option">A. Ini adalah tugas yang mustahil; balok solid tidak bisa diukur volumenya tanpa rumus matematika.</div>
+            <div class="option">B. Siswa menyusun kubus-kubus satuan di luar/di samping balok kayu tersebut hingga membentuk dimensi (replika) yang sama persis dengan balok aslinya.</div>
+            <div class="option">C. Siswa menenggelamkan balok tersebut ke dalam air dan mengukur kenaikan permukaannya menggunakan rumus tabung.</div>
+            <div class="option">D. Siswa menutupi seluruh permukaan balok dengan kertas kotak-kotak lalu menghitung jumlah kotaknya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 11</div>
+        <div class="question-text">Siswa B diminta menghitung volume kotak dengan panjang 5 cm, lebar 3 cm, tinggi 2 cm. Ia menjawab "10 cm". Analisis kesalahan berpikir Siswa B adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Ia menjumlahkan semua dimensi ($5+3+2$) yang mengindikasikan ia mencampuradukkan konsep mengisi ruang (perkalian) dengan konsep keliling 1D.</div>
+            <div class="option">B. Ia salah menghitung perkalian $5 \times 3 \times 2$ akibat kurang teliti dalam algoritma perkalian susun.</div>
+            <div class="option">C. Ia lupa mengalikan hasil akhirnya dengan setengah ($1/2$) seperti pada rumus volume limas.</div>
+            <div class="option">D. Ia sudah memahami konsep ruang, tetapi hanya lupa menuliskan pangkat tiga ($^3$) pada satuannya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 12</div>
+        <div class="question-text">
+            <strong>(KASUS)</strong> Pak Budi, guru SD, memulai pelajaran volume dengan membawa sebuah kotak sepatu yang kosong. 
+            <ul class="list-inside">
+                <li>Langkah 1: Ia meminta siswa menebak berapa banyak kotak korek api yang bisa dimasukkan ke dalam kotak sepatu tersebut.</li>
+                <li>Langkah 2: Siswa bersama-sama memasukkan kotak korek api hingga penuh.</li>
+                <li>Langkah 3: Pak Budi baru menuliskan rumus di papan tulis.</li>
+            </ul>
+            Sebagai pengamat pendidikan, mengapa urutan visual-ke-unit non-baku (Langkah 1 dan 2) sangat kritis dilakukan sebelum mengajarkan rumus matematika?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Pendekatan ini membangun pemahaman konseptual bahwa volume adalah 'kapasitas atau banyaknya ruang yang dapat diisi', mencegah siswa sekadar menghafal rumus perkalian angka secara buta.</div>
+            <div class="option">B. Hal ini bertujuan mengalihkan kebosanan siswa dengan kegiatan bermain bongkar-pasang sebelum masuk ke beban kognitif yang sesungguhnya.</div>
+            <div class="option">C. Strategi ini berfungsi melatih motorik kasar siswa agar terbiasa memegang benda 3D sebelum otot tangannya digunakan menulis di buku tulis.</div>
+            <div class="option">D. Karena kotak korek api jauh lebih mudah didapat dan murah dibandingkan harus membeli alat peraga laboratorium yang presisi.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 13</div>
+        <div class="question-text">Sebuah rancangan pembelajaran (RPP) matematika langsung menuliskan tujuan: <em>"Siswa dapat menghitung volume prisma dengan rumus $V = L_{alas} \times t$ dalam waktu 5 menit."</em> Jika RPP ini dijalankan tanpa modifikasi, dampak kognitif jangka panjang yang paling berisiko terjadi pada siswa adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Siswa akan menjadi jenius dalam perhitungan cepat (mental aritmetika) saat lomba cerdas cermat.</div>
+            <div class="option">B. Siswa akan gagal menyelesaikan masalah kontekstual yang bentuk prismanya dimiringkan atau direbahkan, karena konsep dasar dimensi "tinggi" pada ruang gagal dipahami.</div>
+            <div class="option">C. Siswa akan lebih menghargai efisiensi waktu karena pendekatan induktif membuang banyak waktu belajar di kelas.</div>
+            <div class="option">D. Siswa akan sangat mudah menguasai materi kalkulus integral di perguruan tinggi karena sudah terbiasa dengan simbol formal.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 14</div>
+        <div class="question-text">Seorang siswa berpendapat bahwa volume silinder (tabung) dapat dibayangkan sebagai "tumpukan uang koin yang membentuk tiang". Tanggapan pedagogis terbaik dari guru untuk mengembangkan analogi ini menuju konsep matematika formal adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Menyalahkan siswa karena uang koin berbentuk lingkaran datar 2D, sedangkan volume harus benda 3D murni dari awal hingga akhir.</div>
+            <div class="option">B. Menerima analogi tersebut lalu menjelaskan bahwa koin adalah alas lingkaran ($\pi r^2$), dan banyaknya koin dalam tumpukan merepresentasikan konsep 'tinggi' ($t$), sehingga $V = \pi r^2 \times t$.</div>
+            <div class="option">C. Meminta siswa mengganti koin dengan kelereng agar menyerupai molekul air yang mengisi tabung secara acak.</div>
+            <div class="option">D. Mengabaikan pendapat tersebut dan menyuruh siswa kembali fokus menghafal tabel perkalian desimal untuk nilai $\pi (3.14)$.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 15</div>
+        <div class="question-text">
+            <strong>(KASUS)</strong> Ibu Rina mengajar volume balok transparan. Ia tidak menyuruh siswa memasukkan kubus satu per satu sampai penuh. 
+            <ul class="list-inside">
+                <li>Ia meminta siswa hanya menyusun kubus untuk <strong>menutupi seluruh dasar balok</strong> (misal 12 kubus).</li>
+                <li>Lalu, ia meminta siswa menyusun kubus <strong>ke atas pada salah satu sudut</strong> hingga menyentuh tutup balok (misal 4 kubus vertikal).</li>
+            </ul>
+            Apa tujuan utama dari manipulasi instruksional yang sangat spesifik ini?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Menghemat jumlah alat peraga kubus kayu yang dimiliki sekolah agar semua kelompok kebagian.</div>
+            <div class="option">B. Menumbuhkan rasa penasaran siswa agar mereka mandiri menebak sisa kubus yang hilang.</div>
+            <div class="option">C. Membantu siswa mengabstraksikan struktur array 3D, menghubungkan konsep "luas alas" (layer pertama) dengan pengali "tinggi" (jumlah layer), tanpa perlu proses berhitung fisik yang melelahkan.</div>
+            <div class="option">D. Menghindari kebingungan visual siswa akibat warna kubus kayu yang tidak seragam jika wadah diisi penuh.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 16</div>
+        <div class="question-text">Soal evaluasi manakah di bawah ini yang paling valid menguji <em>pemahaman konseptual tingkat tinggi</em> (HOTS) tentang volume, dan BUKAN sekadar kemampuan berhitung algoritmik?</div>
+        <div class="options-list">
+            <div class="option">A. Hitunglah volume kubus yang panjang salah satu rusuknya adalah 15 cm.</div>
+            <div class="option">B. Terdapat balok besar dan balok kecil. Jika balok besar ukurannya dua kali lipat balok kecil, berapa selisih volumenya?</div>
+            <div class="option">C. Sebuah kotak kardus rusak bentuknya sehingga penyok dan miring ke kanan. Apakah jumlah pasir yang dapat ditampungnya tetap sama dibandingkan saat bentuknya tegak? Jelaskan alasanmu.</div>
+            <div class="option">D. Jika $V = 1000$ dan $p=10$, $l=10$, carilah nilai $t$ dengan memindahkan ruas persamaan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 17</div>
+        <div class="question-text">Jika seorang guru memaksa mengajarkan materi konversi satuan volume (misal: $dm^3$ ke $cm^3$ dikali 1000) sebelum siswa memahami makna fisik dari volume itu sendiri, fenomena psikologis apa yang akan terjadi pada proses belajar siswa?</div>
+        <div class="options-list">
+            <div class="option">A. <em>Meaningless Rote Learning</em> (Belajar hafalan tak bermakna), di mana siswa melihat angka 1000 hanya sebagai aturan turun-tangga abstrak tanpa sadar bahwa satu kubus 1 dm benar-benar berisi seribu kubus 1 cm.</div>
+            <div class="option">B. <em>Cognitive Acceleration</em>, siswa akan menyusul ketertinggalan kurikulum karena efisiensi penyampaian materi hafalan.</div>
+            <div class="option">C. <em>Scaffolding</em>, guru telah berhasil memberi pijakan berhitung yang kuat sebelum siswa praktik fisik di laboratorium.</div>
+            <div class="option">D. <em>Zone of Proximal Development</em>, di mana siswa didorong melebihi batas kemampuan motoriknya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 18</div>
+        <div class="question-text">Siswa sering keliru menyamakan Volume dengan Luas Permukaan. Saat ditanya volume sebuah rumah mainan, siswa mengukur karton pembungkusnya. Pendekatan perbaikan (remedial) yang paling tepat secara didaktis adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Meminta siswa menulis kedua rumus di buku tulis sebanyak 10 kali agar secara visual terlihat berbeda.</div>
+            <div class="option">B. Memberikan satu aktivitas mengecat bagian luar kotak kayu (luas permukaan) dan aktivitas lain menuangkan beras ke dalam kotak (volume) secara berdampingan.</div>
+            <div class="option">C. Menghukum siswa dengan memberi tambahan PR perkalian pecahan agar lebih konsentrasi saat ujian.</div>
+            <div class="option">D. Mengganti soal rumah mainan dengan bentuk geometris yang lebih mudah seperti bola atau kerucut.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 19</div>
+        <div class="question-text"><strong>(KASUS)</strong> Dalam simulasi digital di kelas, Pak Andi menayangkan animasi di proyektor. Ia menjelaskan konsep volume dengan memperlihatkan gambar <strong>persegi-persegi kecil 2D</strong> yang beterbangan mengisi kerangka sebuah kubus 3D. Banyak siswa yang protes karena bingung. Kesalahan didaktik apa yang dilakukan Pak Andi?</div>
+        <div class="options-list">
+            <div class="option">A. Animasi digital mengurangi esensi pembelajaran kontekstual yang seharusnya selalu menggunakan benda alami.</div>
+            <div class="option">B. Kecepatan frame animasi terlalu cepat sehingga menimbulkan beban memori kerja (working memory) pada visual anak.</div>
+            <div class="option">C. Terjadi kejanggalan dimensi secara logis: kapasitas ruang 3D tidak bisa diukur/diisi oleh unit area datar 2D yang secara teoritis tidak memiliki ketebalan.</div>
+            <div class="option">D. Penggunaan proyektor membuat siswa terdistraksi dan mengira sedang menonton film hiburan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 20</div>
+        <div class="question-text">Saat mengeksplorasi rumus volume limas beraturan persegi, guru meminta siswa menuangkan beras dari limas transparan ke dalam balok transparan (yang alas dan tingginya sama). Diperlukan 3 kali tuang hingga balok penuh. Proses ini secara pedagogis berfungsi untuk menanamkan pemahaman bahwa...</div>
+        <div class="options-list">
+            <div class="option">A. Beras adalah alat ukur yang tidak terstandarisasi untuk bentuk bangunan miring.</div>
+            <div class="option">B. Eksperimen empiris kadang menghasilkan data eror yang harus dikoreksi oleh pembulatan matematika.</div>
+            <div class="option">C. Rumus volume limas ($V = \frac{1}{3} \times Luas Alas \times tinggi$) bukanlah aturan ajaib buatan manusia, melainkan relasi proporsional alami antar bangun ruang yang divalidasi lewat eksperimen konkret.</div>
+            <div class="option">D. Volume limas selalu merupakan bilangan rasional pecahan yang menyulitkan siswa saat ulangan umum.</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
