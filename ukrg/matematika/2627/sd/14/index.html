@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangkuman Materi dan Latihan Soal: Peluang Kejadian Sederhana</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.1rem; padding-top: 20px;}
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            .logo-right { padding-top: 0; display: block; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">A. Rangkuman Materi: Peluang Kejadian</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-text">
+            <p>Berdasarkan soal yang diberikan, materi yang relevan adalah <strong>Peluang Kejadian Sederhana</strong> dan <strong>Membandingkan Peluang</strong>.</p>
+
+            <h4 class="mt-4">1. Konsep Dasar Peluang</h4>
+            <p>Peluang (Probabilitas) adalah angka yang menunjukkan seberapa besar kemungkinan suatu kejadian akan terjadi.</p>
+            <ul class="list-inside">
+                <li><strong>Ruang Sampel ($S$):</strong> Himpunan semua kejadian yang mungkin terjadi. Jumlah anggotanya disimbolkan dengan $n(S)$.</li>
+                <li><strong>Titik Sampel ($A$):</strong> Kejadian yang diharapkan terjadi. Jumlah anggotanya disimbolkan dengan $n(A)$.</li>
+            </ul>
+            <p>Rumus dasar peluang kejadian $A$:</p>
+            $$ P(A) = \frac{n(A)}{n(S)} $$
+            <p><em>Catatan:</em> Nilai peluang selalu berada di antara 0 dan 1 ($0 \le P(A) \le 1$). 0 berarti mustahil, 1 berarti pasti terjadi.</p>
+
+            <h4 class="mt-4">2. Membandingkan Peluang (Sesuai Konsep Soal Gambar)</h4>
+            <p>Seringkali kita dihadapkan pada beberapa pilihan wadah/kondisi dan diminta mencari <strong>kemungkinan terbesar</strong>. Kesalahan fatal yang sering dilakukan siswa adalah <em>hanya melihat jumlah absolut benda yang dicari</em>, padahal peluang bergantung pada <strong>perbandingan/rasio</strong> benda tersebut terhadap total keseluruhan benda dalam wadah.</p>
+
+            <p><strong>Langkah-langkah membandingkan:</strong></p>
+            <ol class="list-inside" style="list-style-type: decimal;">
+                <li>Hitung peluang masing-masing wadah dalam bentuk pecahan: $P = \frac{\text{Jumlah benda dicari}}{\text{Total benda di wadah}}$.</li>
+                <li>Bandingkan pecahan tersebut. Cara termudah adalah dengan:
+                    <ul class="list-inside" style="list-style-type: circle;">
+                        <li>Menyamakan penyebutnya, ATAU</li>
+                        <li>Mengubah pecahan menjadi bentuk persentase ($\times 100\%$), ATAU</li>
+                        <li>Mengubah menjadi bentuk desimal.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <p class="mt-4"><strong>Contoh Analisis Soal Gambar:</strong></p>
+            <ul class="list-inside">
+                <li>Kantong A: 4 Merah, 6 Biru $\rightarrow$ Total = 10. $P(\text{Merah}) = \frac{4}{10} = 40\%$</li>
+                <li>Kantong B: 3 Merah, 5 Biru $\rightarrow$ Total = 8. $P(\text{Merah}) = \frac{3}{8} = 37.5\%$</li>
+                <li>Kantong C: 6 Merah, 9 Biru $\rightarrow$ Total = 15. $P(\text{Merah}) = \frac{6}{15} = \frac{2}{5} = 40\%$</li>
+            </ul>
+            <p>Karena Kantong A dan C sama-sama memiliki peluang 40% (terbesar dibandingkan B), maka jawabannya adalah <strong>Kantong A dan Kantong C</strong>.</p>
+        </div>
+    </div>
+
+    <div class="section-title">B. Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat! Hati-hati, banyak opsi yang terlihat benar jika Anda menggunakan logika yang keliru.</em></p>
+
+    <div class="question-meta">Level: Konsep Dasar (Basic)</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 1</div>
+        <div class="question-text">Sebuah dadu bersisi enam dilempar satu kali. Berapakah peluang munculnya mata dadu bilangan prima?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{1}{6}$</div>
+            <div class="option"><strong>B.</strong> $\frac{1}{3}$</div>
+            <div class="option"><strong>C.</strong> $\frac{1}{2}$</div>
+            <div class="option"><strong>D.</strong> $\frac{2}{3}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 2</div>
+        <div class="question-text">Dalam sebuah toples terdapat 7 permen rasa stroberi dan 5 permen rasa melon. Jika diambil satu permen secara acak, berapakah peluang terambilnya permen rasa stroberi?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{7}{5}$</div>
+            <div class="option"><strong>B.</strong> $\frac{5}{12}$</div>
+            <div class="option"><strong>C.</strong> $\frac{7}{12}$</div>
+            <div class="option"><strong>D.</strong> $\frac{5}{7}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 3</div>
+        <div class="question-text">Dari satu set kartu bridge (remi) yang berjumlah 52 kartu, diambil satu kartu secara acak. Peluang terambilnya kartu As adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{1}{13}$</div>
+            <div class="option"><strong>B.</strong> $\frac{4}{13}$</div>
+            <div class="option"><strong>C.</strong> $\frac{1}{52}$</div>
+            <div class="option"><strong>D.</strong> $\frac{13}{52}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 4</div>
+        <div class="question-text">Peluang besok akan turun hujan adalah 0,35. Berapakah peluang besok <strong>tidak</strong> turun hujan?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $0,35$</div>
+            <div class="option"><strong>B.</strong> $0,65$</div>
+            <div class="option"><strong>C.</strong> $1,35$</div>
+            <div class="option"><strong>D.</strong> $0,065$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 5</div>
+        <div class="question-text">Dua keping uang logam dilempar bersamaan. Peluang munculnya minimal satu sisi Angka adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{1}{4}$</div>
+            <div class="option"><strong>B.</strong> $\frac{1}{2}$</div>
+            <div class="option"><strong>C.</strong> $\frac{3}{4}$</div>
+            <div class="option"><strong>D.</strong> $1$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Level: Sedang (Medium)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 6</div>
+        <div class="question-text">Dua buah dadu dilempar bersama-sama. Peluang munculnya jumlah kedua mata dadu sama dengan 8 adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{8}{36}$</div>
+            <div class="option"><strong>B.</strong> $\frac{5}{36}$</div>
+            <div class="option"><strong>C.</strong> $\frac{1}{6}$</div>
+            <div class="option"><strong>D.</strong> $\frac{1}{8}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 7</div>
+        <div class="question-text">Sebuah mesin pengacak huruf memilih satu huruf secara acak dari kata "MATEMATIKA". Peluang huruf yang terpilih adalah huruf vokal adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{3}{10}$</div>
+            <div class="option"><strong>B.</strong> $\frac{4}{10}$</div>
+            <div class="option"><strong>C.</strong> $\frac{1}{2}$</div>
+            <div class="option"><strong>D.</strong> $\frac{5}{6}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 8</div>
+        <div class="question-text">Angka 1 sampai 20 ditulis pada 20 gulungan kertas kecil dan dimasukkan ke dalam kotak. Jika diambil satu gulungan secara acak, peluang mendapatkan angka kelipatan 3 atau 4 adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{11}{20}$</div>
+            <div class="option"><strong>B.</strong> $\frac{10}{20}$</div>
+            <div class="option"><strong>C.</strong> $\frac{12}{20}$</div>
+            <div class="option"><strong>D.</strong> $\frac{1}{20}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 9</div>
+        <div class="question-text">Di dalam sebuah kotak terdapat 3 bola merah, 4 bola putih, dan 2 bola hitam. Jika diambil 2 bola satu per satu <strong>dengan pengembalian</strong>, peluang terambilnya bola merah pada pengambilan pertama dan bola putih pada pengambilan kedua adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{7}{9}$</div>
+            <div class="option"><strong>B.</strong> $\frac{12}{81}$</div>
+            <div class="option"><strong>C.</strong> $\frac{12}{72}$</div>
+            <div class="option"><strong>D.</strong> $\frac{7}{18}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 10</div>
+        <div class="question-text">Sebuah roda putar (spinner) dibagi menjadi 8 juring yang sama besar. 3 juring berwarna merah, 2 juring biru, dan 3 juring kuning. Jika diputar, peluang jarum menunjuk ke warna selain biru adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{1}{4}$</div>
+            <div class="option"><strong>B.</strong> $\frac{3}{4}$</div>
+            <div class="option"><strong>C.</strong> $\frac{6}{8}$</div>
+            <div class="option"><strong>D.</strong> $\frac{3}{8}$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Level: Kemampuan Berpikir Tingkat Tinggi (HOTS)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 11</div>
+        <div class="question-text">Dalam kotak A terdapat 5 kelereng merah dan 7 kelereng putih. Berapa banyak kelereng merah yang harus <strong>ditambahkan</strong> ke dalam kotak agar peluang terambilnya satu kelereng merah secara acak menjadi tepat $\frac{1}{2}$?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> 1 kelereng</div>
+            <div class="option"><strong>B.</strong> 2 kelereng</div>
+            <div class="option"><strong>C.</strong> 5 kelereng</div>
+            <div class="option"><strong>D.</strong> 7 kelereng</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 12</div>
+        <div class="question-text">
+            Perhatikan komposisi bola dalam tiga kotak berikut:<br><br>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                <div style="border: 2px solid #333; padding: 15px; margin: 10px; width: 120px; text-align: center; border-radius: 4px;">
+                    <strong>Kotak X</strong><br><br>
+                    6 Merah<br>9 Putih
+                </div>
+                <div style="border: 2px solid #333; padding: 15px; margin: 10px; width: 120px; text-align: center; border-radius: 4px;">
+                    <strong>Kotak Y</strong><br><br>
+                    4 Merah<br>6 Putih
+                </div>
+                <div style="border: 2px solid #333; padding: 15px; margin: 10px; width: 120px; text-align: center; border-radius: 4px;">
+                    <strong>Kotak Z</strong><br><br>
+                    5 Merah<br>8 Putih
+                </div>
+            </div>
+            <br>
+            Andi ingin mengambil satu bola secara acak dengan mata tertutup. Jika Andi menginginkan kemungkinan terbesar mendapatkan <strong>bola merah</strong>, kotak manakah yang sebaiknya dipilih?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Kotak X (karena memiliki jumlah bola merah paling banyak)</div>
+            <div class="option"><strong>B.</strong> Kotak Z (karena rasio selisih bola merah dan putih paling dekat)</div>
+            <div class="option"><strong>C.</strong> Kotak Y (karena memiliki total bola paling sedikit)</div>
+            <div class="option"><strong>D.</strong> Kotak X dan Kotak Y (karena memiliki nilai probabilitas yang sama besarnya)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 13</div>
+        <div class="question-text">Sebuah koin yang tidak seimbang (bengkok) dirancang sedemikian rupa sehingga peluang munculnya sisi Angka adalah dua kali lipat peluang munculnya sisi Gambar. Jika koin tersebut dilempar sebanyak 120 kali, frekuensi harapan munculnya sisi Gambar adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> 40 kali</div>
+            <div class="option"><strong>B.</strong> 60 kali</div>
+            <div class="option"><strong>C.</strong> 80 kali</div>
+            <div class="option"><strong>D.</strong> 30 kali</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 14</div>
+        <div class="question-text">Tiga buah koin dilempar secara bersamaan. Berapakah peluang mendapatkan hasil di mana jumlah sisi Angka <strong>lebih banyak</strong> daripada jumlah sisi Gambar?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{1}{8}$</div>
+            <div class="option"><strong>B.</strong> $\frac{3}{8}$</div>
+            <div class="option"><strong>C.</strong> $\frac{1}{2}$</div>
+            <div class="option"><strong>D.</strong> $\frac{7}{8}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 15</div>
+        <div class="question-text">
+            Sebuah panitia undian memiliki tiga toko cabang penyalur kupon dengan rincian sebagai berikut:
+            <ul class="list-inside">
+                <li><strong>Cabang P:</strong> Tersedia 15 kupon menang dan 35 kupon zonk.</li>
+                <li><strong>Cabang Q:</strong> Tersedia 9 kupon menang dan 21 kupon zonk.</li>
+                <li><strong>Cabang R:</strong> Tersedia 12 kupon menang dan 24 kupon zonk.</li>
+            </ul>
+            Seseorang hanya boleh membeli satu buah kupon dari salah satu cabang. Agar peluang mendapatkan kupon menang paling besar, cabang mana yang harus ia datangi?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Cabang P (karena jumlah kupon menang paling banyak)</div>
+            <div class="option"><strong>B.</strong> Cabang P dan Cabang Q (karena memiliki rasio yang seimbang)</div>
+            <div class="option"><strong>C.</strong> Cabang R (karena persentase kemenangannya paling tinggi)</div>
+            <div class="option"><strong>D.</strong> Cabang Q (karena jumlah kupon zonk paling sedikit)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 16</div>
+        <div class="question-text">Dalam sebuah kelas, peluang seorang siswa lulus ujian Matematika adalah 0,8 dan peluang lulus Fisika adalah 0,6. Jika diketahui peluang lulus KEDUANYA adalah 0,5, berapakah peluang seorang siswa lulus <strong>hanya</strong> salah satu mata pelajaran saja?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $0,9$</div>
+            <div class="option"><strong>B.</strong> $0,4$</div>
+            <div class="option"><strong>C.</strong> $1,4$</div>
+            <div class="option"><strong>D.</strong> $0,1$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 17</div>
+        <div class="question-text">Ada dua wadah. Wadah pertama berisi 3 bola merah dan 2 bola biru. Wadah kedua berisi 4 bola merah dan 2 bola biru. Seseorang memilih salah satu wadah secara acak (peluang memilih masing-masing wadah sama), lalu mengambil satu bola dari wadah tersebut. Berapa total peluang bola yang terambil adalah bola merah?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{7}{11}$</div>
+            <div class="option"><strong>B.</strong> $\frac{19}{30}$</div>
+            <div class="option"><strong>C.</strong> $\frac{7}{10}$</div>
+            <div class="option"><strong>D.</strong> $\frac{2}{3}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 18</div>
+        <div class="question-text">
+            Perhatikan data peserta seleksi beasiswa dari tiga sekolah yang berbeda. Panitia akan memilih secara acak 1 siswa.
+            <ul class="list-inside">
+                <li><strong>Sekolah 1:</strong> 8 siswa memenuhi syarat, 12 siswa tidak.</li>
+                <li><strong>Sekolah 2:</strong> 10 siswa memenuhi syarat, 15 siswa tidak.</li>
+                <li><strong>Sekolah 3:</strong> 14 siswa memenuhi syarat, 21 siswa tidak.</li>
+            </ul>
+            Sekolah manakah yang memiliki probabilitas terbesar bahwa siswa yang terpilih dari sekolahnya adalah siswa yang "memenuhi syarat"?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Sekolah 3</div>
+            <div class="option"><strong>B.</strong> Sekolah 1</div>
+            <div class="option"><strong>C.</strong> Sekolah 1 dan Sekolah 2</div>
+            <div class="option"><strong>D.</strong> Ketiga sekolah memberikan kemungkinan yang persis sama.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 19</div>
+        <div class="question-text">Dalam sebuah permainan tebak angka, pemain akan menang jika ia melempar satu dadu dan mendapatkan angka 5 atau 6. Jika pemain diberikan kesempatan bermain sebanyak 3 kali, berapakah peluang ia menang <strong>tepat</strong> satu kali saja?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{1}{3}$</div>
+            <div class="option"><strong>B.</strong> $\frac{2}{27}$</div>
+            <div class="option"><strong>C.</strong> $\frac{4}{9}$</div>
+            <div class="option"><strong>D.</strong> $\frac{1}{27}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 20</div>
+        <div class="question-text">Diketahui peluang seorang pasien alergi terhadap obat X adalah 0,2. Di sebuah klinik, terdapat 4 pasien yang diberikan obat tersebut. Probabilitas <strong>minimal ada satu</strong> pasien yang mengalami alergi adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $0,8$</div>
+            <div class="option"><strong>B.</strong> $1 - (0,8)^4$</div>
+            <div class="option"><strong>C.</strong> $4 \times 0,2$</div>
+            <div class="option"><strong>D.</strong> $(0,2)^4$</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
