@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 20: Volume Prisma dan Limas - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran dan Latihan Soal<br>Hubungan Volume Prisma dan Limas Segiempat</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Volume Prisma dan Limas</div>
+        <div class="question-text">
+            <p>Dalam geometri ruang sisi datar, <strong>Prisma Segiempat</strong> (seperti balok atau kubus) dan <strong>Limas Segiempat</strong> memiliki hubungan matematis yang sangat erat, terutama jika keduanya memiliki <strong>Luas Alas (\(A\))</strong> dan <strong>Tinggi (\(t\))</strong> yang sama persis.</p>
+
+            <h4>1. Rumus Dasar</h4>
+            <ul>
+                <li><strong>Volume Prisma (\(V_p\)):</strong> Dihitung dengan mengalikan luas alas dengan tingginya.
+                \[V_p = \text{Luas Alas} \times \text{tinggi} = A \times t\]</li>
+                <li><strong>Volume Limas (\(V_l\)):</strong> Dihitung dengan mengambil sepertiga dari hasil kali luas alas dan tingginya.
+                \[V_l = \frac{1}{3} \times \text{Luas Alas} \times \text{tinggi} = \frac{1}{3} \times A \times t\]</li>
+            </ul>
+
+            <h4>2. Hubungan Keduanya (Konsep Eksperimen)</h4>
+            <p>Jika kita memiliki sebuah wadah kosong berbentuk prisma segiempat dan wadah lain berbentuk limas segiempat dengan <strong>ukuran alas dan tinggi yang sama</strong>, maka berlaku hubungan:</p>
+            \[V_p = 3 \times V_l \quad \text{atau} \quad V_l = \frac{1}{3} V_p\]
+
+            <p><strong>Pembuktian secara eksperimen:</strong><br>
+            Jika wadah limas diisi penuh dengan air/pasir, lalu dituangkan ke dalam wadah prisma yang kosong, maka air tersebut hanya akan mengisi <strong>\(\frac{1}{3}\) (sepertiga) dari tinggi prisma</strong>. Dibutuhkan tepat <strong>3 kali</strong> tuangan dari limas yang terisi penuh agar wadah prisma tersebut dapat terisi hingga batas atas (penuh).</p>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 1</div>
+        <div class="question-text">
+            Rumus volume untuk bangun ruang prisma segiempat yang memiliki luas alas \(A\) dan tinggi \(t\) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(A + t\)</div>
+            <div class="option">B. \(\frac{1}{2} \times A \times t\)</div>
+            <div class="option">C. \(\frac{1}{3} \times A \times t\)</div>
+            <div class="option">D. \(A \times t\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 2</div>
+        <div class="question-text">
+            Volume sebuah limas segiempat dapat dihitung dengan menggunakan rumus...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(3 \times \text{Luas Alas} \times \text{tinggi}\)</div>
+            <div class="option">B. \(\frac{1}{3} \times \text{Luas Alas} \times \text{tinggi}\)</div>
+            <div class="option">C. \(\frac{1}{2} \times \text{Luas Alas} \times \text{tinggi}\)</div>
+            <div class="option">D. \(\text{Luas Alas} \times \text{tinggi}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 3</div>
+        <div class="question-text">
+            Perbandingan volume antara limas dan prisma yang memiliki ukuran alas dan tinggi yang sama persis adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 1 : 1</div>
+            <div class="option">B. 1 : 2</div>
+            <div class="option">C. 1 : 3</div>
+            <div class="option">D. 3 : 1</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 4</div>
+        <div class="question-text">
+            Ciri paling mendasar yang membedakan bentuk prisma segiempat dari limas segiempat adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Limas memiliki dua sisi sejajar, prisma tidak.</div>
+            <div class="option">B. Prisma memiliki titik puncak, limas memiliki atap datar.</div>
+            <div class="option">C. Limas memiliki titik puncak, prisma memiliki alas dan atap yang kongruen.</div>
+            <div class="option">D. Limas selalu memiliki alas berbentuk segitiga, sedangkan prisma segiempat.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 5</div>
+        <div class="question-text">
+            Sebuah prisma segiempat memiliki luas alas 20 cm\(^2\) dan tinggi 6 cm. Volume prisma tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 40 cm\(^3\)</div>
+            <div class="option">B. 60 cm\(^3\)</div>
+            <div class="option">C. 80 cm\(^3\)</div>
+            <div class="option">D. 120 cm\(^3\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 6</div>
+        <div class="question-text">
+            Diketahui volume sebuah limas segiempat adalah 45 cm\(^3\). Jika sebuah prisma dibuat dengan ukuran alas dan tinggi yang sama persis dengan limas tersebut, berapakah volume prisma itu?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 15 cm\(^3\)</div>
+            <div class="option">B. 45 cm\(^3\)</div>
+            <div class="option">C. 90 cm\(^3\)</div>
+            <div class="option">D. 135 cm\(^3\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 7</div>
+        <div class="question-text">
+            Volume sebuah prisma segiempat adalah 240 cm\(^3\). Volume limas segiempat yang memiliki alas dan tinggi yang sama dengan prisma tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 80 cm\(^3\)</div>
+            <div class="option">B. 120 cm\(^3\)</div>
+            <div class="option">C. 240 cm\(^3\)</div>
+            <div class="option">D. 720 cm\(^3\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 8</div>
+        <div class="question-text">
+            Sebuah limas dengan alas berbentuk persegi memiliki panjang sisi alas 6 cm dan tinggi 10 cm. Volume bangun tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 60 cm\(^3\)</div>
+            <div class="option">B. 120 cm\(^3\)</div>
+            <div class="option">C. 180 cm\(^3\)</div>
+            <div class="option">D. 360 cm\(^3\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 9</div>
+        <div class="question-text">
+            Dua buah limas segiempat memiliki luas alas yang sama. Limas A memiliki tinggi 15 cm, sedangkan Limas B memiliki tinggi 5 cm. Perbandingan volume Limas A terhadap Limas B adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 1 : 3</div>
+            <div class="option">B. 1 : 5</div>
+            <div class="option">C. 3 : 1</div>
+            <div class="option">D. 5 : 1</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 10</div>
+        <div class="question-text">
+            Sebuah prisma segiempat memiliki volume 300 cm\(^3\). Jika alasnya berbentuk persegi panjang dengan ukuran panjang 10 cm dan lebar 5 cm, berapakah tinggi prisma tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 2 cm</div>
+            <div class="option">B. 6 cm</div>
+            <div class="option">C. 12 cm</div>
+            <div class="option">D. 18 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 11</div>
+        <div class="question-text">
+            Sebuah limas dan prisma segiempat anehnya memiliki volume akhir yang sama persis. Jika luas alas kedua bangun tersebut juga dirancang sama, bagaimana perbandingan tinggi limas terhadap tinggi prisma tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Tinggi limas harus sama dengan tinggi prisma.</div>
+            <div class="option">B. Tinggi limas harus sepertiga dari tinggi prisma.</div>
+            <div class="option">C. Tinggi limas harus dua kali lipat dari tinggi prisma.</div>
+            <div class="option">D. Tinggi limas harus tiga kali lipat dari tinggi prisma.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 12</div>
+        <div class="question-text">
+            [Analisis Eksperimen] Seorang guru mengisi penuh sebuah wadah berbentuk limas segiempat dengan pasir. Ia kemudian menuangkan seluruh pasir tersebut ke dalam wadah berbentuk prisma segiempat kosong yang memiliki luas alas dan tinggi yang identik dengan limas tersebut. Setelah pasir tertuang semua, berapakah bagian dari wadah prisma yang masih kosong?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Sepertiga bagian dari tinggi prisma.</div>
+            <div class="option">B. Setengah bagian dari tinggi prisma.</div>
+            <div class="option">C. Dua pertiga bagian dari tinggi prisma.</div>
+            <div class="option">D. Tidak ada yang kosong, prisma terisi penuh.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 13</div>
+        <div class="question-text">
+            Sebuah monumen berbentuk prisma segiempat dengan tinggi 5 meter. Tepat di atas prisma tersebut dibangun atap berbentuk limas segiempat dengan tinggi 3 meter. Keduanya memiliki ukuran alas persegi yang saling berhimpit dengan panjang sisi 4 meter. Total volume monumen tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 64 m\(^3\)</div>
+            <div class="option">B. 80 m\(^3\)</div>
+            <div class="option">C. 96 m\(^3\)</div>
+            <div class="option">D. 128 m\(^3\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 14</div>
+        <div class="question-text">
+            Sebuah wadah berbentuk kubus dengan panjang rusuk \(r\) terisi air penuh. Ke dalam wadah tersebut dimasukkan perlahan sebuah balok besi padat berbentuk limas segiempat. Alas limas tersebut tepat menutupi dasar kubus dan puncaknya tepat menyentuh titik pusat (tengah) dari sisi atas kubus. Berapa sisa volume air di dalam wadah kubus sekarang setelah airnya meluap keluar?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{1}{3} r^3\)</div>
+            <div class="option">B. \(\frac{1}{2} r^3\)</div>
+            <div class="option">C. \(\frac{2}{3} r^3\)</div>
+            <div class="option">D. Semua air tumpah tanpa sisa.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 15</div>
+        <div class="question-text">
+            Jika sebuah prisma segiempat diperbesar sedemikian rupa sehingga panjang dan lebar alasnya menjadi 2 kali lipat dari semula, dan tingginya dipotong menjadi setengah (\(\frac{1}{2}\)) dari semula, maka volume prisma yang baru dibandingkan volume prisma awal adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Tetap sama seperti semula.</div>
+            <div class="option">B. Menjadi 2 kali lipat dari semula.</div>
+            <div class="option">C. Menjadi 4 kali lipat dari semula.</div>
+            <div class="option">D. Menjadi setengah dari semula.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 16</div>
+        <div class="question-text">
+            [Analisis Eksperimen] Andi memiliki dua buah cetakan agar-agar berbentuk limas segiempat yang identik dan satu cetakan berbentuk prisma segiempat. Ketiga cetakan memiliki luas alas dan tinggi yang sama. Andi mengisi kedua cetakan limas dengan cairan agar-agar hingga penuh, lalu menuangkan keduanya ke dalam cetakan prisma yang kosong. Bagaimana kondisi cairan di dalam prisma?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Cairan akan meluap keluar karena total dari dua wadah pasti melebihi satu wadah.</div>
+            <div class="option">B. Prisma akan terisi penuh tepat menyentuh batas atas.</div>
+            <div class="option">C. Prisma hanya akan terisi tepat setengah dari tingginya.</div>
+            <div class="option">D. Prisma akan terisi sejauh dua pertiga dari tingginya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 17</div>
+        <div class="question-text">
+            Sebuah tangki prisma segiempat berisi air murni setinggi setengah (\(\frac{1}{2}\)) dari tinggi total tangki. Sebuah pemberat besi padat berbentuk limas segiempat, dengan ukuran alas dan tinggi yang sama persis dengan tangki prisma, dimasukkan seluruhnya ke dalam air hingga tenggelam ke dasar. Apa yang akan terjadi pada permukaan air di dalam tangki?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Air akan meluap tumpah karena total volume gabungan melebihi kapasitas tangki.</div>
+            <div class="option">B. Air akan naik tepat mencapai bibir atas tangki (penuh tanpa tumpah).</div>
+            <div class="option">C. Ketinggian air akan naik menjadi \(\frac{5}{6}\) (lima perenam) dari tinggi tangki.</div>
+            <div class="option">D. Ketinggian air akan naik menjadi \(\frac{3}{4}\) (tiga perempat) dari tinggi tangki.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 18</div>
+        <div class="question-text">
+            Pak Budi memiliki blok lilin mentah padat bervolume 1600 cm\(^3\). Ia mencetak seluruh lilin tersebut tanpa sisa menjadi tepat satu pasang bangun: sebuah prisma segiempat dan sebuah limas segiempat yang memiliki ukuran alas dan tinggi yang sama persis satu sama lain. Berapakah volume dari lilin prisma segiempat yang dihasilkan?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 400 cm\(^3\)</div>
+            <div class="option">B. 800 cm\(^3\)</div>
+            <div class="option">C. 1200 cm\(^3\)</div>
+            <div class="option">D. 1600 cm\(^3\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 19</div>
+        <div class="question-text">
+            [Analisis Eksperimen] Seorang penjual minuman memiliki sebuah wadah kaca besar berbentuk prisma segiempat yang terisi penuh dengan jus jeruk. Ia ingin memindahkan seluruh jus tersebut ke dalam gelas-gelas unik berbentuk limas segiempat terbalik. Jika wadah prisma dan setiap gelas limas tersebut memiliki ukuran luas alas dan tinggi yang identik, berapa banyak gelas limas yang dapat diisi penuh hingga jus di wadah prisma habis tak bersisa?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Hanya 1 gelas.</div>
+            <div class="option">B. Tepat 2 gelas.</div>
+            <div class="option">C. Tepat 3 gelas.</div>
+            <div class="option">D. Tidak dapat dipastikan karena bentuk ujung limas yang lancip.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS | Soal 20</div>
+        <div class="question-text">
+            Sebuah prisma memiliki volume sebesar \(V\). Di dalam ruang prisma tersebut, digambar sebuah bangun limas imajiner. Titik sudut alas limas tersebut berada tepat di titik-titik pertengahan (midpoint) dari sisi-sisi alas prisma, dan puncak limas berada tepat di titik pusat atap prisma. Berapakah volume limas imajiner tersebut jika dinyatakan dalam \(V\)? (Asumsikan alas prisma berbentuk persegi).
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{1}{2} V\)</div>
+            <div class="option">B. \(\frac{1}{3} V\)</div>
+            <div class="option">C. \(\frac{1}{4} V\)</div>
+            <div class="option">D. \(\frac{1}{6} V\)</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
