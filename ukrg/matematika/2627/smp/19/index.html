@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 19: SPLDV, Garis Konkuren, & Analisis - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran:<br>Sistem Persamaan Linear, Garis Konkuren, dan Analisis Kesalahan Aljabar</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi</div>
+        <div class="question-text">
+            <h4>Sistem Persamaan Linear Dua Variabel (SPLDV)</h4>
+            <p>Sistem persamaan linear dua variabel terdiri dari dua atau lebih persamaan linear. Bentuk umum untuk dua persamaan adalah:</p>
+            \begin{align*}
+                a_1 x + b_1 y &= c_1 \\
+                a_2 x + b_2 y &= c_2
+            \end{align*}
+            <p>Penyelesaian dari sistem ini adalah pasangan nilai \((x, y)\) yang memenuhi kedua persamaan tersebut, yang secara geometris merepresentasikan <strong>titik potong</strong> kedua garis. Metode umum penyelesaiannya adalah <strong>Substitusi</strong>, <strong>Eliminasi</strong>, atau Campuran.</p>
+
+            <h4>Garis Konkuren</h4>
+            <p>Tiga garis atau lebih dikatakan <strong>konkuren</strong> jika semua garis tersebut berpotongan di satu titik yang sama. <br>
+            Jika diberikan tiga persamaan garis \(l_1\), \(l_2\), dan \(l_3\), langkah untuk menentukan apakah ketiganya konkuren (atau untuk mencari variabel yang belum diketahui agar mereka konkuren) adalah:</p>
+            <ol>
+                <li>Cari titik potong \((x_0, y_0)\) dari dua garis yang persamaannya sudah diketahui secara lengkap menggunakan metode eliminasi/substitusi.</li>
+                <li>Substitusikan titik potong \((x_0, y_0)\) ke dalam persamaan garis ketiga. Jika menghasilkan pernyataan yang benar, maka garis-garis tersebut konkuren. Jika persamaan ketiga mengandung parameter (misal \(k\)), substitusi ini digunakan untuk mencari nilai parameter tersebut.</li>
+            </ol>
+
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="300" height="260" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="60" y1="150" x2="270" y2="150" stroke="#ccc" stroke-width="1.5" />
+                    <line x1="150" y1="240" x2="150" y2="30" stroke="#ccc" stroke-width="1.5" />
+                    <polygon points="270,150 265,145 265,155" fill="#ccc"/>
+                    <polygon points="150,30 145,35 155,35" fill="#ccc"/>
+                    <text x="260" y="170" font-family="sans-serif" font-size="12" fill="#ccc">x</text>
+                    <text x="135" y="40" font-family="sans-serif" font-size="12" fill="#ccc">y</text>
+                    
+                    <line x1="120" y1="150" x2="240" y2="30" stroke="blue" stroke-width="2" />
+                    <text x="245" y="40" font-family="sans-serif" font-size="12" fill="blue">\(l_1\)</text>
+                    
+                    <line x1="120" y1="30" x2="240" y2="150" stroke="red" stroke-width="2" />
+                    <text x="245" y="145" font-family="sans-serif" font-size="12" fill="red">\(l_2\)</text>
+                    
+                    <line x1="180" y1="210" x2="180" y2="30" stroke="#228b22" stroke-width="2" />
+                    <text x="160" y="40" font-family="sans-serif" font-size="12" fill="#228b22">\(l_3\)</text>
+                    
+                    <circle cx="180" cy="90" r="4" fill="black" />
+                    <text x="188" y="85" font-family="sans-serif" font-size="12">\(P(x_0, y_0)\)</text>
+                </svg>
+            </div>
+
+            <h4>Sifat Distributif dan Kesalahan Umum</h4>
+            <p>Dalam menyelesaikan operasi aljabar, <strong>sifat distributif perkalian terhadap penjumlahan/pengurangan</strong> sangat krusial. Sifat distributif menyatakan bahwa:</p>
+            \[ a(b \pm c) = ab \pm ac \]
+            <p><strong>Kesalahan Prosedural yang Sering Terjadi:</strong><br>
+            Siswa seringkali hanya mengalikan suku di luar kurung dengan suku pertama di dalam kurung, dan lupa mengalikan dengan suku kedua.</p>
+            <ul>
+                <li><strong>Salah:</strong> \(3(x - 2) = 3x - 2\)</li>
+                <li><strong>Benar:</strong> \(3(x - 2) = 3x - 6\)</li>
+                <li><strong>Salah (Tanda Negatif):</strong> \(-(2x - 5) = -2x - 5\)</li>
+                <li><strong>Benar (Tanda Negatif):</strong> \(-(2x - 5) = -2x + 5\)</li>
+            </ul>
+            <p>Kesalahan ini akan berakibat fatal pada nilai akhir variabel yang dicari.</p>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Soal Konsep Dasar (Level 1) | Soal 1</div>
+        <div class="question-text">
+            Hasil penjabaran dari bentuk aljabar \(-4(2x - 3y)\) yang benar adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(-8x - 12y\)</div>
+            <div class="option">B. \(-8x + 3y\)</div>
+            <div class="option">C. \(-8x - 3y\)</div>
+            <div class="option">D. \(-8x + 12y\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Soal Konsep Dasar (Level 1) | Soal 2</div>
+        <div class="question-text">
+            Titik potong dari garis \(y = 2x\) dan \(x + y = 6\) adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \((2, 4)\)</div>
+            <div class="option">B. \((4, 2)\)</div>
+            <div class="option">C. \((3, 3)\)</div>
+            <div class="option">D. \((2, 2)\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Soal Konsep Dasar (Level 1) | Soal 3</div>
+        <div class="question-text">
+            Apa yang dimaksud dengan tiga garis yang konkuren?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Tiga garis yang saling sejajar satu sama lain.</div>
+            <div class="option">B. Tiga garis yang berpotongan di tepat satu titik yang sama.</div>
+            <div class="option">C. Tiga garis yang membentuk sebuah segitiga.</div>
+            <div class="option">D. Tiga garis yang memiliki gradien yang sama tapi titik potong y berbeda.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Soal Konsep Dasar (Level 1) | Soal 4</div>
+        <div class="question-text">
+            Jika titik \((3, -1)\) dilalui oleh garis \(2x + ky = 4\), maka nilai \(k\) adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(2\)</div>
+            <div class="option">B. \(-2\)</div>
+            <div class="option">C. \(10\)</div>
+            <div class="option">D. \(-10\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Soal Konsep Dasar (Level 1) | Soal 5</div>
+        <div class="question-text">
+            Jika persamaan \(3x - 2(y + 1) = 4\) diubah ke bentuk \(y = mx + c\), maka kesetaraan ruasnya pada langkah pertama yang benar setelah membuka kurung adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(3x - 2y + 1 = 4\)</div>
+            <div class="option">B. \(3x - 2y + 2 = 4\)</div>
+            <div class="option">C. \(3x - 2y - 2 = 4\)</div>
+            <div class="option">D. \(3x - 2y - 1 = 4\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Soal Medium (Level 2) | Soal 6</div>
+        <div class="question-text">
+            Diketahui SPLDV: \(3x + 2y = 12\) dan \(x - y = -1\). Nilai dari \(x + y\) adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(2\)</div>
+            <div class="option">B. \(3\)</div>
+            <div class="option">C. \(5\)</div>
+            <div class="option">D. \(7\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Soal Medium (Level 2) | Soal 7</div>
+        <div class="question-text">
+            Garis \(x + 2y = 5\), \(2x - y = 5\), dan \(ax - y = 5\) berpotongan di satu titik (konkuren). Nilai \(a\) yang memenuhi adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(1\)</div>
+            <div class="option">B. \(2\)</div>
+            <div class="option">C. \(3\)</div>
+            <div class="option">D. \(4\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Soal Medium (Level 2) | Soal 8</div>
+        <div class="question-text">
+            Saat melakukan substitusi \(y = 3x - 2\) ke dalam persamaan \(5x - 2y = 8\), bentuk aljabar yang benar pada langkah pertama adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(5x - 6x - 2 = 8\)</div>
+            <div class="option">B. \(5x - 6x - 4 = 8\)</div>
+            <div class="option">C. \(5x - 6x + 2 = 8\)</div>
+            <div class="option">D. \(5x - 6x + 4 = 8\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Soal Medium (Level 2) | Soal 9</div>
+        <div class="question-text">
+            Dua buah garis memiliki persamaan \(kx - 3y = 6\) dan \(4x + 6y = 5\). Agar kedua garis tersebut saling sejajar (tidak memiliki titik potong), maka nilai \(k\) adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(-2\)</div>
+            <div class="option">B. \(2\)</div>
+            <div class="option">C. \(-4\)</div>
+            <div class="option">D. \(4\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Soal Medium (Level 2) | Soal 10</div>
+        <div class="question-text">
+            Titik potong garis \(y = 2x - 1\) dan \(y = -x + 5\) adalah \((a, b)\). Nilai dari \(2a - b\) adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(-1\)</div>
+            <div class="option">B. \(1\)</div>
+            <div class="option">C. \(3\)</div>
+            <div class="option">D. \(5\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & Analisis Kesalahan (Level 3) | Soal 11</div>
+        <div class="question-text">
+            Sebuah pabrik memproduksi dua jenis barang. Biaya produksi 3 barang A dan 2 barang B adalah Rp 120.000. Biaya produksi 2 barang A dan 3 barang B adalah Rp 130.000. Jika pabrik tersebut ingin agar biaya produksi 1 barang A dan \(k\) barang B persis menyentuh angka Rp 50.000, maka nilai \(k\) haruslah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(1\)</div>
+            <div class="option">B. \(1.5\)</div>
+            <div class="option">C. \(2\)</div>
+            <div class="option">D. \(2.5\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & Analisis Kesalahan (Level 3) | Soal 12</div>
+        <div class="question-text">
+            Perhatikan langkah pengerjaan siswa bernama Andi berikut ini: <br><br>
+            <em>Soal: Tentukan nilai \(p\) agar garis \(2x + y = 7\), \(x - y = 2\), dan \(3x - (p+1)y = 6\) konkuren.</em> <br><br>
+            Langkah Andi:
+            <div style="border: 1px solid black; padding: 15px; margin: 15px auto; width: 80%; background-color: #f9f9f9;">
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Mengeliminasi persamaan 1 dan 2 didapat titik potong \((3, 1)\).</li>
+                    <li>Mensubstitusi \((3,1)\) ke persamaan ketiga:
+                        <div style="margin-left: 20px;">
+                            \(3(3) - (p+1)(1) = 6\)<br>
+                            \(9 - p + 1 = 6\)<br>
+                            \(10 - p = 6\)<br>
+                            \(p = 4\)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            Apa kesalahan yang dilakukan oleh Andi pada pengerjaannya?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Andi salah menentukan titik potong, seharusnya \((2, 3)\).</div>
+            <div class="option">B. Andi mengalami kesalahan distributif tanda negatif saat mengalikan \(-(p+1)\) dengan \(1\), seharusnya menjadi \(-p - 1\).</div>
+            <div class="option">C. Andi salah memindahkan ruas nilai konstanta dari kiri ke kanan pada baris ketiga.</div>
+            <div class="option">D. Syarat garis konkuren tidak memperbolehkan parameter \(p\) berada di dalam tanda kurung bersama konstanta lain.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & Analisis Kesalahan (Level 3) | Soal 13</div>
+        <div class="question-text">
+            Diberikan sistem persamaan \(ax + by = c\) dan \(dx + ey = f\). Jika diketahui bahwa sistem ini memiliki tak hingga banyaknya penyelesaian, maka hubungan yang pasti benar adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(ae - bd = 1\)</div>
+            <div class="option">B. \(a/d \neq b/e\)</div>
+            <div class="option">C. \(a/d = b/e = c/f\)</div>
+            <div class="option">D. \(a \cdot d + b \cdot e = 0\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & Analisis Kesalahan (Level 3) | Soal 14</div>
+        <div class="question-text">
+            Diketahui garis \(y = (k-2)x + 5\) tegak lurus dengan garis \(y = (k+2)x - 3\). Nilai dari \(k^2\) adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(1\)</div>
+            <div class="option">B. \(3\)</div>
+            <div class="option">C. \(4\)</div>
+            <div class="option">D. \(5\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & Analisis Kesalahan (Level 3) | Soal 15</div>
+        <div class="question-text">
+            Perhatikan langkah pengerjaan siswa bernama Rina berikut ini: <br><br>
+            <em>Soal: Tentukan titik potong garis \(3x - 2y = 5\) dengan garis \(y = 2x - 4\).</em> <br><br>
+            Langkah Rina:
+            <div style="border: 1px solid black; padding: 15px; margin: 15px auto; width: 80%; background-color: #f9f9f9;">
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Substitusi persamaan kedua ke persamaan pertama:
+                        <div style="margin-left: 20px;">
+                            \(3x - 2(2x - 4) = 5\)<br>
+                            \(3x - 4x - 4 = 5\)<br>
+                            \(-x = 9\)<br>
+                            \(x = -9\)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            Analisis kesalahan apa yang mendasar pada pekerjaan Rina di atas?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Rina seharusnya menggunakan metode eliminasi karena metode substitusi tidak berlaku jika koefisien \(y\) bernilai negatif.</div>
+            <div class="option">B. Rina melakukan kesalahan konseptual pembagian ruas kiri dan kanan pada baris terakhir.</div>
+            <div class="option">C. Rina mengalami kesalahan prosedural sifat distributif saat mengalikan \(-2\) dengan \(-4\), yang seharusnya menghasilkan \(+8\).</div>
+            <div class="option">D. Rina salah saat memindahkan nilai \(-4\) ke ruas kanan menjadi penjumlahan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & Analisis Kesalahan (Level 3) | Soal 16</div>
+        <div class="question-text">
+            Agar ketiga garis \(x - y = 2\), \(x + 2y = 8\), dan \(px + qy = 10\) berpotongan di satu titik, terdapat banyak pasangan nilai \((p,q)\). Jika diketahui \((p,q)\) membentuk persamaan garis lurus pada bidang kartesius \(p-q\), berapakah gradien dari garis yang dibentuk oleh pasangan \((p,q)\) tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(-2\)</div>
+            <div class="option">B. \(-1/2\)</div>
+            <div class="option">C. \(1/2\)</div>
+            <div class="option">D. \(2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & Analisis Kesalahan (Level 3) | Soal 17</div>
+        <div class="question-text">
+            Diketahui sebuah sistem persamaan non-linear \(\frac{2}{x} + \frac{3}{y} = 12\) dan \(\frac{3}{x} - \frac{1}{y} = 7\). Jika titik potong kedua kurva tersebut adalah \((a, b)\), maka garis yang melalui titik asal \((0,0)\) dan titik \((a,b)\) memiliki persamaan...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(y = 3x\)</div>
+            <div class="option">B. \(y = 1.5x\)</div>
+            <div class="option">C. \(y = 2x\)</div>
+            <div class="option">D. \(y = 0.5x\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & Analisis Kesalahan (Level 3) | Soal 18</div>
+        <div class="question-text">
+            Perhatikan langkah pengerjaan siswa bernama Candra berikut ini: <br><br>
+            <em>Soal: Carilah nilai \(k\) agar garis \(x + y = 3\), \(2x - y = 3\), dan \(kx + (k-1)y = 7\) berpotongan di satu titik.</em> <br><br>
+            Langkah Candra:
+            <div style="border: 1px solid black; padding: 15px; margin: 15px auto; width: 80%; background-color: #f9f9f9;">
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Titik potong dari \(x+y=3\) dan \(2x-y=3\) adalah \((2, 1)\).</li>
+                    <li>Substitusi titik \((2, 1)\) ke garis ketiga:
+                        <div style="margin-left: 20px;">
+                            \(k(2) + (k-1)(1) = 7\)<br>
+                            \(2k + k - 1 = 7\)<br>
+                            \(3k - 1 = 7\)<br>
+                            \(3k = 6\)<br>
+                            \(k = 2\)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            Berdasarkan pekerjaan Candra, kesimpulan yang paling tepat adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Candra melakukan kesalahan saat memindahkan \(-1\) ke ruas kanan, seharusnya \(3k = 8\).</div>
+            <div class="option">B. Candra melakukan kesalahan distributif \((k-1)(1)\), seharusnya hasilnya adalah \(k+1\).</div>
+            <div class="option">C. Candra salah mencari titik potong, seharusnya titik potongnya adalah \((1, 2)\).</div>
+            <div class="option">D. Pekerjaan Candra sudah sepenuhnya benar tanpa ada kesalahan matematis.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & Analisis Kesalahan (Level 3) | Soal 19</div>
+        <div class="question-text">
+            Jika garis \(ax + 3y = 6\) tegak lurus dengan garis \(2x - 4y = 8\), maka nilai \(a\) adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(6\)</div>
+            <div class="option">B. \(-6\)</div>
+            <div class="option">C. \(3\)</div>
+            <div class="option">D. \(-3\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & Analisis Kesalahan (Level 3) | Soal 20</div>
+        <div class="question-text">
+            Dalam metode determinan (Aturan Cramer), tiga garis \(a_1x+b_1y+c_1=0\), \(a_2x+b_2y+c_2=0\), dan \(a_3x+b_3y+c_3=0\) dikatakan konkuren jika dan hanya jika determinan matriks \(3\times3\) dari koefisiennya bernilai...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Tak hingga</div>
+            <div class="option">B. Sama dengan \(1\)</div>
+            <div class="option">C. Sama dengan determinan matriks \(2\times2\) utamanya.</div>
+            <div class="option">D. Nol (\(0\))</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
