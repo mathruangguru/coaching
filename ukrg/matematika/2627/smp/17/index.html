@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 17: Statistika - Nilai Rata-rata (Mean) - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran & Latihan Soal<br>Statistika: Nilai Rata-rata (Mean)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Rangkuman Materi</div>
+        <div class="question-text">
+            <h4>1. Konsep Dasar Rata-rata (Mean)</h4>
+            <p>Rata-rata (\(\bar{x}\)) dari suatu kumpulan data adalah jumlah seluruh nilai data dibagi dengan banyaknya data.</p>
+            \[\bar{x} = \frac{x_1 + x_2 + x_3 + \dots + x_n}{n} = \frac{\sum x}{n}\]
+            <p>Dari rumus di atas, kita juga dapat mencari <strong>Jumlah Total Data</strong> jika rata-rata dan banyaknya data diketahui:</p>
+            \[\text{Jumlah Total Data} = n \times \bar{x}\]
+
+            <h4>2. Rata-rata Gabungan</h4>
+            <p>Jika terdapat dua kelompok data atau lebih yang digabungkan, rata-rata gabungannya dapat dicari dengan menjumlahkan total nilai semua kelompok dibagi dengan total frekuensinya.</p>
+            \[\bar{x}_{gab} = \frac{n_1 \cdot \bar{x}_1 + n_2 \cdot \bar{x}_2}{n_1 + n_2}\]
+
+            <h4>3. Aljabar pada Rata-rata (Tipe Soal Analisis/HOTS)</h4>
+            <p>Seringkali pada soal tingkat lanjut, suatu nilai data didefinisikan berdasarkan nilai rata-rata dari seluruh data itu sendiri (termasuk nilai yang belum diketahui tersebut).</p>
+            <p><strong>Contoh Pendekatan:</strong><br>
+            Jika diketahui data \(A, B, C\), dan \(D\). Nilai \(D\) adalah \(k\) lebih besar dari rata-rata keempat data tersebut. Maka persamaannya disusun sebagai berikut:</p>
+            \[D = \bar{x} + k \implies D = \left( \frac{A + B + C + D}{4} \right) + k\]
+            <p>Untuk menyelesaikan persamaan ini, kalikan kedua ruas dengan 4, kemudian kumpulkan variabel \(D\) di satu sisi untuk mencari nilainya.</p>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: Konsep Dasar | Soal 1</div>
+        <div class="question-text">
+            Rata-rata dari data: 6, 8, 10, 12, dan 14 adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 8</div>
+            <div class="option">B. 10</div>
+            <div class="option">C. 12</div>
+            <div class="option">D. 14</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: Konsep Dasar | Soal 2</div>
+        <div class="question-text">
+            Nilai total dari nilai ujian 8 orang siswa adalah 640. Rata-rata nilai ujian siswa tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 60</div>
+            <div class="option">B. 70</div>
+            <div class="option">C. 80</div>
+            <div class="option">D. 90</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: Konsep Dasar | Soal 3</div>
+        <div class="question-text">
+            Diketahui rata-rata dari angka \(x, 7, 9,\) dan \(12\) adalah 10. Nilai dari \(x\) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 10</div>
+            <div class="option">B. 11</div>
+            <div class="option">C. 12</div>
+            <div class="option">D. 13</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: Konsep Dasar | Soal 4</div>
+        <div class="question-text">
+            Rata-rata dari 4 bilangan genap berturut-turut adalah 17. Bilangan terbesarnya adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 16</div>
+            <div class="option">B. 18</div>
+            <div class="option">C. 20</div>
+            <div class="option">D. 22</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: Konsep Dasar | Soal 5</div>
+        <div class="question-text">
+            Sekelompok data memiliki rata-rata 15. Jika setiap data dikalikan 2 kemudian dikurangi 5, maka rata-rata data yang baru adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 20</div>
+            <div class="option">B. 25</div>
+            <div class="option">C. 30</div>
+            <div class="option">D. 35</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: Medium | Soal 6</div>
+        <div class="question-text">
+            Rata-rata nilai 10 siswa kelas A adalah 75, dan rata-rata nilai 15 siswa kelas B adalah 80. Rata-rata nilai gabungan dari kedua kelas tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 77</div>
+            <div class="option">B. 77,5</div>
+            <div class="option">C. 78</div>
+            <div class="option">D. 78,5</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: Medium | Soal 7</div>
+        <div class="question-text">
+            Rata-rata umur 5 orang anak adalah 12 tahun. Jika satu orang anak baru bergabung, rata-ratanya menjadi 13 tahun. Umur anak yang baru bergabung adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 13 tahun</div>
+            <div class="option">B. 15 tahun</div>
+            <div class="option">C. 17 tahun</div>
+            <div class="option">D. 18 tahun</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: Medium | Soal 8</div>
+        <div class="question-text">
+            Rata-rata nilai 8 orang siswa adalah 85. Jika nilai Budi tidak dimasukkan (dikeluarkan), rata-ratanya naik menjadi 86. Nilai ujian Budi adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 78</div>
+            <div class="option">B. 79</div>
+            <div class="option">C. 84</div>
+            <div class="option">D. 86</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: Medium | Soal 9</div>
+        <div class="question-text">
+            Sebuah toko menjual 3 barang dengan berat masing-masing 4 kg, dan 5 barang dengan berat masing-masing 6 kg. Rata-rata berat seluruh barang di toko tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 5 kg</div>
+            <div class="option">B. 5,25 kg</div>
+            <div class="option">C. 5,5 kg</div>
+            <div class="option">D. 6 kg</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: Medium | Soal 10</div>
+        <div class="question-text">
+            Rata-rata dari 5 bilangan ganjil berurutan adalah 25. Jumlah dari bilangan terkecil dan terbesarnya adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 48</div>
+            <div class="option">B. 50</div>
+            <div class="option">C. 52</div>
+            <div class="option">D. 54</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: HOTS | Soal 11</div>
+        <div class="question-text">
+            Suatu kelas memiliki rata-rata nilai tes 60. Jika 5 siswa dengan rata-rata nilai 80 dipindahkan ke kelas lain, rata-rata kelas tersebut turun drastis menjadi 55. Berapakah jumlah siswa di kelas tersebut mula-mula?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 20 siswa</div>
+            <div class="option">B. 25 siswa</div>
+            <div class="option">C. 30 siswa</div>
+            <div class="option">D. 35 siswa</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: HOTS | Soal 12</div>
+        <div class="question-text">
+            Diketahui 4 buah wadah dengan berat tertentu. Wadah P memiliki berat 7 kg, wadah Q seberat 8 kg, dan wadah R seberat 9 kg. Jika wadah S memiliki berat 3 kg lebih berat dari rata-rata keempat wadah tersebut, berapakah berat wadah Q ditambah wadah S?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 12 kg</div>
+            <div class="option">B. 17 kg</div>
+            <div class="option">C. 19 kg</div>
+            <div class="option">D. 20 kg</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: HOTS | Soal 13</div>
+        <div class="question-text">
+            Rata-rata dari 11 buah bilangan adalah 50. Jika rata-rata 6 bilangan pertama adalah 49 dan rata-rata 6 bilangan terakhir adalah 52, maka berapakah nilai bilangan yang ke-6?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 50</div>
+            <div class="option">B. 54</div>
+            <div class="option">C. 56</div>
+            <div class="option">D. 58</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: HOTS | Soal 14</div>
+        <div class="question-text">
+            Rata-rata umur ayah, ibu, dan 3 orang anak adalah 25 tahun. Jika rata-rata umur ketiga anak tersebut adalah 10 tahun dan ayah berumur 5 tahun lebih tua dari ibu, berapakah umur ayah?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 40 tahun</div>
+            <div class="option">B. 45 tahun</div>
+            <div class="option">C. 50 tahun</div>
+            <div class="option">D. 55 tahun</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: HOTS | Soal 15</div>
+        <div class="question-text">
+            Terdapat 5 buah balok kayu. Balok M dan N masing-masing memiliki berat 8 kg. Balok O dan P masing-masing memiliki berat 10 kg. Jika balok Q memiliki berat 4 kg lebih berat dari rata-rata kelima balok tersebut, berapakah berat balok M ditambah balok Q?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 14 kg</div>
+            <div class="option">B. 18 kg</div>
+            <div class="option">C. 21 kg</div>
+            <div class="option">D. 22 kg</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: HOTS | Soal 16</div>
+        <div class="question-text">
+            Rata-rata nilai gabungan dari kelas \(X\) dan \(Y\) adalah 15. Rata-rata nilai kelas \(Y\) dan \(Z\) adalah 18. Rata-rata nilai kelas \(X\) dan \(Z\) adalah 21. Jika jumlah siswa tiap kelas sama, berapakah rata-rata gabungan dari kelas \(X, Y,\) dan \(Z\)?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 17</div>
+            <div class="option">B. 18</div>
+            <div class="option">C. 19</div>
+            <div class="option">D. 20</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: HOTS | Soal 17</div>
+        <div class="question-text">
+            Dalam sebuah analisis data, seorang peneliti salah membaca satu angka dari yang seharusnya 85 terbaca menjadi 58. Rata-rata yang dihitung dengan data salah tersebut adalah 75. Jika rata-rata yang benar seharusnya adalah 76,5, berapakah banyaknya data yang dianalisis peneliti tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 15</div>
+            <div class="option">B. 18</div>
+            <div class="option">C. 20</div>
+            <div class="option">D. 27</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: HOTS | Soal 18</div>
+        <div class="question-text">
+            Rata-rata berat badan 3 orang, yaitu A, B, dan C adalah 60 kg. D bergabung dengan mereka sehingga rata-ratanya menjadi 58 kg. Jika E, yang memiliki berat 3 kg lebih berat dari D, menggantikan A dalam kelompok (sehingga kelompok menjadi B, C, D, E), rata-ratanya menjadi 57 kg. Berapakah berat badan A?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 52 kg</div>
+            <div class="option">B. 55 kg</div>
+            <div class="option">C. 59 kg</div>
+            <div class="option">D. 61 kg</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: HOTS | Soal 19</div>
+        <div class="question-text">
+            Diketahui 6 orang anak memiliki tinggi badan yang berbeda. Tinggi U, V, W, Y, dan Z berturut-turut adalah 7, 8, 9, 10, dan 11 (dalam satuan tertentu). Jika tinggi T adalah 5 poin lebih tinggi dari rata-rata tinggi keenam anak tersebut, berapakah nilai tinggi U ditambah tinggi T?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 15</div>
+            <div class="option">B. 21</div>
+            <div class="option">C. 22</div>
+            <div class="option">D. 26</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Tingkat: HOTS | Soal 20</div>
+        <div class="question-text">
+            Sebuah perusahaan memiliki 10 karyawan. Jika seorang karyawan senior dengan gaji Rp4.000.000 pensiun dan segera digantikan oleh seorang karyawan baru, rata-rata gaji seluruh karyawan di perusahaan tersebut turun sebesar Rp150.000. Berapakah gaji karyawan baru tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. Rp1.500.000</div>
+            <div class="option">B. Rp2.500.000</div>
+            <div class="option">C. Rp3.850.000</div>
+            <div class="option">D. Rp5.500.000</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
