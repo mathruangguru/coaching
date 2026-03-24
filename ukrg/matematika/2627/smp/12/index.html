@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 12: Eksponen - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Rangkuman Materi dan Latihan Soal: Eksponen</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Rangkuman Materi Eksponen</div>
+        <div class="question-text">
+            <p>Eksponen (perpangkatan) adalah bentuk perkalian berulang dari suatu bilangan. Jika \(a\) adalah bilangan real dan \(n\) adalah bilangan bulat positif, maka \(a^n = a \times a \times a \times \dots \times a\) (sebanyak \(n\) kali), di mana \(a\) disebut <strong>basis</strong> dan \(n\) disebut <strong>eksponen/pangkat</strong>.</p>
+
+            <h4>Sifat-Sifat Operasi Eksponen</h4>
+            <p>Untuk \(a, b \in \mathbb{R}\) (\(a \neq 0, b \neq 0\)) dan \(m, n\) bilangan rasional, berlaku sifat-sifat berikut:</p>
+            <ol>
+                <li><strong>Perkalian:</strong> \(a^m \times a^n = a^{m+n}\) <br><em>(Basis sama, pangkat dijumlah)</em></li>
+                <li><strong>Pembagian:</strong> \(\frac{a^m}{a^n} = a^{m-n}\) <br><em>(Basis sama, pangkat dikurang)</em></li>
+                <li><strong>Pangkat dipangkatkan:</strong> \((a^m)^n = a^{m \times n}\) <br><em>(Pangkat dikalikan, <strong>bukan</strong> dijumlah)</em></li>
+                <li><strong>Pangkat dari perkalian:</strong> \((a \times b)^n = a^n \times b^n\)</li>
+                <li><strong>Pangkat dari pecahan:</strong> \(\left(\frac{a}{b}\right)^n = \frac{a^n}{b^n}\)</li>
+                <li><strong>Pangkat nol:</strong> \(a^0 = 1\) <br><em>(Berlaku untuk \(a \neq 0\))</em></li>
+                <li><strong>Pangkat negatif:</strong> \(a^{-n} = \frac{1}{a^n}\) dan \(\frac{1}{a^{-n}} = a^n\) <br><em>(Berpindah posisi pembilang/penyebut)</em></li>
+                <li><strong>Pangkat pecahan (Bentuk Akar):</strong> \(a^{\frac{m}{n}} = \sqrt[n]{a^m}\)</li>
+            </ol>
+
+            <h4>Kesalahan Umum yang Sering Terjadi (Hati-hati!):</h4>
+            <ul>
+                <li>\((a^m)^n \neq a^{m+n}\). Contoh: \((2^3)^2\) adalah \(2^6\), bukan \(2^5\).</li>
+                <li>\(a^{-n} \neq -a^n\). Tanda negatif pada pangkat berarti kebalikan (pecahan), bukan membuat bilangan menjadi negatif. Contoh: \(2^{-3} = \frac{1}{8}\), bukan \(-8\).</li>
+                <li>Persamaan bentuk pangkat: Jika \(x^2 = a^b\), maka \(x = (a^b)^{\frac{1}{2}} = a^{\frac{b}{2}}\). Jangan mengurangkan pangkatnya!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 1</div>
+        <div class="question-text">
+            Bentuk sederhana dari \((3^4)^2\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(3^6\)</div>
+            <div class="option">B. \(3^8\)</div>
+            <div class="option">C. \(9^8\)</div>
+            <div class="option">D. \(3^{16}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 2</div>
+        <div class="question-text">
+            Nilai dari \(2^{-3} \times 2^5\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(2^{-15}\)</div>
+            <div class="option">B. \(-2^{2}\)</div>
+            <div class="option">C. \(4\)</div>
+            <div class="option">D. \(\frac{1}{4}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 3</div>
+        <div class="question-text">
+            Hasil dari perhitungan \(\left(\frac{1}{4}\right)^{-2}\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(-16\)</div>
+            <div class="option">B. \(-\frac{1}{16}\)</div>
+            <div class="option">C. \(\frac{1}{16}\)</div>
+            <div class="option">D. \(16\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 4</div>
+        <div class="question-text">
+            Bentuk \(\frac{m^7}{m^3}\) sama nilainya dengan....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(m^{10}\)</div>
+            <div class="option">B. \(m^4\)</div>
+            <div class="option">C. \(m^{7/3}\)</div>
+            <div class="option">D. \(1\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Konsep Dasar (Basic) | Soal 5</div>
+        <div class="question-text">
+            Nilai dari \(27^{\frac{2}{3}}\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(9\)</div>
+            <div class="option">B. \(18\)</div>
+            <div class="option">C. \(\frac{1}{9}\)</div>
+            <div class="option">D. \(81\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 2: Penerapan Menengah (Medium) | Soal 6</div>
+        <div class="question-text">
+            Bentuk sederhana dari \(\frac{(x^2 y^3)^3}{x^4 y^5}\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(x y^4\)</div>
+            <div class="option">B. \(x^2 y^4\)</div>
+            <div class="option">C. \(x^5 y^4\)</div>
+            <div class="option">D. \(x^{10} y^4\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 2: Penerapan Menengah (Medium) | Soal 7</div>
+        <div class="question-text">
+            Jika diketahui persamaan \(5^{2x-1} = 125\), maka nilai \(x\) yang memenuhi adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(1\)</div>
+            <div class="option">B. \(2\)</div>
+            <div class="option">C. \(3\)</div>
+            <div class="option">D. \(4\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 2: Penerapan Menengah (Medium) | Soal 8</div>
+        <div class="question-text">
+            Bentuk sederhana dari \(\sqrt{50} \times \sqrt{2}\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(5\sqrt{2}\)</div>
+            <div class="option">B. \(10\)</div>
+            <div class="option">C. \(20\)</div>
+            <div class="option">D. \(100\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 2: Penerapan Menengah (Medium) | Soal 9</div>
+        <div class="question-text">
+            Hasil dari \((8^{-\frac{1}{3}})^{-2}\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(-4\)</div>
+            <div class="option">B. \(\frac{1}{4}\)</div>
+            <div class="option">C. \(2\)</div>
+            <div class="option">D. \(4\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 2: Penerapan Menengah (Medium) | Soal 10</div>
+        <div class="question-text">
+            Diketahui \(\frac{2^{n+2}}{2^{n-1}} = p\). Nilai \(p\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(2^1\)</div>
+            <div class="option">B. \(2^3\)</div>
+            <div class="option">C. \(2^{-3}\)</div>
+            <div class="option">D. \(1\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 11</div>
+        <div class="question-text">
+            Hasil sederhana dari \(\frac{2^{2024} - 2^{2023}}{2^{2023}}\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(1\)</div>
+            <div class="option">B. \(2\)</div>
+            <div class="option">C. \(2^{1011}\)</div>
+            <div class="option">D. \(2^{2023}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 12</div>
+        <div class="question-text">
+            <strong>Perhatikan ilustrasi berikut!</strong> <br>
+            Seorang guru memberikan soal: <em>"Bentuk sederhana dari \(\frac{3^5 \times 3^{-2}}{3^4}\) adalah..."</em> <br>
+            Seorang siswa memberikan penyelesaian dengan langkah-langkah berikut:
+            
+            <div style="border: 1px solid black; padding: 15px; margin: 15px auto; width: 80%; background-color: #f9f9f9;">
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Langkah 1: \(3^5 \times 3^{-2} = 3^{5 \times (-2)} = 3^{-10}\)</li>
+                    <li>Langkah 2: \(\frac{3^{-10}}{3^4} = 3^{-10-4} = 3^{-14}\)</li>
+                    <li>Langkah 3: Hasil akhirnya adalah \(\frac{1}{3^{14}}\)</li>
+                </ul>
+            </div>
+            
+            Berdasarkan opsi di bawah ini, diagnosis manakah yang paling tepat untuk menjelaskan kesalahan siswa tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Pada Langkah 1, siswa keliru menerapkan sifat perkalian eksponen; seharusnya eksponen dijumlahkan, bukan dikalikan.</div>
+            <div class="option">B. Pada Langkah 2, siswa salah menghitung pembagian; seharusnya eksponen pembilang dibagi dengan eksponen penyebut menjadi \(3^{-2.5}\).</div>
+            <div class="option">C. Pada Langkah 3, siswa salah menafsirkan pangkat negatif; hasil akhirnya seharusnya tetap negatif \(-3^{14}\).</div>
+            <div class="option">D. Siswa tidak melakukan kesalahan apapun; hasil yang diperoleh dan semua langkah kerjanya sudah tepat.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 13</div>
+        <div class="question-text">
+            Jika bilangan bulat \(a\) dan \(b\) memenuhi persamaan \(a^b = 3^{10} - 3^9 - 3^9\), maka nilai \(a + b\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(12\)</div>
+            <div class="option">B. \(18\)</div>
+            <div class="option">C. \(27\)</div>
+            <div class="option">D. \(81\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 14</div>
+        <div class="question-text">
+            Diketahui persamaan \(x^{x\sqrt{x}} = (x\sqrt{x})^x\) dengan \(x > 0\). Nilai \(x\) yang memenuhi persamaan tersebut, selain \(x=1\), adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{3}{2}\)</div>
+            <div class="option">B. \(\frac{9}{4}\)</div>
+            <div class="option">C. \(2\)</div>
+            <div class="option">D. \(4\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 15</div>
+        <div class="question-text">
+            Diberikan empat buah bilangan bulat dalam bentuk eksponen: \(P = 2^{75}\), \(Q = 3^{45}\), \(R = 4^{30}\), dan \(S = 5^{15}\). Urutan bilangan tersebut dari yang terkecil hingga terbesar adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(S, R, Q, P\)</div>
+            <div class="option">B. \(S, Q, R, P\)</div>
+            <div class="option">C. \(P, Q, R, S\)</div>
+            <div class="option">D. \(R, S, Q, P\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 16</div>
+        <div class="question-text">
+            <strong>Perhatikan ilustrasi pengerjaan siswa berikut!</strong> <br>
+            Soal: <em>"Jika diketahui \(m^3 = 4^6\), maka tentukan nilai dari \((m^{\frac{1}{2}})^5\)"</em> <br>
+            Langkah pengerjaan siswa:
+            
+            <div style="border: 1px solid black; padding: 15px; margin: 15px auto; width: 80%; background-color: #f9f9f9;">
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Langkah 1: \(m^3 = 4^6 \Rightarrow m = 4^3\)</li>
+                    <li>Langkah 2: \((m^{\frac{1}{2}})^5 = m^{\frac{1}{2} + 5} = m^{5.5}\)</li>
+                    <li>Langkah 3: \(m^{5.5} = (4^3)^{5.5} = 4^{16.5}\)</li>
+                </ul>
+            </div>
+            
+            Sebagai guru, diagnosis manakah yang paling tepat untuk mengoreksi pengerjaan siswa tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Pada Langkah 1, siswa melakukan kesalahan mencari basis; seharusnya \(m = 4^{6-3}\) sehingga \(m = 4^3\) didapat dari pengurangan, yang kebetulan benar namun konsepnya salah.</div>
+            <div class="option">B. Pada Langkah 2, siswa keliru menerapkan sifat pangkat yang dipangkatkan; seharusnya eksponen dikalikan (\(\frac{1}{2} \times 5\)), bukan dijumlahkan.</div>
+            <div class="option">C. Pada Langkah 3, siswa salah menghitung perkalian desimal; \(3 \times 5.5\) seharusnya menghasilkan \(15.5\), bukan \(16.5\).</div>
+            <div class="option">D. Pada Langkah 1 dan 2 siswa keliru; nilai \(m\) seharusnya \(4^2\) (karena eksponen dibagi), dan pangkat di Langkah 2 seharusnya dikalikan, bukan dijumlah.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 17</div>
+        <div class="question-text">
+            Nilai \(x\) yang memenuhi persamaan \(\sqrt{x \sqrt{x \sqrt{x}}} = 128\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(2^6\)</div>
+            <div class="option">B. \(2^8\)</div>
+            <div class="option">C. \(2^{14}\)</div>
+            <div class="option">D. \(2^{16}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 18</div>
+        <div class="question-text">
+            Jika akar-akar dari persamaan eksponensial \(4^x - 6 \cdot 2^x + 8 = 0\) adalah \(x_1\) dan \(x_2\), maka nilai dari \(x_1 + x_2\) adalah....
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(3\)</div>
+            <div class="option">B. \(6\)</div>
+            <div class="option">C. \(8\)</div>
+            <div class="option">D. \(12\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 19</div>
+        <div class="question-text">
+            <strong>Analisis hasil pekerjaan siswa!</strong> <br>
+            Soal: <em>"Tentukan hasil dari \((-8)^{-\frac{2}{3}}\)"</em> <br>
+            Siswa mengerjakan dengan tahapan berikut:
+            
+            <div style="border: 1px solid black; padding: 15px; margin: 15px auto; width: 80%; background-color: #f9f9f9;">
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Langkah 1: \((-8)^{-\frac{2}{3}} = \frac{1}{(-8)^{\frac{2}{3}}}\)</li>
+                    <li>Langkah 2: \(\frac{1}{(-8)^{\frac{2}{3}}} = \frac{1}{(\sqrt[3]{-8})^2}\)</li>
+                    <li>Langkah 3: \(\frac{1}{(-2)^2} = \frac{1}{-4} = -\frac{1}{4}\)</li>
+                </ul>
+            </div>
+            
+            Berdasarkan analisis guru, letak kesalahan fatal siswa terjadi pada...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Langkah 1; sifat pangkat negatif tidak berlaku jika basisnya adalah bilangan negatif.</div>
+            <div class="option">B. Langkah 2; akar pangkat tiga dari bilangan negatif tidak dapat didefinisikan secara real.</div>
+            <div class="option">C. Langkah 3; operasi pemangkatan bilangan negatif genap \((-2)^2\) seharusnya menghasilkan bilangan positif \(4\), bukan \(-4\).</div>
+            <div class="option">D. Langkah 1 dan 3; mengubah bentuk ke pecahan menghilangkan tanda negatif basis pada Langkah 1, sehingga Langkah 3 otomatis keliru.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: High Order Thinking Skills (HOTS) | Soal 20</div>
+        <div class="question-text">
+            Diketahui \(x = 2^{\frac{1}{3}} + 2^{-\frac{1}{3}}\). Berapakah nilai dari persamaan \(2x^3 - 6x\)?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(0\)</div>
+            <div class="option">B. \(2\)</div>
+            <div class="option">C. \(5\)</div>
+            <div class="option">D. \(8\)</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
