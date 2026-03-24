@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 14: Laju Kerja & Scaffolding - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran dan Evaluasi:<br>Konsep Laju Kerja & Strategi Scaffolding</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Laju Kerja dan Strategi Scaffolding</div>
+        <div class="question-text">
+            <h4>1. Konsep Dasar Laju Kerja (Work Rate)</h4>
+            <p>Laju kerja atau kecepatan menyelesaikan suatu pekerjaan sangat berbeda dengan penjumlahan besaran biasa. Jika subjek A dapat menyelesaikan suatu pekerjaan dalam \(a\) satuan waktu, dan subjek B dalam \(b\) satuan waktu, maka <strong>kesalahan fatal yang sering terjadi adalah siswa menjumlahkan \(a + b\)</strong>.</p>
+            
+            <p>Konsep utamanya adalah mengubah "waktu total" menjadi <strong>"bagian pekerjaan per satuan waktu"</strong>.</p>
+            <ul>
+                <li>Laju subjek A = \(\frac{1}{a}\) bagian pekerjaan per satuan waktu.</li>
+                <li>Laju subjek B = \(\frac{1}{b}\) bagian pekerjaan per satuan waktu.</li>
+                <li>Laju gabungan = Laju A + Laju B = \(\frac{1}{a} + \frac{1}{b}\).</li>
+            </ul>
+            <p>Jika waktu gabungan adalah \(t\), maka laju gabungan juga bernilai \(\frac{1}{t}\). Sehingga diperoleh persamaan fundamental:</p>
+            \[ \frac{1}{t} = \frac{1}{a} + \frac{1}{b} \]
+            <p>Atau bentuk rumus jadinya: \(t = \frac{a \times b}{a + b}\).</p>
+
+            <h4>2. Logika Batas Waktu (Logical Bounds)</h4>
+            <p>Sebelum masuk ke rumus, secara logika, jika dua pihak bekerja sama, maka waktu yang dibutuhkan <strong>pasti lebih singkat</strong> dari waktu pihak yang bekerja paling cepat. <br>
+            Misal A butuh 60 menit, B butuh 40 menit. Jika bersama, waktunya harus \(< 40\) menit. Menanamkan logika ini sangat penting agar siswa memiliki alat <em>self-correction</em> (koreksi diri) terhadap jawabannya.</p>
+
+            <h4>3. Strategi Scaffolding yang Tepat (Pedagogical Content Knowledge)</h4>
+            <p>Scaffolding adalah pemberian bantuan bertahap kepada siswa, yang kemudian perlahan dikurangi agar siswa mandiri. Untuk mengatasi miskonsepsi menjumlahkan waktu, langkah scaffolding yang tepat adalah:</p>
+            <ol>
+                <li><strong>Konflik Kognitif / Logika:</strong> Tanyakan "Jika B sendirian saja bisa 40 menit, masuk akalkah jika dibantu A malah menjadi 100 menit?"</li>
+                <li><strong>Satuan Waktu (Unit Rate):</strong> Arahkan pemikiran ke hasil dalam 1 satuan waktu. "Dalam 1 menit, berapa bagian kolam yang diisi pompa A? Dan pompa B?"</li>
+                <li><strong>Penggabungan:</strong> "Jika dihidupkan bersama, dalam 1 menit berapa bagian yang terisi?" (\(\frac{1}{60} + \frac{1}{40}\)).</li>
+                <li><strong>Penyelesaian:</strong> Dari bagian per menit, kembalikan ke waktu total untuk 1 bagian penuh (waktu = kebalikan dari laju gabungan).</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Soal 1 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Soal Konsep Dasar (Level 1-5) | Soal 1</div>
+        <div class="question-text">
+            Jika seorang pekerja dapat menyelesaikan pengecatan satu tembok dalam waktu 8 jam, maka makna konseptual yang paling tepat dari pernyataan tersebut adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Pekerja tersebut memiliki kecepatan mengecat 8 tembok per jam.</div>
+            <div class="option">B. Pekerja tersebut mengecat \(\frac{1}{8}\) bagian tembok setiap jamnya.</div>
+            <div class="option">C. Laju pekerja tersebut akan berkurang \(\frac{1}{8}\) setiap jam.</div>
+            <div class="option">D. Diperlukan 8 pekerja untuk menyelesaikan tembok dalam 1 jam.</div>
+        </div>
+    </div>
+
+    <!-- Soal 2 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Soal Konsep Dasar (Level 1-5) | Soal 2</div>
+        <div class="question-text">
+            Pekerja X dapat menyelesaikan tugas dalam \(p\) hari, dan pekerja Y dalam \(q\) hari. Kesalahan konseptual yang paling mendasar jika seorang siswa menjawab waktu gabungannya adalah \(\frac{p+q}{2}\) hari adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Siswa mengasumsikan kedua pekerja memiliki kecepatan yang sama dengan mengambil rata-rata waktu.</div>
+            <div class="option">B. Siswa lupa membalik pecahan pada langkah terakhir perhitungan.</div>
+            <div class="option">C. Siswa menggunakan konsep KPK namun salah menjumlahkan pembilangnya.</div>
+            <div class="option">D. Siswa terlalu bergantung pada penghafalan rumus tanpa mengecek satuan.</div>
+        </div>
+    </div>
+
+    <!-- Soal 3 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Soal Konsep Dasar (Level 1-5) | Soal 3</div>
+        <div class="question-text">
+            Dalam konteks pembelajaran matematika materi laju gabungan, tujuan utama memberikan pertanyaan "Masuk akalkah jika dua keran menyala bersamaan, bak akan penuh lebih lama daripada satu keran?" adalah untuk...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Membangun intuisi logika batasan (logical bound) sebelum masuk ke prosedur aljabar.</div>
+            <div class="option">B. Menguji kemampuan siswa dalam berhitung di luar kepala (mental arithmetic).</div>
+            <div class="option">C. Mempercepat proses siswa dalam menemukan rumus \(t = \frac{a \times b}{a + b}\).</div>
+            <div class="option">D. Membuat siswa merasa bahwa matematika selalu penuh dengan teka-teki logika yang mengecoh.</div>
+        </div>
+    </div>
+
+    <!-- Soal 4 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Soal Konsep Dasar (Level 1-5) | Soal 4</div>
+        <div class="question-text">
+            Sebuah mesin fotokopi tipe A mencetak dokumen dalam 30 menit. Jika ditambahkan mesin tipe B, mereka selesai bersama dalam 12 menit. Persamaan matematis yang merepresentasikan konsep bagian pekerjaan per menit yang benar adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(\frac{1}{30} + B = 12\)</div>
+            <div class="option">B. \(30 + B = \frac{1}{12}\)</div>
+            <div class="option">C. \(\frac{1}{30} + \frac{1}{B} = \frac{1}{12}\)</div>
+            <div class="option">D. \(12 \times \frac{1}{30} = \frac{1}{B}\)</div>
+        </div>
+    </div>
+
+    <!-- Soal 5 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Soal Konsep Dasar (Level 1-5) | Soal 5</div>
+        <div class="question-text">
+            Ketika memberikan materi kecepatan kerja gabungan, seorang guru langsung menuliskan rumus \(T_{gab} = \frac{T_1 \times T_2}{T_1 + T_2}\) di papan tulis dan menyuruh siswa menghafalnya. Dampak negatif paling signifikan dari pendekatan ini adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Siswa akan kesulitan mengingat rumus jika jumlah pekerja menjadi tiga orang atau lebih.</div>
+            <div class="option">B. Siswa menjadi terlalu cepat selesai mengerjakan soal latihan di kelas.</div>
+            <div class="option">C. Siswa akan menuntut guru untuk selalu memberikan rumus cepat pada setiap bab baru.</div>
+            <div class="option">D. Siswa tidak memahami makna fisis dari laju, sehingga rentan keliru saat variasi soal diubah.</div>
+        </div>
+    </div>
+
+    <!-- Soal 6 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Soal Tingkat Menengah (Level 6-10) | Soal 6</div>
+        <div class="question-text">
+            Keran A mengisi kolam dalam 2 jam, keran B dalam 3 jam, dan keran C dalam 6 jam. Jika ketiganya dibuka bersamaan, waktu yang dibutuhkan untuk mengisi kolam hingga penuh adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. 1 jam</div>
+            <div class="option">B. 1,5 jam</div>
+            <div class="option">C. 2 jam</div>
+            <div class="option">D. 3,6 jam</div>
+        </div>
+    </div>
+
+    <!-- Soal 7 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Soal Tingkat Menengah (Level 6-10) | Soal 7</div>
+        <div class="question-text">
+            Mesin P dapat mencetak spanduk dalam 4 jam. Mesin Q membutuhkan waktu 6 jam. Mereka bekerja bersama selama 2 jam, kemudian mesin P rusak. Sisa waktu yang dibutuhkan mesin Q untuk menyelesaikan pekerjaan tersebut sendirian adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(\frac{1}{2}\) jam</div>
+            <div class="option">B. 1 jam</div>
+            <div class="option">C. 1 \(\frac{1}{2}\) jam</div>
+            <div class="option">D. 2 jam</div>
+        </div>
+    </div>
+
+    <!-- Soal 8 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Soal Tingkat Menengah (Level 6-10) | Soal 8</div>
+        <div class="question-text">
+            Untuk mempermudah siswa memahami penjumlahan pecahan tak sejenis dalam materi laju kerja pompa, Pak Andi memisalkan volume total kolam dengan sebuah angka kelipatan persekutuan terkecil (KPK) dari waktu pompa. Jika waktu pompa adalah 15 jam dan 10 jam, volume fiktif yang ditetapkan Pak Andi adalah 30 liter. Langkah logis selanjutnya dari metode ini adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Menjumlahkan 15 dan 10, lalu membaginya dengan 30.</div>
+            <div class="option">B. Mencari laju tiap pompa dalam liter/jam, yaitu 2 liter/jam dan 3 liter/jam, lalu menjumlahkan lajunya.</div>
+            <div class="option">C. Membagi 30 dengan 2, lalu hasilnya ditambahkan dengan membagi 30 dengan 3.</div>
+            <div class="option">D. Mengajarkan siswa bahwa volume kolam sesungguhnya memang harus 30 liter agar bisa dikerjakan.</div>
+        </div>
+    </div>
+
+    <!-- Soal 9 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Soal Tingkat Menengah (Level 6-10) | Soal 9</div>
+        <div class="question-text">
+            Pompa X dapat mengisi tangki dalam waktu 40 menit. Jika digunakan Pompa X dan Pompa Y bersama-sama, tangki penuh dalam 15 menit. Ciri-ciri yang menunjukkan laju Pompa Y relatif terhadap Pompa X adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Pompa Y lebih lambat dari Pompa X karena \(\frac{1}{40} > \frac{1}{15}\).</div>
+            <div class="option">B. Pompa Y lebih cepat dari Pompa X karena waktu kerja sendirinya 24 menit.</div>
+            <div class="option">C. Pompa Y memiliki kecepatan yang sama persis dengan Pompa X.</div>
+            <div class="option">D. Pompa Y lebih cepat dari Pompa X karena selisih waktunya positif.</div>
+        </div>
+    </div>
+
+    <!-- Soal 10 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Soal Tingkat Menengah (Level 6-10) | Soal 10</div>
+        <div class="question-text">
+            Pipa A dapat mengisi kolam dalam waktu \(x\) jam, sedangkan Pipa B mengosongkan kolam yang sama dalam waktu \(y\) jam (\(y > x\)). Konsep laju gabungan per jam yang paling tepat untuk situasi ini adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(\frac{1}{x} + \frac{1}{y}\) karena kedua pipa bekerja pada kolam yang sama.</div>
+            <div class="option">B. \(\frac{1}{y} - \frac{1}{x}\) karena laju pengosongan mengurangi laju pengisian.</div>
+            <div class="option">C. \(\frac{1}{x} - \frac{1}{y}\) karena pengisian bersifat positif (menambah) dan pengosongan bersifat negatif (mengurangi).</div>
+            <div class="option">D. \(\frac{x-y}{xy}\) karena waktu harus bernilai mutlak positif.</div>
+        </div>
+    </div>
+
+    <!-- Soal 11 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & PCK (Level 11-20) | Soal 11</div>
+        <div class="question-text">
+            Saat ulangan, seorang siswa menyelesaikan soal laju dua pekerja (waktu masing-masing 10 jam dan 15 jam) dengan perhitungan \(\frac{1}{10} + \frac{1}{15} = \frac{2}{25}\). Langkah diagnostik pertama yang paling tepat dilakukan guru untuk memperbaiki kesalahan prosedural ini adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Menyuruh siswa mengerjakan ulang dengan rumus cepat \(t = \frac{a \times b}{a + b}\).</div>
+            <div class="option">B. Menanyakan alasan mengapa penyebutnya dijumlahkan, lalu membimbing kembali ke konsep dasar penyamaan penyebut pada pecahan.</div>
+            <div class="option">C. Langsung mencoret jawaban dan memberikan contoh penyelesaian pecahan dengan KPK.</div>
+            <div class="option">D. Meminta siswa menggambar area persegi panjang untuk membuktikan bahwa \(\frac{2}{25}\) salah.</div>
+        </div>
+    </div>
+
+    <!-- Soal 12 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & PCK (Level 11-20) | Soal 12</div>
+        <div class="question-text">
+            [Kasus Pembelajaran] Pekerja A dapat mengecat rumah dalam 30 hari, sedangkan Pekerja B membutuhkan 20 hari. Jika dikerjakan bersama-sama, berapa hari pekerjaan akan selesai? <br><br>
+            Banyak siswa di kelas menjawab 50 hari karena mereka menjumlahkan 30 + 20. Manakah urutan langkah <em>scaffolding</em> (perancah) yang paling tepat agar siswa secara konseptual tidak lagi melakukan kesalahan tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Langsung menjumlahkan \(\frac{1}{30}\) dan \(\frac{1}{20}\) di papan tulis, menyamakan penyebut menjadi 60, lalu membalikkan hasil akhirnya.</div>
+            <div class="option">B. Mengingatkan siswa pada rumus \(t = \frac{a \times b}{a + b}\), lalu memberikan mereka 5 soal latihan serupa agar terbiasa menggunakannya.</div>
+            <div class="option">C. Memberikan analogi tentang dua mobil yang melaju berlawanan arah, lalu mengaitkannya dengan kecepatan mengecat agar siswa berpikir tentang jarak.</div>
+            <div class="option">D. Meminta siswa berpikir logis: "Jika B sendirian saja butuh 20 hari, apakah logis jika dibantu A malah menjadi 50 hari?", lalu mengenalkan konsep "bagian rumah yang dicat dalam 1 hari".</div>
+        </div>
+    </div>
+
+    <!-- Soal 13 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & PCK (Level 11-20) | Soal 13</div>
+        <div class="question-text">
+            Penggunaan representasi visual (model gambar) sering kali sulit diterapkan untuk soal laju kerja karena abstraknya konsep "pekerjaan" dan "waktu". Namun, seorang guru mencoba merepresentasikan "satu pekerjaan utuh" sebagai sebuah persegi panjang (grid). Jika waktu pekerja A adalah 3 hari dan B adalah 6 hari, grid yang paling efektif digunakan untuk memfasilitasi penjumlahan laju adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Grid berukuran \(1 \times 9\), menempatkan bagian A sebanyak 3 kotak dan B sebanyak 6 kotak.</div>
+            <div class="option">B. Grid berukuran \(1 \times 6\), dimana A diarsir 2 kotak per hari, dan B diarsir 1 kotak per hari.</div>
+            <div class="option">C. Grid berukuran \(3 \times 6\), memisahkan antara baris milik A dan kolom milik B.</div>
+            <div class="option">D. Grid berukuran \(1 \times 2\), merepresentasikan rasio perbandingan kecepatan A dan B.</div>
+        </div>
+    </div>
+
+    <!-- Soal 14 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & PCK (Level 11-20) | Soal 14</div>
+        <div class="question-text">
+            Pompa utama sebuah pabrik dapat memindahkan cairan dalam waktu \(t\) jam. Jika dibantu oleh pompa cadangan yang kecepatannya separuh dari pompa utama, pekerjaan selesai dalam 8 jam. Persamaan dan nilai \(t\) yang menunjukkan pemahaman utuh terhadap relasi kecepatan adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(\frac{1}{t} + \frac{1}{2t} = \frac{1}{8}\), sehingga \(t = 12\) jam.</div>
+            <div class="option">B. \(\frac{1}{t} + \frac{2}{t} = \frac{1}{8}\), sehingga \(t = 24\) jam.</div>
+            <div class="option">C. \(t + 2t = 8\), sehingga \(t = \frac{8}{3}\) jam.</div>
+            <div class="option">D. \(\frac{1}{t} + \frac{1}{t/2} = 8\), sehingga \(t = \frac{3}{8}\) jam.</div>
+        </div>
+    </div>
+
+    <!-- Soal 15 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & PCK (Level 11-20) | Soal 15</div>
+        <div class="question-text">
+            Untuk mengukur apakah siswa benar-benar memahami konsep laju gabungan (bukan sekadar hafal rumus fraksi atau rumus cepat), desain instrumen penilaian tipe <em>open-ended</em> (jawaban terbuka) yang paling memiliki validitas konstruk tinggi adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. "Tiga pompa masing-masing butuh waktu 2, 4, dan 5 jam. Berapa waktu gabungannya?"</div>
+            <div class="option">B. "Buktikan secara deduktif bahwa \(\frac{1}{t} = \frac{1}{t_1} + \frac{1}{t_2}\) dengan aljabar."</div>
+            <div class="option">C. "Waktu gabungan A dan B adalah 6 hari. Buatlah tiga kemungkinan berbeda untuk waktu yang dibutuhkan A dan B jika bekerja sendirian!"</div>
+            <div class="option">D. "Sebutkan rumus untuk mencari kecepatan gabungan dan berikan satu contoh penerapannya."</div>
+        </div>
+    </div>
+
+    <!-- Soal 16 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & PCK (Level 11-20) | Soal 16</div>
+        <div class="question-text">
+            [Kasus Pembelajaran] Pipa P dapat mengisi tangki dalam 4 jam dan Pipa Q dalam 6 jam. Saat guru memberikan soal mencari waktu bersama, seorang siswa kebingungan dan hanya menatap kertas kosong karena tidak tahu harus memulai dari mana. Tindakan <em>scaffolding</em> terbaik yang sebaiknya diinisiasi oleh guru adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Menuliskan jawaban pecahan \(\frac{1}{4} + \frac{1}{6}\) di buku siswa, lalu memintanya meneruskan operasi hitung tersebut agar menghemat waktu.</div>
+            <div class="option">B. Menuntun siswa dengan pertanyaan: "Misalkan tangki itu adalah kue. Dalam 1 jam, Pipa P dapat membuat berapa bagian kue? Bagaimana dengan Pipa Q?" lalu menggabungkannya.</div>
+            <div class="option">C. Mengarahkan siswa untuk mencari KPK dari 4 dan 6 yaitu 12, lalu menetapkan 12 jam sebagai jawaban akhir secara dogmatis.</div>
+            <div class="option">D. Menerangkan penurunan rumus aljabar variabel \(x\) dan \(y\) secara runut di papan tulis kelas agar semua siswa yang bingung bisa langsung paham.</div>
+        </div>
+    </div>
+
+    <!-- Soal 17 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & PCK (Level 11-20) | Soal 17</div>
+        <div class="question-text">
+            Pekerja A, B, dan C bekerja bersama. Diketahui kecepatan A adalah dua kali kecepatan B, dan kecepatan B adalah tiga kali kecepatan C. Jika mereka bekerja bersama, suatu proyek selesai dalam 5 hari. Jika proyek tersebut dikerjakan oleh C sendirian, waktu yang diperlukan adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. 15 hari</div>
+            <div class="option">B. 25 hari</div>
+            <div class="option">C. 30 hari</div>
+            <div class="option">D. 50 hari</div>
+        </div>
+    </div>
+
+    <!-- Soal 18 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & PCK (Level 11-20) | Soal 18</div>
+        <div class="question-text">
+            Dalam menganalisis lembar kerja siswa, guru menemukan kesalahan prosedural konsisten dimana siswa menyelesaikan soal kecepatan gabungan dengan bentuk \(\frac{1}{a+b}\). Kesalahan ini berasal dari miskonsepsi fundamental terkait struktur aljabar. Tindakan pedagogik paling transformatif untuk memperbaiki struktur kognitif ini adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Menyuruh siswa menghafal bahwa penjumlahan pada penyebut dilarang dalam matematika pecahan.</div>
+            <div class="option">B. Memberikan <em>counter-example</em> (contoh penyangkal) dengan angka sederhana: "Apakah \(\frac{1}{2} + \frac{1}{2}\) sama dengan \(\frac{1}{2+2}\)?", agar siswa melihat kontradiksinya secara mandiri.</div>
+            <div class="option">C. Menghukum siswa dengan memberikan 20 soal penjumlahan pecahan biasa dengan penyebut berbeda.</div>
+            <div class="option">D. Menjelaskan panjang lebar tentang sejarah bilangan pecahan agar siswa menghargai cara penulisan yang benar.</div>
+        </div>
+    </div>
+
+    <!-- Soal 19 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & PCK (Level 11-20) | Soal 19</div>
+        <div class="question-text">
+            [Kasus Pembelajaran] Mesin cetak X menyelesaikan pesanan brosur dalam 2 jam. Mesin Y membutuhkan 3 jam untuk pesanan yang sama. Seorang siswa menjawab secara impulsif bahwa jika digabung, waktunya adalah 5 jam (hasil dari 2 + 3). Respons <em>scaffolding</em> seperti apa yang paling tepat menangani miskonsepsi impulsif ini?
+        </div>
+        <div class="options-list">
+            <div class="option">A. "Coba pikir lagi, mesin yang lebih cepat saja selesai 2 jam. Kalau dibantu, mungkinkah jadi makin lama? Ayo hitung per jamnya dulu."</div>
+            <div class="option">B. "Jawabanmu salah besar! Seharusnya kamu pakai rumus \(\frac{X \times Y}{X + Y}\). Ayo masukkan angkanya 2 dan 3 ke rumus itu."</div>
+            <div class="option">C. "Jangan dijumlahkan waktunya. Ambil 1 lalu perkan dengan waktu masing-masing. \(1/2\) tambah \(1/3\), lalu balik hasilnya."</div>
+            <div class="option">D. "Cari KPK dari 2 dan 3 yaitu 6. Lalu bagi 6 dengan 2, ditambah bagi 6 dengan 3. Ketemu jawabannya kan?"</div>
+        </div>
+    </div>
+
+    <!-- Soal 20 -->
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: Soal HOTS & PCK (Level 11-20) | Soal 20</div>
+        <div class="question-text">
+            Dua orang guru, Guru P dan Guru Q, mengajar materi Laju Kerja. Guru P menggunakan metode eksplorasi bagian per jam, yang memakan waktu lama namun konseptual. Guru Q langsung memberikan metode "KPK dibagi jumlah silang" yang cepat dan siswanya selalu bisa menjawab soal pilihan ganda dengan kilat. Berdasarkan teori belajar konstruktivisme, evaluasi jangka panjang dari kedua metode ini kemungkinan besar akan menunjukkan...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Siswa Guru Q akan lebih unggul secara konstan karena efisiensi prosedural membebaskan beban kognitif (cognitive load) mereka selamanya.</div>
+            <div class="option">B. Siswa Guru P akan lebih lambat dalam ujian nasional dan akan melupakan konsep dasar karena terlalu rumit prosesnya.</div>
+            <div class="option">C. Siswa Guru P memiliki resiliensi (ketahanan) memori dan kemampuan transfer yang lebih baik ketika menghadapi variasi soal (seperti keran bocor/pekerja keluar).</div>
+            <div class="option">D. Siswa kedua guru tersebut tidak memiliki perbedaan karena hasil belajar matematika murni ditentukan oleh kecerdasan bawaan, bukan metode mengajar.</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
