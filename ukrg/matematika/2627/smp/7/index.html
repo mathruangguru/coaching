@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 7: Domain Aljabar vs Domain Alami - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul Pemodelan Matematika:<br>Domain Aljabar vs Domain Alami (Konteks Fisik)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Domain Alami pada Pemodelan Bangun Ruang</div>
+        <div class="question-text">
+            <p>Dalam matematika, sebuah fungsi seperti \(V(x) = x(40-2x)^2\) secara aljabar memiliki domain seluruh bilangan real (\(x \in \mathbb{R}\)). Artinya, kita bisa memasukkan nilai \(x\) negatif maupun sangat besar, dan fungsi tersebut akan tetap menghasilkan sebuah nilai.</p>
+
+            <p>Namun, ketika fungsi tersebut merupakan <strong>model matematika dari suatu masalah fisik</strong> (misalnya membuat kotak dari selembar karton), nilai variabelnya dibatasi oleh hukum fisika dan geometri. Batasan inilah yang disebut <strong>Domain Alami</strong> atau <strong>Domain Kontekstual</strong>.</p>
+
+            <h4>Studi Kasus: Membuat Kotak Tanpa Tutup</h4>
+            <p>Misalkan kita memiliki karton persegi berukuran \(P \times P\). Kita memotong persegi kecil berukuran \(x \times x\) di keempat sudutnya untuk dilipat menjadi kotak tanpa tutup.</p>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <svg width="350" height="350" viewBox="0 0 350 350" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                        </marker>
+                    </defs>
+
+                    <g transform="translate(25, 25)">
+                        
+                        <rect x="0" y="0" width="300" height="300" fill="none" stroke="black" stroke-width="2"/>
+
+                        <rect x="0" y="0" width="75" height="75" fill="#e0e0e0" stroke="black" stroke-width="1"/>
+                        <rect x="225" y="0" width="75" height="75" fill="#e0e0e0" stroke="black" stroke-width="1"/>
+                        <rect x="0" y="225" width="75" height="75" fill="#e0e0e0" stroke="black" stroke-width="1"/>
+                        <rect x="225" y="225" width="75" height="75" fill="#e0e0e0" stroke="black" stroke-width="1"/>
+
+                        <line x1="0" y1="0" x2="75" y2="75" stroke="black" stroke-width="1.5"/>
+                        <line x1="0" y1="75" x2="75" y2="0" stroke="black" stroke-width="1.5"/>
+                        
+                        <line x1="225" y1="0" x2="300" y2="75" stroke="black" stroke-width="1.5"/>
+                        <line x1="225" y1="75" x2="300" y2="0" stroke="black" stroke-width="1.5"/>
+
+                        <line x1="0" y1="225" x2="75" y2="300" stroke="black" stroke-width="1.5"/>
+                        <line x1="0" y1="300" x2="75" y2="225" stroke="black" stroke-width="1.5"/>
+
+                        <line x1="225" y1="225" x2="300" y2="300" stroke="black" stroke-width="1.5"/>
+                        <line x1="225" y1="300" x2="300" y2="225" stroke="black" stroke-width="1.5"/>
+
+                        <line x1="75" y1="0" x2="75" y2="300" stroke="black" stroke-width="2" stroke-dasharray="6,4"/>
+                        <line x1="225" y1="0" x2="225" y2="300" stroke="black" stroke-width="2" stroke-dasharray="6,4"/>
+                        <line x1="0" y1="75" x2="300" y2="75" stroke="black" stroke-width="2" stroke-dasharray="6,4"/>
+                        <line x1="0" y1="225" x2="300" y2="225" stroke="black" stroke-width="2" stroke-dasharray="6,4"/>
+
+                        <text x="37.5" y="-10" font-family="sans-serif" font-size="14" font-style="italic" text-anchor="middle">x</text>
+                        <text x="-15" y="42.5" font-family="sans-serif" font-size="14" font-style="italic" text-anchor="middle">x</text>
+
+                        <line x1="75" y1="150" x2="225" y2="150" stroke="black" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+                        <rect x="125" y="140" width="50" height="20" fill="white"/> <text x="150" y="155" font-family="sans-serif" font-size="14" text-anchor="middle">P - 2x</text>
+                        
+                        <text x="150" y="320" font-family="sans-serif" font-size="14" text-anchor="middle">Panjang awal = P</text>
+                    </g>
+                </svg>
+            </div>
+
+            <p>Dimensi kotak yang terbentuk adalah:</p>
+            <ul>
+                <li><strong>Tinggi (\(t\))</strong> = \(x\)</li>
+                <li><strong>Panjang alas (\(p\))</strong> = \(P - 2x\)</li>
+                <li><strong>Lebar alas (\(l\))</strong> = \(P - 2x\)</li>
+            </ul>
+
+            <p><strong>Menentukan Domain Alami:</strong><br>
+            Syarat mutlak ukuran fisik adalah <strong>harus bernilai positif</strong> (\(> 0\)). Jika ukurannya \(0\), maka bangun ruang tersebut tidak terbentuk (berupa bangun datar).</p>
+            <ol>
+                <li>Syarat tinggi: \(x > 0\)</li>
+                <li>Syarat sisi alas: \(P - 2x > 0 \implies 2x < P \implies x < \frac{P}{2}\)</li>
+            </ol>
+            <p>Irisan dari kedua syarat tersebut menghasilkan <strong>Domain Alami</strong>: 
+            \[ 0 < x < \frac{P}{2} \]</p>
+            <p><em>Catatan: Tanda ketidaksamaan mutlak (\(<\)) digunakan alih-alih (\(\leq\)), karena jika \(x = P/2\), maka alas kotak habis terpotong dan kotak tidak dapat dibentuk.</em></p>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 1</div>
+        <div class="question-text">
+            Perbedaan utama antara domain aljabar dari fungsi polinomial dan domain alami (konteks fisik) dari fungsi tersebut adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Domain aljabar selalu bilangan bulat positif, sedangkan domain alami mencakup bilangan desimal.</div>
+            <div class="option">B. Domain alami dibatasi oleh realitas fisik seperti ukuran tidak boleh negatif atau melebihi bahan yang ada, sedangkan domain aljabar bisa jadi seluruh bilangan real.</div>
+            <div class="option">C. Domain aljabar dibatasi oleh nol, sedangkan domain fisik tidak memiliki batas maksimal.</div>
+            <div class="option">D. Keduanya sama persis jika fungsi tersebut digunakan untuk menghitung volume bangun ruang.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 2</div>
+        <div class="question-text">
+            Sebuah kotak memiliki panjang \(p = (10 - x)\text{ cm}\), lebar \(l = (8 - x)\text{ cm}\), dan tinggi \(t = x\text{ cm}\). Agar kotak tersebut memiliki wujud fisik (bangun ruang nyata), syarat paling mendasar untuk tinggi \(x\) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(x \geq 0\)</div>
+            <div class="option">B. \(x > 0\)</div>
+            <div class="option">C. \(x = 0\)</div>
+            <div class="option">D. \(x < 0\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 3</div>
+        <div class="question-text">
+            Selembar karton berukuran \(30 \text{ cm} \times 30 \text{ cm}\) akan dibuat kotak tanpa tutup dengan memotong persegi berukuran \(y \times y\) di keempat sudutnya. Manakah ekspresi yang merepresentasikan panjang alas kotak tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(30 - y\)</div>
+            <div class="option">B. \(15 - y\)</div>
+            <div class="option">C. \(30 - 2y\)</div>
+            <div class="option">D. \(y\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 4</div>
+        <div class="question-text">
+            Dari soal nomor 3, variabel \(y\) dalam konteks kotak yang sudah dilipat berfungsi sebagai...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. Panjang alas kotak</div>
+            <div class="option">B. Lebar alas kotak</div>
+            <div class="option">C. Diagonal ruang kotak</div>
+            <div class="option">D. Tinggi kotak</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 5</div>
+        <div class="question-text">
+            Mengapa nilai dimensi fisik (panjang, lebar, tinggi) sebuah bangun ruang tidak boleh menggunakan tanda kurang dari sama dengan nol (\(\leq 0\)) dalam penentuan domainnya?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Karena perhitungan matematika tidak bisa memproses angka nol.</div>
+            <div class="option">B. Karena jika salah satu dimensi nol atau negatif, volume menjadi nol atau negatif, sehingga bangun ruang tiga dimensi tidak eksis.</div>
+            <div class="option">C. Karena ukuran nol hanya diizinkan untuk bangun dua dimensi seperti lingkaran.</div>
+            <div class="option">D. Karena kalkulator akan menghasilkan <em>error</em> (kesalahan pembagian).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 6</div>
+        <div class="question-text">
+            Diberikan selembar seng berukuran \(50 \text{ cm} \times 50 \text{ cm}\). Di keempat sudutnya dipotong persegi berukuran \(x \times x\) untuk membentuk bak penampung air tanpa tutup. Fungsi volume bak penampung tersebut terhadap \(x\) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(V(x) = x(50 - x)^2\)</div>
+            <div class="option">B. \(V(x) = 2x(50 - 2x)^2\)</div>
+            <div class="option">C. \(V(x) = x(25 - x)^2\)</div>
+            <div class="option">D. \(V(x) = x(50 - 2x)^2\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 7</div>
+        <div class="question-text">
+            Sebuah pemodelan volume laci menghasilkan fungsi \(V(x) = x(24 - 2x)^2\) dengan satuan cm. Berapakah nilai bilangan bulat terbesar yang mungkin untuk \(x\) agar laci tersebut masih bisa dibuat?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(12\)</div>
+            <div class="option">B. \(11\)</div>
+            <div class="option">C. \(23\)</div>
+            <div class="option">D. \(24\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 8</div>
+        <div class="question-text">
+            Seorang perajin memiliki selembar triplek berbentuk <strong>persegi panjang</strong> berukuran \(40 \text{ cm} \times 30 \text{ cm}\). Ia memotong persegi berukuran \(a \times a\) di keempat sudutnya. Luas alas kotak yang terbentuk dimodelkan dengan fungsi \(L(a)\). Rumus \(L(a)\) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(L(a) = (40 - a)(30 - a)\)</div>
+            <div class="option">B. \(L(a) = (40 - 2a)(30 - 2a)\)</div>
+            <div class="option">C. \(L(a) = 2a(40 + 30)\)</div>
+            <div class="option">D. \(L(a) = a(40 - 2a)(30 - 2a)\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 9</div>
+        <div class="question-text">
+            Mengacu pada konteks perajin pada soal nomor 8, domain alami (konteks fisik) untuk nilai \(a\) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(0 < a < 20\)</div>
+            <div class="option">B. \(0 \leq a \leq 15\)</div>
+            <div class="option">C. \(0 < a < 15\)</div>
+            <div class="option">D. \(15 < a < 20\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 10</div>
+        <div class="question-text">
+            Seutas kawat panjangnya 100 cm dibentuk menjadi sebuah kerangka persegi panjang. Jika lebar persegi panjang tersebut adalah \(l\), maka fungsi luas area yang dibatasi oleh kerangka tersebut adalah \(A(l) = l(50 - l)\). Batas nilai (domain) \(l\) yang memenuhi kondisi fisik nyata adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(0 < l < 100\)</div>
+            <div class="option">B. \(0 < l < 50\)</div>
+            <div class="option">C. \(l > 0\)</div>
+            <div class="option">D. \(0 \leq l \leq 50\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS - High Order Thinking Skills | Soal 11</div>
+        <div class="question-text">
+            Sebuah perusahaan ingin membuat kotak kemasan dari karton berbentuk persegi. Diketahui fungsi volume kotak yang terbentuk adalah \(V(x) = 4x^3 - 80x^2 + 400x\). Jika \(x\) adalah tinggi kotak hasil lipatan, berapakah panjang sisi karton mula-mula sebelum dipotong? (Petunjuk: Faktorkan fungsi volume).
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(10 \text{ cm}\)</div>
+            <div class="option">B. \(20 \text{ cm}\)</div>
+            <div class="option">C. \(40 \text{ cm}\)</div>
+            <div class="option">D. \(100 \text{ cm}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS - High Order Thinking Skills | Soal 12</div>
+        <div class="question-text">
+            <strong>[Analisis Pedagogis]</strong> Siswa kelas 10 diminta memodelkan luas dasar keramba ikan yang dikelilingi pagar jaring sepanjang 120 meter. Salah satu sisi keramba memanfaatkan tembok batu bata yang sudah ada (tidak perlu jaring). Siswa memisalkan lebar keramba yang tegak lurus tembok sebagai \(w\), sehingga panjang keramba yang sejajar tembok adalah \((120 - 2w)\). Model luasnya adalah \(A(w) = w(120 - 2w)\). Saat menentukan domain alami untuk \(w\), siswa menjawab \(w > 0\). <br>
+            Apa kritik pedagogis terbaik terhadap jawaban siswa ini?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Jawaban siswa sudah tepat karena lebar keramba bebas berapapun asalkan positif.</div>
+            <div class="option">B. Siswa lupa bahwa panjang jaring tidak boleh melebihi tembok, sehingga harus ditambahkan syarat \(w < 120\).</div>
+            <div class="option">C. Siswa gagal menyadari bahwa jika \(w \geq 60\), sisa jaring untuk sisi panjang akan bernilai negatif atau habis, sehingga domain seharusnya \(0 < w < 60\).</div>
+            <div class="option">D. Siswa salah menggunakan tanda pertidaksamaan, seharusnya domain luas selalu ditandai dengan \(w \geq 0\).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS - High Order Thinking Skills | Soal 13</div>
+        <div class="question-text">
+            Volume sebuah kotak penyimpanan dirumuskan dengan \(V(t) = t(A - 2t)(B - 2t)\) dengan asumsi \(A > B\). Seorang siswa menyimpulkan bahwa batas maksimum untuk \(t\) ditentukan oleh \(\frac{A}{2}\). Apa kelemahan utama dari pemikiran siswa tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Variabel \(A\) adalah sisi terpanjang. Jika \(t\) mendekati \(\frac{A}{2}\), sisi \(B\) (yang lebih pendek) sudah lama bernilai negatif, melanggar hukum fisika.</div>
+            <div class="option">B. Batas maksimum seharusnya ditentukan oleh perkalian \(A\) dan \(B\), bukan pembagiannya.</div>
+            <div class="option">C. Tidak ada kelemahan, karena sisi terpanjang selalu memberikan toleransi potongan yang lebih besar.</div>
+            <div class="option">D. Siswa lupa mengkuadratkan fungsi sebelum mencari domainnya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS - High Order Thinking Skills | Soal 14</div>
+        <div class="question-text">
+            Selembar pelat logam berukuran \(A4\) (\(210 \text{ mm} \times 297 \text{ mm}\)) akan ditekuk ujung-ujungnya secara memanjang setinggi \(x\) mm membentuk talang air berbentuk huruf U. Luas penampang melintang talang tersebut harus lebih besar dari \(2000 \text{ mm}^2\). Pertidaksamaan matematika yang secara tepat memodelkan kondisi fisik dan fungsional talang tersebut adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(x(210 - 2x) > 2000\) dengan domain \(0 < x < 105\)</div>
+            <div class="option">B. \(x(297 - 2x) > 2000\) dengan domain \(0 < x < 148.5\)</div>
+            <div class="option">C. \((210 - 2x)(297 - 2x) > 2000\) dengan domain \(x > 0\)</div>
+            <div class="option">D. \(x(210 - x) > 2000\) dengan domain \(0 < x < 210\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS - High Order Thinking Skills | Soal 15</div>
+        <div class="question-text">
+            Sebuah wadah kerucut terbalik dengan tinggi 20 cm dan jari-jari atas 10 cm sedang diisi air. Jika \(h\) adalah tinggi air pada suatu saat, fungsi volume air adalah \(V(h) = \frac{\pi}{12}h^3\). Domain alami secara fisis dari fungsi volume air dalam wadah ini adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(h > 0\)</div>
+            <div class="option">B. \(0 \leq h \leq 20\)</div>
+            <div class="option">C. Seluruh bilangan real (\(\mathbb{R}\))</div>
+            <div class="option">D. \(0 < h < 10\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS - High Order Thinking Skills | Soal 16</div>
+        <div class="question-text">
+            <strong>[Analisis Pedagogis]</strong> Dalam ujian, siswa kelas 11 diminta membuat laci tanpa tutup dari papan berukuran \(80 \text{ cm} \times 50 \text{ cm}\) dengan memotong persegi berukuran \(p \times p\) di keempat sudutnya. Model volumenya adalah \(V(p) = p(80 - 2p)(50 - 2p)\). Saat ditanya rentang ukuran \(p\) yang mungkin terjadi di dunia nyata, siswa tersebut menjawab \(0 < p < 40\).
+            <br>Apa kritik pedagogis terbaik terhadap jawaban siswa ini?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Siswa sudah memberikan jawaban yang sangat tepat karena \(40\) adalah setengah dari sisi \(80\).</div>
+            <div class="option">B. Siswa keliru menggunakan sisi terpanjang (\(80\)) sebagai acuan. Padahal sisi terpendek (\(50\)) akan habis lebih dulu saat pemotongan, sehingga domain nyatanya harus \(0 < p < 25\).</div>
+            <div class="option">C. Siswa mengabaikan bahwa potongan tidak boleh melebihi nilai akar dari keliling papan.</div>
+            <div class="option">D. Siswa seharusnya mencantumkan tanda sama dengan (\(\leq\)) pada pertidaksamaannya karena panjang \(40\) cm masih diizinkan secara matematis.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS - High Order Thinking Skills | Soal 17</div>
+        <div class="question-text">
+            Karton berbentuk persegi berukuran \(W \times W\) dipotong sudutnya sebesar \(x \times x\) untuk membentuk kotak. Jika volume kotak mencapai nilai ekstrem lokal secara aljabar saat turunan pertamanya nol, dan diketahui bahwa syarat fisik kotak terbentuk adalah \(0 < x < 18\), berapakah luas karton mula-mula?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(324 \text{ satuan persegi}\)</div>
+            <div class="option">B. \(1296 \text{ satuan persegi}\)</div>
+            <div class="option">C. \(81 \text{ satuan persegi}\)</div>
+            <div class="option">D. \(36 \text{ satuan persegi}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS - High Order Thinking Skills | Soal 18</div>
+        <div class="question-text">
+            Pemodelan populasi bakteri dalam sebuah cawan petri per jam dimodelkan dengan fungsi \(P(t) = -t^2 + 10t + 2000\), dimana \(t\) adalah waktu dalam jam. Kapan bakteri diprediksi akan habis sepenuhnya dan bagaimana penentuan domain fisisnya?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Saat \(t=50\). Domain fisis untuk waktu adalah \(t \geq 0\), sehingga bakteri habis tepat pada jam ke-50.</div>
+            <div class="option">B. Saat \(t=40\) dan \(t=-50\). Karena waktu tidak boleh negatif, bakteri habis pada jam ke-40.</div>
+            <div class="option">C. Saat \(t=50\) atau \(t=-40\). Karena secara aljabar ada dua solusi, bakteri bisa habis di dua waktu berbeda.</div>
+            <div class="option">D. Populasi tidak akan pernah habis karena fungsi kuadrat bernilai positif tak hingga seiring bertambahnya waktu.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS - High Order Thinking Skills | Soal 19</div>
+        <div class="question-text">
+            <strong>[Analisis Pedagogis]</strong> Siswa kelas 9 diminta membuat kotak tanpa tutup dari selembar karton berukuran \(40 \text{ cm} \times 40 \text{ cm}\) dengan memotong persegi berukuran \(y \times y\) di keempat sudutnya, lalu melipatnya. Model volume kotak tersebut adalah \(V(y) = y(40 - 2y)^2\). Saat diminta menentukan domain alami untuk \(y\) berdasarkan konteks fisik, seorang siswa menjawab \(y > 0\).
+            <br>Apa kritik pedagogis terbaik terhadap jawaban siswa ini?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Jawaban siswa sudah benar dan mencakup semua kemungkinan pemotongan.</div>
+            <div class="option">B. Siswa lupa bahwa panjang potongan tidak boleh menghasilkan volume negatif, sehingga yang benar adalah \(y \geq 0\).</div>
+            <div class="option">C. Siswa gagal menyadari bahwa panjang dua potongan (\(2y\)) tidak boleh melebihi ukuran sisi karton awal, sehingga domainnya harus \(0 < y < 20\).</div>
+            <div class="option">D. Siswa seharusnya menggunakan pertidaksamaan kurang dari sama dengan (\(\leq\)) karena \(y\) bisa bernilai 40 cm utuh.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS - High Order Thinking Skills | Soal 20</div>
+        <div class="question-text">
+            Sebuah kotak kemasan dirancang dengan panjang dua kali lebarnya, dan tingginya dimisalkan \(x\). Jika total panjang rusuk kotak tersebut dibatasi maksimal 120 cm, dan lebar kotak tidak boleh lebih kecil dari tingginya. Pernyataan sistem pertidaksamaan domain fisik manakah yang paling akurat merepresentasikan masalah ini?
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(0 < x \leq l\) dan \(4(2l + l + x) \leq 120\)</div>
+            <div class="option">B. \(x > 0\) dan \(12l + 4x \leq 120\)</div>
+            <div class="option">C. \(0 < l \leq x\) dan \(2l + l + x \leq 30\)</div>
+            <div class="option">D. \(0 < x < 120\) dan \(x = 2l\)</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
