@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi dan Evaluasi: Sistem Nilai Tempat Desimal</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">Materi dan Evaluasi: Sistem Nilai Tempat Desimal</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Perluasan Sistem Nilai Tempat Desimal</div>
+        <div class="question-text">
+            <p>Sistem bilangan yang kita gunakan sehari-hari adalah <strong>sistem basis 10 (desimal)</strong>. Ciri utama dari sistem ini adalah keteraturan perpindahan posisi angka:</p>
+            <ul class="list-inside">
+                <li>Setiap kali kita bergeser <strong>satu tempat ke kiri</strong>, nilai tempat angka tersebut <strong>dikalikan 10</strong>. (Contoh: dari Satuan $\rightarrow$ Puluhan $\rightarrow$ Ratusan).</li>
+                <li>Sebaliknya, setiap kali kita bergeser <strong>satu tempat ke kanan</strong>, nilai tempat angka tersebut <strong>dibagi 10</strong> atau dikalikan $\frac{1}{10}$.</li>
+            </ul>
+
+            <h4 class="mt-4">Fungsi Titik/Koma Desimal:</h4>
+            <p>Titik atau koma desimal berfungsi sebagai penanda pemisah antara bagian bilangan bulat (di sebelah kiri) dan bagian pecahan (di sebelah kanan). Aturan "dibagi 10 saat bergeser ke kanan" tetap berlaku tanpa terputus setelah melewati tanda desimal.</p>
+
+            <ul class="list-inside">
+                <li><strong>Satuan (1)</strong> bergeser ke kanan menjadi $\rightarrow$ <strong>Persepuluhan</strong> $\left(\frac{1}{10} \text{ atau } 0{,}1\right)$.</li>
+                <li><strong>Persepuluhan</strong> bergeser ke kanan menjadi $\rightarrow$ <strong>Perseratusan</strong> $\left(\frac{1}{100} \text{ atau } 0{,}01\right)$.</li>
+                <li><strong>Perseratusan</strong> bergeser ke kanan menjadi $\rightarrow$ <strong>Perseribuan</strong> $\left(\frac{1}{1000} \text{ atau } 0{,}001\right)$, dan seterusnya.</li>
+            </ul>
+
+            <p class="mt-4">Pemahaman yang salah namun sering terjadi adalah menganggap letak desimal mengubah identitas angka secara acak, padahal ia mengikuti aturan matematika yang sangat ketat: <em>pembagian berulang dengan angka 10</em>.</p>
+        </div>
+    </div>
+
+    <div class="section-title">Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat! Terdapat 4 opsi (A, B, C, D) pada setiap soal.</em></p>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Konsep Dasar | Soal 1</div>
+        <div class="question-text">Dalam sistem bilangan desimal, operasi matematika apa yang secara implisit terjadi jika kita menggeser letak suatu angka satu posisi ke arah kanan?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Angka tersebut dikurangi dengan 10.</div>
+            <div class="option"><strong>B.</strong> Angka tersebut dibagi dengan 10.</div>
+            <div class="option"><strong>C.</strong> Angka tersebut menjadi bernilai negatif.</div>
+            <div class="option"><strong>D.</strong> Angka tersebut dibagi dengan 2, karena berpindah ruas.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Konsep Dasar | Soal 2</div>
+        <div class="question-text">Nilai tempat yang letaknya tepat berada di sebelah kanan tanda koma desimal dinamakan...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Puluhan, karena berdekatan dengan satuan.</div>
+            <div class="option"><strong>B.</strong> Persatuan, karena merupakan awal dari bilangan pecahan.</div>
+            <div class="option"><strong>C.</strong> Persepuluhan, karena merupakan hasil bagi satuan dengan 10.</div>
+            <div class="option"><strong>D.</strong> Perseratusan, karena nilainya selalu berada di bawah 0.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Konsep Dasar | Soal 3</div>
+        <div class="question-text">Pada bilangan $45{,}78$, angka 8 menempati posisi nilai tempat...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Persepuluhan, karena berada di bagian belakang koma.</div>
+            <div class="option"><strong>B.</strong> Perseratusan, karena nilainya adalah 8 dari seratus bagian.</div>
+            <div class="option"><strong>C.</strong> Puluhan, karena jika dibalik letaknya sebanding dengan puluhan.</div>
+            <div class="option"><strong>D.</strong> Satuan, karena merupakan angka terakhir dari sebuah deret bilangan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Konsep Dasar | Soal 4</div>
+        <div class="question-text">Berapakah pecahan biasa yang ekuivalen (senilai) dengan nilai tempat "perseratusan"?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $\frac{100}{1}$</div>
+            <div class="option"><strong>B.</strong> $\frac{1}{10}$</div>
+            <div class="option"><strong>C.</strong> $\frac{10}{100}$</div>
+            <div class="option"><strong>D.</strong> $\frac{1}{100}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Konsep Dasar | Soal 5</div>
+        <div class="question-text">Jika angka 3 pada posisi Ratusan digeser tiga posisi ke arah kanan, maka angka 3 tersebut kini berada pada posisi...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Satuan</div>
+            <div class="option"><strong>B.</strong> Persepuluhan</div>
+            <div class="option"><strong>C.</strong> Perseratusan</div>
+            <div class="option"><strong>D.</strong> Puluhan</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 2: Tingkat Menengah | Soal 6</div>
+        <div class="question-text">Manakah pernyataan di bawah ini yang paling tepat menjelaskan mengapa $0{,}2$ lebih besar daripada $0{,}15$?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Karena 2 lebih besar dari 1 pada posisi persepuluhan, tanpa mempedulikan angka di perseratusan.</div>
+            <div class="option"><strong>B.</strong> Karena bilangan dengan angka yang lebih sedikit di belakang koma selalu bernilai lebih besar.</div>
+            <div class="option"><strong>C.</strong> Pernyataan tersebut salah, $0{,}15$ lebih besar karena 15 lebih besar dari 2.</div>
+            <div class="option"><strong>D.</strong> Karena $0{,}2$ memiliki nol di belakangnya yang tak terlihat, sehingga menjadi 20, dan 20 lebih besar dari 15.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 2: Tingkat Menengah | Soal 7</div>
+        <div class="question-text">Sebuah bilangan terdiri dari 3 puluhan, 5 satuan, 0 persepuluhan, dan 4 perseratusan. Penulisan desimal yang benar untuk bilangan tersebut adalah...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $35{,}4$</div>
+            <div class="option"><strong>B.</strong> $305{,}04$</div>
+            <div class="option"><strong>C.</strong> $35{,}04$</div>
+            <div class="option"><strong>D.</strong> $35{,}004$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 2: Tingkat Menengah | Soal 8</div>
+        <div class="question-text">Berapa banyak nilai "perseratusan" yang dibutuhkan untuk membentuk satu nilai "persepuluhan"?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> 1 bagian</div>
+            <div class="option"><strong>B.</strong> 10 bagian</div>
+            <div class="option"><strong>C.</strong> 100 bagian</div>
+            <div class="option"><strong>D.</strong> Tidak bisa ditentukan karena keduanya berada di sisi kanan koma.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 2: Tingkat Menengah | Soal 9</div>
+        <div class="question-text">Jika $7{,}45$ dikalikan dengan $10$, maka angka 4 akan berpindah nilai tempat menjadi...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Puluhan, karena bergeser ke kiri melewati koma desimal.</div>
+            <div class="option"><strong>B.</strong> Satuan, karena nilainya membesar sepuluh kali lipat.</div>
+            <div class="option"><strong>C.</strong> Perseratusan, karena perkalian mendesak angka ke belakang.</div>
+            <div class="option"><strong>D.</strong> Persepuluhan, karena posisinya tetap, hanya komanya yang bergeser.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 2: Tingkat Menengah | Soal 10</div>
+        <div class="question-text">Budi menulis angka $0{,}08$. Cici menulis angka yang nilainya 10 kali lebih kecil dari angka milik Budi. Angka berapakah yang ditulis Cici?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $0{,}8$</div>
+            <div class="option"><strong>B.</strong> $0{,}008$</div>
+            <div class="option"><strong>C.</strong> $8{,}0$</div>
+            <div class="option"><strong>D.</strong> $-0{,}08$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: <em>High Order Thinking Skills</em> / HOTS | Soal 11</div>
+        <div class="question-text">Seorang siswa bernama Andi berpendapat bahwa tidak ada bilangan di antara $0{,}4$ dan $0{,}5$. Berdasarkan prinsip perluasan nilai tempat desimal, evaluasi pendapat Andi!</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Pendapat Andi benar, karena 4 dan 5 adalah bilangan berurutan, sehingga desimalnya pun berurutan secara final.</div>
+            <div class="option"><strong>B.</strong> Pendapat Andi salah, karena kita bisa terus membagi nilai tempat dengan 10 untuk menghasilkan angka seperti $0{,}41$, $0{,}45$, dan seterusnya hingga tak terhingga.</div>
+            <div class="option"><strong>C.</strong> Pendapat Andi salah, namun hanya ada tepat 9 bilangan di antara keduanya ($0{,}41$ sampai $0{,}49$).</div>
+            <div class="option"><strong>D.</strong> Pendapat Andi benar secara teori, tetapi salah secara praktik perhitungan fisika.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: <em>High Order Thinking Skills</em> / HOTS | Soal 12</div>
+        <div class="question-text">
+            Perhatikan diagram perluasan nilai tempat di bawah ini!
+            
+            <div style="text-align: center; margin: 30px 0; overflow-x: auto;">
+                <svg width="100%" style="min-width: 600px; max-width: 800px;" height="180" viewBox="-80 -50 700 180" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db" />
+                        </marker>
+                    </defs>
+
+                    <text x="0" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Puluhan</text>
+                    <text x="0" y="40" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">10</text>
+                    
+                    <text x="120" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Satuan</text>
+                    <text x="120" y="40" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">1</text>
+                    
+                    <line x1="180" y1="80" x2="180" y2="-40" stroke="red" stroke-width="2" stroke-dasharray="6,4"/>
+                    <text x="180" y="100" font-family="sans-serif" font-size="12" fill="red" text-anchor="middle">Koma Desimal</text>
+                    
+                    <text x="260" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Persepuluhan</text>
+                    <text x="260" y="40" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">0,1</text>
+                    
+                    <text x="400" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Perseratusan</text>
+                    <text x="400" y="40" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">0,01</text>
+                    
+                    <rect x="500" y="0" width="80" height="50" rx="5" fill="#e0e0e0" stroke="#333" stroke-width="2"/>
+                    <text x="540" y="32" font-family="sans-serif" font-size="24" font-weight="bold" fill="#333" text-anchor="middle">?</text>
+
+                    <path d="M 10,-5 Q 60,-40 110,-5" fill="none" stroke="#3498db" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="60" y="-30" font-family="sans-serif" font-size="12" fill="#3498db" text-anchor="middle">&divide; 10</text>
+                    
+                    <path d="M 130,-5 Q 195,-40 250,-5" fill="none" stroke="#3498db" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="195" y="-30" font-family="sans-serif" font-size="12" fill="#3498db" text-anchor="middle">&divide; 10</text>
+                    
+                    <path d="M 270,-5 Q 335,-40 390,-5" fill="none" stroke="#3498db" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="335" y="-30" font-family="sans-serif" font-size="12" fill="#3498db" text-anchor="middle">&divide; 10</text>
+                    
+                    <path d="M 410,-5 Q 470,-40 530,-5" fill="none" stroke="#3498db" stroke-width="3" marker-end="url(#arrow)"/>
+                    <text x="470" y="-30" font-family="sans-serif" font-size="12" fill="#3498db" font-weight="bold" text-anchor="middle">&divide; 10</text>
+                </svg>
+            </div>
+            
+            Guru meminta siswa mengisi kotak bertanda tanya pada diagram di atas. Jika pola terus berlanjut ke kanan, konsep apa yang harus dipegang siswa untuk menjawab dengan benar?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Kotak tersebut diisi "Perseribuan ($0{,}001$)", karena pembagian 10 secara berulang dari nilai $\frac{1}{100}$ akan menghasilkan $\frac{1}{1000}$.</div>
+            <div class="option"><strong>B.</strong> Kotak tersebut diisi "Ribuan (1000)", karena posisinya simetris berlawanan arah dengan nilai puluhan.</div>
+            <div class="option"><strong>C.</strong> Kotak tersebut diisi "Perseratusan ke-dua", karena pecahan desimal hanya berhenti di angka dua digit di belakang koma.</div>
+            <div class="option"><strong>D.</strong> Kotak tersebut diisi "Minus Persepuluhan ($-0{,}1$)", karena letaknya semakin ke kanan semakin kecil dan masuk ke area negatif.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: <em>High Order Thinking Skills</em> / HOTS | Soal 13</div>
+        <div class="question-text">Diberikan angka $3.142{,}658$. Jika tanda koma desimal dihapus (dihilangkan), apa dampak matematis yang sebenarnya terjadi pada nilai bilangan tersebut?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Nilai bilangan berubah menjadi ribuan acak yang tidak memiliki relasi dengan bilangan awal.</div>
+            <div class="option"><strong>B.</strong> Nilai bilangan tersebut bertambah besar sebanyak 3 kali lipat dari aslinya.</div>
+            <div class="option"><strong>C.</strong> Nilai bilangan tersebut dikalikan 1000, karena setiap angka bergeser tiga tempat ke kiri dalam sistem nilai tempat.</div>
+            <div class="option"><strong>D.</strong> Nilai bilangan tidak berubah, hanya format penulisan nominalnya saja yang disederhanakan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: <em>High Order Thinking Skills</em> / HOTS | Soal 14</div>
+        <div class="question-text">Mengapa dalam sistem desimal tidak ada nilai tempat yang disebut "Persatuan" yang posisinya tepat di kanan tanda koma?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Karena para ahli matematika zaman dahulu lupa memasukkannya dalam sistem matriks.</div>
+            <div class="option"><strong>B.</strong> Karena koma desimal berfungsi membagi satuan (1) dengan 10. Hasil dari $1 \div 10$ adalah $\frac{1}{10}$ (persepuluhan), sehingga persatuan $\left(\frac{1}{1}\right)$ merupakan Satuan itu sendiri.</div>
+            <div class="option"><strong>C.</strong> Karena nilai persatuan letaknya ada di paling ujung kanan bilangan, bukan di sebelah koma desimal.</div>
+            <div class="option"><strong>D.</strong> Karena angka 1 tidak bisa dibagi oleh angka berapapun, sehingga harus melompat ke angka 10.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: <em>High Order Thinking Skills</em> / HOTS | Soal 15</div>
+        <div class="question-text">Siti memiliki pita sepanjang 2 meter. Ia memotongnya menjadi 10 bagian sama panjang. Salah satu potongan tersebut dipotong lagi menjadi 10 bagian sama panjang. Berapa panjang satu potongan pita terkecil jika dinyatakan dalam kesatuan meter menggunakan konsep nilai tempat?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> $0{,}2$ meter (berada di posisi persepuluhan).</div>
+            <div class="option"><strong>B.</strong> $0{,}02$ meter (berada di posisi perseratusan).</div>
+            <div class="option"><strong>C.</strong> $0{,}002$ meter (berada di posisi perseribuan).</div>
+            <div class="option"><strong>D.</strong> $2{,}00$ meter (tetap di posisi satuan karena bentuk barangnya padat).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: <em>High Order Thinking Skills</em> / HOTS | Soal 16</div>
+        <div class="question-text">
+            Perhatikan pergerakan nilai tempat pada diagram di bawah ini yang berjalan secara terbalik!
+            
+            <div style="text-align: center; margin: 30px 0; overflow-x: auto;">
+                <svg width="100%" style="min-width: 500px; max-width: 600px;" height="140" viewBox="-50 -50 500 140" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#27ae60" />
+                        </marker>
+                    </defs>
+
+                    <text x="0" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Satuan</text>
+                    <text x="130" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Persepuluhan</text>
+                    <text x="260" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Perseratusan</text>
+                    <text x="390" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Perseribuan</text>
+
+                    <path d="M 390,-5 Q 325,-40 270,-5" fill="none" stroke="#27ae60" stroke-width="2" marker-end="url(#arrow2)"/>
+                    <text x="330" y="-30" font-family="sans-serif" font-size="12" fill="#27ae60" text-anchor="middle">Operasi X</text>
+                    
+                    <path d="M 250,-5 Q 195,-40 140,-5" fill="none" stroke="#27ae60" stroke-width="2" marker-end="url(#arrow2)"/>
+                    <text x="195" y="-30" font-family="sans-serif" font-size="12" fill="#27ae60" text-anchor="middle">Operasi X</text>
+                    
+                    <path d="M 120,-5 Q 60,-40 10,-5" fill="none" stroke="#27ae60" stroke-width="2" marker-end="url(#arrow2)"/>
+                    <text x="65" y="-30" font-family="sans-serif" font-size="12" fill="#27ae60" text-anchor="middle">Operasi X</text>
+                </svg>
+            </div>
+            
+            Berdasarkan pemahaman Anda tentang perluasan desimal, apa bentuk "Operasi X" yang terjadi saat panah bergerak dari arah kanan (pecahan kecil) kembali ke arah kiri?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Ditambah dengan $0{,}1$ pada setiap langkahnya.</div>
+            <div class="option"><strong>B.</strong> Dibagi dengan 10 ($\div 10$) karena berlawanan arah dengan garis bilangan.</div>
+            <div class="option"><strong>C.</strong> Dikalikan dengan 10 ($\times 10$) karena bergeser ke kiri berarti menyatukan 10 bagian kecil menjadi 1 bagian yang lebih besar.</div>
+            <div class="option"><strong>D.</strong> Dikalikan dengan 100 ($\times 100$) untuk menghilangkan tanda koma secara permanen.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: <em>High Order Thinking Skills</em> / HOTS | Soal 17</div>
+        <div class="question-text">Diberikan angka-angka: 0, 3, 5, 8. Jika Anda diminta membuat satu bilangan desimal terkecil yang lebih besar dari nol, di mana seluruh angka tersebut harus digunakan tepat satu kali dan posisi koma desimal ditentukan secara bebas, strategi apa yang menunjukkan pemahaman nilai tempat yang benar?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Menempatkan angka terbesar (8) di depan koma karena itu membuat angkanya kuat, yaitu $8{,}530$.</div>
+            <div class="option"><strong>B.</strong> Menempatkan angka nol (0) sebelum koma, lalu mengurutkan angka sisanya dari yang terkecil ke terbesar pada posisi pecahan, yaitu $0{,}358$.</div>
+            <div class="option"><strong>C.</strong> Menaruh semua angka di belakang koma untuk menjadikannya pecahan murni, berurutan dari besar ke kecil, yaitu $0{,}853$.</div>
+            <div class="option"><strong>D.</strong> Menempatkan koma desimal di urutan paling akhir, yaitu $0358$, karena secara teknis nilainya sangat kecil (bernilai 358).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: <em>High Order Thinking Skills</em> / HOTS | Soal 18</div>
+        <div class="question-text">Guru menulis $0{,}300$ dan $0{,}3$ di papan tulis. Sebagian besar siswa berpendapat $0{,}300$ jauh lebih besar nilainya karena terlihat seperti ratusan. Manakah analisis paling kritis yang dapat digunakan guru untuk membantah pendapat tersebut?</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Menyatakan bahwa kedua bilangan itu berbeda, namun kebetulan memiliki awalan yang sama.</div>
+            <div class="option"><strong>B.</strong> Membuktikan bahwa $\frac{300}{1000}$ apabila disederhanakan dengan membagi pembilang dan penyebut dengan 100 akan menghasilkan nilai yang sama persis dengan $\frac{3}{10}$.</div>
+            <div class="option"><strong>C.</strong> Menyalahkan siswa karena aturan matematika menetapkan bahwa nol di belakang koma adalah ilusi yang tidak boleh ditulis.</div>
+            <div class="option"><strong>D.</strong> Menunjukkan bahwa $0{,}300$ lebih kecil karena semakin banyak digit di belakang koma, semakin kecil ukuran fisiknya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: <em>High Order Thinking Skills</em> / HOTS | Soal 19</div>
+        <div class="question-text">
+            Perhatikan diagram loncatan nilai tempat di bawah ini!
+            
+            <div style="text-align: center; margin: 30px 0; overflow-x: auto;">
+                <svg width="100%" style="min-width: 450px; max-width: 550px;" height="160" viewBox="-40 -20 500 160" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow3" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#e67e22" />
+                        </marker>
+                    </defs>
+
+                    <text x="0" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Satuan</text>
+                    <text x="130" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Persepuluhan</text>
+                    <text x="260" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Perseratusan</text>
+                    <text x="390" y="20" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Perseribuan</text>
+
+                    <line x1="30" y1="15" x2="75" y2="15" stroke="gray" stroke-dasharray="4,4" stroke-width="1.5"/>
+                    <line x1="180" y1="15" x2="210" y2="15" stroke="gray" stroke-dasharray="4,4" stroke-width="1.5"/>
+                    
+                    <path d="M 0,30 Q 130,110 260,30" fill="none" stroke="#e67e22" stroke-width="3" marker-end="url(#arrow3)"/>
+                    <text x="130" y="95" font-family="sans-serif" font-size="14" font-weight="bold" fill="#e67e22" text-anchor="middle">Operasi Y</text>
+                </svg>
+            </div>
+            
+            Jika diagram biasanya menunjukkan panah dibagi 10 ($\div 10$) untuk pergeseran per satu tempat ke kanan, manakah pernyataan yang benar mengenai "Operasi Y" yang melompat langsung <strong>dua tempat</strong> ke kanan?
+        </div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> Operasi Y adalah "Dibagi 20" karena ada 2 lompatan angka 10 ($10 + 10$).</div>
+            <div class="option"><strong>B.</strong> Operasi Y adalah "Dikali 100" karena jaraknya menjadi lebih jauh dari satuan.</div>
+            <div class="option"><strong>C.</strong> Operasi Y adalah "Dibagi 100", karena bergeser dua posisi ke kanan setara dengan membagi bilangan dengan $10 \times 10$.</div>
+            <div class="option"><strong>D.</strong> Operasi Y tidak bisa didefinisikan secara matematis karena menyalahi aturan urutan perpindahan titik desimal.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 3: <em>High Order Thinking Skills</em> / HOTS | Soal 20</div>
+        <div class="question-text">Pada mesin hitung mekanik, roda gigi posisi perseratusan baru akan memutar roda gigi posisi persepuluhan sebanyak satu klik (<em>notch</em>) jika roda gigi perseratusan tersebut telah berputar sebanyak...</div>
+        <div class="options-list">
+            <div class="option"><strong>A.</strong> 1 kali penuh, karena keduanya berada bersebelahan persis.</div>
+            <div class="option"><strong>B.</strong> 10 kali penuh, yang merepresentasikan bahwa 10 perseratusan berkumpul nilainya setara dengan 1 persepuluhan.</div>
+            <div class="option"><strong>C.</strong> 100 kali penuh, karena namanya adalah sistem perseratusan.</div>
+            <div class="option"><strong>D.</strong> $0{,}1$ kali putaran, karena nilainya desimal.</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
