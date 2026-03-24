@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 13: Kecepatan dan Kelajuan Rata-Rata - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran & Latihan Soal<br>Kecepatan dan Kelajuan Rata-Rata</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Kelajuan dan Kecepatan Rata-rata</div>
+        <div class="question-text">
+            <p>Dalam fisika (kinematika), sering terjadi miskonsepsi dalam menghitung rata-rata dari sebuah pergerakan, terutama saat membedakan antara <strong>Kelajuan (Skalar)</strong> dan <strong>Kecepatan (Vektor)</strong>. Pada kehidupan sehari-hari (seperti pada contoh kasus umum), istilah "kecepatan rata-rata" sering merujuk pada kelajuan rata-rata.</p>
+
+            <h4>1. Konsep Jarak vs Perpindahan</h4>
+            <ul>
+                <li><strong>Jarak (\(s\)):</strong> Total panjang lintasan yang ditempuh benda tanpa memperhatikan arah (Skalar).</li>
+                <li><strong>Perpindahan (\(\Delta x\)):</strong> Perubahan posisi awal ke posisi akhir benda beserta arahnya (Vektor). Untuk perjalanan pulang-pergi kembali ke titik awal, perpindahannya adalah <strong>NOL</strong>.</li>
+            </ul>
+
+            <h4>2. Rumus Rata-rata yang Benar</h4>
+            <p>Jangan pernah menjumlahkan dua kecepatan lalu membaginya dua jika waktu tempuhnya berbeda!</p>
+
+            <p><strong>Kelajuan Rata-rata (\(\bar{v}\))</strong> adalah total jarak dibagi total waktu:</p>
+            \[ \bar{v} = \frac{\Sigma s}{\Sigma t} = \frac{s_1 + s_2 + \dots}{t_1 + t_2 + \dots} \]
+
+            <p><strong>Kecepatan Rata-rata (\(\bar{\vec{v}}\))</strong> adalah total perpindahan dibagi total waktu:</p>
+            \[ \bar{\vec{v}} = \frac{\Delta x}{\Delta t} \]
+
+            <h4>3. Kasus Khusus: Jarak Sama, Kecepatan Berbeda</h4>
+            <p>Jika seseorang bepergian dari A ke B dengan kecepatan \(v_1\), lalu kembali dari B ke A (jarak yang sama) dengan kecepatan \(v_2\), kelajuan rata-rata seluruh perjalanan <strong>bukan</strong> \(\frac{v_1+v_2}{2}\). Karena jarak tempuh sama (\(s_1 = s_2 = s\)), maka rumusnya menjadi (Rata-rata Harmonik):</p>
+            \[ \bar{v} = \frac{s + s}{\frac{s}{v_1} + \frac{s}{v_2}} = \frac{2 v_1 v_2}{v_1 + v_2} \]
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 1</div>
+        <div class="question-text">
+            Sebuah mobil menempuh jarak 120 km dalam waktu 2 jam. Kelajuan rata-rata mobil tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 60 km/jam</div>
+            <div class="option">B. 120 km/jam</div>
+            <div class="option">C. 240 km/jam</div>
+            <div class="option">D. 0 km/jam</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 2</div>
+        <div class="question-text">
+            Budi berjalan sejauh 400 meter ke arah timur, lalu berbalik arah sejauh 400 meter ke arah barat menuju titik awalnya dalam total waktu 400 detik. Kecepatan rata-rata (vektor) Budi adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 2 m/s</div>
+            <div class="option">B. 1 m/s</div>
+            <div class="option">C. 0 m/s</div>
+            <div class="option">D. 8 m/s</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 3</div>
+        <div class="question-text">
+            Kelajuan sebuah sepeda motor tercatat konstan 72 km/jam. Jika dinyatakan dalam Satuan Internasional (m/s), nilainya setara dengan...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 72 m/s</div>
+            <div class="option">B. 7,2 m/s</div>
+            <div class="option">C. 20 m/s</div>
+            <div class="option">D. 200 m/s</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 4</div>
+        <div class="question-text">
+            Sebuah benda bergerak dengan persamaan kecepatan rata-rata \(v = \frac{\Delta x}{\Delta t}\). Besaran \(\Delta x\) secara fisis menyatakan...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Total panjang lintasan roda</div>
+            <div class="option">B. Perpindahan titik awal ke akhir</div>
+            <div class="option">C. Percepatan rata-rata</div>
+            <div class="option">D. Kelajuan sesaat</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 5</div>
+        <div class="question-text">
+            Jika Dini mengendarai sepeda dengan kelajuan konstan 5 m/s, jarak yang ia tempuh selama 10 menit adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 50 meter</div>
+            <div class="option">B. 500 meter</div>
+            <div class="option">C. 300 meter</div>
+            <div class="option">D. 3000 meter</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 6</div>
+        <div class="question-text">
+            Sebuah truk melaju dari kota A ke kota B yang berjarak 60 km dalam waktu 1 jam. Truk kemudian melanjutkan perjalanan ke kota C yang berjarak 90 km dalam waktu 2 jam. Kelajuan rata-rata seluruh perjalanan truk adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 75 km/jam</div>
+            <div class="option">B. 50 km/jam</div>
+            <div class="option">C. 150 km/jam</div>
+            <div class="option">D. 105 km/jam</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 7</div>
+        <div class="question-text">
+            Rina berlari selama 20 menit dengan kelajuan 3 m/s, kemudian ia berlari lagi selama 20 menit berikutnya dengan kelajuan 5 m/s. Berapakah kelajuan rata-ratanya?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 4 m/s</div>
+            <div class="option">B. 8 m/s</div>
+            <div class="option">C. 2 m/s</div>
+            <div class="option">D. 15 m/s</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 8</div>
+        <div class="question-text">
+            Perhatikan grafik Jarak (\(s\)) terhadap Waktu (\(t\)) sebuah mobil mainan berikut!
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                        </marker>
+                    </defs>
+                    <line x1="50" y1="200" x2="350" y2="200" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+                    <line x1="50" y1="200" x2="50" y2="20" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+                    
+                    <text x="360" y="205" font-family="sans-serif" font-size="14" text-anchor="start">t (sekon)</text>
+                    <text x="50" y="10" font-family="sans-serif" font-size="14" text-anchor="middle">s (meter)</text>
+                    <text x="40" y="215" font-family="sans-serif" font-size="14" text-anchor="end">0</text>
+                    
+                    <polyline points="50,200 150,40 300,40" fill="none" stroke="blue" stroke-width="3" />
+                    
+                    <line x1="150" y1="200" x2="150" y2="40" stroke="black" stroke-width="1.5" stroke-dasharray="5,5" />
+                    <line x1="300" y1="200" x2="300" y2="40" stroke="black" stroke-width="1.5" stroke-dasharray="5,5" />
+                    <line x1="50" y1="40" x2="150" y2="40" stroke="black" stroke-width="1.5" stroke-dasharray="5,5" />
+                    
+                    <text x="150" y="220" font-family="sans-serif" font-size="14" text-anchor="middle">2</text>
+                    <text x="300" y="220" font-family="sans-serif" font-size="14" text-anchor="middle">5</text>
+                    <text x="40" y="45" font-family="sans-serif" font-size="14" text-anchor="end">10</text>
+                </svg>
+            </div>
+            
+            Kelajuan rata-rata mobil dari \(t=0\) hingga \(t=5\) sekon adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 5 m/s</div>
+            <div class="option">B. 0 m/s</div>
+            <div class="option">C. 2 m/s</div>
+            <div class="option">D. 10 m/s</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 9</div>
+        <div class="question-text">
+            Anton berkendara sejauh 120 km. Jika kelajuan rata-rata Anton adalah 40 km/jam, namun ia berhenti beristirahat selama 1 jam di tengah jalan, total waktu yang dibutuhkannya untuk sampai tujuan adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 3 jam</div>
+            <div class="option">B. 4 jam</div>
+            <div class="option">C. 2 jam</div>
+            <div class="option">D. 4,8 jam</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 10</div>
+        <div class="question-text">
+            Sebuah partikel bergerak sepanjang sumbu \(X\). Pada \(t=0\) posisinya di \(x=5\) m. Pada \(t=2\) s posisinya di \(x=15\) m. Pada \(t=5\) s posisinya kembali ke \(x=5\) m. Kelajuan rata-rata partikel dari \(t=0\) hingga \(t=5\) s adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 0 m/s</div>
+            <div class="option">B. 2 m/s</div>
+            <div class="option">C. 4 m/s</div>
+            <div class="option">D. 10 m/s</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 11</div>
+        <div class="question-text">
+            Sebuah kereta A panjangnya 100 m bergerak dengan kelajuan 20 m/s. Kereta B melaju dari arah berlawanan di rel sebelahnya dengan kelajuan 30 m/s. Jika panjang kereta B 150 m, waktu yang dibutuhkan sejak ujung depan kedua kereta bertemu hingga ujung belakangnya terpisah adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 25 sekon</div>
+            <div class="option">B. 5 sekon</div>
+            <div class="option">C. 10 sekon</div>
+            <div class="option">D. 50 sekon</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 12</div>
+        <div class="question-text">
+            Candra berangkat dari Kota A ke Kota B dengan mengendarai motor berkecepatan konstan 40 km/jam. Setelah menyelesaikan urusannya di Kota B, ia langsung kembali pulang ke Kota A melalui jalur yang sama dengan kecepatan konstan 60 km/jam karena jalanan sepi. Kelajuan rata-rata Candra untuk seluruh perjalanan pulang-pergi adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 50 km/jam</div>
+            <div class="option">B. 48 km/jam</div>
+            <div class="option">C. 24 km/jam</div>
+            <div class="option">D. 0 km/jam</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 13</div>
+        <div class="question-text">
+            Grafik di bawah ini menunjukkan kecepatan (\(v\)) terhadap waktu (\(t\)) dari sebuah mobil.
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
+                        </marker>
+                    </defs>
+                    <line x1="50" y1="200" x2="350" y2="200" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+                    <line x1="50" y1="200" x2="50" y2="20" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+                    
+                    <text x="360" y="205" font-family="sans-serif" font-size="14" text-anchor="start">t (sekon)</text>
+                    <text x="50" y="10" font-family="sans-serif" font-size="14" text-anchor="middle">v (m/s)</text>
+                    <text x="40" y="215" font-family="sans-serif" font-size="14" text-anchor="end">0</text>
+                    
+                    <polyline points="50,200 125,40 200,40 275,200" fill="none" stroke="red" stroke-width="3" />
+                    
+                    <line x1="125" y1="200" x2="125" y2="40" stroke="black" stroke-width="1.5" stroke-dasharray="5,5" />
+                    <line x1="200" y1="200" x2="200" y2="40" stroke="black" stroke-width="1.5" stroke-dasharray="5,5" />
+                    <line x1="50" y1="40" x2="125" y2="40" stroke="black" stroke-width="1.5" stroke-dasharray="5,5" />
+                    
+                    <text x="125" y="220" font-family="sans-serif" font-size="14" text-anchor="middle">2</text>
+                    <text x="200" y="220" font-family="sans-serif" font-size="14" text-anchor="middle">4</text>
+                    <text x="275" y="220" font-family="sans-serif" font-size="14" text-anchor="middle">6</text>
+                    <text x="40" y="45" font-family="sans-serif" font-size="14" text-anchor="end">20</text>
+                </svg>
+            </div>
+            
+            Berapakah kelajuan rata-rata mobil dari \(t=0\) hingga mobil tersebut berhenti?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 10 m/s</div>
+            <div class="option">B. 20 m/s</div>
+            <div class="option">C. 13,3 m/s</div>
+            <div class="option">D. 80 m/s</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 14</div>
+        <div class="question-text">
+            Andi berencana menempuh jarak 120 km. Sepertiga jarak awal ditempuh dengan kelajuan 40 km/jam, dan sisanya ditempuh dengan kelajuan 20 km/jam. Kelajuan rata-rata Andi untuk seluruh perjalanannya adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 30 km/jam</div>
+            <div class="option">B. 26,7 km/jam</div>
+            <div class="option">C. 24 km/jam</div>
+            <div class="option">D. 24 m/s</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 15</div>
+        <div class="question-text">
+            Sebuah kapal penyeberangan melaju dari pelabuhan P ke pelabuhan Q melawan arus sungai dengan kecepatan relatif terhadap daratan 15 km/jam. Saat kembali dari Q ke P searah arus sungai, kecepatannya menjadi 30 km/jam. Kecepatan rata-rata kapal untuk perjalanan bolak-balik tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 22,5 km/jam</div>
+            <div class="option">B. 0 km/jam</div>
+            <div class="option">C. 45 km/jam</div>
+            <div class="option">D. 20 km/jam</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 16</div>
+        <div class="question-text">
+            Seseorang berjalan naik eskalator yang sedang diam dan butuh waktu 60 detik untuk sampai ke atas. Jika ia diam (tidak melangkah) dan eskalator bergerak, ia butuh 40 detik untuk sampai ke atas. Jika ia berjalan naik di atas eskalator yang sedang bergerak ke atas, waktu yang dibutuhkan adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 100 detik</div>
+            <div class="option">B. 50 detik</div>
+            <div class="option">C. 24 detik</div>
+            <div class="option">D. 20 detik</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 17</div>
+        <div class="question-text">
+            Mobil \(X\) dan \(Y\) terpisah sejauh 140 km. Mobil \(X\) bergerak menuju \(Y\) dengan kelajuan 40 km/jam. Tiga puluh menit kemudian, mobil \(Y\) bergerak menuju \(X\) dengan kelajuan 60 km/jam. Jarak yang ditempuh mobil \(X\) saat mereka berpapasan adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 70 km</div>
+            <div class="option">B. 48 km</div>
+            <div class="option">C. 72 km</div>
+            <div class="option">D. 68 km</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 18</div>
+        <div class="question-text">
+            Sebuah bus melakukan perjalanan malam. Separuh waktu perjalanannya, bus melaju dengan kecepatan 80 km/jam. Separuh waktu sisanya, karena jalan berlubang, bus melaju dengan kecepatan 40 km/jam. Kelajuan rata-ratanya adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 60 km/jam</div>
+            <div class="option">B. 53,3 km/jam</div>
+            <div class="option">C. 120 km/jam</div>
+            <div class="option">D. 40 km/jam</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 19</div>
+        <div class="question-text">
+            Pesawat perintis terbang dari pulau A ke pulau B sejauh \(D\) kilometer dengan kecepatan konstan 600 km/jam melawan angin. Saat pesawat kembali dari pulau B ke A terbawa angin, kecepatannya menjadi 900 km/jam. Kelajuan rata-rata pesawat untuk perjalanan pulang-pergi tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 750 km/jam</div>
+            <div class="option">B. 720 km/jam</div>
+            <div class="option">C. 300 km/jam</div>
+            <div class="option">D. 1500 km/jam</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: High Order Thinking Skills (HOTS) | Soal 20</div>
+        <div class="question-text">
+            Pelari menempuh jarak total \(S\). Sepertiga jarak pertama (\(S/3\)) ditempuh dengan kecepatan \(v\). Dua pertiga jarak sisanya (\(2S/3\)) ditempuh dengan kecepatan \(2v\). Kelajuan rata-rata pelari dalam fungsi \(v\) adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(1,5 v\)</div>
+            <div class="option">B. \(1,33 v\)</div>
+            <div class="option">C. \(1,2 v\)</div>
+            <div class="option">D. \(2,0 v\)</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
