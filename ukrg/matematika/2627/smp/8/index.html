@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 8: Literasi Statistika - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul: Literasi Data & Statistik</div>
+
+    <div class="section-title">Literasi Statistika: Mengkritisi Manipulasi Visual dan Data</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi: Literasi Statistika</div>
+        <div class="question-text">
+            <p>Literasi statistika adalah kemampuan untuk memahami, mengevaluasi, dan mengkomunikasikan informasi statistik serta pesan berbasis data. Dalam era informasi, data sering disajikan tidak hanya untuk menginformasikan, tetapi juga untuk menggiring opini. Oleh karena itu, penalaran kritis dalam membaca grafik dan angka sangat dibutuhkan.</p>
+
+            <h4>Bentuk Manipulasi Data dan Visual yang Umum</h4>
+            <ol>
+                <li><strong>Sumbu-Y yang Terpotong (Truncated Y-Axis):</strong><br> 
+                Ini adalah teknik manipulasi visual yang paling umum. Grafik batang atau garis yang idealnya (untuk menunjukkan skala proporsional) dimulai dari angka 0 pada sumbu-Y, justru dimulai dari angka yang dekat dengan nilai minimum data. Hal ini menyebabkan perbedaan kecil (misal selisih 1%) terlihat sangat dramatis atau berkali-kali lipat secara visual.</li>
+                
+                <li><strong><em>Cherry-picking</em> Data (Memilih Data Menguntungkan):</strong><br>
+                Menampilkan hanya sebagian kecil data (misalnya rentang waktu tertentu yang sedang naik/turun tajam) dan menyembunyikan tren jangka panjang secara keseluruhan yang mungkin menunjukkan hal sebaliknya.</li>
+                
+                <li><strong>Manipulasi Skala Piktogram:</strong><br>
+                Menggambarkan peningkatan nilai 2 kali lipat dengan memperbesar ikon gambar (piktogram) sebanyak 2 kali lipat tinggi dan 2 kali lipat lebarnya. Ini membuat luas area gambar menjadi 4 kali lipat, sehingga otak manusia mempersepsikan peningkatannya jauh lebih besar dari yang sebenarnya.</li>
+                
+                <li><strong>Mengacaukan Korelasi dengan Kausalitas:</strong><br>
+                Hanya karena dua peristiwa terjadi bersamaan secara statistik (korelasi), bukan berarti peristiwa yang satu menyebabkan peristiwa yang lain (kausalitas). Seringkali ada variabel ketiga yang tersembunyi (<em>confounding variable</em>).</li>
+                
+                <li><strong>Persentase Tanpa Konteks Basis Data:</strong><br>
+                Mengklaim "Kriminalitas naik 100%", padahal kejadian aktualnya hanya naik dari 1 kasus menjadi 2 kasus di sebuah kota. Basis angka yang terlalu kecil sering digunakan untuk membuat persentase yang terkesan hiperbolis.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 1</div>
+        <div class="question-text">
+            Apa yang menjadi tujuan utama dari memiliki kemampuan "Literasi Statistika" bagi masyarakat umum?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Mampu menghitung rumus probabilitas dan simpangan baku secara manual tanpa kalkulator.</div>
+            <div class="option">B. Mampu menyajikan data mentah populasi dalam bentuk infografis tiga dimensi yang estetik.</div>
+            <div class="option">C. Mampu mengevaluasi kebenaran, mengenali bias, dan mengkritisi informasi berbasis data di media.</div>
+            <div class="option">D. Mampu memprediksi secara pasti pergerakan ekonomi di masa depan menggunakan regresi linier.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 2</div>
+        <div class="question-text">
+            Saat sebuah perusahaan ingin menunjukkan <strong>proporsi/pangsa pasar</strong> dari tiap-tiap merek ponsel terhadap total keseluruhan pasar, jenis grafik apa yang paling tepat secara konsep dasar?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Grafik Garis (<em>Line Chart</em>)</div>
+            <div class="option">B. Grafik Lingkaran (<em>Pie Chart</em>)</div>
+            <div class="option">C. Diagram Pencar (<em>Scatter Plot</em>)</div>
+            <div class="option">D. Histogram</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 3</div>
+        <div class="question-text">
+            Dalam membaca sebuah grafik dua dimensi, sumbu horizontal dan vertikal memiliki peran spesifik. Sumbu vertikal (Sumbu-Y) biasanya digunakan untuk menunjukkan...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Kategori, variabel independen, atau deret waktu.</div>
+            <div class="option">B. Nilai, kuantitas, atau variabel dependen yang diukur.</div>
+            <div class="option">C. Label legenda dari data yang sedang diamati.</div>
+            <div class="option">D. Garis tren linier dari keseluruhan populasi.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 4</div>
+        <div class="question-text">
+            Seorang jurnalis menulis: "Rata-rata warga di lingkungan X memiliki kekayaan 5 miliar Rupiah". Belakangan diketahui bahwa lingkungan tersebut dihuni 99 buruh dan 1 orang konglomerat triliuner. Kesalahan konsep dasar apa yang terjadi pada jurnalis tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Tidak menggunakan <em>Margin of Error</em> dalam perhitungan populasi.</div>
+            <div class="option">B. Salah menggunakan ukuran pemusatan; seharusnya menggunakan Median, bukan Rata-rata (<em>Mean</em>), ketika ada <em>outlier</em> ekstrem.</div>
+            <div class="option">C. Gagal menyajikan data kekayaan dalam bentuk grafik distribusi normal.</div>
+            <div class="option">D. Jurnalis keliru membedakan antara sensus dan survei acak terstruktur.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian I: Konsep Dasar | Soal 5</div>
+        <div class="question-text">
+            Apa perbedaan mendasar antara data persentase dan data persentil?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Persentase membandingkan bagian terhadap keseluruhan (per seratus), sedangkan persentil menunjukkan posisi peringkat suatu nilai dalam distribusi data.</div>
+            <div class="option">B. Persentase digunakan untuk data diskrit, sementara persentil hanya berlaku untuk data kontinu yang memiliki desimal.</div>
+            <div class="option">C. Persentase selalu memerlukan grafik lingkaran, sedangkan persentil harus selalu disajikan dalam grafik garis.</div>
+            <div class="option">D. Tidak ada perbedaan, keduanya adalah istilah sinonim dalam pengolahan data <em>Big Data</em>.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Aplikasi & Analisis Menengah | Soal 6</div>
+        <div class="question-text">
+            Berita utama hari ini menuliskan: <em>"Penelitian menunjukkan bahwa warga yang memiliki banyak payung di rumahnya cenderung lebih sering mengalami penyakit flu."</em> Jurnalis menyimpulkan bahwa membeli payung menyebabkan sistem imun turun. Apa kesalahan logika statistik dari kesimpulan ini?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Jurnalis gagal memahami bahwa ada variabel perancu (cuaca hujan) yang menyebabkan orang membeli payung DAN memicu flu; ini adalah korelasi, bukan kausalitas.</div>
+            <div class="option">B. Jurnalis tidak menyertakan tingkat kepercayaan (<em>confidence interval</em>) dari penelitian payung tersebut di dalam artikelnya.</div>
+            <div class="option">C. Sampel warga yang diambil tidak mencapai kuota minimum 10.000 orang untuk menyimpulkan probabilitas sistem imun.</div>
+            <div class="option">D. Hipotesis nol (H0) dari penelitian tersebut terbukti gagal ditolak pada tingkat signifikansi 5%.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Aplikasi & Analisis Menengah | Soal 7</div>
+        <div class="question-text">
+            Mengapa penggunaan Grafik 3D (<em>Three-Dimensional Pie/Bar Chart</em>) sering sangat dihindari oleh ahli data analis dalam mempresentasikan data kuantitatif?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Rendering grafik 3D memakan memori komputer yang besar sehingga memperlambat presentasi.</div>
+            <div class="option">B. Grafik 3D mengubah perspektif visual; bagian yang berada di "depan" terlihat memiliki area (proporsi) lebih besar dari ukuran sebenarnya.</div>
+            <div class="option">C. Secara matematis, data dua variabel (X dan Y) tidak dapat diproyeksikan ke dalam ruang kartesian tiga dimensi tanpa rumus logaritma natural.</div>
+            <div class="option">D. Memerlukan <em>software</em> khusus dan tidak didukung oleh perangkat lunak pengolah kata standar.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Aplikasi & Analisis Menengah | Soal 8</div>
+        <div class="question-text">
+            Dua kandidat politik bersaing ketat. Survei terbaru menunjukkan Kandidat A mendapat 51% dan Kandidat B mendapat 49%. Lembaga survei mencantumkan bahwa survei ini memiliki <em>Margin of Error</em> sebesar ±3%. Kesimpulan paling akurat yang bisa ditarik adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Kandidat A secara definitif telah memenangkan kontestasi politik tersebut.</div>
+            <div class="option">B. Sebanyak 3% responden dipastikan memberikan jawaban bohong saat diwawancarai survei.</div>
+            <div class="option">C. Posisi saat ini adalah imbang secara statistik (seri), karena rentang suara keduanya saling tumpang tindih dalam batas <em>Margin of Error</em>.</div>
+            <div class="option">D. Survei tersebut gagal atau cacat metode karena total angkanya tidak mencapai 100% jika dikurangi 3%.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Aplikasi & Analisis Menengah | Soal 9</div>
+        <div class="question-text">
+            Sebuah grafik piktogram membandingkan produksi susu sapi di Peternakan X (10.000 liter) dan Peternakan Y (20.000 liter). Jika ilustrator menggambar sapi untuk Peternakan Y dengan ukuran <strong>dua kali lebih tinggi dan dua kali lebih lebar</strong> daripada sapi Peternakan X, dampak manipulatif apa yang terjadi?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Tidak ada manipulasi, karena ukuran sapi berbanding lurus dengan persamaan garis singgung linear data tersebut.</div>
+            <div class="option">B. Manipulasi terjadi karena sapi Y kehilangan rasio simetrisnya terhadap sapi X.</div>
+            <div class="option">C. Secara area luas (2 dimensi), sapi Y terlihat <strong>empat kali lebih besar</strong>, melebih-lebihkan realita produksi yang sesungguhnya hanya dua kali lipat.</div>
+            <div class="option">D. Penggunaan piktogram sapi melanggar kaidah normalisasi rentang sumbu ordinat.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian II: Aplikasi & Analisis Menengah | Soal 10</div>
+        <div class="question-text">
+            Tingkat inflasi negara dilaporkan menurun dari 8% di bulan lalu menjadi 3% di bulan ini. Apa interpretasi yang paling tepat mengenai harga barang pokok secara umum?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Harga barang menjadi jauh lebih murah dibandingkan bulan lalu, terjadi deflasi secara besar-besaran.</div>
+            <div class="option">B. Harga barang rata-rata masih terus mengalami kenaikan (bertambah mahal), namun laju kenaikannya melambat dibanding bulan lalu.</div>
+            <div class="option">C. Harga barang pokok kembali ke angka awal seperti sebelum bulan lalu, mengikuti siklus pembalikan arah rata-rata.</div>
+            <div class="option">D. Ada kesalahan pencatatan data karena inflasi tidak bisa diukur berdasarkan penurunan persentase bulanan (<em>month-to-month</em>).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 11</div>
+        <div class="question-text">
+            Sebuah platform media sosial melakukan "Survei Independen" kepada penggunanya dengan hasil: "98% masyarakat Indonesia menganggap internet adalah kebutuhan paling krusial mengalahkan kebutuhan pangan". Jika Anda menganalisis secara kritis <strong>metodologi</strong> dari klaim di atas, kelemahan utama apa yang terjadi pada data tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Adanya Bias Seleksi (<em>Selection Bias</em>); survei yang disebarkan melalui internet tentu hanya akan diisi oleh orang yang memang menjadikan internet prioritas, mengabaikan populasi yang tidak punya akses.</div>
+            <div class="option">B. Perhitungan persentase kumulatif gagal membedakan antara kebutuhan sekunder dengan variabel kualitatif nominal.</div>
+            <div class="option">C. Kurangnya penyesuaian nilai R-Squared (\(R^2\)) pada koefisien regresi berganda survei tersebut.</div>
+            <div class="option">D. Ketiadaan diagram Venn untuk membedakan irisan antara responden yang butuh internet dengan responden yang butuh pangan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 12</div>
+        <div class="question-text">
+            Menteri Keuangan dari sebuah negara merilis pernyataan: "Pengangguran telah menurun drastis sebesar 50% di masa jabatan saya!". Saat ditelusuri, pengangguran di bulan awal jabatannya adalah 2 orang (dari populasi kota kecil), dan saat ini tersisa 1 orang yang menganggur. Istilah apa yang paling tepat untuk menggambarkan jebakan statistik ini?
+        </div>
+        <div class="options-list">
+            <div class="option">A. <em>Simpson's Paradox</em> (Paradoks Simpson).</div>
+            <div class="option">B. Ilusi Sumbu Ganda (<em>Dual-axis Illusion</em>).</div>
+            <div class="option">C. Hukum Bilangan Besar (<em>Law of Large Numbers</em>).</div>
+            <div class="option">D. Mengeksploitasi Basis Angka Kecil (<em>The Law of Small Numbers</em> / Persentase hiperbolis tanpa konteks absolut).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 13</div>
+        <div class="question-text">
+            Perhatikan grafik penjualan dua produk unggulan perusahaan di bawah ini:
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="400" height="260" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="60" y1="220" x2="360" y2="220" stroke="black" stroke-width="2" />
+                    <line x1="60" y1="220" x2="60" y2="20" stroke="black" stroke-width="2" />
+                    
+                    <text x="50" y="225" font-family="sans-serif" font-size="12" text-anchor="end">900</text>
+                    <text x="50" y="125" font-family="sans-serif" font-size="12" text-anchor="end">960</text>
+                    <text x="50" y="25" font-family="sans-serif" font-size="12" text-anchor="end">1020</text>
+                    
+                    <rect x="110" y="53.4" width="70" height="166.6" fill="#8cb3ff" stroke="black" />
+                    <text x="145" y="45" font-family="sans-serif" font-size="12" text-anchor="middle">1000</text>
+                    <text x="145" y="240" font-family="sans-serif" font-size="12" text-anchor="middle">Produk A</text>
+
+                    <rect x="240" y="136.7" width="70" height="83.3" fill="#8cb3ff" stroke="black" />
+                    <text x="275" y="128" font-family="sans-serif" font-size="12" text-anchor="middle">950</text>
+                    <text x="275" y="240" font-family="sans-serif" font-size="12" text-anchor="middle">Produk B</text>
+                    
+                    <text x="15" y="120" font-family="sans-serif" font-size="13" text-anchor="middle" transform="rotate(-90 15,120)">Total Unit Terjual</text>
+                </svg>
+            </div>
+            
+            Jika dilihat sekilas, kinerja Produk A terlihat sukses besar karena batangnya tampak memanjang dua kali lipat tinggi Produk B. Mengapa kesimpulan intuitif dari visual grafik ini tergolong cacat literasi statistik?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Data kuantitatif nominal mutlak seperti penjualan unit dilarang keras menggunakan grafik batang vertikal, melainkan wajib dengan distribusi histogram.</div>
+            <div class="option">B. Tidak adanya garis tren ekstrapolasi masa depan menyebabkan grafik ini gagal mengukur signifikansi nilai ekonomi secara prediktif.</div>
+            <div class="option">C. Sumbu vertikal (Sumbu-Y) dipotong dan diawali dari angka 900, yang mengakibatkan selisih kecil sebesar 50 unit tampak seperti perbedaan yang sangat ekstrem secara visual.</div>
+            <div class="option">D. Margin kesalahan operasional (<em>standard deviation error</em>) pada Produk B gagal ditransformasikan ke dalam skala logaritmik natural.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 14</div>
+        <div class="question-text">
+            Analis iklim abal-abal mempublikasikan grafik suhu rata-rata global dengan judul "Pemanasan Global Adalah Hoaks". Grafik yang ia tampilkan berupa garis tren suhu yang menurun tajam secara spesifik hanya dari tahun 1998 hingga tahun 2000. Strategi manipulasi statistik spesifik apa yang ia gunakan untuk menyembunyikan tren pemanasan jangka panjang dari 1950 hingga 2020?
+        </div>
+        <div class="options-list">
+            <div class="option">A. <em>Cherry-picking</em> (Memilah Data Sesuai Keinginan).</div>
+            <div class="option">B. Memanfaatkan efek plasebo survei termodinamika.</div>
+            <div class="option">C. Mengganti kurva normal standar Gauss dengan kurva Poisson.</div>
+            <div class="option">D. Modifikasi sumbu variabel terikat untuk menciptakan kausalitas asimetris berbalik arah.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 15</div>
+        <div class="question-text">
+            Sebuah departemen melaporkan bahwa rata-rata kenaikan skor ujian nasional di sekolah X dan sekolah Y sama-sama naik sebesar 10%. Namun anehnya, rata-rata skor gabungan seluruh distrik justru menurun secara persentase keseluruhan. Fenomena di mana tren yang tampak pada kelompok-kelompok kecil menjadi berbalik ketika kelompok tersebut digabungkan secara agregat (biasanya akibat perbedaan pembobotan ukuran grup) disebut...
+        </div>
+        <div class="options-list">
+            <div class="option">A. <em>Base Rate Fallacy</em> (Kesesatan Tingkat Dasar).</div>
+            <div class="option">B. <em>Simpson's Paradox</em> (Paradoks Simpson).</div>
+            <div class="option">C. <em>The Gambler's Fallacy</em> (Kesesatan Penjudi).</div>
+            <div class="option">D. <em>Regression to the Mean</em> (Regresi menuju nilai tengah).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 16</div>
+        <div class="question-text">
+            Sebuah partai politik memasang spanduk berisikan grafik garis untuk memamerkan "Lompatan Raksasa" elektabilitas ketua umumnya selama tiga bulan terakhir menjelang pemilu:
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="450" height="220" viewBox="0 0 450 220" xmlns="http://www.w3.org/2000/svg">
+                    <text x="225" y="20" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Elektabilitas Meroket Tajam!</text>
+                    
+                    <line x1="60" y1="180" x2="400" y2="180" stroke="black" stroke-width="2" />
+                    <line x1="60" y1="180" x2="60" y2="40" stroke="black" stroke-width="2" />
+                    
+                    <text x="50" y="185" font-family="sans-serif" font-size="12" text-anchor="end">44</text>
+                    <text x="50" y="150" font-family="sans-serif" font-size="12" text-anchor="end">45</text>
+                    <text x="50" y="115" font-family="sans-serif" font-size="12" text-anchor="end">46</text>
+                    <text x="50" y="80" font-family="sans-serif" font-size="12" text-anchor="end">47</text>
+                    <text x="50" y="45" font-family="sans-serif" font-size="12" text-anchor="end">48</text>
+                    
+                    <line x1="60" y1="145" x2="400" y2="145" stroke="#e0e0e0" stroke-width="1" />
+                    <line x1="60" y1="110" x2="400" y2="110" stroke="#e0e0e0" stroke-width="1" />
+                    <line x1="60" y1="75" x2="400" y2="75" stroke="#e0e0e0" stroke-width="1" />
+                    
+                    <text x="120" y="200" font-family="sans-serif" font-size="13" text-anchor="middle">Januari</text>
+                    <text x="230" y="200" font-family="sans-serif" font-size="13" text-anchor="middle">Februari</text>
+                    <text x="340" y="200" font-family="sans-serif" font-size="13" text-anchor="middle">Maret</text>
+                    
+                    <polyline points="120,145 230,110 340,75" fill="none" stroke="#cc0000" stroke-width="3" />
+                    <circle cx="120" cy="145" r="5" fill="#cc0000" />
+                    <circle cx="230" cy="110" r="5" fill="#cc0000" />
+                    <circle cx="340" cy="75" r="5" fill="#cc0000" />
+                    
+                    <text x="15" y="110" font-family="sans-serif" font-size="13" text-anchor="middle" transform="rotate(-90 15,110)">Tingkat Elektabilitas (%)</text>
+                </svg>
+            </div>
+            
+            Sebagai pemilih yang kritis, aspek manipulatif manakah dari grafik tersebut yang harus Anda waspadai agar tidak tertipu ilusi "Lompatan Raksasa" tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Penggunaan grafik garis merupakan pelanggaran kaidah statistik dasar karena elektabilitas (persentase) wajib digambarkan dalam Diagram Lingkaran Proporsional.</div>
+            <div class="option">B. Absennya kurva distribusi asimtotik yang dapat memastikan margin galat (<em>error rate</em>) mendekati angka nol pada bulan ketiga.</div>
+            <div class="option">C. Rentang sumbu-Y dipersempit secara ekstrem (hanya dari 44 ke 48) sehingga kenaikan statis 1% per bulan diperbesar secara optik seperti tanjakan vertikal yang tajam.</div>
+            <div class="option">D. Ketiadaan variabel pembanding dari kandidat rival membuat validitas koefisien korelasi pearson (r) menjadi tidak bernilai.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 17</div>
+        <div class="question-text">
+            Anda membaca artikel kesehatan yang berjudul: "Mengerikan! Tingkat Kematian Akibat Varian Virus Z Meningkat 200% Tahun Ini!". Anda menjadi panik. Namun, setelah melihat data mentahnya, ternyata jumlah yang meninggal tahun lalu adalah 1 orang, dan tahun ini 3 orang (dari total populasi 10 juta orang). Manakah prinsip literasi data yang paling tepat untuk menenangkan kepanikan Anda?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Persentase peningkatan (<em>relative risk</em>) yang besar sangat sering menyesatkan jika Risiko Absolut (<em>absolute risk</em> atau jumlah kasus dasarnya) sebenarnya teramat kecil.</div>
+            <div class="option">B. Kesalahan artikel terletak pada ketiadaan piktogram 3 dimensi untuk memodelkan struktur genetik Varian Virus Z tersebut secara visual.</div>
+            <div class="option">C. Data tingkat kematian tidak memiliki makna tanpa diolah terlebih dahulu melalui Uji ANOVA (<em>Analysis of Variance</em>) dua arah.</div>
+            <div class="option">D. Jurnalis gagal memahami bahwa peningkatan persentase tidak boleh melebihi batas absolut 100% secara hitungan matematis populasi terbatas.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 18</div>
+        <div class="question-text">
+            Sebuah minimarket memasang pamflet promosi bertuliskan: "Diskon Super! Barang A diskon 50%, dan jika Anda anggota member kami tambahkan diskon lagi sebesar 50%! Anda bawa pulang GRATIS!". Berdasarkan prinsip persentase proporsional, mengapa kalimat promosi tersebut secara matematis merupakan kebohongan publik?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Diskon berganda adalah bentuk kausalitas palsu yang memanipulasi hukum probabilitas independen pelanggan.</div>
+            <div class="option">B. Karena nilai dasar/basis (<em>baseline</em>) harganya berubah; diskon kedua 50% dihitung dari harga yang SUDAH didiskon (setengah harga awal), sehingga total potongannya hanya 75%, bukan 100%.</div>
+            <div class="option">C. Secara statistik, penjumlahan persentase harus dikalibrasi ulang dengan koefisien inflasi bulanan sebelum bisa diklaim sebagai diskon total 100%.</div>
+            <div class="option">D. Harga sebuah entitas ekonomi dipengaruhi oleh varians populasi, sehingga pemotongan harga konstan (konstanta C) akan merusak deviasi baku barang tersebut di kasir.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 19</div>
+        <div class="question-text">
+            Cermati grafik perbandingan Indeks Kinerja Guru dari dua wilayah sekolah yang diterbitkan oleh Dinas Pendidikan berikut ini:
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="400" height="260" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="60" y1="220" x2="360" y2="220" stroke="black" stroke-width="2" />
+                    <line x1="60" y1="220" x2="60" y2="20" stroke="black" stroke-width="2" />
+                    
+                    <text x="50" y="225" font-family="sans-serif" font-size="12" text-anchor="end">8.0</text>
+                    <text x="50" y="205" font-family="sans-serif" font-size="12" text-anchor="end">8.1</text>
+                    <text x="50" y="125" font-family="sans-serif" font-size="12" text-anchor="end">8.5</text>
+                    <text x="50" y="85" font-family="sans-serif" font-size="12" text-anchor="end">8.7</text>
+                    
+                    <rect x="110" y="120" width="70" height="100" fill="#2d862d" stroke="black" />
+                    <text x="145" y="110" font-family="sans-serif" font-size="12" text-anchor="middle">8.5</text>
+                    <text x="145" y="240" font-family="sans-serif" font-size="12" text-anchor="middle">Wilayah Utara</text>
+
+                    <rect x="240" y="200" width="70" height="20" fill="#2d862d" stroke="black" />
+                    <text x="275" y="190" font-family="sans-serif" font-size="12" text-anchor="middle">8.1</text>
+                    <text x="275" y="240" font-family="sans-serif" font-size="12" text-anchor="middle">Wilayah Selatan</text>
+                    
+                    <text x="15" y="120" font-family="sans-serif" font-size="13" text-anchor="middle" transform="rotate(-90 15,120)">Indeks Kinerja (Skala 1-10)</text>
+                </svg>
+            </div>
+            
+            Kepala Dinas Wilayah Utara membagikan grafik ini untuk membanggakan bahwa kualitas gurunya seolah "tiga kali lipat" lebih superior daripada Wilayah Selatan berdasarkan perbandingan tinggi batang balok. Argumen kritis mana yang langsung menggugurkan klaim visual tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Skala sumbu-Y yang dimulai bukan dari nol (dimulai dari 8.0) secara manipulatif memperbesar selisih asli yang sebenarnya hanya sebesar 0.4 poin pada skala 10.</div>
+            <div class="option">B. Pengukuran kinerja absolut (<em>Index</em>) tidak sah jika direpresentasikan dalam grafik kartesian ortogonal tanpa rotasi matriks ekuivalen.</div>
+            <div class="option">C. Data tersebut melupakan hukum korelasi non-parametrik yang diwajibkan ketika membandingkan data kualitatif berbasis area demografis ganda.</div>
+            <div class="option">D. Kesalahan serius terdapat pada sumbu-X karena variabel independen (Wilayah) seharusnya diletakkan vertikal membentuk grafik gantt (<em>Gantt Chart</em>).</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian III: High Order Thinking Skills (HOTS) | Soal 20</div>
+        <div class="question-text">
+            Terdapat grafik pencar (<em>scatter plot</em>) yang menunjukkan jumlah Es Krim yang terjual dengan jumlah Orang Tenggelam di laut setiap bulannya. Garis tren lurus menanjak ke atas (berkorelasi positif kuat). Seorang pejabat lokal panik dan ingin merancang undang-undang pelarangan penjualan es krim untuk menyelamatkan nyawa di laut. Apa kesalahan penalaran pejabat tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Gagal mengidentifikasi <em>Cherry-Picking</em> data dari penjual es krim.</div>
+            <div class="option">B. Pejabat tersebut terkecoh ilusi optik pada <em>slope</em> (kemiringan) grafik regresi linier.</div>
+            <div class="option">C. Pejabat tersebut keliru menyimpulkan kausalitas (sebab-akibat) dari data yang hanya berkorelasi; ia mengabaikan <em>Lurking Variable</em> (Variabel Tersembunyi) yakni Musim Panas yang menyebabkan keduanya naik bersamaan.</div>
+            <div class="option">D. Pejabat tersebut lupa menghitung signifikansi variansi antara nilai <em>mean</em> dan nilai absolut kuartil bawah penjualan es krim.</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
