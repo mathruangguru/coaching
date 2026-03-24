@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul: Aturan Operasi Hitung Campuran - PEMDAS/KABATAKU</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">Modul Pembelajaran: Aturan Operasi Hitung Campuran (PEMDAS / KABATAKU)</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Rangkuman Materi</div>
+        <div class="question-text">
+            <p>Dalam matematika, saat kita dihadapkan pada sebuah ekspresi yang melibatkan lebih dari satu jenis operasi hitung (penjumlahan, pengurangan, perkalian, pembagian, pangkat), kita tidak boleh mengerjakannya secara sembarangan atau sekadar dari kiri ke kanan. Kita harus mengikuti aturan standar internasional yang disebut <strong>Hierarki Operasi Hitung</strong>.</p>
+            <p>Di Indonesia, aturan ini sering disingkat sebagai <strong>KABATAKU</strong> (Kurung, Pangkat/Akar, KAli, BAgi, TAmbah, KUrang). Dalam bahasa Inggris, sering disebut <strong>PEMDAS</strong> (Parentheses, Exponents, Multiplication, Division, Addition, Subtraction) atau <strong>BODMAS</strong>.</p>
+
+            <h4 class="mt-4">Piramida Hierarki Operasi Hitung</h4>
+            <p>Perhatikan diagram berikut untuk memahami urutan yang benar:</p>
+
+            <div style="text-align: center; margin: 25px 0;">
+                <svg width="100%" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="200,10 50,240 350,240" fill="#e8f4fd" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="87.5" y1="182.5" x2="312.5" y2="182.5" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="125" y1="125" x2="275" y2="125" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="162.5" y1="67.5" x2="237.5" y2="67.5" stroke="#2c3e50" stroke-width="2"/>
+
+                    <text x="200" y="50" font-size="13" text-anchor="middle" font-weight="bold" fill="#2c3e50">1. Kurung ( ) [ ]</text>
+                    <text x="200" y="105" font-size="15" text-anchor="middle" font-weight="bold" fill="#2c3e50">2. Pangkat &amp; Akar</text>
+                    <text x="200" y="160" font-size="16" text-anchor="middle" font-weight="bold" fill="#2c3e50">3. &times; dan &divide; (SETARA)</text>
+                    <text x="200" y="220" font-size="16" text-anchor="middle" font-weight="bold" fill="#2c3e50">4. + dan - (SETARA)</text>
+                </svg>
+            </div>
+
+            <h4>Penjelasan Tingkatan:</h4>
+            <ul>
+                <li><strong>Tingkat 1:</strong> Dikerjakan <strong>paling awal</strong>. Jika ada kurung bersarang, kerjakan dari yang paling dalam.</li>
+                <li><strong>Tingkat 2:</strong> Prioritas kedua, hitung semua eksponen dan bentuk akar.</li>
+                <li><strong>Tingkat 3:</strong> <strong>Hati-hati miskonsepsi!</strong> Kali dan Bagi ada di <strong>tingkat yang sama</strong>. Dikerjakan berurutan dari <strong>Kiri ke Kanan</strong>.</li>
+                <li><strong>Tingkat 4:</strong> <strong>Hati-hati miskonsepsi!</strong> Tambah dan Kurang <strong>setara</strong>. Dikerjakan berurutan dari <strong>Kiri ke Kanan</strong>.</li>
+            </ul>
+
+            <h4 class="mt-4">Contoh Miskonsepsi Umum (Seperti pada soal pedagogi):</h4>
+            <p>Banyak siswa salah mengartikan akronim PEMDAS/KABATAKU. Mereka mengira Penjumlahan (<em>Addition</em>) <strong>harus</strong> diselesaikan sebelum Pengurangan (<em>Subtraction</em>), padahal mereka setara.</p>
+            <ul>
+                <li><strong>Salah:</strong> \(10 - 5 + 2 \rightarrow 10 - 7 = 3\) (Menjumlahkan \(5+2\) terlebih dahulu).</li>
+                <li><strong>Benar:</strong> \(10 - 5 + 2 \rightarrow (10 - 5) + 2 \rightarrow 5 + 2 = 7\) (Dari kiri ke kanan karena setara).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat! Terdapat opsi-opsi yang dirancang untuk menguji ketelitian dan pemahaman hierarki operasi Anda.</em></p>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 1</div>
+        <div class="question-text">Hasil dari perhitungan \(10 - 2 \times 3\) adalah...</div>
+        <div class="options-list">
+            <div class="option">A. 24</div>
+            <div class="option">B. 16</div>
+            <div class="option">C. 4</div>
+            <div class="option">D. \(-4\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 2</div>
+        <div class="question-text">Berapakah nilai dari \(20 \div 5 \times 2\) ?</div>
+        <div class="options-list">
+            <div class="option">A. 2</div>
+            <div class="option">B. 6</div>
+            <div class="option">C. 8</div>
+            <div class="option">D. \(\frac{1}{2}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 3</div>
+        <div class="question-text">Hasil dari operasi hitung \(8 + 12 \div 4 - 2\) adalah...</div>
+        <div class="options-list">
+            <div class="option">A. 3</div>
+            <div class="option">B. 9</div>
+            <div class="option">C. 10</div>
+            <div class="option">D. 14</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 4</div>
+        <div class="question-text">Tentukan hasil dari \((5 + 3) \times 2 - 4\) !</div>
+        <div class="options-list">
+            <div class="option">A. 7</div>
+            <div class="option">B. \(-16\)</div>
+            <div class="option">C. 6</div>
+            <div class="option">D. 12</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian A: Konsep Dasar | Soal 5</div>
+        <div class="question-text">Berapakah hasil dari \(18 - (6 - 2) \times 3\) ?</div>
+        <div class="options-list">
+            <div class="option">A. 30</div>
+            <div class="option">B. 6</div>
+            <div class="option">C. 18</div>
+            <div class="option">D. 42</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 6</div>
+        <div class="question-text">Hitunglah nilai dari ekspresi \(2^3 + 15 \div 3 - 4 \times 2\) !</div>
+        <div class="options-list">
+            <div class="option">A. 5</div>
+            <div class="option">B. 3</div>
+            <div class="option">C. \(-23\)</div>
+            <div class="option">D. \(-7\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 7</div>
+        <div class="question-text">Hasil dari operasi \(24 \div (4 - 2)^2 \times 3\) adalah...</div>
+        <div class="options-list">
+            <div class="option">A. 2</div>
+            <div class="option">B. 8</div>
+            <div class="option">C. 18</div>
+            <div class="option">D. 72</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 8</div>
+        <div class="question-text">Tentukan nilai dari \(50 - [10 + (3 \times 2^2)] \div 2\) !</div>
+        <div class="options-list">
+            <div class="option">A. 27</div>
+            <div class="option">B. 39</div>
+            <div class="option">C. 46</div>
+            <div class="option">D. 14</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 9</div>
+        <div class="question-text">Hasil dari \(12 + 4 \times (-3) - (-10) \div 2\) adalah...</div>
+        <div class="options-list">
+            <div class="option">A. \(-5\)</div>
+            <div class="option">B. 5</div>
+            <div class="option">C. \(-11\)</div>
+            <div class="option">D. 19</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian B: Tingkat Menengah | Soal 10</div>
+        <div class="question-text">Berapakah hasil dari perhitungan \(3 \times [ 4 + (15 \div 3) - 2 ] - 5\) ?</div>
+        <div class="options-list">
+            <div class="option">A. 10</div>
+            <div class="option">B. 22</div>
+            <div class="option">C. 8</div>
+            <div class="option">D. 16</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 11</div>
+        <div class="question-text">Budi memiliki uang Rp50.000,00. Ia membeli 3 buah buku tulis seharga Rp8.000,00 per buah dan 2 buah pulpen seharga Rp3.500,00 per buah. Budi ingin membagi sisa uangnya tersebut secara merata kepada 2 orang adiknya. Jika ditulis dalam bentuk operasi hitung campuran yang benar, berapakah uang yang diterima masing-masing adik Budi?</div>
+        <div class="options-list">
+            <div class="option">A. Rp16.500,00</div>
+            <div class="option">B. Rp34.500,00</div>
+            <div class="option">C. Rp9.500,00</div>
+            <div class="option">D. Rp13.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 12</div>
+        <div class="question-text">Seorang siswa memberikan jawaban \(2\) untuk soal \(24 \div 6 \times 2\). Saat diminta menjelaskan, ia berkata, "Saya mengalikan \(6 \times 2\) terlebih dahulu karena pada singkatan KABATAKU, huruf K (Kali) disebut lebih dulu daripada Ba (Bagi)." Sebagai guru, respon manakah yang paling tepat untuk memperbaiki miskonsepsi tersebut?</div>
+        <div class="options-list">
+            <div class="option">A. Membenarkan jawaban siswa karena prinsip KABATAKU memang mengurutkan operasi perkalian secara mutlak sebelum pembagian.</div>
+            <div class="option">B. Meminta siswa mengganti tanda bagi menjadi perkalian dengan pecahan agar ia tidak perlu repot menghafal urutan operasi.</div>
+            <div class="option">C. Mengingatkan siswa bahwa pembagian memiliki derajat yang lebih tinggi dari perkalian jika bilangannya bulat.</div>
+            <div class="option">D. Menjelaskan bahwa perkalian dan pembagian adalah operasi yang setara hierarkinya, sehingga pengerjaannya harus dilakukan berurutan dari kiri ke kanan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 13</div>
+        <div class="question-text">Diberikan sebuah susunan angka yang rumpang: \(8 \ \square \ 4 \ \square \ 2 \ \square \ 5 = 11\). Agar persamaan tersebut bernilai benar sesuai hierarki operasi hitung, tanda operasi aritmetika yang tepat untuk mengisi kotak-kotak tersebut secara berurutan adalah...</div>
+        <div class="options-list">
+            <div class="option">A. \(\times \ , \ + \ , \ -\)</div>
+            <div class="option">B. \(- \ , \ \times \ , \ +\)</div>
+            <div class="option">C. \(+ \ , \ - \ , \ \times\)</div>
+            <div class="option">D. \(+ \ , \ \times \ , \ -\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 14</div>
+        <div class="question-text">
+            Perhatikan keempat pernyataan matematis berikut:
+            <ul>
+                <li>(i) \(10 - 2 \times 3 = 24\)</li>
+                <li>(ii) \(16 \div 2 \times 4 = 2\)</li>
+                <li>(iii) \(5 + 4^2 \div 2 = 13\)</li>
+                <li>(iv) \((8-3) \times 2 + 4 = 14\)</li>
+            </ul>
+            Pernyataan yang bernilai benar sesuai aturan operasi hitung campuran adalah nomor...
+        </div>
+        <div class="options-list">
+            <div class="option">A. (i) dan (ii)</div>
+            <div class="option">B. (ii) dan (iii)</div>
+            <div class="option">C. (iii) dan (iv)</div>
+            <div class="option">D. (i) dan (iv)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 15</div>
+        <div class="question-text">
+            Seorang siswa menyelesaikan soal \(100 \div 5 \times 2 + 15\) dengan langkah-langkah berikut:<br>
+            Langkah 1: \(100 \div 10 + 15\)<br>
+            Langkah 2: \(10 + 15\)<br>
+            Langkah 3: \(25\)<br><br>
+            Berdasarkan langkah penyelesaian di atas, di manakah letak <strong>kesalahan pertama</strong> yang dilakukan siswa beserta perbaikannya?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Kesalahan di Langkah 1: seharusnya menjumlahkan \(2 + 15\) terlebih dahulu karena penjumlahan ada di akhir soal.</div>
+            <div class="option">B. Kesalahan di Langkah 1: seharusnya membagi 100 dengan 5 terlebih dahulu, lalu mengalikan hasilnya dengan 2.</div>
+            <div class="option">C. Kesalahan di Langkah 2: seharusnya membagi 100 dengan hasil dari \(10 + 15\).</div>
+            <div class="option">D. Siswa tidak melakukan kesalahan, hasil akhir \(25\) sudah sepenuhnya benar.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 16</div>
+        <div class="question-text">Ketika menyelesaikan ekspresi \(20 - 5 + 3\), seorang siswa menuliskan langkah penyelesaian menjadi: \(20 - 8 = 12\). Siswa tersebut berasumsi bahwa penjumlahan \((5+3)\) harus diselesaikan sebelum pengurangan karena berada di urutan paling belakang dan terlihat lebih mudah. Pendekatan perbaikan yang <strong>paling tepat sasaran</strong> yang bisa dilakukan guru adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Meminta siswa menghafal ulang kepanjangan aturan KABATAKU tanpa perlu menjelaskan makna kesetaraannya.</div>
+            <div class="option">B. Menggunakan garis bilangan untuk memvisualisasikan bahwa pengurangan dan penjumlahan memiliki hierarki yang setara dan wajib dikerjakan dari kiri ke kanan.</div>
+            <div class="option">C. Menyalahkan siswa dan memintanya mengerjakan ulang dengan mengubah semua tanda operasi menjadi penjumlahan bilangan negatif agar lebih rumit.</div>
+            <div class="option">D. Membenarkan langkah siswa tersebut, karena penjumlahan yang tanpa tanda kurung memang secara matematis mendahului pengurangan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 17</div>
+        <div class="question-text">Sebuah operasi baru didefinisikan dengan simbol \(\#\) di mana rumus berlakunya adalah:<br>\(a \ \# \ b = a^2 - b \times a + (a+b)\).<br>Berdasarkan definisi operasi tersebut dan hierarki operasi hitung baku, berapakah nilai dari \(4 \ \# \ 3\) ?</div>
+        <div class="options-list">
+            <div class="option">A. 59</div>
+            <div class="option">B. \(-17\)</div>
+            <div class="option">C. 3</div>
+            <div class="option">D. 11</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 18</div>
+        <div class="question-text">Diberikan persamaan dasar: \(12 - 4 \times 2 + 6 = 22\).<br>Tentu saja, jika dihitung normal, hasil ruas kiri bukanlah 22. Agar persamaan tersebut bernilai <strong>benar</strong>, sepasang tanda kurung harus diletakkan pada ekspresi di ruas kiri. Bentuk peletakan tanda kurung yang tepat adalah...</div>
+        <div class="options-list">
+            <div class="option">A. \((12 - 4) \times 2 + 6\)</div>
+            <div class="option">B. \(12 - (4 \times 2) + 6\)</div>
+            <div class="option">C. \(12 - 4 \times (2 + 6)\)</div>
+            <div class="option">D. \((12 - 4 \times 2) + 6\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 19</div>
+        <div class="question-text">Pada lembar kerja, terdapat penyelesaian soal: \(5 + 2 \times 3^2\). Siswa menuliskannya sebagai berikut: Pertama \((5+2) = 7\), lalu \(7 \times 3 = 21\), lalu \(21^2 = 441\). Guru menyadari adanya miskonsepsi hierarki operasi yang berlapis pada siswa tersebut. Tindakan korektif pertama yang <strong>paling krusial</strong> untuk diberikan guru adalah...</div>
+        <div class="options-list">
+            <div class="option">A. Menjelaskan bahwa eksponen (pangkat) merupakan prioritas hitung tertinggi setelah tanda kurung, sehingga harus dikerjakan sebelum operasi kali dan tambah.</div>
+            <div class="option">B. Mengoreksi hasil akhir saja karena langkah-langkah yang dilakukan hanyalah kesalahan teknis berhitung biasa yang sering terjadi.</div>
+            <div class="option">C. Menekankan bahwa semua operasi matematika mutlak dikerjakan murni dari kiri ke kanan tanpa terkecuali, apa pun simbol operasinya.</div>
+            <div class="option">D. Menyuruh siswa menambahkan tanda kurung sendiri di setiap dua angka yang berdekatan agar hasil penjumlahannya tidak dikalikan terlebih dulu.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian C: HOTS & Evaluasi Pedagogik | Soal 20</div>
+        <div class="question-text">Diketahui sebuah ekspresi hitung: \(A + B \times C - D\).<br>Jika \(A, B, C,\) dan \(D\) harus diisi oleh angka-angka yang berbeda dari himpunan \(\{1, 2, 3, 4\}\), berapakah nilai <strong>maksimum</strong> yang mungkin dihasilkan oleh ekspresi tersebut dengan tetap mematuhi hierarki perhitungan yang benar?</div>
+        <div class="options-list">
+            <div class="option">A. 9</div>
+            <div class="option">B. 17</div>
+            <div class="option">C. 13</div>
+            <div class="option">D. 11</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
