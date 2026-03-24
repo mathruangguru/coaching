@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 9: Literasi Numerasi (Pecahan) - Coaching UKRG</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; }
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG Matematika SMP</p>
+    </header>
+
+    <div class="section-title">Modul: Strategi Scaffolding & Diagnosis</div>
+
+    <div class="section-title">Modul Literasi Numerasi:<br>Perubahan Nilai Acuan Keseluruhan (Whole) pada Pecahan</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Bagian 1: Rangkuman Materi</div>
+        <div class="question-text">
+            <p>Kesalahan paling umum yang dilakukan siswa saat menyelesaikan soal cerita pecahan bertingkat adalah <strong>mengabaikan perubahan nilai acuan keseluruhan (the whole)</strong>.</p>
+            
+            <p>Sebuah pecahan selalu merujuk pada "sesuatu". Sesuatu inilah yang disebut <em>whole</em> atau keseluruhan.</p>
+            <ul>
+                <li>Jika dikatakan "\(\frac{1}{5}\) dari gaji", maka <em>whole</em>-nya adalah <strong>Total Gaji Awal</strong>.</li>
+                <li>Jika dikatakan "\(\frac{1}{2}\) dari <strong>sisa</strong> gaji", maka <em>whole</em>-nya bukan lagi Total Gaji Awal, melainkan <strong>Sisa Gaji</strong> setelah pengurangan pertama.</li>
+            </ul>
+
+            <h4>Ilustrasi Visual (Model Luasan)</h4>
+            <p>Misalkan gaji total adalah Rp10.000.000.</p>
+            
+            <ol>
+                <li>
+                    <strong>Langkah 1: Mengambil \(\frac{1}{5}\) dari total gaji untuk cicilan.</strong><br>
+                    Nilai cicilan = \(\frac{1}{5} \times 10.000.000 = 2.000.000\). Sisa = Rp8.000.000 (atau \(\frac{4}{5}\) bagian).
+                    
+                    <div style="text-align: center; margin: 20px 0;">
+                        <svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 10 30 Q 10 20 20 20 L 195 20 Q 205 20 205 10 Q 205 20 215 20 L 390 20 Q 400 20 400 30" fill="none" stroke="black" stroke-width="1.5"/>
+                            <text x="205" y="15" font-family="sans-serif" font-size="12" text-anchor="middle">Keseluruhan Awal (Total Gaji)</text>
+                            
+                            <rect x="10" y="40" width="76" height="60" fill="#ffcccc" stroke="black" stroke-width="2"/>
+                            <text x="48" y="75" font-family="sans-serif" font-size="12" text-anchor="middle">Cicilan (1/5)</text>
+                            
+                            <rect x="86" y="40" width="76" height="60" fill="white" stroke="black" stroke-width="2"/>
+                            <rect x="162" y="40" width="76" height="60" fill="white" stroke="black" stroke-width="2"/>
+                            <rect x="238" y="40" width="76" height="60" fill="white" stroke="black" stroke-width="2"/>
+                            <rect x="314" y="40" width="76" height="60" fill="white" stroke="black" stroke-width="2"/>
+                            <text x="238" y="75" font-family="sans-serif" font-size="14" text-anchor="middle">Sisa Gaji (4/5)</text>
+                        </svg>
+                    </div>
+                </li>
+                <li style="margin-top: 15px;">
+                    <strong>Langkah 2: Mengambil \(\frac{1}{2}\) dari <em>sisa</em> untuk ditabung.</strong><br>
+                    Kesalahan siswa: Menjumlahkan \(\frac{1}{5} + \frac{1}{2}\). Ini <strong>salah</strong> karena \(\frac{1}{2}\) di sini mengacu pada sisa kotak di atas, bukan panjang kotak total.<br>
+                    Tindakan benar: \(\frac{1}{2} \times \text{Sisa} = \frac{1}{2} \times 8.000.000 = 4.000.000\). (Atau secara pecahan: \(\frac{1}{2} \times \frac{4}{5} = \frac{2}{5}\) dari gaji awal).
+
+                    <div style="text-align: center; margin: 20px 0;">
+                        <svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 86 30 Q 86 20 96 20 L 233 20 Q 243 20 243 10 Q 243 20 253 20 L 380 20 Q 390 20 390 30" fill="none" stroke="black" stroke-width="1.5"/>
+                            <text x="238" y="15" font-family="sans-serif" font-size="12" text-anchor="middle">Keseluruhan Baru (Sisa Gaji Pertama)</text>
+                            
+                            <rect x="86" y="40" width="152" height="60" fill="#ccccff" stroke="black" stroke-width="2"/>
+                            <text x="162" y="75" font-family="sans-serif" font-size="14" text-anchor="middle">Tabungan</text>
+                            
+                            <rect x="238" y="40" width="152" height="60" fill="white" stroke="black" stroke-width="2"/>
+                            <text x="314" y="75" font-family="sans-serif" font-size="14" text-anchor="middle">Sisa Akhir</text>
+                        </svg>
+                    </div>
+                </li>
+            </ol>
+            <p><strong>Kesimpulan Pedagogis:</strong> Jika siswa salah melakukan penjumlahan langsung (\(\frac{1}{5} + \frac{1}{2}\)), mereka mengalami miskonsepsi pada nilai acuan. Guru <strong>tidak boleh</strong> sekadar menyalahkan hitungan atau memberi rumus cepat, melainkan harus menggunakan <strong>pertanyaan pemantik visual</strong> agar siswa sadar bahwa "kue yang dipotong sudah mengecil ukurannya".</p>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar | Soal 1</div>
+        <div class="question-text">
+            Jika Pak Budi memiliki uang Rp1.000.000 dan menggunakan \(\frac{1}{4}\) dari uang tersebut untuk belanja, berapa sisa uang Pak Budi?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. Rp250.000</div>
+            <div class="option">B. Rp750.000</div>
+            <div class="option">C. Rp1.250.000</div>
+            <div class="option">D. Rp999.999</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar | Soal 2</div>
+        <div class="question-text">
+            Sebuah kue dipotong menjadi 6 bagian sama besar. Andi memakan 2 potong. Berapa <strong>pecahan sisa</strong> kue yang belum dimakan terhadap kue utuh?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{1}{3}\)</div>
+            <div class="option">B. \(\frac{2}{6}\)</div>
+            <div class="option">C. \(\frac{2}{3}\)</div>
+            <div class="option">D. \(\frac{4}{4}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar | Soal 3</div>
+        <div class="question-text">
+            Siti memiliki pita sepanjang 120 cm. Ia memotong \(\frac{1}{3}\) bagian untuk adiknya. Kemudian, ia mengambil \(\frac{1}{2}\) <strong>dari sisa pita tersebut</strong> untuk membungkus kado. Pernyataan matematika mana yang paling tepat untuk menghitung panjang pita untuk kado?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{1}{2} \times 120\)</div>
+            <div class="option">B. \(\left( \frac{1}{3} + \frac{1}{2} \right) \times 120\)</div>
+            <div class="option">C. \(\frac{1}{2} \times \left(120 - (\frac{1}{3} \times 120)\right)\)</div>
+            <div class="option">D. \(120 - \frac{1}{2}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar | Soal 4</div>
+        <div class="question-text">
+            Nilai dari \(\frac{1}{4}\) dari 200 sama besar dengan nilai \(\frac{1}{2}\) dari...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 50</div>
+            <div class="option">B. 100</div>
+            <div class="option">C. 200</div>
+            <div class="option">D. 400</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Konsep Dasar | Soal 5</div>
+        <div class="question-text">
+            Jika sebuah ember terisi air penuh (1 bagian), lalu airnya tumpah sebanyak \(\frac{2}{5}\) bagian, maka sisa air dalam ember tersebut adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{2}{5}\) bagian</div>
+            <div class="option">B. \(\frac{3}{5}\) bagian</div>
+            <div class="option">C. \(\frac{5}{2}\) bagian</div>
+            <div class="option">D. \(\frac{1}{5}\) bagian</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Menengah / Medium | Soal 6</div>
+        <div class="question-text">
+            Gaji Rina adalah Rp6.000.000,00. Ia mengalokasikan \(\frac{1}{3}\) dari gajinya untuk sewa rumah, dan \(\frac{1}{2}\) <strong>dari sisa gajinya</strong> untuk biaya makan. Berapakah alokasi uang untuk biaya makan?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. Rp3.000.000,00</div>
+            <div class="option">B. Rp2.000.000,00</div>
+            <div class="option">C. Rp1.000.000,00</div>
+            <div class="option">D. Rp5.000.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Menengah / Medium | Soal 7</div>
+        <div class="question-text">
+            Sebuah buku memiliki 120 halaman. Pada hari Senin, Budi membaca \(\frac{1}{4}\) dari total halaman. Pada hari Selasa, ia membaca \(\frac{1}{3}\) <strong>dari sisa halaman yang belum dibaca</strong>. Berapa banyak halaman yang <strong>masih belum</strong> dibaca oleh Budi?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 50 halaman</div>
+            <div class="option">B. 40 halaman</div>
+            <div class="option">C. 60 halaman</div>
+            <div class="option">D. 70 halaman</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Menengah / Medium | Soal 8</div>
+        <div class="question-text">
+            Seorang petani memanen padinya. Sebanyak \(\frac{1}{5}\) hasil panen dijual ke pasar, lalu \(\frac{1}{4}\) <strong>dari sisanya</strong> disimpan untuk bibit. Berapa total pecahan hasil panen yang sudah digunakan (dijual dan disimpan) jika dihitung dari keseluruhan panen awal?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{9}{20}\)</div>
+            <div class="option">B. \(\frac{2}{5}\)</div>
+            <div class="option">C. \(\frac{11}{20}\)</div>
+            <div class="option">D. \(\frac{3}{5}\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Menengah / Medium | Soal 9</div>
+        <div class="question-text">
+            Ibu membuat sekotak kue. \(\frac{1}{2}\) bagian diberikan kepada tetangga, dan \(\frac{1}{3}\) <strong>dari sisa kue</strong> dimakan oleh anak-anaknya. Jika sekarang tersisa 4 potong kue, berapakah jumlah potongan kue pada awalnya?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 24 potong</div>
+            <div class="option">B. 8 potong</div>
+            <div class="option">C. 10 potong</div>
+            <div class="option">D. 12 potong</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Menengah / Medium | Soal 10</div>
+        <div class="question-text">
+            Sebuah tangki penampungan air awalnya berisi setengah (\(\frac{1}{2}\)) kapasitas penuh. Kemudian ditambahkan air sebanyak \(\frac{1}{4}\) <strong>dari kapasitas penuh</strong>. Berapa bagian isi tangki sekarang?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. \(\frac{5}{8}\) bagian</div>
+            <div class="option">B. \(\frac{1}{4}\) bagian</div>
+            <div class="option">C. \(\frac{3}{4}\) bagian</div>
+            <div class="option">D. 1 bagian penuh</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 11</div>
+        <div class="question-text">
+            Sebuah perusahaan membagikan keuntungan tahunan. Direktur mendapat \(\frac{1}{4}\) dari total keuntungan. \(\frac{2}{5}\) <strong>dari sisa keuntungan</strong> dibagikan kepada manajer. Sisa keuntungan sebesar Rp90.000.000,00 dibagikan sama rata kepada karyawan staf. Berapakah total keuntungan perusahaan tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. Rp257.142.000,00</div>
+            <div class="option">B. Rp150.000.000,00</div>
+            <div class="option">C. Rp180.000.000,00</div>
+            <div class="option">D. Rp200.000.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 12</div>
+        <div class="question-text">
+            <strong>(Pedagogi)</strong> Dalam sebuah tes, terdapat soal: "Andi memiliki uang Rp100.000. Ia menggunakan \(\frac{1}{4}\) untuk beli buku, dan \(\frac{1}{5}\) <strong>dari sisanya</strong> untuk jajan. Berapa uang jajannya?" <br>
+            Seorang siswa menjawab: \(\frac{1}{4} + \frac{1}{5} = \frac{9}{20}\). Lalu \(Rp100.000 \times \frac{9}{20} = Rp45.000\). <br>
+            Miskonsepsi utama yang dialami siswa tersebut adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Siswa tidak tahu cara menyamakan penyebut (KPK) dari pecahan 4 dan 5.</div>
+            <div class="option">B. Siswa menganggap nilai acuan keseluruhan (<em>whole</em>) dari pecahan \(\frac{1}{5}\) masih berupa uang awal, bukan uang sisa.</div>
+            <div class="option">C. Siswa salah dalam mengalikan pecahan dengan bilangan bulat besar.</div>
+            <div class="option">D. Siswa tidak menyadari bahwa \(\frac{9}{20}\) adalah sisa uang, bukan uang jajan.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 13</div>
+        <div class="question-text">
+            Sebuah toko pakaian memberikan "Diskon Ganda". Diskon pertama adalah 20% dari harga label. Diskon kedua adalah 10% <strong>dari harga setelah diskon pertama</strong>. Persentase total diskon yang sebenarnya didapatkan pembeli dari harga label awal adalah...
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 30%</div>
+            <div class="option">B. 10%</div>
+            <div class="option">C. 22%</div>
+            <div class="option">D. 28%</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 14</div>
+        <div class="question-text">
+            <strong>(Pedagogi)</strong> "Doni mengalokasikan \(\frac{1}{4}\) gajinya untuk cicilan rumah, dan \(\frac{1}{3}\) <strong>dari sisa gajinya</strong> untuk ditabung. Jika gaji Doni Rp8.000.000,00, berapa yang ditabung?" <br>
+            Seorang siswa menjawab dengan mengalikan \(\left( \frac{1}{4} + \frac{1}{3} \right) \times 8.000.000 = \frac{7}{12} \times 8.000.000\). <br>
+            Tindakan pedagogis paling tepat untuk meluruskan pemahaman siswa tersebut adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. Mengajarkan ulang cara mencari pecahan senilai karena siswa salah menjumlahkan.</div>
+            <div class="option">B. Memberikan rumus paten bahwa mencari sisa selalu menggunakan pengurangan \(1 - \frac{1}{4} - \frac{1}{3}\).</div>
+            <div class="option">C. Meminta siswa menggambar persegi panjang, mengarsir \(\frac{1}{4}\) bagian, lalu membagi <strong>bagian yang tidak diarsir</strong> menjadi 3 bagian untuk melihat wujud \(\frac{1}{3}\) sisa.</div>
+            <div class="option">D. Menyalahkan jawaban dan meminta siswa membaca ulang soal dengan suara keras agar ia menyadari kesalahannya.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 15</div>
+        <div class="question-text">
+            Pada sebuah pesta, \(\frac{1}{3}\) dari total tamu adalah pria. Kemudian, \(\frac{1}{2}\) <strong>dari tamu wanita</strong> pulang lebih awal. Jika tamu yang masih tersisa di pesta (pria dan wanita) adalah 20 orang, berapakah jumlah tamu total mula-mula?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 60 orang</div>
+            <div class="option">B. 45 orang</div>
+            <div class="option">C. 40 orang</div>
+            <div class="option">D. 30 orang</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 16</div>
+        <div class="question-text">
+            Sebuah bola karet dijatuhkan dari ketinggian tertentu. Pantulan pertama mencapai \(\frac{3}{4}\) dari tinggi awal. Pantulan kedua mencapai \(\frac{2}{3}\) dari tinggi pantulan pertama. Pantulan ketiga mencapai \(\frac{1}{2}\) dari tinggi pantulan kedua. Jika tinggi pantulan ketiga adalah 10 cm, berapakah tinggi awal bola dijatuhkan?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 20 cm</div>
+            <div class="option">B. 30 cm</div>
+            <div class="option">C. 40 cm</div>
+            <div class="option">D. 80 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 17</div>
+        <div class="question-text">
+            <strong>(Pedagogi)</strong> Seorang guru mendapati banyak siswanya yang menganggap bahwa \(\frac{1}{3}\) dari total gaji akan menghasilkan jumlah uang yang SAMA BESAR dengan \(\frac{1}{3}\) dari sisa gaji. Penjelasan verbal gagal mengubah pemahaman ini. Media pembelajaran apa yang paling ampuh digunakan guru tersebut?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Papan tulis untuk menuliskan deretan rumus pecahan bertingkat secara sistematis.</div>
+            <div class="option">B. Kalkulator agar siswa bisa membuktikan sendiri bahwa hasil angkanya berbeda.</div>
+            <div class="option">C. Potongan kertas (<em>fraction tiles</em>): memotong kertas menjadi 3, lalu membandingkan sepertiga kertas utuh dengan sepertiga dari kertas yang sudah terpotong.</div>
+            <div class="option">D. Memberikan hukuman ringan atau tambahan PR berupa 50 soal latihan penjumlahan pecahan dasar.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 18</div>
+        <div class="question-text">
+            Bandingkan dua skenario pengeluaran berikut. Gaji A dan B sama besar. 
+            <ul>
+                <li>Orang A menghabiskan \(\frac{1}{4}\) gaji, lalu menghabiskan \(\frac{1}{3}\) <strong>dari sisanya</strong>.</li>
+                <li>Orang B menghabiskan \(\frac{1}{3}\) gaji, lalu menghabiskan \(\frac{1}{4}\) <strong>dari sisanya</strong>.</li>
+            </ul>
+            Pernyataan manakah yang paling benar mengenai sisa akhir uang mereka?
+        </div>
+        <div class="options-list">
+            <div class="option">A. Sisa uang A lebih banyak dari sisa uang B.</div>
+            <div class="option">B. Sisa uang B lebih banyak dari sisa uang A.</div>
+            <div class="option">C. Sisa uang A dan B persis sama.</div>
+            <div class="option">D. Tidak dapat ditentukan tanpa mengetahui nominal awal gaji mereka.</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 19</div>
+        <div class="question-text">
+            Dari sekeranjang buah sejumlah \(X\), diambil \(\frac{1}{a}\) bagian. Kemudian dari <strong>sisanya</strong>, diambil lagi \(\frac{1}{b}\) bagian. Bentuk aljabar yang merepresentasikan sisa buah terakhir di keranjang adalah...
+        </div>
+        <div class="options-list">
+            <div class="option">A. \(X \left(1 - \frac{1}{a} - \frac{1}{b}\right)\)</div>
+            <div class="option">B. \(X \left(1 - \frac{1}{a}\right) \left(1 - \frac{1}{b}\right)\)</div>
+            <div class="option">C. \(X \left(\frac{1}{a \times b}\right)\)</div>
+            <div class="option">D. \(X \left(1 - \frac{1}{a+b}\right)\)</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Level: Higher Order Thinking Skills (HOTS) | Soal 20</div>
+        <div class="question-text">
+            Sebuah kue dipotong. Pemotongan pertama mengambil \(\frac{1}{x}\) bagian dari total kue. Pemotongan kedua mengambil \(\frac{1}{y}\) bagian <strong>dari sisa kue</strong>. Jika sisa akhir kue adalah tepat \(\frac{1}{2}\) dari kue mula-mula, dan diketahui \(x\) serta \(y\) adalah bilangan bulat positif dengan \(x \neq y\), berapakah nilai terkecil dari \((x + y)\)?
+        </div>
+        <div class="options-grid">
+            <div class="option">A. 5</div>
+            <div class="option">B. 6</div>
+            <div class="option">C. 7</div>
+            <div class="option">D. 8</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
