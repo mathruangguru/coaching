@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran & Latihan Soal: Pengukuran Sudut pada Jarum Jam</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; }
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .options-grid { flex-direction: row; flex-wrap: wrap; }
+        .options-grid .option { flex: 1 1 calc(50% - 8px); min-width: 200px;}
+        
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        .concept-box { background-color: #f0f8ff; border: 2px solid #3498db; border-radius: var(--radius); padding: 20px; margin: 20px 0; }
+        .flex-container { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+        .flex-item-text { flex: 1 1 60%; min-width: 300px; }
+        .flex-item-img { flex: 1 1 35%; text-align: center; min-width: 250px; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+            .concept-box { border: 2px solid #000; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">A. Rangkuman Materi</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-text">
+            <p>Pergerakan jarum jam didasarkan pada lingkaran penuh yang memiliki sudut sebesar $360^\circ$. Pada sebuah jam analog, terdapat 12 angka, sehingga jarak sudut dari satu angka ke angka berikutnya adalah:</p>
+            $$\frac{360^\circ}{12} = 30^\circ$$
+
+            <p>Untuk memecahkan masalah sudut pada jam, kita harus memahami kecepatan pergerakan masing-masing jarum:</p>
+            <ul class="list-inside">
+                <li><strong>Jarum Panjang (Menit):</strong> Bergerak $360^\circ$ dalam 60 menit. Maka kecepatannya adalah $360^\circ / 60 =$ <strong>$6^\circ$ per menit</strong>.</li>
+                <li><strong>Jarum Pendek (Jam):</strong> Bergerak $30^\circ$ (jarak antar angka) dalam 60 menit. Maka kecepatannya adalah $30^\circ / 60 =$ <strong>$0,5^\circ$ per menit</strong>.</li>
+            </ul>
+
+            <h4 class="mt-4">Rumus Cepat Menghitung Sudut</h4>
+            <p>Besar sudut yang dibentuk oleh kedua jarum jam pada pukul $H.M$ (H = Jam, M = Menit) dapat dihitung dengan mencari selisih jarak tempuh sudut keduanya dari angka 12:</p>
+            $$\theta = \left| 30H - 5{,}5M \right|$$
+
+            <p><strong>Aturan Penting:</strong></p>
+            <ol class="list-inside" style="list-style-type: decimal;">
+                <li>Jika nilai $\theta$ yang didapat kurang dari $180^\circ$, maka itu adalah <strong>sudut terkecil</strong>.</li>
+                <li>Jika nilai $\theta$ lebih dari $180^\circ$, maka sudut terkecilnya adalah $360^\circ - \theta$.</li>
+                <li>Jika soal meminta "sudut refleks" (sudut terbesar), pilih sudut yang bernilai lebih dari $180^\circ$.</li>
+            </ol>
+
+            <h4 class="mt-4">Contoh Kasus (Pukul 10.40)</h4>
+            <div class="flex-container concept-box">
+                <div class="flex-item-text">
+                    <p>Mari kita buktikan hitungan dari pukul 10.40:</p>
+                    <ul class="list-inside">
+                        <li>$H = 10$ dan $M = 40$.</li>
+                        <li>$\theta = |30(10) - 5{,}5(40)|$</li>
+                        <li>$\theta = |300 - 220| = 80^\circ$</li>
+                    </ul>
+                    <p><strong>Mengapa siswa sering terjebak menjawab $\mathbf{60^\circ}$?</strong><br>
+                    Siswa seringkali hanya melihat bahwa jarum menit berada di angka 8 dan jarum jam di angka 10 (selisih 2 angka $= 2 \times 30^\circ = 60^\circ$). Mereka lupa bahwa dalam 40 menit, jarum jam (pendek) sudah bergeser sejauh $40 \times 0,5^\circ = 20^\circ$ menuju angka 11, sehingga sudutnya membesar menjadi $60^\circ + 20^\circ = 80^\circ$.</p>
+                </div>
+                <div class="flex-item-img">
+                    <svg width="200" height="200" viewBox="-110 -110 220 220" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="0" cy="0" r="100" fill="#fff" stroke="#333" stroke-width="3"/>
+                        
+                        <line x1="0" y1="-90" x2="0" y2="-100" stroke="#333" stroke-width="2"/> <text x="0" y="-70" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">12</text>
+                        <line x1="45" y1="-77.9" x2="50" y2="-86.6" stroke="#333" stroke-width="2"/> <text x="35" y="-60.6" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">1</text>
+                        <line x1="77.9" y1="-45" x2="86.6" y2="-50" stroke="#333" stroke-width="2"/> <text x="60.6" y="-35" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+                        <line x1="90" y1="0" x2="100" y2="0" stroke="#333" stroke-width="2"/> <text x="75" y="4" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">3</text>
+                        <line x1="77.9" y1="45" x2="86.6" y2="50" stroke="#333" stroke-width="2"/> <text x="60.6" y="40" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">4</text>
+                        <line x1="45" y1="77.9" x2="50" y2="86.6" stroke="#333" stroke-width="2"/> <text x="35" y="65.6" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">5</text>
+                        <line x1="0" y1="90" x2="0" y2="100" stroke="#333" stroke-width="2"/> <text x="0" y="80" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">6</text>
+                        <line x1="-45" y1="77.9" x2="-50" y2="86.6" stroke="#333" stroke-width="2"/> <text x="-35" y="65.6" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">7</text>
+                        <line x1="-77.9" y1="45" x2="-86.6" y2="50" stroke="#333" stroke-width="2"/> <text x="-60.6" y="40" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">8</text>
+                        <line x1="-90" y1="0" x2="-100" y2="0" stroke="#333" stroke-width="2"/> <text x="-75" y="4" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">9</text>
+                        <line x1="-77.9" y1="-45" x2="-86.6" y2="-50" stroke="#333" stroke-width="2"/> <text x="-60.6" y="-35" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">10</text>
+                        <line x1="-45" y1="-77.9" x2="-50" y2="-86.6" stroke="#333" stroke-width="2"/> <text x="-35" y="-60.6" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">11</text>
+
+                        <line x1="0" y1="0" x2="-69.28" y2="40" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>
+                        
+                        <line x1="0" y1="0" x2="-32.1" y2="-38.3" stroke="#2c3e50" stroke-width="6" stroke-linecap="round"/>
+                        
+                        <circle cx="0" cy="0" r="4" fill="#333"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">B. Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah salah satu jawaban yang paling tepat. Waspadai opsi-opsi yang dirancang menjebak pemahaman konsep dasar!</em></p>
+
+    <div class="question-meta">Level I: Konsep Dasar</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 1</div>
+        <div class="question-text">Dalam rentang waktu 30 menit, seberapa besar sudut yang ditempuh oleh perputaran jarum panjang (menit)?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $15^\circ$</div>
+            <div class="option"><strong>B.</strong> $30^\circ$</div>
+            <div class="option"><strong>C.</strong> $180^\circ$</div>
+            <div class="option"><strong>D.</strong> $360^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 2</div>
+        <div class="question-text">Berapakah pergeseran sudut jarum pendek (jam) jika waktu telah berlalu selama 1 jam penuh?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $12^\circ$</div>
+            <div class="option"><strong>B.</strong> $30^\circ$</div>
+            <div class="option"><strong>C.</strong> $60^\circ$</div>
+            <div class="option"><strong>D.</strong> $360^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 3</div>
+        <div class="question-text">Besar sudut terkecil yang dibentuk oleh kedua jarum jam pada pukul 03.00 tepat adalah...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $30^\circ$</div>
+            <div class="option"><strong>B.</strong> $90^\circ$</div>
+            <div class="option"><strong>C.</strong> $180^\circ$</div>
+            <div class="option"><strong>D.</strong> $270^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 4</div>
+        <div class="question-text">Apabila jarum panjang menunjuk tepat ke angka 12, sementara jarum pendek menunjuk ke angka 5, berapakah besar sudut terkecilnya?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $60^\circ$</div>
+            <div class="option"><strong>B.</strong> $120^\circ$</div>
+            <div class="option"><strong>C.</strong> $150^\circ$</div>
+            <div class="option"><strong>D.</strong> $210^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 5</div>
+        <div class="question-text">Berapakah derajat jarum pendek (jam) akan bergeser dari posisinya awal jika waktu telah berlalu selama 20 menit?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $5^\circ$</div>
+            <div class="option"><strong>B.</strong> $10^\circ$</div>
+            <div class="option"><strong>C.</strong> $20^\circ$</div>
+            <div class="option"><strong>D.</strong> $120^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Level II: Medium</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 6</div>
+        <div class="question-text">Besar sudut terkecil yang terbentuk oleh dua jarum jam yang menunjukkan pukul 01.30 adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $120^\circ$</div>
+            <div class="option"><strong>B.</strong> $135^\circ$</div>
+            <div class="option"><strong>C.</strong> $150^\circ$</div>
+            <div class="option"><strong>D.</strong> $165^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 7</div>
+        <div class="question-text">Besar sudut terkecil yang terbentuk oleh dua jarum jam yang menunjukkan pukul 04.20 adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $0^\circ$</div>
+            <div class="option"><strong>B.</strong> $10^\circ$</div>
+            <div class="option"><strong>C.</strong> $20^\circ$</div>
+            <div class="option"><strong>D.</strong> $30^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 8</div>
+        <div class="question-text">Berapakah sudut terkecil yang dibentuk oleh kedua jarum jam pada pukul 07.00?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $120^\circ$</div>
+            <div class="option"><strong>B.</strong> $150^\circ$</div>
+            <div class="option"><strong>C.</strong> $180^\circ$</div>
+            <div class="option"><strong>D.</strong> $210^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 9</div>
+        <div class="question-text">Besar sudut terkecil yang terbentuk oleh dua jarum jam yang menunjukkan pukul 10.10 adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $60^\circ$</div>
+            <div class="option"><strong>B.</strong> $115^\circ$</div>
+            <div class="option"><strong>C.</strong> $120^\circ$</div>
+            <div class="option"><strong>D.</strong> $245^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 10</div>
+        <div class="question-text">Besar sudut terkecil yang terbentuk oleh dua jarum jam yang menunjukkan pukul 06.30 adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $0^\circ$</div>
+            <div class="option"><strong>B.</strong> $15^\circ$</div>
+            <div class="option"><strong>C.</strong> $30^\circ$</div>
+            <div class="option"><strong>D.</strong> $45^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Level III: High Order Thinking Skills (HOTS)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 11</div>
+        <div class="question-text">Pada pukul 03.15, secara sekilas jarum jam pendek dan panjang terlihat berimpit menunjuk angka 3. Namun sesungguhnya tidak. Berapakah besar sudut pasti yang memisahkan kedua jarum tersebut?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $0^\circ$</div>
+            <div class="option"><strong>B.</strong> $7,5^\circ$</div>
+            <div class="option"><strong>C.</strong> $15^\circ$</div>
+            <div class="option"><strong>D.</strong> $22,5^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 12</div>
+        <div class="question-text">Besar sudut terkecil yang terbentuk oleh dua jarum jam yang menunjukkan pukul 08.50 adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $25^\circ$</div>
+            <div class="option"><strong>B.</strong> $35^\circ$</div>
+            <div class="option"><strong>C.</strong> $60^\circ$</div>
+            <div class="option"><strong>D.</strong> $85^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 13</div>
+        <div class="question-text">Sebuah jam analog diketahui terus berdetak. Pada suatu waktu, jarum menit telah berputar menempuh sudut sejauh $450^\circ$. Selama interval waktu yang sama tersebut, berapakah besar sudut yang seharusnya ditempuh oleh perputaran jarum jam (pendek)?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $37,5^\circ$</div>
+            <div class="option"><strong>B.</strong> $45^\circ$</div>
+            <div class="option"><strong>C.</strong> $75^\circ$</div>
+            <div class="option"><strong>D.</strong> $90^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 14</div>
+        <div class="question-text">Berapakah besar sudut <strong>terbesar (sudut refleks)</strong> yang dibentuk oleh perpotongan kedua jarum jam pada pukul 08.20?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $130^\circ$</div>
+            <div class="option"><strong>B.</strong> $220^\circ$</div>
+            <div class="option"><strong>C.</strong> $230^\circ$</div>
+            <div class="option"><strong>D.</strong> $240^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 15</div>
+        <div class="question-text">Besar sudut terkecil yang terbentuk oleh dua jarum jam yang menunjukkan pukul 05.15 adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $52,5^\circ$</div>
+            <div class="option"><strong>B.</strong> $60^\circ$</div>
+            <div class="option"><strong>C.</strong> $67,5^\circ$</div>
+            <div class="option"><strong>D.</strong> $75^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 16</div>
+        <div class="question-text">Tentukan selisih besar sudut terkecil yang terbentuk oleh jarum jam pada pukul 04.30 dan besar sudut terkecil pada pukul 08.30!</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $15^\circ$</div>
+            <div class="option"><strong>B.</strong> $30^\circ$</div>
+            <div class="option"><strong>C.</strong> $45^\circ$</div>
+            <div class="option"><strong>D.</strong> $60^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 17</div>
+        <div class="question-text">Di antara pukul 04.00 dan 05.00, pada waktu kapankah kedua jarum jam akan tepat membentuk satu garis lurus bersilangan (sudut $180^\circ$)?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Pukul 04 lewat 50 menit</div>
+            <div class="option"><strong>B.</strong> Pukul 04 lewat $54 \frac{6}{11}$ menit</div>
+            <div class="option"><strong>C.</strong> Pukul 04 lewat 55 menit</div>
+            <div class="option"><strong>D.</strong> Pukul 04 lewat 56 menit</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 18</div>
+        <div class="question-text">Besar sudut terkecil yang terbentuk oleh dua jarum jam yang menunjukkan pukul 02.40 adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $140^\circ$</div>
+            <div class="option"><strong>B.</strong> $150^\circ$</div>
+            <div class="option"><strong>C.</strong> $160^\circ$</div>
+            <div class="option"><strong>D.</strong> $180^\circ$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 19</div>
+        <div class="question-text">Pak Budi berangkat kerja seketika jarum jam dan menit membentuk sudut $0^\circ$ (berimpit) di antara pukul 07.00 dan 08.00. Ia tiba di kantor tepat ketika kedua jarum berimpit kembali untuk pertama kalinya di antara pukul 08.00 dan 09.00. Lama waktu perjalanan Pak Budi adalah...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 60 menit</div>
+            <div class="option"><strong>B.</strong> 65 menit</div>
+            <div class="option"><strong>C.</strong> $65 \frac{5}{11}$ menit</div>
+            <div class="option"><strong>D.</strong> 70 menit</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 20</div>
+        <div class="question-text">Dalam sehari semalam (24 jam), ada berapa kalikah kedua jarum jam akan membentuk sudut siku-siku ($90^\circ$)?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 24 kali</div>
+            <div class="option"><strong>B.</strong> 44 kali</div>
+            <div class="option"><strong>C.</strong> 48 kali</div>
+            <div class="option"><strong>D.</strong> 90 kali</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
