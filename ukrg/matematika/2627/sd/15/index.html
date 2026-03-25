@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran: Operasi Hitung Campuran Bilangan Desimal</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.1rem; padding-top: 20px;}
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            .logo-right { padding-top: 0; display: block; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .options-grid { flex-direction: row; flex-wrap: wrap; }
+        .options-grid .option { flex: 1 1 calc(50% - 8px); min-width: 200px;}
+        
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">A. Rangkuman Materi</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-text">
+            <p>Dalam menyelesaikan operasi hitung campuran bilangan desimal, prinsip dasar yang digunakan sama dengan bilangan bulat, yaitu menggunakan aturan <strong>KABATAKU</strong> (Kurung, Kali Bagi, Tambah Kurang) dengan memperhatikan urutan pengerjaan dari kiri ke kanan jika setara.</p>
+
+            <h4 class="mt-4">1. Aturan Prioritas (Urutan Pengerjaan)</h4>
+            <p>Langkah-langkah yang wajib diikuti saat menjumpai soal operasi campuran:</p>
+            <ol class="list-inside" style="list-style-type: decimal;">
+                <li><strong>Tanda Kurung $( \dots )$</strong>: Segala operasi di dalam tanda kurung <strong>wajib</strong> diselesaikan paling pertama.</li>
+                <li><strong>Perkalian $(\times)$ dan Pembagian $(\div)$</strong>: Dikerjakan setelah tanda kurung. Jika dalam satu baris terdapat perkalian dan pembagian, kerjakan berurutan <strong>dari kiri ke kanan</strong>. Jangan melompat mengerjakan yang di kanan terlebih dahulu.</li>
+                <li><strong>Penjumlahan $(+)$ dan Pengurangan $(-)$</strong>: Dikerjakan paling akhir, juga berurutan <strong>dari kiri ke kanan</strong>.</li>
+            </ol>
+
+            <h4 class="mt-4">2. Trik Cepat Menghitung Desimal Khusus</h4>
+            <p>Beberapa bilangan desimal dapat diubah menjadi pecahan biasa agar proses perkalian atau pembagian menjadi jauh lebih cepat.</p>
+            <ul class="list-inside">
+                <li><strong>Dikali $\mathbf{0{,}5}$</strong> itu sama artinya dengan <strong>dibagi $\mathbf{2}$</strong>. <br>
+                <em>Contoh:</em> $14{,}4 \times 0{,}5 = 14{,}4 \div 2 = 7{,}2$.</li>
+                <li><strong>Dikali $\mathbf{0{,}25}$</strong> itu sama artinya dengan <strong>dibagi $\mathbf{4}$</strong>. <br>
+                <em>Contoh:</em> $12 \times 0{,}25 = 12 \div 4 = 3$.</li>
+                <li><strong>Dikali $\mathbf{0{,}2}$</strong> itu sama artinya dengan <strong>dibagi $\mathbf{5}$</strong>. <br>
+                <em>Contoh:</em> $35 \times 0{,}2 = 35 \div 5 = 7$.</li>
+                <li><strong>Dibagi $\mathbf{0{,}5}$</strong> itu sama artinya dengan <strong>dikali $\mathbf{2}$</strong>. <br>
+                <em>Contoh:</em> $8 \div 0{,}5 = 8 \times 2 = 16$.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-title">B. Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat. Hati-hati dengan jebakan urutan operasi!</em></p>
+
+    <div class="question-meta">Tingkat 1: Konsep Dasar (5 Soal)</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 1</div>
+        <div class="question-text">Hasil dari $2{,}5 + 1{,}5 - 0{,}8$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $3{,}2$</div>
+            <div class="option"><strong>B.</strong> $4{,}8$</div>
+            <div class="option"><strong>C.</strong> $2{,}2$</div>
+            <div class="option"><strong>D.</strong> $3{,}8$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 2</div>
+        <div class="question-text">Nilai dari $1{,}2 \times 0{,}3$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $3{,}6$</div>
+            <div class="option"><strong>B.</strong> $0{,}36$</div>
+            <div class="option"><strong>C.</strong> $0{,}036$</div>
+            <div class="option"><strong>D.</strong> $36$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 3</div>
+        <div class="question-text">Hasil dari operasi pembagian $4{,}5 \div 0{,}9$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $0{,}5$</div>
+            <div class="option"><strong>B.</strong> $50$</div>
+            <div class="option"><strong>C.</strong> $5$</div>
+            <div class="option"><strong>D.</strong> $0{,}05$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 4</div>
+        <div class="question-text">Hasil dari $2 + 3 \times 0{,}4$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $2{,}0$</div>
+            <div class="option"><strong>B.</strong> $5{,}0$</div>
+            <div class="option"><strong>C.</strong> $2{,}4$</div>
+            <div class="option"><strong>D.</strong> $3{,}2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 5</div>
+        <div class="question-text">Nilai dari $(5{,}2 - 1{,}2) \div 0{,}8$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $0{,}5$</div>
+            <div class="option"><strong>B.</strong> $4{,}8$</div>
+            <div class="option"><strong>C.</strong> $5$</div>
+            <div class="option"><strong>D.</strong> $50$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Tingkat 2: Menengah / Medium (5 Soal)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 6</div>
+        <div class="question-text">Nilai dari $1{,}5 \times 2 + 0{,}8 \times 5$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $11$</div>
+            <div class="option"><strong>B.</strong> $7$</div>
+            <div class="option"><strong>C.</strong> $3{,}4$</div>
+            <div class="option"><strong>D.</strong> $1{,}9$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 7</div>
+        <div class="question-text">Hasil dari $7{,}2 \div 1{,}2 - 0{,}5$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $6{,}5$</div>
+            <div class="option"><strong>B.</strong> $1{,}2$</div>
+            <div class="option"><strong>C.</strong> $5{,}5$</div>
+            <div class="option"><strong>D.</strong> $10{,}3$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 8</div>
+        <div class="question-text">Berapakah hasil dari $16{,}4 \times 0{,}5 + 2{,}8$?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $10$</div>
+            <div class="option"><strong>B.</strong> $11$</div>
+            <div class="option"><strong>C.</strong> $11{,}8$</div>
+            <div class="option"><strong>D.</strong> $19{,}2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 9</div>
+        <div class="question-text">Hasil dari $10 \div 2 \times 0{,}5$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $10$</div>
+            <div class="option"><strong>B.</strong> $1$</div>
+            <div class="option"><strong>C.</strong> $0{,}25$</div>
+            <div class="option"><strong>D.</strong> $2{,}5$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 10</div>
+        <div class="question-text">Nilai dari $2{,}4 \times (1{,}5 + 0{,}5) \div 1{,}2$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $2$</div>
+            <div class="option"><strong>B.</strong> $0{,}4$</div>
+            <div class="option"><strong>C.</strong> $4$</div>
+            <div class="option"><strong>D.</strong> $2{,}4$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Tingkat 3: Kemampuan Berpikir Tingkat Tinggi / HOTS (10 Soal)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 11</div>
+        <div class="question-text">Hasil dari $4{,}5 \div 0{,}25 - 2{,}4 \times 5$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $78$</div>
+            <div class="option"><strong>B.</strong> $-7{,}5$</div>
+            <div class="option"><strong>C.</strong> $6$</div>
+            <div class="option"><strong>D.</strong> $0{,}6$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 12</div>
+        <div class="question-text">Perhatikan persamaan berikut! <br>
+        $15{,}6 \div (2{,}1 + 1{,}8) \times 0{,}5 \times 8 =$ ... <br>
+        Hasil dari operasi di atas adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $1$</div>
+            <div class="option"><strong>B.</strong> $1{,}6$</div>
+            <div class="option"><strong>C.</strong> $24$</div>
+            <div class="option"><strong>D.</strong> $16$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 13</div>
+        <div class="question-text">Nilai dari $(8{,}4 - 2{,}8) \div 0{,}7 \times 0{,}2$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $40$</div>
+            <div class="option"><strong>B.</strong> $1{,}6$</div>
+            <div class="option"><strong>C.</strong> $4{,}4$</div>
+            <div class="option"><strong>D.</strong> $0{,}16$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 14</div>
+        <div class="question-text">Hasil dari operasi $0{,}75 \times 8 \div 0{,}5 + 2{,}5$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $5{,}5$</div>
+            <div class="option"><strong>B.</strong> $8{,}5$</div>
+            <div class="option"><strong>C.</strong> $14{,}5$</div>
+            <div class="option"><strong>D.</strong> $4{,}5$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 15</div>
+        <div class="question-text">Nilai dari $18{,}9 \div (3{,}5 + 2{,}8) \times 0{,}5 \times 10$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $0{,}6$</div>
+            <div class="option"><strong>B.</strong> $15$</div>
+            <div class="option"><strong>C.</strong> $1{,}5$</div>
+            <div class="option"><strong>D.</strong> $60$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 16</div>
+        <div class="question-text">Hasil dari $12{,}5 \times 0{,}8 \div (1{,}2 - 0{,}7) + 4{,}2$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $9{,}2$</div>
+            <div class="option"><strong>B.</strong> $6{,}2$</div>
+            <div class="option"><strong>C.</strong> $14{,}2$</div>
+            <div class="option"><strong>D.</strong> $24{,}2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 17</div>
+        <div class="question-text">Bentuk perhitungan matematika dari sebuah masalah menghasilkan rumusan: <br>
+        $\frac{3{,}6 \times 0{,}5}{0{,}9} + \frac{4{,}8}{1{,}2}$ <br>
+        Nilai akhir dari rumusan tersebut adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $0{,}6$</div>
+            <div class="option"><strong>B.</strong> $2{,}4$</div>
+            <div class="option"><strong>C.</strong> $6$</div>
+            <div class="option"><strong>D.</strong> $60$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 18</div>
+        <div class="question-text">Hasil dari $25{,}5 \div 5 \times 0{,}2 - 0{,}02$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $25{,}48$</div>
+            <div class="option"><strong>B.</strong> $1$</div>
+            <div class="option"><strong>C.</strong> $0$</div>
+            <div class="option"><strong>D.</strong> $1{,}04$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 19</div>
+        <div class="question-text">Nilai dari perhitungan $21{,}6 \div (1{,}8 + 3{,}6) \times 0{,}5 \times 12$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $2{,}4$</div>
+            <div class="option"><strong>B.</strong> $96$</div>
+            <div class="option"><strong>C.</strong> $24$</div>
+            <div class="option"><strong>D.</strong> $0{,}66$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 20</div>
+        <div class="question-text">Hati-hati dengan urutan pengerjaan! <br>
+        Nilai dari $100 - 2{,}5 \times 4 \div 0{,}5 \times 2$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $90$</div>
+            <div class="option"><strong>B.</strong> $20$</div>
+            <div class="option"><strong>C.</strong> $95$</div>
+            <div class="option"><strong>D.</strong> $60$</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
