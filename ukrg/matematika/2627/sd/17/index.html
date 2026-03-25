@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran: Pecahan Bertingkat dan "Bagian dari Sisa"</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo-left { position: absolute; top: 10px; left: 10px; height: 65px; object-fit: contain; }
+        .logo-right { position: absolute; top: 25px; right: 10px; text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1.15rem; font-family: monospace;}
+
+        @media (max-width: 768px) {
+            .logo-left { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            .logo-right { position: static; display: block; padding-top: 0; margin-bottom: 15px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .options-grid { flex-direction: row; flex-wrap: wrap; }
+        .options-grid .option { flex: 1 1 calc(50% - 8px); min-width: 200px;}
+        
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        .concept-box { background-color: #f0f8ff; border: 2px solid #3498db; border-radius: var(--radius); padding: 20px; margin: 20px auto; max-width: 90%; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+            .concept-box { border: 2px solid #000; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo-left">
+        <a href="https://lynk.id/mathspecialist" target="_blank" class="logo-right">lynk.id/mathspecialist</a>
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">A. Rangkuman Materi</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-text">
+            <p>Seringkali dalam kehidupan sehari-hari maupun soal ujian, kita dihadapkan pada masalah yang menggunakan konsep pecahan dari sebuah total keseluruhan. Hal yang paling krusial untuk dipahami adalah membedakan dua frasa berikut: <strong>"Bagian dari Total"</strong> dan <strong>"Bagian dari Sisa"</strong>.</p>
+
+            <h4 class="mt-4">1. Bagian dari Total Keseluruhan</h4>
+            <p>Jika soal menyatakan suatu bagian <em>tanpa</em> menyebutkan kata sisa, maka pecahan tersebut dikalikan langsung dengan total keseluruhan.</p>
+            <div class="concept-box">
+                <h4 style="margin-top: 0; color: #2c3e50;">Contoh:</h4>
+                Uang Andi Rp100.000,00. Ia memakai $\frac{1}{2}$ bagian untuk buku, dan $\frac{1}{4}$ bagian untuk makan.<br>
+                <ul class="list-inside" style="list-style-type: none; padding-left: 0;">
+                    <li>- Buku = $\frac{1}{2} \times \text{Rp}100.000,00 = \text{Rp}50.000,00$</li>
+                    <li>- Makan = $\frac{1}{4} \times \text{Rp}100.000,00 = \text{Rp}25.000,00$ <em>(Dikalikan total awal)</em></li>
+                    <li>- Sisa uang = $\text{Rp}100.000,00 - \text{Rp}50.000,00 - \text{Rp}25.000,00 =$ <strong>Rp25.000,00</strong>.</li>
+                </ul>
+            </div>
+
+            <h4 class="mt-4">2. Bagian dari Sisa (Pecahan Bertingkat)</h4>
+            <p>Ini adalah materi HOTS (<em>High Order Thinking Skills</em>) yang sering menjadi jebakan. Jika disebutkan <strong>"dari uang sisanya"</strong>, maka kita wajib mencari tahu terlebih dahulu berapa sisa sementara, barulah dikalikan dengan pecahan yang baru.</p>
+
+            <div style="text-align: center; margin: 30px 0; overflow-x: auto;">
+                <svg width="100%" style="min-width: 600px; max-width: 800px;" height="180" viewBox="-50 -50 750 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="600" height="60" fill="none" stroke="#333" stroke-width="2"/>
+                    <text x="300" y="-15" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Total Uang Mula-mula (Misal: 4 bagian)</text>
+                    
+                    <rect x="0" y="0" width="150" height="60" fill="#f5b7b1" stroke="#333" stroke-width="2"/>
+                    <text x="75" y="35" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">1/4 Diambil</text>
+                    
+                    <rect x="150" y="0" width="300" height="60" fill="#aed6f1" stroke="#333" stroke-width="2"/>
+                    <line x1="300" y1="0" x2="300" y2="60" stroke="#333" stroke-width="2"/>
+                    <text x="300" y="35" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">2/3 dari SISA</text>
+                    
+                    <rect x="450" y="0" width="150" height="60" fill="#a9dfbf" stroke="#333" stroke-width="2"/>
+                    <text x="525" y="35" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">Sisa Akhir</text>
+                    
+                    <path d="M 150 70 Q 150 85 165 85 L 360 85 Q 375 85 375 100 Q 375 85 390 85 L 585 85 Q 600 85 600 70" fill="none" stroke="#333" stroke-width="2"/>
+                    <text x="375" y="125" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">Sisa Uang Pertama (3 bagian)</text>
+                </svg>
+            </div>
+
+            <p><strong>Langkah Pengerjaan "Bagian dari Sisa":</strong></p>
+            <ol class="list-inside" style="list-style-type: decimal;">
+                <li>Hitung penggunaan pertama: $\text{Penggunaan I} = \text{Pecahan I} \times \text{Total Awal}$</li>
+                <li>Hitung Sisa Sementara: $\text{Sisa I} = \text{Total Awal} - \text{Penggunaan I}$</li>
+                <li>Hitung penggunaan kedua: $\text{Penggunaan II} = \text{Pecahan II} \times \mathbf{Sisa I}$</li>
+                <li>Hitung Sisa Akhir: $\text{Sisa Akhir} = \text{Sisa I} - \text{Penggunaan II}$</li>
+            </ol>
+            <p><em>Jebakan terbesar siswa adalah dengan langsung menjumlahkan Pecahan I dan Pecahan II. Ini salah mutlak jika ada kata "dari sisanya"!</em></p>
+        </div>
+    </div>
+
+    <div class="section-title">B. Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat. Hati-hati dengan opsi jebakan!</em></p>
+
+    <div class="question-meta">Level: Konsep Dasar (Soal 1 - 5)</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 1</div>
+        <div class="question-text">Nilai dari $\frac{3}{5}$ bagian dari Rp150.000,00 adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Rp30.000,00</div>
+            <div class="option"><strong>B.</strong> Rp60.000,00</div>
+            <div class="option"><strong>C.</strong> Rp90.000,00</div>
+            <div class="option"><strong>D.</strong> Rp120.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 2</div>
+        <div class="question-text">Bentuk paling sederhana dari pecahan $\frac{48}{72}$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $\frac{2}{3}$</div>
+            <div class="option"><strong>B.</strong> $\frac{3}{4}$</div>
+            <div class="option"><strong>C.</strong> $\frac{4}{6}$</div>
+            <div class="option"><strong>D.</strong> $\frac{6}{9}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 3</div>
+        <div class="question-text">Sebuah toko buah memiliki 80 buah semangka. $\frac{1}{4}$ bagian dari semangka tersebut telah terjual. Berapa banyak semangka yang <strong>tersisa</strong>?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 20 buah</div>
+            <div class="option"><strong>B.</strong> 40 buah</div>
+            <div class="option"><strong>C.</strong> 60 buah</div>
+            <div class="option"><strong>D.</strong> 80 buah</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 4</div>
+        <div class="question-text">Hasil dari perhitungan $\left(1 - \frac{1}{3}\right) \times \text{Rp}60.000,00$ adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Rp20.000,00</div>
+            <div class="option"><strong>B.</strong> Rp30.000,00</div>
+            <div class="option"><strong>C.</strong> Rp40.000,00</div>
+            <div class="option"><strong>D.</strong> Rp50.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 5</div>
+        <div class="question-text">Jika $\frac{3}{4}$ dari suatu bilangan adalah 45, maka bilangan tersebut adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 30</div>
+            <div class="option"><strong>B.</strong> 45</div>
+            <div class="option"><strong>C.</strong> 60</div>
+            <div class="option"><strong>D.</strong> 75</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Level: Menengah / Medium (Soal 6 - 10)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 6</div>
+        <div class="question-text">Seorang petani memiliki sawah seluas $1.200 \text{ m}^2$. Ia menanami $\frac{1}{3}$ bagian dengan padi dan $\frac{1}{4}$ bagian dengan jagung. Luas sawah yang <strong>belum</strong> ditanami adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $300 \text{ m}^2$</div>
+            <div class="option"><strong>B.</strong> $400 \text{ m}^2$</div>
+            <div class="option"><strong>C.</strong> $500 \text{ m}^2$</div>
+            <div class="option"><strong>D.</strong> $700 \text{ m}^2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 7</div>
+        <div class="question-text">Uang saku Tono adalah Rp80.000,00. Ia menggunakan $\frac{2}{5}$ bagian untuk membeli alat tulis. Kemudian, ia jajan sebesar Rp15.000,00. Sisa uang saku Tono sekarang adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Rp32.000,00</div>
+            <div class="option"><strong>B.</strong> Rp33.000,00</div>
+            <div class="option"><strong>C.</strong> Rp48.000,00</div>
+            <div class="option"><strong>D.</strong> Rp65.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 8</div>
+        <div class="question-text">Ibu membawa uang belanja Rp300.000,00. Sebanyak $\frac{1}{4}$ bagian digunakan untuk membeli sayur dan lauk pauk, serta Rp50.000,00 dibelikan buah-buahan. Sisa uang belanja ibu adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Rp75.000,00</div>
+            <div class="option"><strong>B.</strong> Rp125.000,00</div>
+            <div class="option"><strong>C.</strong> Rp175.000,00</div>
+            <div class="option"><strong>D.</strong> Rp250.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 9</div>
+        <div class="question-text">Sebuah jerigen berisi air $2.000 \text{ ml}$. Budi mengambil $\frac{1}{4}$ bagian untuk minum, lalu Wati mengambil $\frac{1}{5}$ bagian dari <strong>total awal</strong> untuk cuci tangan. Sisa air dalam jerigen adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $500 \text{ ml}$</div>
+            <div class="option"><strong>B.</strong> $900 \text{ ml}$</div>
+            <div class="option"><strong>C.</strong> $1.100 \text{ ml}$</div>
+            <div class="option"><strong>D.</strong> $1.500 \text{ ml}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 10</div>
+        <div class="question-text">Seutas tali dipotong $\frac{3}{8}$ bagian. Jika panjang potongan tali tersebut (yang diambil) ternyata berukuran $15 \text{ meter}$, maka panjang tali mula-mula adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $25 \text{ meter}$</div>
+            <div class="option"><strong>B.</strong> $30 \text{ meter}$</div>
+            <div class="option"><strong>C.</strong> $35 \text{ meter}$</div>
+            <div class="option"><strong>D.</strong> $40 \text{ meter}$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Level: HOTS - High Order Thinking Skills (Soal 11 - 20)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 11</div>
+        <div class="question-text">Pak Ali mendapat gaji Rp6.000.000,00. Sebanyak $\frac{1}{5}$ bagian dialokasikan untuk sewa rumah, $\frac{1}{3}$ bagian untuk biaya makan, $\frac{1}{6}$ bagian ditabung, dan sisanya dibagikan sama rata kepada 2 anaknya. Masing-masing anak mendapat ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Rp600.000,00</div>
+            <div class="option"><strong>B.</strong> Rp900.000,00</div>
+            <div class="option"><strong>C.</strong> Rp1.200.000,00</div>
+            <div class="option"><strong>D.</strong> Rp1.800.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 12</div>
+        <div class="question-text">Sebuah bak air mandi semula berisi $\frac{1}{4}$ bagian. Setelah ditambah 45 liter air, bak mandi tersebut kini terisi $\frac{5}{8}$ bagian. Kapasitas air penuh pada bak mandi tersebut adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 80 liter</div>
+            <div class="option"><strong>B.</strong> 100 liter</div>
+            <div class="option"><strong>C.</strong> 120 liter</div>
+            <div class="option"><strong>D.</strong> 150 liter</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 13</div>
+        <div class="question-text">Rina mendapat uang saku dari ibunya sebesar Rp240.000,00. Rina langsung menyisihkan $\frac{3}{8}$ bagian dari uang tersebut untuk menabung. Kemudian, $\frac{3}{5}$ dari <strong>uang sisanya</strong> ia belikan alat tulis. Sisa uang Rina sekarang adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Rp6.000,00</div>
+            <div class="option"><strong>B.</strong> Rp54.000,00</div>
+            <div class="option"><strong>C.</strong> Rp60.000,00</div>
+            <div class="option"><strong>D.</strong> Rp90.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 14</div>
+        <div class="question-text">Andi menghabiskan $\frac{1}{3}$ dari tabungannya pada bulan Januari. Pada bulan Februari, ia menghabiskan $\frac{1}{4}$ dari <strong>sisa tabungannya</strong>. Jika saat ini sisa tabungannya adalah Rp150.000,00, berapa total tabungan Andi mula-mula?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Rp200.000,00</div>
+            <div class="option"><strong>B.</strong> Rp300.000,00</div>
+            <div class="option"><strong>C.</strong> Rp400.000,00</div>
+            <div class="option"><strong>D.</strong> Rp450.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 15</div>
+        <div class="question-text">Dalam sebuah kelas, $\frac{2}{5}$ siswanya adalah laki-laki. Jika diketahui $\frac{1}{4}$ dari siswa laki-laki dan $\frac{1}{3}$ dari siswa perempuan memakai kacamata, maka bagian total dari siswa sekelas yang memakai kacamata adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $\frac{3}{10}$ bagian</div>
+            <div class="option"><strong>B.</strong> $\frac{7}{20}$ bagian</div>
+            <div class="option"><strong>C.</strong> $\frac{17}{60}$ bagian</div>
+            <div class="option"><strong>D.</strong> $\frac{7}{12}$ bagian</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 16</div>
+        <div class="question-text">Panitia sebuah acara memiliki sejumlah dana anggaran. Diketahui $\frac{1}{4}$ dana tersebut digunakan untuk hadiah, $\frac{3}{10}$ dana untuk konsumsi, dan sisanya sebesar Rp1.800.000,00 dialokasikan untuk perlengkapan panggung. Total dana panitia seluruhnya adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Rp3.600.000,00</div>
+            <div class="option"><strong>B.</strong> Rp4.000.000,00</div>
+            <div class="option"><strong>C.</strong> Rp4.500.000,00</div>
+            <div class="option"><strong>D.</strong> Rp5.400.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 17</div>
+        <div class="question-text">Kakak menerima honor sebesar Rp300.000,00. $\frac{1}{6}$ bagian dari honor tersebut ia masukkan ke dalam celengan. Kemudian, $\frac{2}{5}$ dari <strong>uang sisanya</strong> ia gunakan untuk membelikan kado untuk adiknya. Sisa uang kakak sekarang adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Rp20.000,00</div>
+            <div class="option"><strong>B.</strong> Rp100.000,00</div>
+            <div class="option"><strong>C.</strong> Rp130.000,00</div>
+            <div class="option"><strong>D.</strong> Rp150.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 18</div>
+        <div class="question-text">Pak Hasan mewariskan sebidang tanah untuk ketiga anaknya. Anak pertama mendapat $\frac{1}{3}$ bagian tanah. Anak kedua mendapat $\frac{1}{2}$ dari <strong>sisa</strong> tanah milik anak pertama. Jika anak ketiga mendapat sisa tanah seluas $200 \text{ m}^2$, maka luas lahan warisan seluruhnya adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $400 \text{ m}^2$</div>
+            <div class="option"><strong>B.</strong> $600 \text{ m}^2$</div>
+            <div class="option"><strong>C.</strong> $800 \text{ m}^2$</div>
+            <div class="option"><strong>D.</strong> $1.200 \text{ m}^2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 19</div>
+        <div class="question-text">Dika diberi uang oleh neneknya sebesar Rp200.000,00. Dika langsung memakai $\frac{1}{5}$ bagian dari uang tersebut untuk jajan bersama teman. Kemudian, $\frac{5}{8}$ dari <strong>uang sisanya</strong> ia sumbangkan ke panti asuhan. Sisa uang Dika sekarang adalah ...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> Rp25.000,00</div>
+            <div class="option"><strong>B.</strong> Rp35.000,00</div>
+            <div class="option"><strong>C.</strong> Rp60.000,00</div>
+            <div class="option"><strong>D.</strong> Rp100.000,00</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 20</div>
+        <div class="question-text">Seorang pedagang buah menjual $\frac{1}{3}$ dari total semangkanya di pagi hari. Di siang hari, ia berhasil menjual $\frac{3}{4}$ dari <strong>sisa semangka</strong> yang ada. Jika saat toko tutup di sore hari ternyata semangkanya tersisa 15 buah, maka berapa banyak semangka yang terjual pada <strong>siang hari</strong> saja?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 15 buah</div>
+            <div class="option"><strong>B.</strong> 30 buah</div>
+            <div class="option"><strong>C.</strong> 45 buah</div>
+            <div class="option"><strong>D.</strong> 90 buah</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
