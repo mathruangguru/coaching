@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran & Latihan Soal: Hubungan Jarak, Kecepatan, Waktu, dan Skala Peta</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo { position: absolute; top: 10px; height: 65px; object-fit: contain; }
+        .logo-left { left: 10px; } 
+        .logo-right { right: 10px; text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.1rem; padding-top: 20px;}
+
+        @media (max-width: 768px) {
+            .logo { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            .logo-right { padding-top: 0; display: block; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .options-grid { flex-direction: row; flex-wrap: wrap; }
+        .options-grid .option { flex: 1 1 calc(50% - 8px); min-width: 200px;}
+        
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .explanation { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc; font-size: 0.95rem; }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        .concept-box { background-color: #f0f8ff; border: 2px solid #3498db; border-radius: var(--radius); padding: 20px; margin: 20px auto; max-width: 80%; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+            .concept-box { border: 2px solid #000; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo logo-right">
+        
+        <h1>Coaching UKRG Matematika</h1>
+        <div class="subtitle">Persiapan UKRG Tahun Ajaran 2026/2027</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">1. Rangkuman Materi</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-text">
+            <p>Materi ini menggabungkan dua konsep dasar matematika: <strong>Kinematika Dasar (Jarak, Kecepatan, Waktu)</strong> dan <strong>Perbandingan Geometri (Skala Peta)</strong>.</p>
+
+            <h4 class="mt-4">A. Hubungan Jarak, Kecepatan, dan Waktu</h4>
+            <p>Hubungan ketiga variabel ini sering disingkat dengan rumus segitiga <strong>J-K-W</strong>:</p>
+            <ul class="list-inside">
+                <li><strong>Jarak Sebenarnya ($JS$)</strong> = Kecepatan ($K$) $\times$ Waktu ($W$)</li>
+                <li><strong>Kecepatan ($K$)</strong> = Jarak Sebenarnya ($JS$) $\div$ Waktu ($W$)</li>
+                <li><strong>Waktu ($W$)</strong> = Jarak Sebenarnya ($JS$) $\div$ Kecepatan ($K$)</li>
+            </ul>
+            <p><em>Catatan Penting:</em> Selalu pastikan satuan setara (misalnya, jika kecepatan km/jam, maka waktu harus dalam jam).</p>
+
+            <h4 class="mt-4">B. Skala Peta</h4>
+            <p>Skala adalah perbandingan antara jarak pada peta dengan jarak sebenarnya.</p>
+            <ul class="list-inside">
+                <li><strong>Skala ($S$)</strong> = Jarak pada Peta ($JP$) $\div$ Jarak Sebenarnya ($JS$)</li>
+                <li><strong>Jarak pada Peta ($JP$)</strong> = Skala ($S$) $\times$ Jarak Sebenarnya ($JS$)</li>
+                <li><strong>Jarak Sebenarnya ($JS$)</strong> = Jarak pada Peta ($JP$) $\div$ Skala ($S$)</li>
+            </ul>
+            <p><em>Catatan Penting:</em> Untuk menghitung skala, satuan $JP$ dan $JS$ <strong>harus sama</strong> (biasanya menggunakan sentimeter / cm). <br>
+            <strong>Konversi Penting:</strong> $1 \text{ km} = 100.000 \text{ cm}$.</p>
+
+            <div class="concept-box">
+                <h4 class="text-center" style="margin-top: 0;">Alur Penyelesaian Soal Kombinasi (HOTS):</h4>
+                <ol class="list-inside" style="list-style-type: decimal;">
+                    <li>Hitung <strong>Jarak Sebenarnya (JS)</strong> menggunakan data Kecepatan ($K$) dan Waktu ($W$).</li>
+                    <li>Konversikan satuan $JS$ (biasanya dari km ke cm).</li>
+                    <li>Gunakan $JS$ tersebut untuk mencari <strong>Jarak Peta (JP)</strong> atau <strong>Skala (S)</strong> sesuai dengan skenario peta yang diberikan.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">2. Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah salah satu jawaban yang paling tepat. Hati-hati, sebagian besar opsi dirancang untuk menjebak kesalahan konversi dan logika!</em></p>
+
+    <div class="question-meta">Bagian A: Konsep Dasar (Soal 1 - 5)</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 1</div>
+        <div class="question-text">Sebuah mobil melaju dengan kecepatan rata-rata 60 km/jam selama 3,5 jam. Jarak sebenarnya yang ditempuh mobil tersebut adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 210 km</div>
+            <div class="option"><strong>B.</strong> 200 km</div>
+            <div class="option"><strong>C.</strong> 180 km</div>
+            <div class="option"><strong>D.</strong> 17,5 km</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 2</div>
+        <div class="question-text">Jarak kota A dan kota B adalah 120 km. Jika sebuah sepeda motor bergerak dengan kecepatan 45 km/jam, waktu yang diperlukan untuk sampai ke kota B adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 2 jam 66 menit</div>
+            <div class="option"><strong>B.</strong> 2 jam 40 menit</div>
+            <div class="option"><strong>C.</strong> 3 jam 15 menit</div>
+            <div class="option"><strong>D.</strong> 2,6 jam</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 3</div>
+        <div class="question-text">Jarak sebenarnya dua buah gedung adalah 45 km. Jika digambar pada peta, jarak kedua gedung tersebut menjadi 9 cm. Skala peta yang digunakan adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 1 : 5.000.000</div>
+            <div class="option"><strong>B.</strong> 1 : 200.000</div>
+            <div class="option"><strong>C.</strong> 1 : 50.000</div>
+            <div class="option"><strong>D.</strong> 1 : 500.000</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 4</div>
+        <div class="question-text">Sebuah peta memiliki skala 1 : 2.500.000. Jika jarak sebenarnya antara dua stasiun adalah 100 km, maka jarak kedua stasiun tersebut pada peta adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 40 cm</div>
+            <div class="option"><strong>B.</strong> 4 cm</div>
+            <div class="option"><strong>C.</strong> 25 cm</div>
+            <div class="option"><strong>D.</strong> 0,4 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 5</div>
+        <div class="question-text">Jarak dua buah kota pada sebuah peta yang berskala 1 : 800.000 adalah 12 cm. Jarak sebenarnya kedua kota tersebut adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 960 km</div>
+            <div class="option"><strong>B.</strong> 66 km</div>
+            <div class="option"><strong>C.</strong> 96 km</div>
+            <div class="option"><strong>D.</strong> 9,6 km</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Bagian B: Tingkat Menengah / Medium (Soal 6 - 10)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 6</div>
+        <div class="question-text">Seseorang mengendarai motor dengan kecepatan rata-rata 50 km/jam selama 1 jam 12 menit. Jika ia menggambar rute perjalanannya pada peta berskala 1 : 1.000.000, panjang rute pada peta tersebut adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 6 cm</div>
+            <div class="option"><strong>B.</strong> 5 cm</div>
+            <div class="option"><strong>C.</strong> 12 cm</div>
+            <div class="option"><strong>D.</strong> 0,6 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 7</div>
+        <div class="question-text">Pada peta A yang berskala 1 : 200.000, jarak kota P dan Q adalah 8 cm. Jika jarak kota P dan Q pada peta B digambar sejauh 4 cm, maka skala yang digunakan pada peta B adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 1 : 100.000</div>
+            <div class="option"><strong>B.</strong> 1 : 400.000</div>
+            <div class="option"><strong>C.</strong> 1 : 800.000</div>
+            <div class="option"><strong>D.</strong> 1 : 300.000</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 8</div>
+        <div class="question-text">Andi berangkat dari kota X ke kota Y dengan kecepatan 40 km/jam. Pada saat bersamaan, Budi berangkat dari kota Y ke kota X dengan kecepatan 60 km/jam. Jarak X ke Y sebenarnya adalah 150 km. Jika rute tersebut digambar pada peta berskala 1 : 1.500.000, jarak dari kota X ke titik tempat mereka berpapasan pada peta adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 5 cm</div>
+            <div class="option"><strong>B.</strong> 6 cm</div>
+            <div class="option"><strong>C.</strong> 4 cm</div>
+            <div class="option"><strong>D.</strong> 3 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 9</div>
+        <div class="question-text">Denah sebidang tanah berbentuk persegi panjang memiliki ukuran panjang 5 cm dan lebar 3 cm. Jika denah tersebut menggunakan skala 1 : 400, luas tanah sebenarnya adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 6.000 $\text{m}^2$</div>
+            <div class="option"><strong>B.</strong> 2.400 $\text{m}^2$</div>
+            <div class="option"><strong>C.</strong> 15 $\text{m}^2$</div>
+            <div class="option"><strong>D.</strong> 240 $\text{m}^2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 10</div>
+        <div class="question-text">Jarak kota M dan N pada peta adalah 15 cm dengan skala 1 : 1.200.000. Sebuah bus berangkat dari kota M pukul 06.15 dan tiba di kota N pukul 08.30 tanpa henti. Kecepatan rata-rata bus tersebut adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 75 km/jam</div>
+            <div class="option"><strong>B.</strong> 90 km/jam</div>
+            <div class="option"><strong>C.</strong> 80 km/jam</div>
+            <div class="option"><strong>D.</strong> 60 km/jam</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Bagian C: Kemampuan Berpikir Tingkat Tinggi / HOTS (Soal 11 - 20)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 11</div>
+        <div class="question-text">Seorang kurir menempuh perjalanan mengantarkan paket dari kota P ke kota Q dengan kecepatan rata-rata 60 km/jam dalam waktu 2,5 jam. Pada peta rute pengiriman yang lama berskala 1 : 3.000.000, jarak kedua kota tersebut tergambar sejauh beberapa sentimeter. Karena perusahaan ingin membuat peta baru dengan detail rute yang lebih jelas, jarak kota P ke kota Q pada peta yang baru dibuat lebih panjang 1 cm dari peta lama. Skala yang digunakan pada peta yang baru tersebut adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 1 : 3.750.000</div>
+            <div class="option"><strong>B.</strong> 1 : 2.500.000</div>
+            <div class="option"><strong>C.</strong> 1 : 3.600.000</div>
+            <div class="option"><strong>D.</strong> 1 : 1.500.000</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 12</div>
+        <div class="question-text">Sebuah peta kecamatan memiliki skala 1 : 500.000. Peta tersebut kemudian difotokopi dan diperbesar sehingga skalanya berubah menjadi 1 : 200.000. Persentase perbesaran ukuran yang terjadi dari peta asli ke peta hasil fotokopi adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 40%</div>
+            <div class="option"><strong>B.</strong> 150%</div>
+            <div class="option"><strong>C.</strong> 200%</div>
+            <div class="option"><strong>D.</strong> 250%</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 13</div>
+        <div class="question-text">Jarak kota A dan B di Peta X yang berskala 1 : $p$ adalah sejauh $a$ cm. Jika wilayah yang sama digambar ulang pada Peta Y sedemikian rupa sehingga jarak kota A dan B di peta Y menjadi setengah dari jarak di peta X, maka skala yang digunakan pada Peta Y adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 1 : 0,5$p$</div>
+            <div class="option"><strong>B.</strong> 1 : $p$</div>
+            <div class="option"><strong>C.</strong> 1 : 2$p$</div>
+            <div class="option"><strong>D.</strong> 1 : 4$p$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 14</div>
+        <div class="question-text">Seorang supir truk mengemudi dari gudang utama ke cabang dengan kecepatan rata-rata 90 km/jam selama 40 menit. Pada peta navigasi lama yang berskala 1 : 1.200.000, jarak kedua lokasi tersebut telah dipetakan. Karena pembaruan sistem navigasi menjadi layar yang lebih kecil, jarak kedua lokasi tersebut pada peta digital yang baru tampil lebih pendek 2 cm dari peta lama. Skala rasio yang digunakan pada peta digital yang baru adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 1 : 1.500.000</div>
+            <div class="option"><strong>B.</strong> 1 : 1.000.000</div>
+            <div class="option"><strong>C.</strong> 1 : 857.142</div>
+            <div class="option"><strong>D.</strong> 1 : 2.000.000</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 15</div>
+        <div class="question-text">Tiga kota A, B, dan C terletak pada satu garis lurus secara berurutan. Jarak kota A ke B pada peta adalah 4 cm, sedangkan jarak B ke C pada peta adalah 6 cm. Peta tersebut menggunakan skala 1 : 1.500.000. Sebuah mobil menempuh perjalanan dari A ke C. Jika mobil tersebut mengonsumsi 1 liter bensin untuk setiap 10 km jarak sebenarnya, total bensin yang dibutuhkan adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 10 Liter</div>
+            <div class="option"><strong>B.</strong> 15 Liter</div>
+            <div class="option"><strong>C.</strong> 20 Liter</div>
+            <div class="option"><strong>D.</strong> 25 Liter</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 16</div>
+        <div class="question-text">Sebuah kendaraan pariwisata menempuh perjalanan antara dua tempat wisata dengan kecepatan rata-rata 75 km/jam dalam waktu 1,2 jam. Pada brosur wisata yang lama dengan skala 1 : 1.500.000, jarak kedua tempat wisata tersebut tergambar jelas. Untuk menghemat biaya cetak brosur, desain peta diperkecil sehingga jarak kedua tempat wisata tersebut pada brosur baru dibuat lebih pendek 1,5 cm dari brosur lama. Skala yang digunakan pada brosur wisata yang baru tersebut adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 1 : 1.200.000</div>
+            <div class="option"><strong>B.</strong> 1 : 1.800.000</div>
+            <div class="option"><strong>C.</strong> 1 : 2.000.000</div>
+            <div class="option"><strong>D.</strong> 1 : 2.500.000</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 17</div>
+        <div class="question-text">Suatu peta digambar pada kertas kotak-kotak (grid) di mana sisi 1 kotak mewakili 2 cm pada peta. Sebuah danau pada peta tersebut diestimasi menutupi area sebanyak 15 kotak persegi. Jika skala peta adalah 1 : 200.000, maka luas danau sebenarnya adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 24 km$^2$</div>
+            <div class="option"><strong>B.</strong> 120 km$^2$</div>
+            <div class="option"><strong>C.</strong> 240 km$^2$</div>
+            <div class="option"><strong>D.</strong> 600 km$^2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 18</div>
+        <div class="question-text">Dua buah bus antarkota berangkat dari terminal yang sama namun menuju arah yang saling berlawanan. Bus A melaju dengan kecepatan 50 km/jam dan Bus B melaju dengan kecepatan 70 km/jam. Setelah 2 jam perjalanan, posisi kedua bus difoto dari satelit dan dipetakan. Jika peta tersebut menggunakan skala 1 : 4.000.000, jarak antara kedua bus pada peta tersebut adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 3 cm</div>
+            <div class="option"><strong>B.</strong> 6 cm</div>
+            <div class="option"><strong>C.</strong> 8 cm</div>
+            <div class="option"><strong>D.</strong> 12 cm</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 19</div>
+        <div class="question-text">Pada sebuah peta topografi, diketahui Interval Kontur (jarak beda tinggi antar garis) adalah 50 meter. Menggunakan aturan standar geografi bahwa $Skala = Interval \text{ Kontur} \times 2000$, berapakah jarak sebenarnya antara puncak A dan puncak B jika diukur menggunakan penggaris di peta tersebut jaraknya adalah 4 cm?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 1 km</div>
+            <div class="option"><strong>B.</strong> 2 km</div>
+            <div class="option"><strong>C.</strong> 4 km</div>
+            <div class="option"><strong>D.</strong> 8 km</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 20</div>
+        <div class="question-text">Pengendara A berangkat dari titik nol pada pukul 07.00 dengan kecepatan 40 km/jam. Pengendara B berangkat dari titik yang sama dengan rute yang sama pada pukul 07.30 dengan kecepatan 60 km/jam. Jika jarak dari titik nol hingga titik B menyusul A digambar pada peta dengan skala 1 : 1.200.000, maka panjang lintasan tersebut pada peta adalah ....</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> 2 cm</div>
+            <div class="option"><strong>B.</strong> 3,5 cm</div>
+            <div class="option"><strong>C.</strong> 5 cm</div>
+            <div class="option"><strong>D.</strong> 6 cm</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
