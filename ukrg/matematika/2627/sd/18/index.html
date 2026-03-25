@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran: Lingkaran dan Bagian-Bagiannya</title>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f6f8;
+            --radius: 8px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-primary { color: var(--primary); }
+        .text-muted { color: #555; }
+        .text-sm { font-size: 0.9rem; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 5px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; }
+        .pb-2 { padding-bottom: 10px; }
+        .flex { display: flex; } .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 8px; }
+        .w-full { width: 100%; }
+        .max-w-full { max-width: 100%; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .block { display: block; }
+        .border-b { border-bottom: 2px solid #ddd; }
+        .border-solid { border-style: solid !important; }
+
+        /* --- Base & Reset --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 20px; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--primary); }
+        h3, h4 { color: var(--primary); margin-top: 0; }
+
+        /* --- Layout & Core Components --- */
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid var(--secondary); padding: 10px 0 20px; position: relative; }
+        .logo-left { position: absolute; top: 10px; left: 10px; height: 65px; object-fit: contain; }
+        .logo-right { position: absolute; top: 15px; right: 10px; height: 55px; object-fit: contain; }
+
+        @media (max-width: 768px) {
+            .logo-left { position: static; display: inline-block; margin: 0 15px 15px; height: 50px; }
+            .logo-right { position: static; display: inline-block; margin: 0 15px 15px; height: 45px; }
+            h1 { font-size: 1.6rem; }
+        }
+
+        .subtitle { color: #666; font-size: 1.1rem; font-weight: 500;}
+        
+        .section-title { background: var(--primary); color: #fff; padding: 12px 20px; margin-top: 30px; font-size: 1.2rem; border-radius: var(--radius); margin-bottom: 20px; text-align: center;}
+
+        .question-card { background: #fafafa; border: 1px dashed #ccc; padding: 20px; border-radius: var(--radius); margin-bottom: 20px; transition: 0.2s; }
+        .question-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--secondary); background: #fff; }
+
+        .question-text { font-size: 1.05rem; margin-bottom: 15px; text-align: left; padding: 10px 0; }
+        .question-meta { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; display: inline-block; background: #e8f4fd; padding: 5px 12px; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        
+        .options-list, .options-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .options-grid { flex-direction: row; flex-wrap: wrap; }
+        .options-grid .option { flex: 1 1 calc(50% - 8px); min-width: 200px;}
+        
+        .option { background: #f8f9fa; padding: 10px 15px; border: 1px solid #eee; border-radius: 4px; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .option:hover { background: #fff9f0; border-color: var(--secondary); }
+
+        .list-inside { padding-left: 20px; margin-top: 10px; margin-bottom: 10px; }
+        .list-inside li { margin-bottom: 5px; }
+
+        .concept-box { background-color: #f0f8ff; border: 2px solid #3498db; border-radius: var(--radius); padding: 20px; margin: 20px auto; max-width: 90%; }
+
+        @media print {
+            body { background: #fff; }
+            .container { box-shadow: none; padding: 0; }
+            .question-card { break-inside: avoid; border: 1px solid #ccc; }
+            .section-title { background: #eee; color: #000; border: 1px solid #ccc; }
+            .concept-box { border: 2px solid #000; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_zekej2_3984.png" alt="Logo Ruangguru" class="logo-left">
+        <img src="https://imgix3.ruangguru.com/assets/miscellaneous/png_63qwb1_5293.png" alt="Logo Brain Academy" class="logo-right">
+        
+        <h1>Rangkuman Materi dan Latihan Soal</h1>
+        <div class="subtitle">Lingkaran dan Bagian-Bagiannya</div>
+        <p class="mt-2 text-sm text-muted">Latihan menuju UKRG SD</p>
+    </header>
+
+    <div class="section-title">A. Rangkuman Materi</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-text">
+            <p>Dalam menghitung panjang garis lengkung dan luasan pada sebuah lingkaran, kita menggunakan konstanta $\pi$ (pi) yang bernilai $\frac{22}{7}$ atau $3,14$.</p>
+            
+            <ul class="list-inside" style="list-style-type: disc;">
+                <li><strong>Luas Lingkaran Penuh:</strong> $L = \pi \times r^2$</li>
+                <li><strong>Keliling Lingkaran Penuh:</strong> $K = 2 \times \pi \times r$ atau $K = \pi \times d$</li>
+            </ul>
+
+            <div class="concept-box">
+                <h4 style="margin-top: 0; color: #2c3e50;">Hati-hati Pengecoh Keliling Bagian Lingkaran!</h4>
+                <p>Ketika kita diminta mencari <strong>Keliling</strong> dari sebuah pecahan lingkaran tertutup (seperti $\frac{1}{2}$ lingkaran, $\frac{1}{4}$ lingkaran, atau $\frac{3}{4}$ lingkaran), kelilingnya <strong>bukan</strong> hanya sekadar pecahan dari keliling lingkaran utuh.</p>
+                <p>Keliling bangun datar adalah total lintasan yang mengelilingi tepi bangun tersebut. Oleh karena itu, kita harus menjumlahkan <strong>panjang busur lengkung</strong> dengan <strong>sisi lurusnya (jari-jari)</strong> yang membatasi bangun tersebut.</p>
+
+                <p class="mt-4"><strong>Contoh Rumus Keliling Pecahan Lingkaran Tertutup:</strong></p>
+                <ul class="list-inside" style="list-style-type: none; padding-left: 0;">
+                    <li>- <strong>Keliling $\frac{1}{2}$ Lingkaran:</strong> $K = (\frac{1}{2} \times 2\pi r) + d = \pi r + 2r$</li>
+                    <li>- <strong>Keliling $\frac{1}{4}$ Lingkaran:</strong> $K = (\frac{1}{4} \times 2\pi r) + 2r$</li>
+                    <li>- <strong>Keliling $\frac{3}{4}$ Lingkaran:</strong> $K = (\frac{3}{4} \times 2\pi r) + 2r$</li>
+                </ul>
+                <p class="mt-2 text-sm text-muted"><em>Catatan: Penambahan $2r$ ini sering dilupakan, dan seringkali nilai panjang busur saja sudah disiapkan sebagai opsi jebakan di Pilihan Ganda.</em></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">B. Latihan Soal</div>
+    <p class="text-center mb-4 text-muted"><em>Pilihlah satu jawaban yang paling tepat. Hati-hati dengan opsi jebakan!</em></p>
+
+    <div class="question-meta">Bagian A: Konsep Dasar</div>
+    
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 1</div>
+        <div class="question-text">Luas sebuah lingkaran yang memiliki jari-jari 7 cm adalah... (Gunakan $\pi = \frac{22}{7}$)</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $44 \text{ cm}^2$</div>
+            <div class="option"><strong>B.</strong> $154 \text{ cm}^2$</div>
+            <div class="option"><strong>C.</strong> $22 \text{ cm}^2$</div>
+            <div class="option"><strong>D.</strong> $616 \text{ cm}^2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 2</div>
+        <div class="question-text">Berapakah keliling sebuah lingkaran yang memiliki diameter 20 cm? ($\pi = 3,14$)</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $31,4 \text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $62,8 \text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $125,6 \text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $314 \text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 3</div>
+        <div class="question-text">Jika diketahui luas sebuah lingkaran adalah $616 \text{ cm}^2$, maka panjang jari-jari lingkaran tersebut adalah...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $7 \text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $14 \text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $21 \text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $28 \text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 4</div>
+        <div class="question-text">Berapakah panjang busur (hanya garis lengkungnya) dari seperempat lingkaran yang berjari-jari 14 cm?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $22 \text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $44 \text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $66 \text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $88 \text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 5</div>
+        <div class="question-text">Luas juring lingkaran bersudut pusat $60^\circ$ dengan jari-jari 21 cm adalah...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $66 \text{ cm}^2$</div>
+            <div class="option"><strong>B.</strong> $154 \text{ cm}^2$</div>
+            <div class="option"><strong>C.</strong> $231 \text{ cm}^2$</div>
+            <div class="option"><strong>D.</strong> $462 \text{ cm}^2$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Bagian B: Menengah</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 6</div>
+        <div class="question-text">Keliling sebuah bangun datar berbentuk SETENGAH lingkaran padat/tertutup yang berjari-jari 7 cm adalah...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $22 \text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $36 \text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $44 \text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $154 \text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 7</div>
+        <div class="question-text">Berapakah luas daerah dari tiga perempat ($\frac{3}{4}$) lingkaran dengan jari-jari 14 cm?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $154 \text{ cm}^2$</div>
+            <div class="option"><strong>B.</strong> $308 \text{ cm}^2$</div>
+            <div class="option"><strong>C.</strong> $462 \text{ cm}^2$</div>
+            <div class="option"><strong>D.</strong> $616 \text{ cm}^2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 8</div>
+        <div class="question-text">Keliling sebuah juring seperempat lingkaran yang memiliki jari-jari 28 cm adalah...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $44 \text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $72 \text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $100 \text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $176 \text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 9</div>
+        <div class="question-text">Sebuah roda sepeda berputar sebanyak 200 kali putaran penuh. Jika jari-jari roda tersebut adalah 35 cm, berapakah jarak yang ditempuh sepeda tersebut? ($\pi = \frac{22}{7}$)</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $44 \text{ m}$</div>
+            <div class="option"><strong>B.</strong> $220 \text{ m}$</div>
+            <div class="option"><strong>C.</strong> $440 \text{ m}$</div>
+            <div class="option"><strong>D.</strong> $880 \text{ m}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 10</div>
+        <div class="question-text">Terdapat dua buah lingkaran sepusat. Lingkaran luar memiliki jari-jari 10 cm, sedangkan lingkaran dalam memiliki jari-jari 8 cm. Selisih luas kedua lingkaran tersebut adalah... ($\pi = 3,14$)</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $12,56 \text{ cm}^2$</div>
+            <div class="option"><strong>B.</strong> $113,04 \text{ cm}^2$</div>
+            <div class="option"><strong>C.</strong> $200,96 \text{ cm}^2$</div>
+            <div class="option"><strong>D.</strong> $314,00 \text{ cm}^2$</div>
+        </div>
+    </div>
+
+    <div class="question-meta mt-5">Bagian C: HOTS (Higher Order Thinking Skills)</div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 11</div>
+        <div class="question-text">Sebuah pelat logam berbentuk persegi panjang dengan ukuran $20 \text{ cm} \times 10 \text{ cm}$. Dari pelat tersebut, dipotong dua buah daerah berbentuk setengah lingkaran yang masing-masing berdiameter 10 cm sehingga saling bersinggungan di tengah. Luas pelat yang tersisa adalah... ($\pi = 3,14$)</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $78,5 \text{ cm}^2$</div>
+            <div class="option"><strong>B.</strong> $121,5 \text{ cm}^2$</div>
+            <div class="option"><strong>C.</strong> $200 \text{ cm}^2$</div>
+            <div class="option"><strong>D.</strong> $314 \text{ cm}^2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 12</div>
+        <div class="question-text">Dua buah pipa silinder berjari-jari 14 cm diletakkan berdampingan dan saling bersinggungan. Sebuah tali dililitkan erat untuk mengikat kedua pipa tersebut. Panjang lintasan tali minimum yang dibutuhkan untuk mengikat kedua pipa adalah...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $88 \text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $116 \text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $144 \text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $176 \text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 13</div>
+        <div class="question-text">
+            Sebuah taman dirancang membentuk bangun tiga perempat ($\frac{3}{4}$) lingkaran seperti gambar berikut.
+            <div style="text-align: center; margin: 15px 0;">
+                <svg width="180" height="180" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 20 100 L 100 100 L 100 180 A 80 80 0 1 0 20 100 Z" fill="#e2f0cb" stroke="#2c3e50" stroke-width="2"/>
+                    <polyline points="85,100 85,115 100,115" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <text x="50" y="90" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">r = 10 cm</text>
+                </svg>
+            </div>
+            Dengan jari-jari $r = 10 \text{ cm}$ dan $\pi = 3,14$, berapakah keliling dari taman tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $47,1 \text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $57,1 \text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $62,8 \text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $67,1 \text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 14</div>
+        <div class="question-text">Pada sebuah persegi berukuran $14 \text{ cm} \times 14 \text{ cm}$, terdapat dua buah kurva seperempat lingkaran yang pusatnya berada di dua titik sudut persegi yang berseberangan. Kedua kurva tersebut saling berpotongan membentuk daerah beririsan berbentuk seperti "daun". Luas daerah bangun "daun" tersebut adalah...</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $42 \text{ cm}^2$</div>
+            <div class="option"><strong>B.</strong> $56 \text{ cm}^2$</div>
+            <div class="option"><strong>C.</strong> $112 \text{ cm}^2$</div>
+            <div class="option"><strong>D.</strong> $154 \text{ cm}^2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 15</div>
+        <div class="question-text">Menggunakan bangun pada soal nomor 14 (irisan berbentuk "daun" di dalam persegi $14 \times 14$ cm), berapakah <strong>keliling</strong> dari daerah irisan berbentuk daun tersebut?</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $22 \text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $44 \text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $72 \text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $88 \text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 16</div>
+        <div class="question-text">Sebuah kolam hias berbentuk lingkaran dengan diameter 20 meter. Di sekeliling luar kolam tersebut akan dibuat jalan setapak yang lebarnya 2 meter. Berapakah luas area jalan setapak tersebut? ($\pi = 3,14$)</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $12,56 \text{ m}^2$</div>
+            <div class="option"><strong>B.</strong> $62,8 \text{ m}^2$</div>
+            <div class="option"><strong>C.</strong> $138,16 \text{ m}^2$</div>
+            <div class="option"><strong>D.</strong> $452,16 \text{ m}^2$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 17</div>
+        <div class="question-text">
+            Perhatikan bangun datar tiga perempat lingkaran berikut ini.
+            <div style="text-align: center; margin: 15px 0;">
+                <svg width="180" height="180" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 180 100 L 100 100 L 100 20 A 80 80 0 1 0 180 100 Z" fill="#ffe4b5" stroke="#2c3e50" stroke-width="2"/>
+                    <polyline points="115,100 115,85 100,85" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <text x="145" y="90" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">21 cm</text>
+                </svg>
+            </div>
+            Jika jari-jarinya adalah 21 cm, berapakah keliling keseluruhan bangun datar yang diarsir tersebut?
+        </div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $99 \text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $120 \text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $132 \text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $141 \text{ cm}$</div>
+        </div>
+    </div>
+
+    <div class="question-card" style="border-style: solid;">
+        <div class="question-meta">Soal 18</div>
+        <div class="question-text">Sebuah kipas tangan kuno terbuat dari kain yang direntangkan pada kerangka bambu. Jika kain kipas tersebut berbentuk juring lingkaran bersudut pusat $150^\circ$ dengan jari-jari 24 cm, dan di seluruh tepi (keliling) kain tersebut akan dijahitkan pita renda, berapakah panjang pita renda minimum yang dibutuhkan? ($\pi = 3,14$)</div>
+        <div class="options-grid">
+            <div class="option"><strong>A.</strong> $62,8 \text{ cm}$</div>
+            <div class="option"><strong>B.</strong> $86,8 \text{ cm}$</div>
+            <div class="option"><strong>C.</strong> $110,8 \text{ cm}$</div>
+            <div class="option"><strong>D.</strong> $150,72 \text{ cm}$</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
